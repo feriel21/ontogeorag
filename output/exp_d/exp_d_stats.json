@@ -1,0 +1,27 @@
+{
+  "description": "EXP-D Cross-Model Verification",
+  "qwen7b_model": "Qwen/Qwen2.5-7B-Instruct",
+  "cross_verifier_model": "Qwen/Qwen2.5-1.5B-Instruct",
+  "n_triples_evaluated": 94,
+  "agreement_rate": 0.3511,
+  "cohen_kappa": 0.0,
+  "kappa_interpretation": "poor",
+  "qwen7b_not_supported_rate": 0.3511,
+  "cross_verifier_not_supported_rate": 0.117,
+  "ns_rate_delta": 0.234,
+  "self_bias_detected": true,
+  "qwen7b_verdict_distribution": {
+    "STRONG_SUPPORT": 33,
+    "WEAK_SUPPORT": 28,
+    "NOT_SUPPORTED": 33
+  },
+  "cross_verifier_verdict_distribution": {
+    "STRONG_SUPPORT": 83,
+    "WEAK_SUPPORT": 0,
+    "NOT_SUPPORTED": 11
+  },
+  "cross_verdict_all_counts": {
+    "STRONG_SUPPORT": 83,
+    "NOT_SUPPORTED": 11
+  }
+}

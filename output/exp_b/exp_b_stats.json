@@ -1,0 +1,18 @@
+{
+  "description": "EXP-B No-RAG Ablation",
+  "model": "Qwen/Qwen2.5-7B-Instruct",
+  "n_triples_input": 47,
+  "n_extracted_no_rag": 43,
+  "extraction_failure_rate": 0.0851063829787234,
+  "verdicts": {
+    "STRONG_SUPPORT": 20,
+    "WEAK_SUPPORT": 0,
+    "NOT_SUPPORTED": 23,
+    "UNPARSEABLE": 0,
+    "BACKEND_ERROR": 0
+  },
+  "decided_total": 43,
+  "not_supported_rate_no_rag": 0.5349,
+  "not_supported_rate_with_rag_run7": 0.3793,
+  "rag_improvement_delta": 0.1556
+}

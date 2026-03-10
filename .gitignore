@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.ipynb_checkpoints/
+venv/
+
+# Large data files
+output/step1/
+output/step2/
+output/full_corpus/
+output/figures/
+output/figures_v4/
+*.jsonl
+!output/exp_a/*.json
+!output/exp_b/*.json
+!output/exp_d/*.json
+!output/improved_kg/*.json
+!configs/*.jsonl
+
+# Models (downloaded by HuggingFace)
+~/.cache/huggingface/
+
+# SLURM logs
+logs/slurm_*.out
+logs/slurm_*.err
+
+# Jupyter
+*.ipynb

@@ -1,0 +1,27 @@
+subject,relation,object,category,best_bm25_score
+mass transport deposit,hasDescriptor,chaotic,CORPUS_PRESENT,16.5482
+mass transport deposit,hasDescriptor,transparent,CORPUS_PRESENT,18.0598
+mass transport deposit,hasDescriptor,hummocky,CORPUS_PRESENT,13.9097
+mass transport deposit,hasDescriptor,blocky,CORPUS_PRESENT,15.0314
+mass transport deposit,hasDescriptor,discontinuous,CORPUS_PRESENT,15.7143
+mass transport deposit,hasDescriptor,massive,CORPUS_PRESENT,14.8444
+turbidite,hasDescriptor,parallel,CORPUS_PRESENT,9.9322
+turbidite,hasDescriptor,continuous,CORPUS_PRESENT,9.1071
+turbidite,hasDescriptor,layered,CORPUS_PRESENT,13.2277
+turbidite,hasDescriptor,high-amplitude,CORPUS_PRESENT,13.2022
+debris flow,hasDescriptor,chaotic,CORPUS_PRESENT,15.1562
+debris flow,hasDescriptor,hummocky,CORPUS_PRESENT,12.6764
+slide,hasDescriptor,blocky,CORPUS_PRESENT,11.1252
+slide,hasDescriptor,undeformed,CORPUS_PRESENT,9.3774
+hemipelagite,hasDescriptor,parallel,CORPUS_PRESENT,9.9322
+hemipelagite,hasDescriptor,continuous,CORPUS_PRESENT,8.9323
+hemipelagite,hasDescriptor,low-amplitude,CORPUS_PRESENT,12.4966
+slope failure,causes,mass transport deposit,CORPUS_PRESENT,14.2063
+earthquake,triggers,slope failure,CORPUS_PRESENT,12.362
+pore pressure,controls,slope failure,CORPUS_PRESENT,13.8774
+turbidity current,formedBy,debris flow,CORPUS_PRESENT,15.5138
+mass transport deposit,occursIn,continental slope,CORPUS_PRESENT,12.7747
+mass transport deposit,occursIn,abyssal plain,CORPUS_PRESENT,15.3857
+debris flow,occursIn,continental slope,CORPUS_PRESENT,12.5777
+turbidite,occursIn,basin floor,CORPUS_PRESENT,12.192
+slide,overlies,hemipelagite,CORPUS_PRESENT,10.0659

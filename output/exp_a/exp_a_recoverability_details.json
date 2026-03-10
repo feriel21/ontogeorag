@@ -1,0 +1,303 @@
+{
+  "description": "EXP-A Corpus Recoverability Analysis",
+  "bm25_threshold": 2.0,
+  "n_chunks": 3386,
+  "n_reference_edges": 26,
+  "summary": {
+    "CORPUS_PRESENT": 26,
+    "CORPUS_MARGINAL": 0,
+    "CORPUS_ABSENT": 0,
+    "recoverable_total": 26,
+    "pipeline_found": 9,
+    "recall_vs_all": 0.3462,
+    "recall_vs_recoverable": 0.3462
+  },
+  "edges": [
+    {
+      "subject": "mass transport deposit",
+      "relation": "hasDescriptor",
+      "object": "chaotic",
+      "edge_key": "mass transport deposit --hasDescriptor--> chaotic",
+      "category": "CORPUS_PRESENT",
+      "best_bm25_score": 16.5482,
+      "best_query": "mass transport deposit seismic character chaotic",
+      "best_chunk_id": "9781565762879_ch02-checkpoint::chunk31",
+      "best_chunk_preview": "about 6 km. In some instances, plowing by oversized clasts can produce giant grooves that can have the appearance of linear channels. Figure 31 illustrates such a giant groove or channel, which seems to have formed by a single large clast that has eroded through the substrate and come to rest at the"
+    },
+    {
+      "subject": "mass transport deposit",
+      "relation": "hasDescriptor",
+      "object": "transparent",
+      "edge_key": "mass transport deposit --hasDescriptor--> transparent",
+      "category": "CORPUS_PRESENT",
+      "best_bm25_score": 18.0598,
+      "best_query": "mass transport deposit seismic character transparent",
+      "best_chunk_id": "9781565762879_ch02-checkpoint::chunk31",
+      "best_chunk_preview": "about 6 km. In some instances, plowing by oversized clasts can produce giant grooves that can have the appearance of linear channels. Figure 31 illustrates such a giant groove or channel, which seems to have formed by a single large clast that has eroded through the substrate and come to rest at the"
+    },
+    {
+      "subject": "mass transport deposit",
+      "relation": "hasDescriptor",
+      "object": "hummocky",
+      "edge_key": "mass transport deposit --hasDescriptor--> hummocky",
+      "category": "CORPUS_PRESENT",
+      "best_bm25_score": 13.9097,
+      "best_query": "mass transport deposit seismic character hummocky",
+      "best_chunk_id": "1-s2.0-S0025322713000571-main-checkpoint::chunk25",
+      "best_chunk_preview": "radial faults and faulting of salt withdrawal basins (Type II) (Fig. 6a and b). Type I ramps are only found at the basal shear surface of MTD 2 while Type II ramps predominate at the base of the other MTDs. In situations where adjacent ramps were antithetic, they formed promontories and adjacent cov"
+    },
+    {
+      "subject": "mass transport deposit",
+      "relation": "hasDescriptor",
+      "object": "blocky",
+      "edge_key": "mass transport deposit --hasDescriptor--> blocky",
+      "category": "CORPUS_PRESENT",
+      "best_bm25_score": 15.0314,
+      "best_query": "mass transport deposit seismic character blocky",
+      "best_chunk_id": "RichardsonetalBasinResearch2011-online (1)::chunk19",
+      "best_chunk_preview": "view. In plan view it is curved, running parallel to both the mass transport deposit lateral ramp and headwall (Fig. 3c). High ampli- tude, blocky material near the base of the deposit (de- scribed in the section above) remains semi-continuous above the curved ramp, forming a lobe of blocky material"
+    },
+    {
+      "subject": "mass transport deposit",
+      "relation": "hasDescriptor",
+      "object": "discontinuous",
+      "edge_key": "mass transport deposit --hasDescriptor--> discontinuous",
+      "category": "CORPUS_PRESENT",
+      "best_bm25_score": 15.7143,
+      "best_query": "mass transport deposit appears discontinuous on seismic",
+      "best_chunk_id": "RichardsonetalBasinResearch2011-online (1)::chunk8",
+      "best_chunk_preview": "On seismic pro\u00a2les a mass transport deposit is identi- \u00a2ed by its characteristic facies: a rugose upper bounding surface located above discontinuous and low amplitude re\u00a3ections (e.g. Posamentier & Kolla, 2003), although they can also contain seismic facies of higher amplitudes (e.g. Moscardelli&Woo"
+    },
+    {
+      "subject": "mass transport deposit",
+      "relation": "hasDescriptor",
+      "object": "massive",
+      "edge_key": "mass transport deposit --hasDescriptor--> massive",
+      "category": "CORPUS_PRESENT",
+      "best_bm25_score": 14.8444,
+      "best_query": "mass transport deposit seismic character massive",
+      "best_chunk_id": "9781565762879_ch02-checkpoint::chunk44",
+      "best_chunk_preview": "its potential as a reservoir, such as: (1) provenance or staging area of the mass-transport deposits; (2) lithology of the FIG. 31.\u2014 A) Coherency slice, and B, C) seismic profiles showing a deep groove in a deep-water slope setting. This groove was formed by erosion of the substrate by a massive cla"
+    },
+    {
+      "subject": "turbidite",
+      "relation": "hasDescriptor",
+      "object": "parallel",
+      "edge_key": "turbidite --hasDescriptor--> parallel",
+      "category": "CORPUS_PRESENT",
+      "best_bm25_score": 9.9322,
+      "best_query": "turbidite seismic character parallel",
+      "best_chunk_id": "1-s2.0-S0264817216304585-main-checkpoint::chunk14",
+      "best_chunk_preview": "another possible explanation for the origin of these negative acoustic anomalies. However, the ENSAs are not parallel to the seabed (Fig. 4aed), indicating that they are not BSRs. Their abrupt contact with the surrounding strata is similar to the seismic char- acter of free gas documented in multipl"
+    },
+    {
+      "subject": "turbidite",
+      "relation": "hasDescriptor",
+      "object": "continuous",
+      "edge_key": "turbidite --hasDescriptor--> continuous",
+      "category": "CORPUS_PRESENT",
+      "best_bm25_score": 9.1071,
+      "best_query": "turbidite seismic character continuous",
+      "best_chunk_id": "Alves_AAPG_MTDs_14::chunk32",
+      "best_chunk_preview": "volumes extracted for the CDE plots in Figure 11E\u2013G, and the relative location of horizons H1 to H3. See Figure 10 for the location of the seismic section in this figure. (B) Root-mean-square (RMS) amplitude map of MTD 5 showing the morphology and extent of this same deposit. The 3-D volume aroundIO"
+    },
+    {
+      "subject": "turbidite",
+      "relation": "hasDescriptor",
+      "object": "layered",
+      "edge_key": "turbidite --hasDescriptor--> layered",
+      "category": "CORPUS_PRESENT",
+      "best_bm25_score": 13.2277,
+      "best_query": "turbidite seismic character layered",
+      "best_chunk_id": "1-s2.0-S0264817216304585-main-checkpoint::chunk15",
+      "best_chunk_preview": "The chaotic and dimmed seismic re\ufb02ections directly below the free gas zone are interpreted Table 1 Geometric characteristics of MTDs and free gas in Zones A and B. AT \u00bc average thickness; MTD \u00bc Mass-transport deposit. Please note that the average thickness and volume of free gas re\ufb02ect the thickness"
+    },
+    {
+      "subject": "turbidite",
+      "relation": "hasDescriptor",
+      "object": "high-amplitude",
+      "edge_key": "turbidite --hasDescriptor--> high-amplitude",
+      "category": "CORPUS_PRESENT",
+      "best_bm25_score": 13.2022,
+      "best_query": "turbidite seismic character high-amplitude",
+      "best_chunk_id": "Alves_AAPG_MTDs_14::chunk32",
+      "best_chunk_preview": "volumes extracted for the CDE plots in Figure 11E\u2013G, and the relative location of horizons H1 to H3. See Figure 10 for the location of the seismic section in this figure. (B) Root-mean-square (RMS) amplitude map of MTD 5 showing the morphology and extent of this same deposit. The 3-D volume aroundIO"
+    },
+    {
+      "subject": "debris flow",
+      "relation": "hasDescriptor",
+      "object": "chaotic",
+      "edge_key": "debris flow --hasDescriptor--> chaotic",
+      "category": "CORPUS_PRESENT",
+      "best_bm25_score": 15.1562,
+      "best_query": "debris flow seismic character chaotic",
+      "best_chunk_id": "9781565762879_ch02-checkpoint::chunk38",
+      "best_chunk_preview": "from http://pubs.geoscienceworld.org/books/edited-volume/chapter-pdf/3801855/9781565762879_ch02.pdf by Sorbonne Universite user HENRY W. POSAMENTIER AND OLE J. MARTINSEN 24 Internal chaotic to transparent seismic reflection character (see Figs. 32 and 33) Basal grooving and/or deep erosional scour ("
+    },
+    {
+      "subject": "debris flow",
+      "relation": "hasDescriptor",
+      "object": "hummocky",
+      "edge_key": "debris flow --hasDescriptor--> hummocky",
+      "category": "CORPUS_PRESENT",
+      "best_bm25_score": 12.6764,
+      "best_query": "debris flow seismic character hummocky",
+      "best_chunk_id": "9781565762879_ch02-checkpoint::chunk38",
+      "best_chunk_preview": "from http://pubs.geoscienceworld.org/books/edited-volume/chapter-pdf/3801855/9781565762879_ch02.pdf by Sorbonne Universite user HENRY W. POSAMENTIER AND OLE J. MARTINSEN 24 Internal chaotic to transparent seismic reflection character (see Figs. 32 and 33) Basal grooving and/or deep erosional scour ("
+    },
+    {
+      "subject": "slide",
+      "relation": "hasDescriptor",
+      "object": "blocky",
+      "edge_key": "slide --hasDescriptor--> blocky",
+      "category": "CORPUS_PRESENT",
+      "best_bm25_score": 11.1252,
+      "best_query": "slide seismic character blocky",
+      "best_chunk_id": "Bull & Cartwright (2009)::chunk36",
+      "best_chunk_preview": "shown in A). Downward-pointing arrows indicate location of grooves. (D) Seismic section through horizon shown in C. Downward-pointing arrows indicate location of grooves. Note the narrow, \u2018v\u2019-shaped cross-sectional character (location shown in B). Bold arrows in (A) and (C) indicate translation dire"
+    },
+    {
+      "subject": "slide",
+      "relation": "hasDescriptor",
+      "object": "undeformed",
+      "edge_key": "slide --hasDescriptor--> undeformed",
+      "category": "CORPUS_PRESENT",
+      "best_bm25_score": 9.3774,
+      "best_query": "slide seismic character undeformed",
+      "best_chunk_id": "Bull & Cartwright (2009)::chunk28",
+      "best_chunk_preview": "or more preferred stratigraphic levels for the \ufb02at segments of the basal shear surface possibly re\ufb02ects the availability of more than a single surface of low shear strength. In this case of the M\u00f8re Slide, the cyclic stratigraphy of low strength contourite sediments Fig. 6. Examples of lateral margi"
+    },
+    {
+      "subject": "hemipelagite",
+      "relation": "hasDescriptor",
+      "object": "parallel",
+      "edge_key": "hemipelagite --hasDescriptor--> parallel",
+      "category": "CORPUS_PRESENT",
+      "best_bm25_score": 9.9322,
+      "best_query": "hemipelagite seismic character parallel",
+      "best_chunk_id": "1-s2.0-S0264817216304585-main-checkpoint::chunk14",
+      "best_chunk_preview": "another possible explanation for the origin of these negative acoustic anomalies. However, the ENSAs are not parallel to the seabed (Fig. 4aed), indicating that they are not BSRs. Their abrupt contact with the surrounding strata is similar to the seismic char- acter of free gas documented in multipl"
+    },
+    {
+      "subject": "hemipelagite",
+      "relation": "hasDescriptor",
+      "object": "continuous",
+      "edge_key": "hemipelagite --hasDescriptor--> continuous",
+      "category": "CORPUS_PRESENT",
+      "best_bm25_score": 8.9323,
+      "best_query": "hemipelagite seismic character continuous",
+      "best_chunk_id": "Alves_AAPG_MTDs_14::chunk31",
+      "best_chunk_preview": "the CDE classification. In this work, we favor seismic attributes most commonly used in the interpretation of 3-D seismic data. The same workflow, however, can be used with any other seis- mic attributes tied to significant petrophysical and geological properties. 808 Mass-Transport Deposits and Sei"
+    },
+    {
+      "subject": "hemipelagite",
+      "relation": "hasDescriptor",
+      "object": "low-amplitude",
+      "edge_key": "hemipelagite --hasDescriptor--> low-amplitude",
+      "category": "CORPUS_PRESENT",
+      "best_bm25_score": 12.4966,
+      "best_query": "low-amplitude reflection hemipelagite",
+      "best_chunk_id": "Alves_AAPG_MTDs_14::chunk22",
+      "best_chunk_preview": "Directionality (or homogeneity, sensu Chopra and Marfurt, 2007) is a measure of the overall smoothness of an image: Directionality \u00bc \u2211 i \u2211 j 1 1 \u00fe 1\u2212j \u00f0 \u00de2Pi;j \u00f03\u00de Highly contrasted pixels result in low-directionality values. Thus, directionality is inversely propor- tional to contrast and is useful"
+    },
+    {
+      "subject": "slope failure",
+      "relation": "causes",
+      "object": "mass transport deposit",
+      "edge_key": "slope failure --causes--> mass transport deposit",
+      "category": "CORPUS_PRESENT",
+      "best_bm25_score": 14.2063,
+      "best_query": "mass transport deposit caused triggered by slope failure",
+      "best_chunk_id": "RichardsonetalBasinResearch2011-online (1)::chunk3",
+      "best_chunk_preview": "stress and shear strength is restored. Upon the initiation of failure, deformation radiates from a point source with compressive deformation of the moving mass progressing downslope and extensional deformation \u2018ret- rogressing\u2019 upslope (Farrell,1984).The slope failure grows and increases in volume b"
+    },
+    {
+      "subject": "earthquake",
+      "relation": "triggers",
+      "object": "slope failure",
+      "edge_key": "earthquake --triggers--> slope failure",
+      "category": "CORPUS_PRESENT",
+      "best_bm25_score": 12.362,
+      "best_query": "earthquake triggers slope failure",
+      "best_chunk_id": "Submarine_Mass_Movements_on_Continental-checkpoint::chunk113",
+      "best_chunk_preview": "as is the case in in\ufb01nite-slope stability analysis. Large numbers of arbitrary failure surfaces were evaluated through- out a \ufb01nely spaced grid and minimum values for factors of safety were selected at each grid point. This method was applied to the same area con- sidered by Mulder et al. (1994), an"
+    },
+    {
+      "subject": "pore pressure",
+      "relation": "controls",
+      "object": "slope failure",
+      "edge_key": "pore pressure --controls--> slope failure",
+      "category": "CORPUS_PRESENT",
+      "best_bm25_score": 13.8774,
+      "best_query": "pore pressure controls slope failure",
+      "best_chunk_id": "3-s2.0-B9780128130810007047-main-checkpoint::chunk9",
+      "best_chunk_preview": "500 ka. It is speculated that earthquake loading is the final trigger for the initiation of the slides at the end of each glaciation. Steeper slopes or internally derived seepage forces might aid to fracturing the seabed leading to slope failures. Examples come from salt tectonics and flow of salt a"
+    },
+    {
+      "subject": "turbidity current",
+      "relation": "formedBy",
+      "object": "debris flow",
+      "edge_key": "turbidity current --formedBy--> debris flow",
+      "category": "CORPUS_PRESENT",
+      "best_bm25_score": 15.5138,
+      "best_query": "debris flow generates produces turbidity current",
+      "best_chunk_id": "1-s2.0-S0025322712000412-main::chunk1",
+      "best_chunk_preview": "high \ufb02ow factor (shear stress\u226byield strength) generates a rapid collapse of the source area with an accelerating, long run-out \ufb02ow and a prominent turbidity current. These \ufb02ows remove approximately 70% of the original source area volume within 10 s from \ufb02ow initiation. These \ufb02ows leave behind a thin"
+    },
+    {
+      "subject": "mass transport deposit",
+      "relation": "occursIn",
+      "object": "continental slope",
+      "edge_key": "mass transport deposit --occursIn--> continental slope",
+      "category": "CORPUS_PRESENT",
+      "best_bm25_score": 12.7747,
+      "best_query": "continental slope mass transport deposit environment setting",
+      "best_chunk_id": "Giacomo Dalla Valle::chunk1",
+      "best_chunk_preview": "during a period of relative sea level rise. MTC_1, the intermediate age MTC, is the largest one, with an area of 90 km2. It has a 10 km wide cookie-bite headwall region that indents the upper slope and, in places, reaches the continental shelf-break. MTC_1 is made up of four laterally and vertically"
+    },
+    {
+      "subject": "mass transport deposit",
+      "relation": "occursIn",
+      "object": "abyssal plain",
+      "edge_key": "mass transport deposit --occursIn--> abyssal plain",
+      "category": "CORPUS_PRESENT",
+      "best_bm25_score": 15.3857,
+      "best_query": "mass transport deposit found in abyssal plain",
+      "best_chunk_id": "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and::chunk26",
+      "best_chunk_preview": "\ufb02ow, DS: deep-seated failure, GL: glide, MT: mass-transport deposit and other generic terms, TU: megaturbidite, SL: slide, SU: slump. Figure 7. (a) Maximum angle along landslide scars (top) and minimum and maximum slope angle along landslide deposits (bottom). (b) Vertical displacement for submarine"
+    },
+    {
+      "subject": "debris flow",
+      "relation": "occursIn",
+      "object": "continental slope",
+      "edge_key": "debris flow --occursIn--> continental slope",
+      "category": "CORPUS_PRESENT",
+      "best_bm25_score": 12.5777,
+      "best_query": "debris flow found in continental slope",
+      "best_chunk_id": "J. S. Laberg::chunk23",
+      "best_chunk_preview": "within a semi- homogeneous to homogeneous sediment, where no original layering was identified, possibly due to sediment remoulding. The zoom ins presented were selected from levels where deformation was confidently identified (from visual inspection and X-CT scan) Original Paper Landslides 14 & (201"
+    },
+    {
+      "subject": "turbidite",
+      "relation": "occursIn",
+      "object": "basin floor",
+      "edge_key": "turbidite --occursIn--> basin floor",
+      "category": "CORPUS_PRESENT",
+      "best_bm25_score": 12.192,
+      "best_query": "turbidite found in basin floor",
+      "best_chunk_id": "9781565762879_ch03::chunk5",
+      "best_chunk_preview": "to pond on basin floors (Badalini et al., 2000; Beauboeuf and Fried- man, 2000; Damuth et al., 2006). Gullied canyons refer to subma- rine canyons whose walls are dominated by numerous sediment failures that extensively widen the canyon and feed large quan- tities of MTDs onto the downstream basin f"
+    },
+    {
+      "subject": "slide",
+      "relation": "overlies",
+      "object": "hemipelagite",
+      "edge_key": "slide --overlies--> hemipelagite",
+      "category": "CORPUS_PRESENT",
+      "best_bm25_score": 10.0659,
+      "best_query": "slide above below hemipelagite stratigraphy",
+      "best_chunk_id": "Bourget,j::chunk34",
+      "best_chunk_preview": "to slightly erosive contact. The basal \ufb01ne sand layer \ufb01nes up into silt and mud that commonly show planar lamination (Fig. 11). The facies association is overlain by hemipelagic deposits, showing a gradual contact. Facies association 2 beds are interpreted as medium to \ufb01ne-grained turbidites showing"
+    }
+  ]
+}
