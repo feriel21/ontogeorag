@@ -1,29 +1,26 @@
-# Python
 __pycache__/
 *.pyc
-*.pyo
 .ipynb_checkpoints/
 venv/
 
-# Large data files
+# Corpus PDFs (copyright)
+data/full_corpus/
+data/extra_full_corpus/
+data/small_corpus/
+
+# Large derived index files
 output/step1/
 output/step2/
-output/full_corpus/
-output/figures/
-output/figures_v4/
-*.jsonl
-!output/exp_a/*.json
-!output/exp_b/*.json
-!output/exp_d/*.json
-!output/improved_kg/*.json
-!configs/*.jsonl
+output/step_extract/
+output/step_verify/
+output/step_clean/
+output/step_canon/
+logs/
 
-# Models (downloaded by HuggingFace)
-~/.cache/huggingface/
-
-# SLURM logs
-logs/slurm_*.out
-logs/slurm_*.err
-
-# Jupyter
-*.ipynb
+# Keep experiment results and final KG
+!output/exp_a/
+!output/exp_b/
+!output/exp_d/
+!output/exp_e/
+!output/improved_kg/
+!output/figures/
