@@ -4,7 +4,7 @@
 literature using ontology-constrained LLM extraction with BM25-based RAG and tiered
 verification. Developed for mass transport deposit (MTD) interpretation in seismic data.
 
-> Talbi, F., Armitage, J. (2026). *OntoGeoRAG: Unsupervised and Knowledge-Infused
+> *OntoGeoRAG: Unsupervised and Knowledge-Infused
 > Interpretation of Seismic Patterns using Machine Learning and Knowledge Graphs.*
 > Computers & Geosciences. (under review)
 
