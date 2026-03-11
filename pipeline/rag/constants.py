@@ -96,6 +96,11 @@ RELATION_MAP: dict[str, str] = {
     "isdescribedas":          "hasDescriptor",# "is described as"
     "exhibits":               "hasDescriptor",
     "displays":               "hasDescriptor",
+    "transitionsinto":         "relatedTo",     # "transitions into"
+    "gradatesinto":            "relatedTo",     # "grades into"
+    "evolvesfrom":             "formedBy",      # "evolves from"
+    "evolvesfrominto":         "relatedTo",
+    "transitionsto":           "relatedTo",
     "ischaracterizedby":      "hasDescriptor",# "is characterized by"
     "isunconformablyoverlainby": "underlies", # "isUnconformablyOverlainBy"
     "hasthickness":           "hasDescriptor",# "hasThickness"

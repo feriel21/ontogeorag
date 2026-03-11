@@ -82,24 +82,42 @@ def load_jsonl(path: str) -> list[dict]:
     return triples
 
 
+def extract_doc_ids(t: dict) -> list[str]:
+    """Extract unique paper doc_ids from provenance chunk ids."""
+    prov = t.get("_provenance", {}) or {}
+    doc_ids = set()
+    # From selected_chunk_ids (list of "doc_id::chunkN")
+    for cid in (prov.get("selected_chunk_ids") or []):
+        if "::" in str(cid):
+            doc_ids.add(str(cid).split("::")[0].strip())
+    # From best_chunk_id
+    best = prov.get("best_chunk_id", "")
+    if best and "::" in str(best):
+        doc_ids.add(str(best).split("::")[0].strip())
+    return sorted(doc_ids)
+
+
 def to_standard(t: dict, tier: int, origin: str) -> dict:
     prov = t.get("_provenance", {}) or {}
     ver  = t.get("_verification", {}) if isinstance(t.get("_verification"), dict) else {}
+    doc_ids = extract_doc_ids(t)
     return {
-        "subject":       normalize_entity(t.get("source", t.get("subject", ""))),
-        "relation":      normalize_relation(t.get("relation", "")),
-        "object":        normalize_entity(t.get("target", t.get("object", ""))),
-        "subject_type":  t.get("source_type", ""),
-        "object_type":   t.get("target_type", ""),
-        "tier":          tier,
-        "tier_label":    TIER_LABELS[tier],
-        "verdict":       get_verdict(t),
-        "origin":        origin,
-        "evidence":      get_evidence(t),
-        "query":         prov.get("query", ""),
-        "strategy":      prov.get("strategy", ""),
-        "model":         ver.get("model", prov.get("model", "")),
-        "reasoning":     (ver.get("reasoning") or "")[:200],
+        "subject":           normalize_entity(t.get("source", t.get("subject", ""))),
+        "relation":          normalize_relation(t.get("relation", "")),
+        "object":            normalize_entity(t.get("target", t.get("object", ""))),
+        "subject_type":      t.get("source_type", ""),
+        "object_type":       t.get("target_type", ""),
+        "tier":              tier,
+        "tier_label":        TIER_LABELS[tier],
+        "verdict":           get_verdict(t),
+        "origin":            origin,
+        "evidence":          get_evidence(t),
+        "query":             prov.get("query", ""),
+        "strategy":          prov.get("strategy", ""),
+        "model":             ver.get("model", prov.get("model", "")),
+        "reasoning":         (ver.get("reasoning") or "")[:200],
+        "support_count":     len(doc_ids),
+        "supporting_papers": doc_ids,
     }
 
 
@@ -137,6 +155,13 @@ def main():
 
     tiered = []
 
+    # Build per-key paper evidence index across ALL raw triples (both iters)
+    paper_index: dict[tuple, set] = defaultdict(set)
+    for t in iter_a + iter_b:
+        k = triple_key(t)
+        for doc in extract_doc_ids(t):
+            paper_index[k].add(doc)
+
     for k, entry in idx_a.items():
         tier = entry["tier"]
         if k in keys_b:
@@ -146,14 +171,23 @@ def main():
             origin = "iter_a"
         if tier == 3 and not args.include_tier3:
             continue
-        tiered.append(to_standard(entry["raw"], tier, origin))
+        t_std = to_standard(entry["raw"], tier, origin)
+        # Override with aggregated paper evidence
+        all_papers = sorted(paper_index.get(k, set()))
+        t_std["support_count"]     = len(all_papers)
+        t_std["supporting_papers"] = all_papers
+        tiered.append(t_std)
 
     for k, entry in idx_b.items():
         if k not in idx_a:
             tier = entry["tier"]
             if tier == 3 and not args.include_tier3:
                 continue
-            tiered.append(to_standard(entry["raw"], tier, "iter_b"))
+            t_std = to_standard(entry["raw"], tier, "iter_b")
+            all_papers = sorted(paper_index.get(k, set()))
+            t_std["support_count"]     = len(all_papers)
+            t_std["supporting_papers"] = all_papers
+            tiered.append(t_std)
 
     tiered.sort(key=lambda x: (x["tier"], x["relation"], x["subject"]))
 
