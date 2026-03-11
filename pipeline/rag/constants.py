@@ -13,21 +13,99 @@ ALLOWED_RELATIONS: set[str] = {
 }
 
 RELATION_MAP: dict[str, str] = {
-    "hasdescriptor":         "hasDescriptor",
-    "occursin":              "occursIn",
-    "formedby":              "formedBy",
-    "partof":                "partOf",
-    "triggeredby":           "triggers",
-    "triggered_by":          "triggers",
-    "overlays":              "overlies",
-    "relatedto":             "relatedTo",
-    "related_to":            "relatedTo",
-    "related to":            "relatedTo",
-    "hasfeature":            "hasDescriptor",
-    "ischaracterizedby":     "hasDescriptor",
-    "characterizedby":       "hasDescriptor",
-    "locatedin":             "occursIn",
-    "foundin":               "occursIn",
+    # Canonical forms
+    "hasdescriptor":              "hasDescriptor",
+    "occursin":                   "occursIn",
+    "formedby":                   "formedBy",
+    "partof":                     "partOf",
+    "triggeredby":                "triggers",
+    "triggered_by":               "triggers",
+    "overlays":                   "overlies",
+    "relatedto":                  "relatedTo",
+    "related_to":                 "relatedTo",
+    "related to":                 "relatedTo",
+    "hasfeature":                 "hasDescriptor",
+    "ischaracterizedby":          "hasDescriptor",
+    "characterizedby":            "hasDescriptor",
+    "locatedin":                  "occursIn",
+    "foundin":                    "occursIn",
+    # Extended — recovers filtered Qwen outputs
+    "contains":                   "partOf",
+    "results in":                 "causes",
+    "hasthickness":               "hasDescriptor",
+    "hasrelation":                "relatedTo",
+    "isunconformablyoverlainby":  "underlies",
+    "develops into":              "causes",
+    "induces":                    "triggers",
+    "differentially_loads":       "affects",
+    "can_combine_with":           "relatedTo",
+    "can_lead_to":                "causes",
+    "formedat":                   "occursIn",
+    "initiatedby":                "formedBy",
+    "locatedat":                  "occursIn",
+    "hascomponent":               "partOf",
+    "rootedon":                   "overlies",
+    "leads to":                   "causes",
+    "serves as":                  "hasDescriptor",
+    "ispartof":                   "partOf",
+    "catastrophically fails":     "affects",
+    # Common LLM paraphrases
+    "is characterized by":        "hasDescriptor",
+    "is described as":            "hasDescriptor",
+    "exhibits":                   "hasDescriptor",
+    "displays":                   "hasDescriptor",
+    "shows":                      "hasDescriptor",
+    "is located in":              "occursIn",
+    "is found in":                "occursIn",
+    "deposited in":               "occursIn",
+    "is formed by":               "formedBy",
+    "formed by":                  "formedBy",
+    "is triggered by":            "triggers",
+    "triggered by":               "triggers",
+    "is caused by":               "causes",
+    "caused by":                  "causes",
+    "is part of":                 "partOf",
+    "lies above":                 "overlies",
+    "lies below":                 "underlies",
+    "is above":                   "overlies",
+    "is below":                   "underlies",
+    # Extended — recovers filtered Qwen outputs
+    # Keys must be lowercased + spaces/underscores/hyphens removed
+    # (matches normalize_relation: key = rel.lower().replace(" ","").replace("_","").replace("-",""))
+    "resultsin":              "causes",       # "results in"
+    "leadsto":                "causes",       # "leads to"
+    "canleadto":              "causes",       # "can_lead_to"
+    "developsinto":           "causes",       # "develops into"
+    "servesas":               "hasDescriptor",# "serves as"
+    "differentiallyloads":    "affects",      # "differentially_loads"
+    "cancombinewith":         "relatedTo",    # "can_combine_with"
+    "catastrophicallyfails":  "affects",      # "catastrophically fails"
+    "depositedin":            "occursIn",     # "deposited in"
+    "islocatedin":            "occursIn",     # "is located in"
+    "isfoundin":              "occursIn",     # "is found in"
+    "isformedby":             "formedBy",     # "is formed by"
+    "istriggeredby":          "triggers",     # "is triggered by"
+    "triggeredby":            "triggers",     # "triggered by"
+    "iscausedby":             "causes",       # "is caused by"
+    "causedby":               "causes",       # "caused by"
+    "ispartof":               "partOf",       # "is part of"
+    "liesabove":              "overlies",     # "lies above"
+    "liesbelow":              "underlies",    # "lies below"
+    "isabove":                "overlies",     # "is above"
+    "isbelow":                "underlies",    # "is below"
+    "isdescribedas":          "hasDescriptor",# "is described as"
+    "exhibits":               "hasDescriptor",
+    "displays":               "hasDescriptor",
+    "ischaracterizedby":      "hasDescriptor",# "is characterized by"
+    "isunconformablyoverlainby": "underlies", # "isUnconformablyOverlainBy"
+    "hasthickness":           "hasDescriptor",# "hasThickness"
+    "hasrelation":            "relatedTo",    # "hasRelation"
+    "formedat":               "occursIn",     # "formedAt"
+    "initiatedby":            "formedBy",     # "initiatedBy"
+    "locatedat":              "occursIn",     # "locatedAt"
+    "hascomponent":           "partOf",       # "hasComponent"
+    "rootedon":               "overlies",     # "rootedOn"
+    "contains":               "partOf",       # "contains"
 }
 
 RELATION_GLOSSES: dict[str, str] = {
@@ -159,3 +237,98 @@ def normalize_descriptor(text: str) -> str:
     """Apply descriptor synonyms after entity normalization."""
     t = normalize_entity(text)
     return DESCRIPTOR_SYNONYMS.get(t, t)
+# Extended descriptor fuzzy matching — handles verbose LLM outputs
+DESCRIPTOR_FUZZY_MAP = {
+    # chaotic variants
+    "chaotic seismic facies": "chaotic",
+    "chaotic facies": "chaotic",
+    "chaotic reflection": "chaotic",
+    "slightly chaotic facies": "chaotic",
+    "chaotic and discontinuous": "chaotic",
+    # transparent variants
+    "transparent seismic facies": "transparent",
+    "transparent facies": "transparent",
+    "acoustically transparent": "transparent",
+    # hummocky variants
+    "hummocky and irregular": "hummocky",
+    "hummocky seismic facies": "hummocky",
+    "hummocky surface": "hummocky",
+    # high-amplitude variants
+    "high-amplitude seismic facies": "high-amplitude",
+    "high amplitude seismic facies": "high-amplitude",
+    "high amplitude reflections": "high-amplitude",
+    "high-amplitude reflections": "high-amplitude",
+    "high amplitude reflection": "high-amplitude",
+    # low-amplitude variants
+    "low-amplitude seismic facies": "low-amplitude",
+    "low amplitude reflections": "low-amplitude",
+    "low to medium amplitude, discontinuous reflectors": "low-amplitude",
+    "high-frequency, low-amplitude reflectors": "low-amplitude",
+    "low amplitude seismic facies": "low-amplitude",
+    # discontinuous variants
+    "discontinuous seismic facies": "discontinuous",
+    "discontinuous reflections": "discontinuous",
+    "discontinuous and low-amplitude reflections": "discontinuous",
+    "discontinuous wavy seismic events": "discontinuous",
+    # layered variants
+    "layered seismic facies": "layered",
+    "layered reflections": "layered",
+    # parallel variants
+    "parallel seismic facies": "parallel",
+    "parallel to subparallel and continuous seismic events": "parallel",
+    "parallel reflections": "parallel",
+    # continuous variants
+    "continuous seismic facies": "continuous",
+    "continuous reflections": "continuous",
+    # stratified variants
+    "stratified seismic facies": "stratified",
+    # blocky variants
+    "blocky seismic facies": "blocky",
+    "blocky material": "blocky",
+    "high amplitude, blocky material": "blocky",
+    # massive variants
+    "massive seismic facies": "massive",
+    # undeformed variants
+    "undeformed seismic facies": "undeformed",
+    "undeformed reflections": "undeformed",
+}
+
+def normalize_descriptor_fuzzy(text: str) -> str:
+    """
+    Two-pass descriptor normalization:
+    1. Exact match in DESCRIPTOR_SYNONYMS (existing)
+    2. Fuzzy match in DESCRIPTOR_FUZZY_MAP (verbose LLM outputs)
+    3. Substring scan — if any canonical descriptor appears in text, return it
+    """
+    t = normalize_entity(text).lower().strip()
+    # Pass 1: existing synonym map
+    if t in DESCRIPTOR_SYNONYMS:
+        return DESCRIPTOR_SYNONYMS[t]
+    # Pass 2: fuzzy map for verbose outputs
+    if t in DESCRIPTOR_FUZZY_MAP:
+        return DESCRIPTOR_FUZZY_MAP[t]
+    # Pass 3: substring scan over canonical descriptors
+    for canon in sorted(LB2019_DESCRIPTORS, key=len, reverse=True):
+        if canon in t:
+            return canon
+    return t
+
+import re as _re
+
+def normalize_descriptor_multi(text: str) -> set:
+    """
+    Return ALL canonical LB2019 descriptors found in text.
+    Uses word-boundary matching to avoid false positives
+    (e.g. 'continuous' inside 'discontinuous').
+    Fuzzy map is used as additional seed, not a shortcut.
+    """
+    t = normalize_entity(text).lower().strip()
+    found = set()
+    # Word-boundary scan over all canonical descriptors
+    for canon in LB2019_DESCRIPTORS:
+        if _re.search(r'(?<!\w)' + _re.escape(canon) + r'(?!\w)', t):
+            found.add(canon)
+    # Also check fuzzy map as fallback for non-canonical phrases
+    if not found and t in DESCRIPTOR_FUZZY_MAP:
+        found.add(DESCRIPTOR_FUZZY_MAP[t])
+    return found if found else {t}
