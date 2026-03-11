@@ -44,7 +44,7 @@ from pipeline.rag.constants import ALLOWED_RELATIONS, normalize_relation
 # ── Prompt templates ──────────────────────────────────────────────────
 # IMPORTANT: literal JSON braces in .format() templates must be {{ }}
 
-DESCRIPTOR_PROMPT = """You are a geological knowledge extraction system.
+DESCRIPTOR_PROMPT = """You are a geological knowledge extraction system specializing in seismic interpretation of mass-transport deposits (MTDs).
 
 Given the following text excerpt from a scientific paper about mass-transport deposits (MTDs):
 
@@ -63,21 +63,36 @@ CRITICAL RULES:
 1. Only extract relationships EXPLICITLY stated or DIRECTLY implied by this text
 2. Use ONLY these relations: {relations}
 3. Use ONLY these entity types: {types}
+4. For hasDescriptor: use CANONICAL SHORT FORMS for target:
+   blocky | chaotic | continuous | discontinuous | high-amplitude | hummocky |
+   layered | low-amplitude | massive | parallel | stratified | transparent | undeformed
+5. Subject must be a GEOLOGICAL CLASS (e.g. "mass transport deposit"), not a specific instance
 
 Respond with a JSON array. Each object must have:
   "source", "source_type", "relation", "target", "target_type"
   "salience": "typical" | "common" | "occasional"  (REQUIRED for hasDescriptor)
 
-Example:
+GOLD EXAMPLES (from peer-reviewed MTD literature):
 [
   {{"source": "mass transport deposit", "source_type": "SeismicObject", "relation": "hasDescriptor", "target": "chaotic", "target_type": "Descriptor", "salience": "typical"}},
-  {{"source": "turbidite", "source_type": "SeismicObject", "relation": "hasDescriptor", "target": "massive", "target_type": "Descriptor", "salience": "occasional"}}
+  {{"source": "mass transport deposit", "source_type": "SeismicObject", "relation": "hasDescriptor", "target": "transparent", "target_type": "Descriptor", "salience": "typical"}},
+  {{"source": "mass transport deposit", "source_type": "SeismicObject", "relation": "hasDescriptor", "target": "hummocky", "target_type": "Descriptor", "salience": "common"}},
+  {{"source": "turbidite", "source_type": "SeismicObject", "relation": "hasDescriptor", "target": "parallel", "target_type": "Descriptor", "salience": "typical"}},
+  {{"source": "turbidite", "source_type": "SeismicObject", "relation": "hasDescriptor", "target": "high-amplitude", "target_type": "Descriptor", "salience": "common"}},
+  {{"source": "debris flow", "source_type": "SeismicObject", "relation": "hasDescriptor", "target": "chaotic", "target_type": "Descriptor", "salience": "typical"}},
+  {{"source": "slide", "source_type": "SeismicObject", "relation": "hasDescriptor", "target": "blocky", "target_type": "Descriptor", "salience": "typical"}},
+  {{"source": "hemipelagite", "source_type": "SeismicObject", "relation": "hasDescriptor", "target": "continuous", "target_type": "Descriptor", "salience": "typical"}}
 ]
+
+BAD EXAMPLES (do NOT produce these):
+  {{"target": "chaotic seismic facies"}}  <- use "chaotic" not verbose form
+  {{"source": "MTC_2"}}                   <- use class "mass transport deposit" not instance
+  {{"target": "hummocky and irregular"}}  <- use "hummocky" not compound form
 
 If no valid triples can be extracted, respond with: []
 """
 
-CAUSAL_PROMPT = """You are a geological knowledge extraction system.
+CAUSAL_PROMPT = """You are a geological knowledge extraction system specializing in mass-transport deposit (MTD) processes.
 
 Given the following text excerpt from a scientific paper about mass-transport deposits (MTDs):
 
@@ -97,13 +112,20 @@ CRITICAL RULES:
 4. Use ONLY these relations: {relations}
 5. Use ONLY these entity types: {types}
 
-Respond with a JSON array. Each object must have:
-  "source", "source_type", "relation", "target", "target_type"
+GOLD EXAMPLES (from peer-reviewed MTD literature):
+[
+  {{"source": "earthquake", "source_type": "Process", "relation": "triggers", "target": "slope failure", "target_type": "Process"}},
+  {{"source": "pore pressure", "source_type": "Process", "relation": "controls", "target": "slope failure", "target_type": "Process"}},
+  {{"source": "methane hydrate dissociation", "source_type": "Process", "relation": "causes", "target": "increase of volume and pressure buildup", "target_type": "Process"}},
+  {{"source": "large storm waves", "source_type": "Process", "relation": "triggers", "target": "shear stresses on the seafloor", "target_type": "Process"}},
+  {{"source": "gas hydrate dissociation", "source_type": "Process", "relation": "affects", "target": "retrogressive slide development", "target_type": "Process"}},
+  {{"source": "slope failure", "source_type": "Process", "relation": "causes", "target": "mass transport deposit", "target_type": "GeologicalObject"}}
+]
 
 If no valid triples can be extracted, respond with: []
 """
 
-CONTEXT_PROMPT = """You are a geological knowledge extraction system.
+CONTEXT_PROMPT = """You are a geological knowledge extraction system specializing in spatial and stratigraphic relationships of mass-transport deposits (MTDs).
 
 Given the following text excerpt from a scientific paper about mass-transport deposits (MTDs):
 
@@ -122,8 +144,15 @@ CRITICAL RULES:
 3. Use ONLY these relations: {relations}
 4. Use ONLY these entity types: {types}
 
-Respond with a JSON array. Each object must have:
-  "source", "source_type", "relation", "target", "target_type"
+GOLD EXAMPLES (from peer-reviewed MTD literature):
+[
+  {{"source": "mass transport deposit", "source_type": "GeologicalObject", "relation": "occursIn", "target": "continental slope", "target_type": "GeologicalSetting"}},
+  {{"source": "mass transport deposit", "source_type": "GeologicalObject", "relation": "occursIn", "target": "abyssal plain", "target_type": "GeologicalSetting"}},
+  {{"source": "anahuac shale", "source_type": "GeologicalObject", "relation": "underlies", "target": "mass transport deposit", "target_type": "GeologicalObject"}},
+  {{"source": "slide", "source_type": "GeologicalObject", "relation": "overlies", "target": "hemipelagite", "target_type": "GeologicalObject"}},
+  {{"source": "debris flow", "source_type": "GeologicalObject", "relation": "occursIn", "target": "continental slope", "target_type": "GeologicalSetting"}},
+  {{"source": "turbidite", "source_type": "GeologicalObject", "relation": "occursIn", "target": "basin floor", "target_type": "GeologicalSetting"}}
+]
 
 If no valid triples can be extracted, respond with: []
 """
