@@ -37,6 +37,7 @@ from collections import defaultdict
 from pathlib import Path
 
 from pipeline.rag.constants import (
+    normalize_descriptor_fuzzy,
     ALLOWED_RELATIONS, LB2019_DESCRIPTORS, LB2019_REFERENCE_EDGES,
     normalize_entity, normalize_relation, normalize_descriptor,
 )
@@ -69,7 +70,7 @@ def compute_descriptor_coverage(triples: list[dict]) -> dict:
     for t in triples:
         r = normalize_relation(t.get("relation", ""))
         if r == "hasDescriptor":
-            d = normalize_descriptor(t.get("target", t.get("object", "")))
+            d = normalize_descriptor_fuzzy(t.get("target", t.get("object", "")))
             if d in LB2019_DESCRIPTORS:
                 found.add(d)
     missing = LB2019_DESCRIPTORS - found

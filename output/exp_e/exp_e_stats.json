@@ -1,0 +1,194 @@
+{
+  "llama_total": 71,
+  "qwen_total": 173,
+  "overlap": 1,
+  "only_llama": 70,
+  "only_qwen": 172,
+  "jaccard": 0.00411522633744856,
+  "llama_coverage": {
+    "found": [],
+    "missing": [
+      "blocky",
+      "chaotic",
+      "continuous",
+      "discontinuous",
+      "high-amplitude",
+      "hummocky",
+      "layered",
+      "low-amplitude",
+      "massive",
+      "parallel",
+      "stratified",
+      "transparent",
+      "undeformed"
+    ],
+    "n_found": 0,
+    "n_total": 13,
+    "coverage": 0.0
+  },
+  "qwen_coverage": {
+    "found": [
+      "blocky",
+      "chaotic",
+      "continuous",
+      "discontinuous",
+      "high-amplitude",
+      "hummocky",
+      "layered",
+      "low-amplitude",
+      "massive",
+      "parallel",
+      "transparent",
+      "undeformed"
+    ],
+    "missing": [
+      "stratified"
+    ],
+    "n_found": 12,
+    "n_total": 13,
+    "coverage": 0.9230769230769231
+  },
+  "llama_recall": {
+    "hits": 1,
+    "total": 26,
+    "recall": 0.038461538461538464,
+    "matched_edges": [
+      [
+        "slope failure",
+        "causes",
+        "mass transport deposit"
+      ]
+    ]
+  },
+  "qwen_recall": {
+    "hits": 6,
+    "total": 26,
+    "recall": 0.23076923076923078,
+    "matched_edges": [
+      [
+        "mass transport deposit",
+        "hasDescriptor",
+        "chaotic"
+      ],
+      [
+        "mass transport deposit",
+        "hasDescriptor",
+        "transparent"
+      ],
+      [
+        "mass transport deposit",
+        "hasDescriptor",
+        "hummocky"
+      ],
+      [
+        "mass transport deposit",
+        "hasDescriptor",
+        "blocky"
+      ],
+      [
+        "mass transport deposit",
+        "hasDescriptor",
+        "discontinuous"
+      ],
+      [
+        "mass transport deposit",
+        "hasDescriptor",
+        "massive"
+      ]
+    ]
+  },
+  "llama_relations": {
+    "counts": {
+      "hasDescriptor": 23,
+      "formedBy": 1,
+      "relatedTo": 4,
+      "triggers": 6,
+      "causes": 15,
+      "controls": 9,
+      "affects": 5,
+      "partOf": 5,
+      "occursIn": 1,
+      "overlies": 1,
+      "underlies": 1
+    },
+    "total": 71,
+    "rates": {
+      "hasDescriptor": 0.3239,
+      "formedBy": 0.0141,
+      "relatedTo": 0.0563,
+      "triggers": 0.0845,
+      "causes": 0.2113,
+      "controls": 0.1268,
+      "affects": 0.0704,
+      "partOf": 0.0704,
+      "occursIn": 0.0141,
+      "overlies": 0.0141,
+      "underlies": 0.0141
+    }
+  },
+  "qwen_relations": {
+    "counts": {
+      "hasDescriptor": 75,
+      "hasThickness": 1,
+      "hasRelation": 1,
+      "isUnconformablyOverlainBy": 1,
+      "triggers": 15,
+      "results in": 3,
+      "develops into": 1,
+      "affects": 15,
+      "induces": 1,
+      "differentially_loads": 1,
+      "can_combine_with": 1,
+      "can_lead_to": 1,
+      "causes": 8,
+      "controls": 2,
+      "occursIn": 26,
+      "partOf": 1,
+      "overlies": 4,
+      "contains": 5,
+      "formedAt": 1,
+      "initiatedBy": 1,
+      "locatedAt": 1,
+      "hasComponent": 1,
+      "underlies": 1,
+      "rootedOn": 1,
+      "indicates": 1,
+      "leads to": 1,
+      "serves as": 1,
+      "isPartOf": 1,
+      "catastrophically fails": 1
+    },
+    "total": 173,
+    "rates": {
+      "hasDescriptor": 0.4335,
+      "hasThickness": 0.0058,
+      "hasRelation": 0.0058,
+      "isUnconformablyOverlainBy": 0.0058,
+      "triggers": 0.0867,
+      "results in": 0.0173,
+      "develops into": 0.0058,
+      "affects": 0.0867,
+      "induces": 0.0058,
+      "differentially_loads": 0.0058,
+      "can_combine_with": 0.0058,
+      "can_lead_to": 0.0058,
+      "causes": 0.0462,
+      "controls": 0.0116,
+      "occursIn": 0.1503,
+      "partOf": 0.0058,
+      "overlies": 0.0231,
+      "contains": 0.0289,
+      "formedAt": 0.0058,
+      "initiatedBy": 0.0058,
+      "locatedAt": 0.0058,
+      "hasComponent": 0.0058,
+      "underlies": 0.0058,
+      "rootedOn": 0.0058,
+      "indicates": 0.0058,
+      "leads to": 0.0058,
+      "serves as": 0.0058,
+      "isPartOf": 0.0058,
+      "catastrophically fails": 0.0058
+    }
+  }
+}

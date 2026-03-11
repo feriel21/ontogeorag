@@ -224,3 +224,11 @@
 {"strategy": "descriptor", "query": "Which seismic units show strong amplitude parallel sub-horizontal reflectors?", "target_descriptors": ["parallel"]}
 {"strategy": "descriptor", "query": "What slide blocks or translated masses are described as undeformed or essentially undeformed?", "target_descriptors": ["undeformed"]}
 {"strategy": "descriptor", "query": "What deposits or background sediments are described as stratified in seismic data?", "target_descriptors": ["stratified"]}
+{"query": "What are the seismic characteristics of debris flow deposits including chaotic and hummocky facies?", "strategy": "descriptor", "focus": "debris flow"}
+{"query": "How are slide deposits characterized in seismic data — blocky and undeformed reflections?", "strategy": "descriptor", "focus": "slide"}
+{"query": "What seismic facies describe hemipelagite deposits — parallel continuous low amplitude?", "strategy": "descriptor", "focus": "hemipelagite"}
+{"query": "Does turbidite show parallel continuous layered high-amplitude seismic character?", "strategy": "descriptor", "focus": "turbidite"}
+{"query": "What triggers slope failure — earthquake seismicity pore pressure?", "strategy": "causal", "focus": "slope failure trigger"}
+{"query": "What is the relationship between pore pressure and slope instability?", "strategy": "causal", "focus": "pore pressure"}
+{"query": "Does debris flow transform into turbidity current?", "strategy": "causal", "focus": "debris flow transformation"}
+{"query": "In what geological settings do mass transport deposits occur — continental slope abyssal plain?", "strategy": "setting", "focus": "MTD setting"}

@@ -1,0 +1,67 @@
+{
+  "coverage": {
+    "found": [
+      "blocky",
+      "chaotic",
+      "discontinuous",
+      "high-amplitude",
+      "hummocky",
+      "layered",
+      "low-amplitude",
+      "parallel",
+      "transparent",
+      "undeformed"
+    ],
+    "missing": [
+      "continuous",
+      "massive",
+      "stratified"
+    ],
+    "n_found": 10,
+    "coverage": 0.7692307692307693
+  },
+  "recall": {
+    "hits": 7,
+    "recall": 0.2692307692307692,
+    "matched": [
+      [
+        "mass transport deposit",
+        "hasDescriptor",
+        "chaotic"
+      ],
+      [
+        "mass transport deposit",
+        "hasDescriptor",
+        "discontinuous"
+      ],
+      [
+        "mass transport deposit",
+        "hasDescriptor",
+        "hummocky"
+      ],
+      [
+        "mass transport deposit",
+        "hasDescriptor",
+        "transparent"
+      ],
+      [
+        "slope failure",
+        "causes",
+        "mass transport deposit"
+      ],
+      [
+        "turbidite",
+        "hasDescriptor",
+        "high-amplitude"
+      ],
+      [
+        "turbidite",
+        "hasDescriptor",
+        "parallel"
+      ]
+    ]
+  },
+  "n_existing": 80,
+  "n_new": 12,
+  "n_total": 92
+}
