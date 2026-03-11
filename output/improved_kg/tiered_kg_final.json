@@ -17,7 +17,9 @@
       "triggers": 12,
       "underlies": 1,
       "overlies": 1
-    }
+    },
+    "paper_evidence_added": true,
+    "raw_files_indexed": 7
   },
   "triples": [
     {
@@ -35,7 +37,12 @@
       "query": "Describe the relationship between erosion and basal surface in mass transport deposits.",
       "strategy": "causal",
       "best_chunk_id": "RichardsonetalBasinResearch2011-online (1)::chunk36",
-      "reasoning": "The source text mentions \"basal shear surface scours\" which directly indicates that the basal shear surface influences or modifies the formation of scours."
+      "reasoning": "The source text mentions \"basal shear surface scours\" which directly indicates that the basal shear surface influences or modifies the formation of scours.",
+      "support_count": 2,
+      "supporting_papers": [
+        "1-s2.0-S0025322713000571-main",
+        "RichardsonetalBasinResearch2011-online (1)"
+      ]
     },
     {
       "subject": "burial compaction",
@@ -52,7 +59,12 @@
       "query": "Describe the relationship between burial compaction and thickness in mass transport deposits.",
       "strategy": "causal",
       "best_chunk_id": "Submarine_Mass_Movements_on_Continental::chunk92",
-      "reasoning": "The source text directly states that densification of the sediment led to an increase in shear strength, which supports the claim that burial compaction affects shear strength."
+      "reasoning": "The source text directly states that densification of the sediment led to an increase in shear strength, which supports the claim that burial compaction affects shear strength.",
+      "support_count": 2,
+      "supporting_papers": [
+        "Moscardelli_and_Wood_2008",
+        "Submarine_Mass_Movements_on_Continental"
+      ]
     },
     {
       "subject": "detachment_of_blocks_from_headscarp",
@@ -69,7 +81,11 @@
       "query": "Describe the relationship between retrogressive failure and headscarp in mass transport deposits.",
       "strategy": "causal",
       "best_chunk_id": "1-s2.0-S0025322712000412-main-checkpoint::chunk20",
-      "reasoning": "The source text directly states that blocks detached from the headscarp and were progressively broken up into smaller blocks."
+      "reasoning": "The source text directly states that blocks detached from the headscarp and were progressively broken up into smaller blocks.",
+      "support_count": 1,
+      "supporting_papers": [
+        "1-s2.0-S0025322712000412-main"
+      ]
     },
     {
       "subject": "gas hydrate dissociation",
@@ -86,7 +102,11 @@
       "query": "What is the relationship between gas hydrate dissociation and slope failure in submarine environments?",
       "strategy": "causal",
       "best_chunk_id": "3-s2.0-B9780128130810007047-main::chunk9",
-      "reasoning": "The source text directly states that methane hydrate dissociation leads to an increase in volume and pressure buildup, which can be interpreted as affecting pore pressure."
+      "reasoning": "The source text directly states that methane hydrate dissociation leads to an increase in volume and pressure buildup, which can be interpreted as affecting pore pressure.",
+      "support_count": 1,
+      "supporting_papers": [
+        "3-s2.0-B9780128130810007047-main"
+      ]
     },
     {
       "subject": "gas hydrate dissociation",
@@ -103,7 +123,11 @@
       "query": "What is the relationship between gas hydrate dissociation and slope failure in submarine environments?",
       "strategy": "causal",
       "best_chunk_id": "3-s2.0-B9780128130810007047-main::chunk9",
-      "reasoning": "The source text directly states that methane hydrate dissociation leads to an increase in volume, which is equivalent to a volume change."
+      "reasoning": "The source text directly states that methane hydrate dissociation leads to an increase in volume, which is equivalent to a volume change.",
+      "support_count": 1,
+      "supporting_papers": [
+        "3-s2.0-B9780128130810007047-main"
+      ]
     },
     {
       "subject": "gas hydrate dissociation",
@@ -120,7 +144,12 @@
       "query": "Describe the relationship between gas hydrate dissociation and slope failure in mass transport deposits.",
       "strategy": "causal",
       "best_chunk_id": "D. Leynaud::chunk24",
-      "reasoning": "The source text directly states that hydrate dissociation could precondition secondary slope failures which are part of the retrogressive slide development."
+      "reasoning": "The source text directly states that hydrate dissociation could precondition secondary slope failures which are part of the retrogressive slide development.",
+      "support_count": 2,
+      "supporting_papers": [
+        "3-s2.0-B9780128130810007047-main",
+        "D. Leynaud"
+      ]
     },
     {
       "subject": "wave action",
@@ -137,7 +166,13 @@
       "query": "Describe the relationship between wave loading and slope failure in mass transport deposits.",
       "strategy": "causal",
       "best_chunk_id": "9781565762879_ch02-checkpoint::chunk43",
-      "reasoning": "The sentence directly states that wave action alters equilibrium conditions, which aligns with the claim."
+      "reasoning": "The sentence directly states that wave action alters equilibrium conditions, which aligns with the claim.",
+      "support_count": 3,
+      "supporting_papers": [
+        "9781565762879_ch02",
+        "Moscardelli_and_Wood_2008",
+        "Submarine_Mass_Movements_on_Continental"
+      ]
     },
     {
       "subject": "gas solubility changes",
@@ -154,7 +189,12 @@
       "query": "What role does gas hydrate dissociation play in submarine landslides?",
       "strategy": "causal",
       "best_chunk_id": "D. Leynaud::chunk24",
-      "reasoning": "The source text suggests that gas solubility changes can lead to hydrate dissociation, which aligns with the claim."
+      "reasoning": "The source text suggests that gas solubility changes can lead to hydrate dissociation, which aligns with the claim.",
+      "support_count": 2,
+      "supporting_papers": [
+        "3-s2.0-B9780128130810007047-main",
+        "D. Leynaud"
+      ]
     },
     {
       "subject": "sea-level lowstands",
@@ -171,7 +211,12 @@
       "query": "Describe the relationship between wave loading and slope failure in mass transport deposits.",
       "strategy": "causal",
       "best_chunk_id": "9781565762879_ch02-checkpoint::chunk43",
-      "reasoning": "The source text directly links sea-level lowstands to slope failure through the mechanism of clathrate dissociation leading to slope instability."
+      "reasoning": "The source text directly links sea-level lowstands to slope failure through the mechanism of clathrate dissociation leading to slope instability.",
+      "support_count": 2,
+      "supporting_papers": [
+        "9781565762879_ch02",
+        "Moscardelli_and_Wood_2008"
+      ]
     },
     {
       "subject": "wave action",
@@ -188,7 +233,12 @@
       "query": "Describe the relationship between wave loading and slope failure in mass transport deposits.",
       "strategy": "causal",
       "best_chunk_id": "9781565762879_ch02-checkpoint::chunk43",
-      "reasoning": "The source text directly states that wave action results in potential for mass-transport events."
+      "reasoning": "The source text directly states that wave action results in potential for mass-transport events.",
+      "support_count": 2,
+      "supporting_papers": [
+        "9781565762879_ch02",
+        "Moscardelli_and_Wood_2008"
+      ]
     },
     {
       "subject": "pre-tectonic geometry above the basal shear surface",
@@ -205,7 +255,12 @@
       "query": "What controls the thickness of mass transport deposits?",
       "strategy": "causal",
       "best_chunk_id": "RichardsonetalBasinResearch2011-online (1)::chunk33",
-      "reasoning": "The source text directly states that the pre-tectonic geometry above the basal shear surface causes part of the thickness increase."
+      "reasoning": "The source text directly states that the pre-tectonic geometry above the basal shear surface causes part of the thickness increase.",
+      "support_count": 2,
+      "supporting_papers": [
+        "9781565762879_ch02",
+        "RichardsonetalBasinResearch2011-online (1)"
+      ]
     },
     {
       "subject": "debrites",
@@ -222,7 +277,12 @@
       "query": "What deposits or features show blocky seismic facies?",
       "strategy": "descriptor",
       "best_chunk_id": "Alves_AAPG_MTDs_14-checkpoint::chunk34",
-      "reasoning": "The source text directly states that debrites are seen as low-amplitude regions."
+      "reasoning": "The source text directly states that debrites are seen as low-amplitude regions.",
+      "support_count": 2,
+      "supporting_papers": [
+        "9781565762879_ch02",
+        "Alves_AAPG_MTDs_14"
+      ]
     },
     {
       "subject": "disturbed mass",
@@ -239,7 +299,12 @@
       "query": "What seismic objects show both chaotic and transparent character?",
       "strategy": "descriptor",
       "best_chunk_id": "Dos-Reis-et-al-2016-MPG::chunk21",
-      "reasoning": "The source text explicitly mentions that the disturbed masses exhibit \"transparent to chaotic facies,\" which directly supports the claimed triple."
+      "reasoning": "The source text explicitly mentions that the disturbed masses exhibit \"transparent to chaotic facies,\" which directly supports the claimed triple.",
+      "support_count": 2,
+      "supporting_papers": [
+        "9781565762879_ch03",
+        "Dos-Reis-et-al-2016-MPG"
+      ]
     },
     {
       "subject": "folds and thrusts",
@@ -256,7 +321,12 @@
       "query": "What objects show weak amplitude seismic character?",
       "strategy": "descriptor",
       "best_chunk_id": "Chinese J of Geophysics - 2013 - WU - Analysis on Seismic Characteristics and Triggering Mechanisms of Mass Transport::chunk12",
-      "reasoning": "The source text describes \"discontinuous\" as a characteristic of large-scale thrusts and fold systems, which aligns with the claim."
+      "reasoning": "The source text describes \"discontinuous\" as a characteristic of large-scale thrusts and fold systems, which aligns with the claim.",
+      "support_count": 2,
+      "supporting_papers": [
+        "Chinese J of Geophysics - 2013 - WU - Analysis on Seismic Characteristics and Triggering Mechanisms of Mass Transport",
+        "RichardsonetalBasinResearch2011-online (1)"
+      ]
     },
     {
       "subject": "folds and thrusts",
@@ -273,7 +343,12 @@
       "query": "What objects show weak amplitude seismic character?",
       "strategy": "descriptor",
       "best_chunk_id": "Chinese J of Geophysics - 2013 - WU - Analysis on Seismic Characteristics and Triggering Mechanisms of Mass Transport::chunk12",
-      "reasoning": "The source text directly mentions that folds and thrusts exhibit an imbricate arrangement, which matches the claim."
+      "reasoning": "The source text directly mentions that folds and thrusts exhibit an imbricate arrangement, which matches the claim.",
+      "support_count": 2,
+      "supporting_papers": [
+        "Chinese J of Geophysics - 2013 - WU - Analysis on Seismic Characteristics and Triggering Mechanisms of Mass Transport",
+        "RichardsonetalBasinResearch2011-online (1)"
+      ]
     },
     {
       "subject": "layering",
@@ -290,7 +365,12 @@
       "query": "What objects show acoustically massive seismic character?",
       "strategy": "descriptor",
       "best_chunk_id": "J. S. Laberg::chunk19",
-      "reasoning": "The source text directly states that the layering results in an acoustically laminated seismic signature, which supports the claim."
+      "reasoning": "The source text directly states that the layering results in an acoustically laminated seismic signature, which supports the claim.",
+      "support_count": 2,
+      "supporting_papers": [
+        "J. S. Laberg",
+        "Submarine_Mass_Movements_on_Continental"
+      ]
     },
     {
       "subject": "mass transport deposit",
@@ -307,7 +387,12 @@
       "query": "Describe the seismic character of submarine fan including amplitude, continuity, and internal reflections.",
       "strategy": "descriptor",
       "best_chunk_id": "Basin Research - 2016 - Ortiz\u2010Karpf - Mass\u2010transport complexes as markers of deep\u2010water fold\u2010and\u2010thrust belt evolution -checkpoint::chunk8",
-      "reasoning": "The source text explicitly mentions that amplitude was one of the attributes extracted for analysis."
+      "reasoning": "The source text explicitly mentions that amplitude was one of the attributes extracted for analysis.",
+      "support_count": 2,
+      "supporting_papers": [
+        "Alves_AAPG_MTDs_14",
+        "Moscardelli_and_Wood_2008"
+      ]
     },
     {
       "subject": "mass transport deposit",
@@ -324,7 +409,10 @@
       "query": "Describe the seismic character of submarine fan including amplitude, continuity, and internal reflections.",
       "strategy": "descriptor",
       "best_chunk_id": "Basin Research - 2016 - Ortiz\u2010Karpf - Mass\u2010transport complexes as markers of deep\u2010water fold\u2010and\u2010thrust belt evolution -checkpoint::chunk8",
-      "reasoning": "The source text mentions that continuity is one of the attributes used to define the MTC seismic facies, supporting the claim that mass transport complexes have descriptors related to continuity."
+      "reasoning": "The source text mentions that continuity is one of the attributes used to define the MTC seismic facies, supporting the claim that mass transport complexes have descriptors related to continuity.",
+      "support_count": 0,
+      "supporting_papers": [],
+      "provenance_note": "non-canonical descriptor \u2014 older pipeline iteration, no raw match"
     },
     {
       "subject": "mass transport deposit",
@@ -341,7 +429,10 @@
       "query": "Describe the seismic character of submarine fan including amplitude, continuity, and internal reflections.",
       "strategy": "descriptor",
       "best_chunk_id": "Basin Research - 2016 - Ortiz\u2010Karpf - Mass\u2010transport complexes as markers of deep\u2010water fold\u2010and\u2010thrust belt evolution -checkpoint::chunk8",
-      "reasoning": "The source text mentions that the configuration of reflections is one of the factors used to define the seismic facies of mass transport complexes (MTCs). This directly supports the claim that mass tr"
+      "reasoning": "The source text mentions that the configuration of reflections is one of the factors used to define the seismic facies of mass transport complexes (MTCs). This directly supports the claim that mass tr",
+      "support_count": 0,
+      "supporting_papers": [],
+      "provenance_note": "non-canonical descriptor \u2014 older pipeline iteration, no raw match"
     },
     {
       "subject": "mass transport deposit",
@@ -358,7 +449,16 @@
       "query": "Describe the seismic character of the internal facies of mass transport deposits. What reflector patterns, amplitudes, and continuity are observed?",
       "strategy": "descriptor",
       "best_chunk_id": "Dos-Reis-et-al-2016-MPG::chunk37",
-      "reasoning": ""
+      "reasoning": "",
+      "support_count": 6,
+      "supporting_papers": [
+        "9781565762879_ch02",
+        "Alves_AAPG_MTDs_14",
+        "Bourget,j",
+        "Dos-Reis-et-al-2016-MPG",
+        "Moscardelli_and_Wood_2008",
+        "RichardsonetalBasinResearch2011-online (1)"
+      ]
     },
     {
       "subject": "mass transport deposit",
@@ -375,7 +475,14 @@
       "query": "Describe the seismic character of the internal facies of mass transport deposits. What reflector patterns, amplitudes, and continuity are observed?",
       "strategy": "descriptor",
       "best_chunk_id": "Dos-Reis-et-al-2016-MPG::chunk37",
-      "reasoning": ""
+      "reasoning": "",
+      "support_count": 4,
+      "supporting_papers": [
+        "1-s2.0-S0025322713000571-main",
+        "Alves_AAPG_MTDs_14",
+        "Dos-Reis-et-al-2016-MPG",
+        "Moscardelli_and_Wood_2008"
+      ]
     },
     {
       "subject": "mass transport deposit",
@@ -392,7 +499,13 @@
       "query": "What are the seismic characteristics of mass transport deposit? Consider: chaotic, transparent, blocky, massive, hummocky, discontinuous, high-amplitude, low-amplitude, layered, parallel",
       "strategy": "descriptor",
       "best_chunk_id": "Moscardelli_and_Wood_2008::chunk9",
-      "reasoning": ""
+      "reasoning": "",
+      "support_count": 3,
+      "supporting_papers": [
+        "9781565762879_ch02",
+        "Dos-Reis-et-al-2016-MPG",
+        "Moscardelli_and_Wood_2008"
+      ]
     },
     {
       "subject": "mass transport deposit",
@@ -409,7 +522,13 @@
       "query": "What are the seismic characteristics of mass transport deposit? Consider: chaotic, transparent, blocky, massive, hummocky, discontinuous, high-amplitude, low-amplitude, layered, parallel",
       "strategy": "descriptor",
       "best_chunk_id": "Moscardelli_and_Wood_2008::chunk9",
-      "reasoning": ""
+      "reasoning": "",
+      "support_count": 3,
+      "supporting_papers": [
+        "9781565762879_ch02",
+        "Moscardelli_and_Wood_2008",
+        "RichardsonetalBasinResearch2011-online (1)"
+      ]
     },
     {
       "subject": "mass transport deposit",
@@ -426,7 +545,11 @@
       "query": "Describe the seismic character of mass transport deposit including amplitude, continuity, and internal reflections.",
       "strategy": "descriptor",
       "best_chunk_id": "RichardsonetalBasinResearch2011-online (1)::chunk8",
-      "reasoning": "The source text directly states that in the study area, the upper surface of a mass transport deposit is commonly characterized by high amplitude reflections."
+      "reasoning": "The source text directly states that in the study area, the upper surface of a mass transport deposit is commonly characterized by high amplitude reflections.",
+      "support_count": 1,
+      "supporting_papers": [
+        "Moscardelli_and_Wood_2008"
+      ]
     },
     {
       "subject": "mass transport deposit",
@@ -443,7 +566,12 @@
       "query": "Describe the seismic character of mass transport deposit including amplitude, continuity, and internal reflections.",
       "strategy": "descriptor",
       "best_chunk_id": "RichardsonetalBasinResearch2011-online (1)::chunk8",
-      "reasoning": "The source text directly states that the upper surface of a mass transport deposit is often characterized as a \"positive reflection,\" which aligns with the claim."
+      "reasoning": "The source text directly states that the upper surface of a mass transport deposit is often characterized as a \"positive reflection,\" which aligns with the claim.",
+      "support_count": 2,
+      "supporting_papers": [
+        "9781565762879_ch02",
+        "RichardsonetalBasinResearch2011-online (1)"
+      ]
     },
     {
       "subject": "mass transport deposit",
@@ -460,7 +588,12 @@
       "query": "Describe the seismic character of mass transport deposit including amplitude, continuity, and internal reflections.",
       "strategy": "descriptor",
       "best_chunk_id": "RichardsonetalBasinResearch2011-online (1)::chunk8",
-      "reasoning": "The source text directly states that the upper surface of a mass transport deposit is laterally continuous."
+      "reasoning": "The source text directly states that the upper surface of a mass transport deposit is laterally continuous.",
+      "support_count": 2,
+      "supporting_papers": [
+        "9781565762879_ch02",
+        "RichardsonetalBasinResearch2011-online (1)"
+      ]
     },
     {
       "subject": "mass transport deposit",
@@ -477,7 +610,12 @@
       "query": "Describe the seismic character of mass transport deposit including amplitude, continuity, and internal reflections.",
       "strategy": "descriptor",
       "best_chunk_id": "RichardsonetalBasinResearch2011-online (1)::chunk8",
-      "reasoning": "The source text directly states that the upper surface of a mass transport deposit in the studied area has an \"uneven, ridged morphology.\" This supports the claim."
+      "reasoning": "The source text directly states that the upper surface of a mass transport deposit in the studied area has an \"uneven, ridged morphology.\" This supports the claim.",
+      "support_count": 2,
+      "supporting_papers": [
+        "9781565762879_ch02",
+        "RichardsonetalBasinResearch2011-online (1)"
+      ]
     },
     {
       "subject": "mass transport deposit",
@@ -494,7 +632,12 @@
       "query": "Describe the seismic character of mass transport deposit including amplitude, continuity, and internal reflections.",
       "strategy": "descriptor",
       "best_chunk_id": "RichardsonetalBasinResearch2011-online (1)::chunk8",
-      "reasoning": "The source text mentions that a mass transport deposit is identified by having a rugose upper bounding surface located above discontinuous and low amplitude reflections. This directly supports the cla"
+      "reasoning": "The source text mentions that a mass transport deposit is identified by having a rugose upper bounding surface located above discontinuous and low amplitude reflections. This directly supports the cla",
+      "support_count": 2,
+      "supporting_papers": [
+        "Alves_AAPG_MTDs_14",
+        "Moscardelli_and_Wood_2008"
+      ]
     },
     {
       "subject": "mass transport deposit",
@@ -511,7 +654,12 @@
       "query": "Describe the seismic character of mass transport complex including amplitude, continuity, and internal reflections.",
       "strategy": "descriptor",
       "best_chunk_id": "Alves_AAPG_MTDs_14::chunk12",
-      "reasoning": "This sentence directly states that MTDs (mass transport deposits) exhibit heterogeneity in terms of both amplitude and structural deformation, which aligns with the claim."
+      "reasoning": "This sentence directly states that MTDs (mass transport deposits) exhibit heterogeneity in terms of both amplitude and structural deformation, which aligns with the claim.",
+      "support_count": 2,
+      "supporting_papers": [
+        "1-s2.0-S0025322713000571-main",
+        "Alves_AAPG_MTDs_14"
+      ]
     },
     {
       "subject": "mass transport deposit",
@@ -528,7 +676,12 @@
       "query": "Describe the seismic character of mass transport complex including amplitude, continuity, and internal reflections.",
       "strategy": "descriptor",
       "best_chunk_id": "Alves_AAPG_MTDs_14::chunk12",
-      "reasoning": "The source text mentions the presence of a \"high-to moderate-amplitude faulted MTD A,\" which directly supports that mass transport deposits can exhibit high-to-moderate amplitude characteristics."
+      "reasoning": "The source text mentions the presence of a \"high-to moderate-amplitude faulted MTD A,\" which directly supports that mass transport deposits can exhibit high-to-moderate amplitude characteristics.",
+      "support_count": 2,
+      "supporting_papers": [
+        "1-s2.0-S0025322713000571-main",
+        "Alves_AAPG_MTDs_14"
+      ]
     },
     {
       "subject": "mass transport deposit",
@@ -545,7 +698,12 @@
       "query": "Describe the seismic character of mass transport complex including amplitude, continuity, and internal reflections.",
       "strategy": "descriptor",
       "best_chunk_id": "Alves_AAPG_MTDs_14::chunk12",
-      "reasoning": "The source text mentions that there is a \"faulted MTD A\" present in certain sequences, which directly supports the claim."
+      "reasoning": "The source text mentions that there is a \"faulted MTD A\" present in certain sequences, which directly supports the claim.",
+      "support_count": 2,
+      "supporting_papers": [
+        "1-s2.0-S0025322713000571-main",
+        "Alves_AAPG_MTDs_14"
+      ]
     },
     {
       "subject": "mass transport deposit",
@@ -562,7 +720,16 @@
       "query": "Describe the seismic character of upper surface including amplitude, continuity, and internal reflections.",
       "strategy": "descriptor",
       "best_chunk_id": "1-s2.0-S0025322713000571-main-checkpoint::chunk25",
-      "reasoning": "The source text directly states that for mass transport deposit 1 (H0 and H1), there are \"Continuous, high amplitude upper and basal surfaces.\""
+      "reasoning": "The source text directly states that for mass transport deposit 1 (H0 and H1), there are \"Continuous, high amplitude upper and basal surfaces.\"",
+      "support_count": 6,
+      "supporting_papers": [
+        "9781565762879_ch02",
+        "Bourget,j",
+        "Dos-Reis-et-al-2016-MPG",
+        "Moscardelli_and_Wood_2008",
+        "RichardsonetalBasinResearch2011-online (1)",
+        "Two-scale_gravitational_collapse_in_the_Amazon_Fan"
+      ]
     },
     {
       "subject": "mass transport deposit",
@@ -579,7 +746,10 @@
       "query": "Are mass transport deposits characterized by massive seismic facies?",
       "strategy": "descriptor",
       "best_chunk_id": "9781565762879_ch02-checkpoint::chunk44",
-      "reasoning": "The source text directly states that if the mass-transport deposit originates on the middle slope, it will likely be mud rich."
+      "reasoning": "The source text directly states that if the mass-transport deposit originates on the middle slope, it will likely be mud rich.",
+      "support_count": 0,
+      "supporting_papers": [],
+      "provenance_note": "non-canonical descriptor \u2014 older pipeline iteration, no raw match"
     },
     {
       "subject": "mass transport deposit",
@@ -596,7 +766,10 @@
       "query": "Are mass transport deposits characterized by massive seismic facies?",
       "strategy": "descriptor",
       "best_chunk_id": "9781565762879_ch02-checkpoint::chunk44",
-      "reasoning": "The source text directly states that if a mass-transport deposit originates on the middle slope and is mud-rich, it would constitute an excellent seal."
+      "reasoning": "The source text directly states that if a mass-transport deposit originates on the middle slope and is mud-rich, it would constitute an excellent seal.",
+      "support_count": 0,
+      "supporting_papers": [],
+      "provenance_note": "non-canonical descriptor \u2014 older pipeline iteration, no raw match"
     },
     {
       "subject": "mass transport deposit",
@@ -613,7 +786,12 @@
       "query": "Are mass transport deposits characterized by undeformed seismic facies?",
       "strategy": "descriptor",
       "best_chunk_id": "845-checkpoint::chunk12",
-      "reasoning": "The source text directly mentions that the mass-transport deposits (MTDs) are deformed and contrasts them with undistorted beds."
+      "reasoning": "The source text directly mentions that the mass-transport deposits (MTDs) are deformed and contrasts them with undistorted beds.",
+      "support_count": 2,
+      "supporting_papers": [
+        "9781565762879_ch02",
+        "Dos-Reis-et-al-2016-MPG"
+      ]
     },
     {
       "subject": "mtd 1",
@@ -630,7 +808,12 @@
       "query": "Describe the seismic character of basal surface including amplitude, continuity, and internal reflections.",
       "strategy": "descriptor",
       "best_chunk_id": "1-s2.0-S0025322713000571-main-checkpoint::chunk25",
-      "reasoning": "The source text directly states that for MTD 1, there are \"Continuous, high amplitude upper and basal surfaces.\" This supports the claim that MTD 1 has descriptors of being continuous."
+      "reasoning": "The source text directly states that for MTD 1, there are \"Continuous, high amplitude upper and basal surfaces.\" This supports the claim that MTD 1 has descriptors of being continuous.",
+      "support_count": 2,
+      "supporting_papers": [
+        "1-s2.0-S0025322713000571-main",
+        "Alves_AAPG_MTDs_14"
+      ]
     },
     {
       "subject": "mtd 1",
@@ -647,7 +830,10 @@
       "query": "Describe the seismic character of basal surface including amplitude, continuity, and internal reflections.",
       "strategy": "descriptor",
       "best_chunk_id": "1-s2.0-S0025322713000571-main-checkpoint::chunk25",
-      "reasoning": "The source text directly states that MTD 1 (H0 and H1) has continuous, high amplitude upper and basal surfaces."
+      "reasoning": "The source text directly states that MTD 1 (H0 and H1) has continuous, high amplitude upper and basal surfaces.",
+      "support_count": 0,
+      "supporting_papers": [],
+      "provenance_note": "instance-level subject \u2014 older pipeline iteration, no raw match"
     },
     {
       "subject": "mtd_2.2",
@@ -664,7 +850,12 @@
       "query": "Are mass transport deposits characterized by high-amplitude seismic facies?",
       "strategy": "descriptor",
       "best_chunk_id": "Giacomo Dalla Valle-checkpoint::chunk20",
-      "reasoning": "The source text indicates that MTD_2.2 is characterized by high-amplitude reflectors, which directly supports the claim."
+      "reasoning": "The source text indicates that MTD_2.2 is characterized by high-amplitude reflectors, which directly supports the claim.",
+      "support_count": 2,
+      "supporting_papers": [
+        "9781565762879_ch02",
+        "Giacomo Dalla Valle"
+      ]
     },
     {
       "subject": "preserved block",
@@ -681,7 +872,13 @@
       "query": "What geological objects contain parallel or sub-horizontal reflectors? Consider preserved blocks, slides, and undeformed sediments.",
       "strategy": "descriptor",
       "best_chunk_id": "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_::chunk7",
-      "reasoning": "The sentence mentions \"parallel discontinuous reflectors\" which directly supports the claim that some preserved blocks exhibit parallel characteristics."
+      "reasoning": "The sentence mentions \"parallel discontinuous reflectors\" which directly supports the claim that some preserved blocks exhibit parallel characteristics.",
+      "support_count": 3,
+      "supporting_papers": [
+        "1-s2.0-S0025322713000571-main",
+        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_",
+        "Moscardelli_and_Wood_2008"
+      ]
     },
     {
       "subject": "rafted blocks",
@@ -698,7 +895,12 @@
       "query": "What deposits or features show blocky seismic facies?",
       "strategy": "descriptor",
       "best_chunk_id": "Alves_AAPG_MTDs_14-checkpoint::chunk34",
-      "reasoning": "The source text directly states that rafted blocks exhibit high reflection strength."
+      "reasoning": "The source text directly states that rafted blocks exhibit high reflection strength.",
+      "support_count": 2,
+      "supporting_papers": [
+        "9781565762879_ch02",
+        "Alves_AAPG_MTDs_14"
+      ]
     },
     {
       "subject": "remnant blocks",
@@ -715,7 +917,12 @@
       "query": "What deposits or features show blocky seismic facies?",
       "strategy": "descriptor",
       "best_chunk_id": "Alves_AAPG_MTDs_14-checkpoint::chunk34",
-      "reasoning": "The source text directly states that remnant blocks exhibit high reflection strength."
+      "reasoning": "The source text directly states that remnant blocks exhibit high reflection strength.",
+      "support_count": 2,
+      "supporting_papers": [
+        "9781565762879_ch02",
+        "Alves_AAPG_MTDs_14"
+      ]
     },
     {
       "subject": "turbidite",
@@ -732,7 +939,12 @@
       "query": "What objects show well-stratified seismic character?",
       "strategy": "descriptor",
       "best_chunk_id": "Alves_AAPG_MTDs_14::chunk30",
-      "reasoning": "The source text directly mentions that the turbidites in unit Ib are well-stratified, which supports the claim."
+      "reasoning": "The source text directly mentions that the turbidites in unit Ib are well-stratified, which supports the claim.",
+      "support_count": 2,
+      "supporting_papers": [
+        "9781565762879_ch02",
+        "Alves_AAPG_MTDs_14"
+      ]
     },
     {
       "subject": "chaotic to transparent debrites",
@@ -749,7 +961,10 @@
       "query": "Is rafted block a structural component of mass transport deposit?",
       "strategy": "context",
       "best_chunk_id": "Alves_AAPG_MTDs_14-checkpoint::chunk34",
-      "reasoning": "The source text directly mentions that chaotic to transparent debrites occur within the mass-transport deposits (MTD), which supports the claim."
+      "reasoning": "The source text directly mentions that chaotic to transparent debrites occur within the mass-transport deposits (MTD), which supports the claim.",
+      "support_count": 0,
+      "supporting_papers": [],
+      "provenance_note": "instance-level subject \u2014 older pipeline iteration, no raw match"
     },
     {
       "subject": "high-amplitude blocks",
@@ -766,7 +981,10 @@
       "query": "Is rafted block a structural component of mass transport deposit?",
       "strategy": "context",
       "best_chunk_id": "Alves_AAPG_MTDs_14-checkpoint::chunk34",
-      "reasoning": "The source text mentions that there are high-amplitude blocks present within the mass-transport deposits (MTD), which directly supports the claim."
+      "reasoning": "The source text mentions that there are high-amplitude blocks present within the mass-transport deposits (MTD), which directly supports the claim.",
+      "support_count": 0,
+      "supporting_papers": [],
+      "provenance_note": "instance-level subject \u2014 older pipeline iteration, no raw match"
     },
     {
       "subject": "low-amplitude debrites",
@@ -783,7 +1001,10 @@
       "query": "Is rafted block a structural component of mass transport deposit?",
       "strategy": "context",
       "best_chunk_id": "Alves_AAPG_MTDs_14-checkpoint::chunk34",
-      "reasoning": "The source text directly states that debrites are seen as low-amplitude regions, which aligns with the claim that they occur in mass-transport deposits (MTD)."
+      "reasoning": "The source text directly states that debrites are seen as low-amplitude regions, which aligns with the claim that they occur in mass-transport deposits (MTD).",
+      "support_count": 0,
+      "supporting_papers": [],
+      "provenance_note": "instance-level subject \u2014 older pipeline iteration, no raw match"
     },
     {
       "subject": "mass transport deposit",
@@ -800,7 +1021,10 @@
       "query": "Does mass transport deposit occur in deep-water environment?",
       "strategy": "context",
       "best_chunk_id": "Moscardelli_and_Wood_2008::chunk1",
-      "reasoning": "The source text directly states that MTCs have been documented in deep-water areas."
+      "reasoning": "The source text directly states that MTCs have been documented in deep-water areas.",
+      "support_count": 0,
+      "supporting_papers": [],
+      "provenance_note": "older pipeline iteration \u2014 chunk provenance not preserved"
     },
     {
       "subject": "mass transport deposit",
@@ -817,7 +1041,10 @@
       "query": "Does mass transport deposit occur in deep-water environment?",
       "strategy": "context",
       "best_chunk_id": "Moscardelli_and_Wood_2008::chunk1",
-      "reasoning": "The source text directly states that MTCs play a significant role in the stratigraphic fill of basins in offshore northeastern South America."
+      "reasoning": "The source text directly states that MTCs play a significant role in the stratigraphic fill of basins in offshore northeastern South America.",
+      "support_count": 0,
+      "supporting_papers": [],
+      "provenance_note": "older pipeline iteration \u2014 chunk provenance not preserved"
     },
     {
       "subject": "mass transport deposit",
@@ -834,7 +1061,13 @@
       "query": "Does mass transport deposit occur in continental margin?",
       "strategy": "context",
       "best_chunk_id": "Giacomo Dalla Valle::chunk38",
-      "reasoning": "The source text directly states that mass transport deposits (MTDs) are generated at the expense of a progradational margin-clinotheme."
+      "reasoning": "The source text directly states that mass transport deposits (MTDs) are generated at the expense of a progradational margin-clinotheme.",
+      "support_count": 3,
+      "supporting_papers": [
+        "9781565762879_ch02",
+        "Giacomo Dalla Valle",
+        "RichardsonetalBasinResearch2011-online (1)"
+      ]
     },
     {
       "subject": "mass transport deposit",
@@ -851,7 +1084,13 @@
       "query": "Does mass transport deposit occur in continental margin?",
       "strategy": "context",
       "best_chunk_id": "Giacomo Dalla Valle::chunk38",
-      "reasoning": "The source text mentions that MTDs can form \"at the shelf-edge,\" which directly supports the claim."
+      "reasoning": "The source text mentions that MTDs can form \"at the shelf-edge,\" which directly supports the claim.",
+      "support_count": 3,
+      "supporting_papers": [
+        "9781565762879_ch02",
+        "Giacomo Dalla Valle",
+        "RichardsonetalBasinResearch2011-online (1)"
+      ]
     },
     {
       "subject": "par\u00e1-maranh\u00e3o megalandslide",
@@ -868,7 +1107,13 @@
       "query": "What is the vertical sequence around mass transport deposits?",
       "strategy": "context",
       "best_chunk_id": "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_::chunk7",
-      "reasoning": "The source text directly mentions that the Par\u00e1-Maranh\u00e3o Megalandslide extends into the Par\u00e1-Maranh\u00e3o basin, which is adjacent to the Foz do Amazonas Basin."
+      "reasoning": "The source text directly mentions that the Par\u00e1-Maranh\u00e3o Megalandslide extends into the Par\u00e1-Maranh\u00e3o basin, which is adjacent to the Foz do Amazonas Basin.",
+      "support_count": 3,
+      "supporting_papers": [
+        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_",
+        "Moscardelli_and_Wood_2008",
+        "RichardsonetalBasinResearch2011-online (1)"
+      ]
     },
     {
       "subject": "rafted blocks",
@@ -885,7 +1130,10 @@
       "query": "Is rafted block a structural component of mass transport deposit?",
       "strategy": "context",
       "best_chunk_id": "Alves_AAPG_MTDs_14-checkpoint::chunk34",
-      "reasoning": "The source text mentions that rafted blocks are present within the mass-transport deposits (MTD), which directly supports the claim."
+      "reasoning": "The source text mentions that rafted blocks are present within the mass-transport deposits (MTD), which directly supports the claim.",
+      "support_count": 0,
+      "supporting_papers": [],
+      "provenance_note": "instance-level subject \u2014 older pipeline iteration, no raw match"
     },
     {
       "subject": "remnant blocks",
@@ -902,7 +1150,10 @@
       "query": "Is rafted block a structural component of mass transport deposit?",
       "strategy": "context",
       "best_chunk_id": "Alves_AAPG_MTDs_14-checkpoint::chunk34",
-      "reasoning": "The source text clearly indicates that remnant and rafted blocks are present within mass-transport deposits (MTD), supporting the claim."
+      "reasoning": "The source text clearly indicates that remnant and rafted blocks are present within mass-transport deposits (MTD), supporting the claim.",
+      "support_count": 0,
+      "supporting_papers": [],
+      "provenance_note": "instance-level subject \u2014 older pipeline iteration, no raw match"
     },
     {
       "subject": "turbidite",
@@ -919,7 +1170,10 @@
       "query": "In what geological setting does turbidite occur?",
       "strategy": "context",
       "best_chunk_id": "9781565762879_ch02-checkpoint::chunk46",
-      "reasoning": "The source text directly states that turbidite deposits are part of a mass-transport deposit."
+      "reasoning": "The source text directly states that turbidite deposits are part of a mass-transport deposit.",
+      "support_count": 0,
+      "supporting_papers": [],
+      "provenance_note": "older pipeline iteration \u2014 chunk provenance not preserved"
     },
     {
       "subject": "front portions of these beds",
@@ -936,7 +1190,12 @@
       "query": "What is the relationship between slope failure and mass transport deposit in submarine environments?",
       "strategy": "causal",
       "best_chunk_id": "1-s2.0-S0025322712000412-main::chunk30",
-      "reasoning": "The sentence directly states that the front portions of these beds fail, which aligns with the claim that they trigger failure."
+      "reasoning": "The sentence directly states that the front portions of these beds fail, which aligns with the claim that they trigger failure.",
+      "support_count": 2,
+      "supporting_papers": [
+        "1-s2.0-S0025322712000412-main",
+        "RichardsonetalBasinResearch2011-online (1)"
+      ]
     },
     {
       "subject": "gas hydrate dissociation",
@@ -953,7 +1212,11 @@
       "query": "What role does gas hydrate dissociation play in submarine landslides?",
       "strategy": "causal",
       "best_chunk_id": "D. Leynaud::chunk24",
-      "reasoning": "The source text directly states that hydrate dissociation could precondition secondary slope failures, which aligns with the claim."
+      "reasoning": "The source text directly states that hydrate dissociation could precondition secondary slope failures, which aligns with the claim.",
+      "support_count": 1,
+      "supporting_papers": [
+        "3-s2.0-B9780128130810007047-main"
+      ]
     },
     {
       "subject": "gas hydrate dissociation",
@@ -970,7 +1233,11 @@
       "query": "What is the relationship between gas hydrate dissociation and slope failure in submarine environments?",
       "strategy": "causal",
       "best_chunk_id": "3-s2.0-B9780128130810007047-main::chunk9",
-      "reasoning": "The source text mentions that gas hydrate dissociation is being increasingly considered as a factor controlling slope failure and provides details about how its dissociation can lead to increased volu"
+      "reasoning": "The source text mentions that gas hydrate dissociation is being increasingly considered as a factor controlling slope failure and provides details about how its dissociation can lead to increased volu",
+      "support_count": 1,
+      "supporting_papers": [
+        "3-s2.0-B9780128130810007047-main"
+      ]
     },
     {
       "subject": "gate release",
@@ -987,7 +1254,11 @@
       "query": "What causes retrogressive failure and headscarp formation?",
       "strategy": "causal",
       "best_chunk_id": "1-s2.0-S0025322712000412-main-checkpoint::chunk20",
-      "reasoning": "The source text directly states that a headscarp forms within 5 seconds of flow initiation, which is triggered by the gate release."
+      "reasoning": "The source text directly states that a headscarp forms within 5 seconds of flow initiation, which is triggered by the gate release.",
+      "support_count": 1,
+      "supporting_papers": [
+        "1-s2.0-S0025322712000412-main"
+      ]
     },
     {
       "subject": "gate release",
@@ -1004,7 +1275,11 @@
       "query": "What causes retrogressive failure and headscarp formation?",
       "strategy": "causal",
       "best_chunk_id": "1-s2.0-S0025322712000412-main-checkpoint::chunk20",
-      "reasoning": "The formation of a headscarf and subsequent detachment of blocks is directly linked to the gate release, which initiates these processes leading to retrogressive failure."
+      "reasoning": "The formation of a headscarf and subsequent detachment of blocks is directly linked to the gate release, which initiates these processes leading to retrogressive failure.",
+      "support_count": 1,
+      "supporting_papers": [
+        "1-s2.0-S0025322712000412-main"
+      ]
     },
     {
       "subject": "headscarp",
@@ -1021,7 +1296,11 @@
       "query": "What is the relationship between retrogressive failure and headscarp in submarine environments?",
       "strategy": "causal",
       "best_chunk_id": "1-s2.0-S0025322712000412-main::chunk20",
-      "reasoning": "The source text directly states that a headscarp forms first, followed by the development of a zone of horst-graben structures and detached blocks between the headscarp and the gate. This indicates th"
+      "reasoning": "The source text directly states that a headscarp forms first, followed by the development of a zone of horst-graben structures and detached blocks between the headscarp and the gate. This indicates th",
+      "support_count": 1,
+      "supporting_papers": [
+        "1-s2.0-S0025322712000412-main"
+      ]
     },
     {
       "subject": "headscarp",
@@ -1038,7 +1317,11 @@
       "query": "Describe the relationship between retrogressive failure and headscarp in mass transport deposits.",
       "strategy": "causal",
       "best_chunk_id": "1-s2.0-S0025322712000412-main-checkpoint::chunk20",
-      "reasoning": "The source text directly states that the headscarp forms first, followed by the development of horst-graben structures and detached blocks between the headscarp and the gate."
+      "reasoning": "The source text directly states that the headscarp forms first, followed by the development of horst-graben structures and detached blocks between the headscarp and the gate.",
+      "support_count": 1,
+      "supporting_papers": [
+        "1-s2.0-S0025322712000412-main"
+      ]
     },
     {
       "subject": "increased seismic activity",
@@ -1055,7 +1338,12 @@
       "query": "What is the role of seismic loading in triggering mass movements?",
       "strategy": "causal",
       "best_chunk_id": "D. Leynaud::chunk1",
-      "reasoning": "The source text directly states that increased seismic activity is one of the most important triggering mechanisms for large failures during deglaciation processes."
+      "reasoning": "The source text directly states that increased seismic activity is one of the most important triggering mechanisms for large failures during deglaciation processes.",
+      "support_count": 2,
+      "supporting_papers": [
+        "1-s2.0-S0264817216304585-main",
+        "D. Leynaud"
+      ]
     },
     {
       "subject": "rapid rate of sedimentation",
@@ -1072,7 +1360,12 @@
       "query": "What is the relationship between rapid sedimentation and fluid overpressure in submarine environments?",
       "strategy": "causal",
       "best_chunk_id": "1-s2.0-S0191814106000101-main::chunk10",
-      "reasoning": "The source text directly states that a rapid rate of sedimentation can trigger the build-up of overpressure under certain conditions."
+      "reasoning": "The source text directly states that a rapid rate of sedimentation can trigger the build-up of overpressure under certain conditions.",
+      "support_count": 2,
+      "supporting_papers": [
+        "1-s2.0-S0191814106000101-main",
+        "1-s2.0-S0264817216304585-main"
+      ]
     },
     {
       "subject": "small permeability",
@@ -1089,7 +1382,12 @@
       "query": "What is the relationship between rapid sedimentation and fluid overpressure in submarine environments?",
       "strategy": "causal",
       "best_chunk_id": "1-s2.0-S0191814106000101-main::chunk10",
-      "reasoning": "The sentence indicates that when permeability is small, the build-up of overpressure is triggered under certain conditions such as quick load increase due to factors like rapid sedimentation or tecton"
+      "reasoning": "The sentence indicates that when permeability is small, the build-up of overpressure is triggered under certain conditions such as quick load increase due to factors like rapid sedimentation or tecton",
+      "support_count": 2,
+      "supporting_papers": [
+        "1-s2.0-S0191814106000101-main",
+        "1-s2.0-S0264817216304585-main"
+      ]
     },
     {
       "subject": "basal shear surface",
@@ -1106,7 +1404,11 @@
       "query": "Is basal surface a structural component of mass transport deposit?",
       "strategy": "context",
       "best_chunk_id": "RichardsonetalBasinResearch2011-online (1)::chunk12",
-      "reasoning": "The description indicates that the basal shear surface is beneath the upper surface, as it defines where the failure terminates and truncates horizons."
+      "reasoning": "The description indicates that the basal shear surface is beneath the upper surface, as it defines where the failure terminates and truncates horizons.",
+      "support_count": 1,
+      "supporting_papers": [
+        "RichardsonetalBasinResearch2011-online (1)"
+      ]
     },
     {
       "subject": "internally derived seepage forces",
@@ -1123,7 +1425,10 @@
       "query": "What is the sequence from trigger to deposit in mass wasting?",
       "strategy": "causal",
       "best_chunk_id": "3-s2.0-B9780128130810007047-main::chunk9",
-      "reasoning": ""
+      "reasoning": "",
+      "support_count": 0,
+      "supporting_papers": [],
+      "provenance_note": "older pipeline iteration \u2014 chunk provenance not preserved"
     },
     {
       "subject": "steeper slopes",
@@ -1140,7 +1445,10 @@
       "query": "What is the sequence from trigger to deposit in mass wasting?",
       "strategy": "causal",
       "best_chunk_id": "3-s2.0-B9780128130810007047-main::chunk9",
-      "reasoning": ""
+      "reasoning": "",
+      "support_count": 0,
+      "supporting_papers": [],
+      "provenance_note": "older pipeline iteration \u2014 chunk provenance not preserved"
     },
     {
       "subject": "complete erosion of the paleosea\ufb02oor",
@@ -1157,7 +1465,10 @@
       "query": "How does basal erosion affect or cause basal surface in mass transport deposits?",
       "strategy": "causal",
       "best_chunk_id": "1-s2.0-S0025322713000571-main-checkpoint::chunk27",
-      "reasoning": ""
+      "reasoning": "",
+      "support_count": 0,
+      "supporting_papers": [],
+      "provenance_note": "older pipeline iteration \u2014 chunk provenance not preserved"
     },
     {
       "subject": "debris flow",
@@ -1174,7 +1485,10 @@
       "query": "How do debris flows transition into turbidity currents?",
       "strategy": "causal",
       "best_chunk_id": "Submarine_Mass_Movements_on_Continental-checkpoint::chunk1",
-      "reasoning": ""
+      "reasoning": "",
+      "support_count": 0,
+      "supporting_papers": [],
+      "provenance_note": "older pipeline iteration \u2014 chunk provenance not preserved"
     },
     {
       "subject": "fluid overpressure",
@@ -1191,7 +1505,11 @@
       "query": "How does fluid overpressure affect or cause slope failure in mass transport deposits?",
       "strategy": "causal",
       "best_chunk_id": "JGR Solid Earth - 2013 - Mourgues - The Coulomb critical taper theory applied to gravitational instabilities::chunk25",
-      "reasoning": ""
+      "reasoning": "",
+      "support_count": 1,
+      "supporting_papers": [
+        "JGR Solid Earth - 2013 - Mourgues - The Coulomb critical taper theory applied to gravitational instabilities"
+      ]
     },
     {
       "subject": "gas hydrate dissociation",
@@ -1208,7 +1526,11 @@
       "query": "How does gas hydrate dissociation affect or cause slope instability in mass transport deposits?",
       "strategy": "causal",
       "best_chunk_id": "3-s2.0-B9780128130810007047-main-checkpoint::chunk4",
-      "reasoning": ""
+      "reasoning": "",
+      "support_count": 1,
+      "supporting_papers": [
+        "3-s2.0-B9780128130810007047-main"
+      ]
     },
     {
       "subject": "rapid burial",
@@ -1225,7 +1547,11 @@
       "query": "What is the relationship between rapid burial and overpressure in MTDs?",
       "strategy": "causal",
       "best_chunk_id": "1-s2.0-S0264817216304585-main-checkpoint::chunk6",
-      "reasoning": ""
+      "reasoning": "",
+      "support_count": 1,
+      "supporting_papers": [
+        "1-s2.0-S0264817216304585-main"
+      ]
     },
     {
       "subject": "retrogressive failure",
@@ -1242,7 +1568,10 @@
       "query": "How does retrogressive failure propagate upslope?",
       "strategy": "causal",
       "best_chunk_id": "1-s2.0-S0025322712000412-main-checkpoint::chunk28",
-      "reasoning": ""
+      "reasoning": "",
+      "support_count": 0,
+      "supporting_papers": [],
+      "provenance_note": "older pipeline iteration \u2014 chunk provenance not preserved"
     },
     {
       "subject": "rising sea level",
@@ -1259,7 +1588,11 @@
       "query": "How does tectonic activity affect or cause slope instability in mass transport deposits?",
       "strategy": "causal",
       "best_chunk_id": "D. Leynaud::chunk40",
-      "reasoning": ""
+      "reasoning": "",
+      "support_count": 1,
+      "supporting_papers": [
+        "D. Leynaud"
+      ]
     },
     {
       "subject": "sea-level lowstands",
@@ -1276,7 +1609,12 @@
       "query": "Describe the relationship between wave loading and slope failure in mass transport deposits.",
       "strategy": "causal",
       "best_chunk_id": "9781565762879_ch02-checkpoint::chunk43",
-      "reasoning": "The source text mentions that during sea-level lowstands, rates of sedimentation increase at the outer shelf and upper slope, which could create disequilibrium conditions. This suggests a causal relat"
+      "reasoning": "The source text mentions that during sea-level lowstands, rates of sedimentation increase at the outer shelf and upper slope, which could create disequilibrium conditions. This suggests a causal relat",
+      "support_count": 2,
+      "supporting_papers": [
+        "9781565762879_ch02",
+        "Moscardelli_and_Wood_2008"
+      ]
     },
     {
       "subject": "sedimentation rate",
@@ -1293,7 +1631,11 @@
       "query": "How does sedimentation rate affect or cause thickness in mass transport deposits?",
       "strategy": "causal",
       "best_chunk_id": "Two-scale_gravitational_collapse_in_the_Amazon_Fan::chunk9",
-      "reasoning": ""
+      "reasoning": "",
+      "support_count": 1,
+      "supporting_papers": [
+        "Two-scale_gravitational_collapse_in_the_Amazon_Fan"
+      ]
     },
     {
       "subject": "seismic shaking",
@@ -1310,7 +1652,11 @@
       "query": "What is the relationship between seismic shaking and slope failure in MTDs?",
       "strategy": "causal",
       "best_chunk_id": "1-s2.0-S0264817216304585-main::chunk6",
-      "reasoning": ""
+      "reasoning": "",
+      "support_count": 1,
+      "supporting_papers": [
+        "1-s2.0-S0264817216304585-main"
+      ]
     },
     {
       "subject": "channel levee",
@@ -1327,7 +1673,11 @@
       "query": "Describe the seismic character of channel levee including amplitude, continuity, and internal reflections.",
       "strategy": "descriptor",
       "best_chunk_id": "Ian R. Clark, Joseph A. Cartwright::chunk11",
-      "reasoning": "While the source text describes the levee deposits as \"wedge shaped\" and tapering away from the channel axis, it does not specifically state that they are continuous. Therefore, we can infer but canno"
+      "reasoning": "While the source text describes the levee deposits as \"wedge shaped\" and tapering away from the channel axis, it does not specifically state that they are continuous. Therefore, we can infer but canno",
+      "support_count": 1,
+      "supporting_papers": [
+        "Ian R. Clark, Joseph A. Cartwright"
+      ]
     },
     {
       "subject": "debris flow",
@@ -1344,7 +1694,13 @@
       "query": "What are the seismic characteristics of debris flow deposit? Consider: chaotic, transparent, blocky, massive, hummocky, discontinuous, high-amplitude, low-amplitude, layered, parallel",
       "strategy": "descriptor",
       "best_chunk_id": "Moscardelli_and_Wood_2008::chunk9",
-      "reasoning": ""
+      "reasoning": "",
+      "support_count": 3,
+      "supporting_papers": [
+        "9781565762879_ch03",
+        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_",
+        "Moscardelli_and_Wood_2008"
+      ]
     },
     {
       "subject": "folds and thrusts",
@@ -1361,7 +1717,12 @@
       "query": "What objects show weak amplitude seismic character?",
       "strategy": "descriptor",
       "best_chunk_id": "Chinese J of Geophysics - 2013 - WU - Analysis on Seismic Characteristics and Triggering Mechanisms of Mass Transport::chunk12",
-      "reasoning": "While the evidence does mention \"weak amplitude\" for folds and thrusts, it is part of a list of descriptors rather than directly stating that these features have weak amplitude."
+      "reasoning": "While the evidence does mention \"weak amplitude\" for folds and thrusts, it is part of a list of descriptors rather than directly stating that these features have weak amplitude.",
+      "support_count": 2,
+      "supporting_papers": [
+        "Chinese J of Geophysics - 2013 - WU - Analysis on Seismic Characteristics and Triggering Mechanisms of Mass Transport",
+        "RichardsonetalBasinResearch2011-online (1)"
+      ]
     },
     {
       "subject": "mass transport deposit",
@@ -1378,7 +1739,10 @@
       "query": "Describe the seismic character of submarine fan including amplitude, continuity, and internal reflections.",
       "strategy": "descriptor",
       "best_chunk_id": "Basin Research - 2016 - Ortiz\u2010Karpf - Mass\u2010transport complexes as markers of deep\u2010water fold\u2010and\u2010thrust belt evolution -checkpoint::chunk8",
-      "reasoning": "While the evidence does not directly state that external geometry is a descriptor for mass transport complexes, it mentions various kinematic indicators, including the external geometry of megaclasts "
+      "reasoning": "While the evidence does not directly state that external geometry is a descriptor for mass transport complexes, it mentions various kinematic indicators, including the external geometry of megaclasts ",
+      "support_count": 0,
+      "supporting_papers": [],
+      "provenance_note": "non-canonical descriptor \u2014 older pipeline iteration, no raw match"
     },
     {
       "subject": "mass transport deposit",
@@ -1395,7 +1759,16 @@
       "query": "What geological objects or features are described as discontinuous in seismic data? Which deposits show discontinuous character?",
       "strategy": "descriptor",
       "best_chunk_id": "Two-scale_gravitational_collapse_in_the_Amazon_Fan-checkpoint::chunk19",
-      "reasoning": ""
+      "reasoning": "",
+      "support_count": 6,
+      "supporting_papers": [
+        "9781565762879_ch02",
+        "Bourget,j",
+        "Dos-Reis-et-al-2016-MPG",
+        "Moscardelli_and_Wood_2008",
+        "RichardsonetalBasinResearch2011-online (1)",
+        "Two-scale_gravitational_collapse_in_the_Amazon_Fan"
+      ]
     },
     {
       "subject": "mass transport deposit",
@@ -1412,7 +1785,12 @@
       "query": "Describe the seismic character of the internal facies of mass transport deposits. What reflector patterns, amplitudes, and continuity are observed?",
       "strategy": "descriptor",
       "best_chunk_id": "Dos-Reis-et-al-2016-MPG::chunk37",
-      "reasoning": ""
+      "reasoning": "",
+      "support_count": 2,
+      "supporting_papers": [
+        "9781565762879_ch02",
+        "Dos-Reis-et-al-2016-MPG"
+      ]
     },
     {
       "subject": "mass transport deposit",
@@ -1429,7 +1807,12 @@
       "query": "Describe the seismic character of the internal facies of mass transport deposits. What reflector patterns, amplitudes, and continuity are observed?",
       "strategy": "descriptor",
       "best_chunk_id": "Dos-Reis-et-al-2016-MPG::chunk37",
-      "reasoning": ""
+      "reasoning": "",
+      "support_count": 2,
+      "supporting_papers": [
+        "9781565762879_ch02",
+        "Dos-Reis-et-al-2016-MPG"
+      ]
     },
     {
       "subject": "mass transport deposit",
@@ -1446,7 +1829,13 @@
       "query": "What are the seismic characteristics of mass transport deposit? Consider: chaotic, transparent, blocky, massive, hummocky, discontinuous, high-amplitude, low-amplitude, layered, parallel",
       "strategy": "descriptor",
       "best_chunk_id": "Moscardelli_and_Wood_2008::chunk9",
-      "reasoning": ""
+      "reasoning": "",
+      "support_count": 3,
+      "supporting_papers": [
+        "845",
+        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_",
+        "Moscardelli_and_Wood_2008"
+      ]
     },
     {
       "subject": "mass transport deposit",
@@ -1463,7 +1852,11 @@
       "query": "Describe the seismic character of mass transport deposit including amplitude, continuity, and internal reflections.",
       "strategy": "descriptor",
       "best_chunk_id": "RichardsonetalBasinResearch2011-online (1)::chunk8",
-      "reasoning": "The source text mentions \"inclined\" reflections within the mass transport deposit, which supports the claim."
+      "reasoning": "The source text mentions \"inclined\" reflections within the mass transport deposit, which supports the claim.",
+      "support_count": 1,
+      "supporting_papers": [
+        "RichardsonetalBasinResearch2011-online (1)"
+      ]
     },
     {
       "subject": "mass transport deposit",
@@ -1480,7 +1873,12 @@
       "query": "Describe the seismic character of turbidite including amplitude, continuity, and internal reflections.",
       "strategy": "descriptor",
       "best_chunk_id": "Alves_AAPG_MTDs_14-checkpoint::chunk12",
-      "reasoning": "While the evidence mentions specific instances of high-to-moderate amplitude MTDs, it does not directly state that all MTDs have this descriptor as a characteristic feature."
+      "reasoning": "While the evidence mentions specific instances of high-to-moderate amplitude MTDs, it does not directly state that all MTDs have this descriptor as a characteristic feature.",
+      "support_count": 2,
+      "supporting_papers": [
+        "1-s2.0-S0025322713000571-main",
+        "Alves_AAPG_MTDs_14"
+      ]
     },
     {
       "subject": "mass transport deposit",
@@ -1497,7 +1895,13 @@
       "query": "What seismic objects show both layered and stratified character?",
       "strategy": "descriptor",
       "best_chunk_id": "1-s2.0-S0264817216304585-main::chunk15",
-      "reasoning": "The source text mentions that some mass-transport deposits (specifically MTDb3 and MTDb5) exhibit \"chaotic with short layered seismic reflections,\" which supports the claim."
+      "reasoning": "The source text mentions that some mass-transport deposits (specifically MTDb3 and MTDb5) exhibit \"chaotic with short layered seismic reflections,\" which supports the claim.",
+      "support_count": 3,
+      "supporting_papers": [
+        "845",
+        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_",
+        "Moscardelli_and_Wood_2008"
+      ]
     },
     {
       "subject": "preserved block",
@@ -1514,7 +1918,13 @@
       "query": "What geological objects contain parallel or sub-horizontal reflectors? Consider preserved blocks, slides, and undeformed sediments.",
       "strategy": "descriptor",
       "best_chunk_id": "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_::chunk7",
-      "reasoning": "The evidence mentions \"parallel discontinuous reflectors\" which suggests some degree of horizontal alignment, though it does not specifically state that the preserved blocks are sub-horizontal."
+      "reasoning": "The evidence mentions \"parallel discontinuous reflectors\" which suggests some degree of horizontal alignment, though it does not specifically state that the preserved blocks are sub-horizontal.",
+      "support_count": 3,
+      "supporting_papers": [
+        "1-s2.0-S0025322713000571-main",
+        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_",
+        "Moscardelli_and_Wood_2008"
+      ]
     },
     {
       "subject": "mass transport deposit",
@@ -1531,7 +1941,13 @@
       "query": "Does mass transport deposit occur in continental slope?",
       "strategy": "context",
       "best_chunk_id": "Giacomo Dalla Valle-checkpoint::chunk38",
-      "reasoning": "The evidence suggests that mass transport deposits (MTDs) can form in the slope, supporting the claim."
+      "reasoning": "The evidence suggests that mass transport deposits (MTDs) can form in the slope, supporting the claim.",
+      "support_count": 3,
+      "supporting_papers": [
+        "9781565762879_ch02",
+        "Giacomo Dalla Valle",
+        "RichardsonetalBasinResearch2011-online (1)"
+      ]
     },
     {
       "subject": "mass transport deposit",
@@ -1548,7 +1964,12 @@
       "query": "Does mass transport deposit occur in passive margin?",
       "strategy": "context",
       "best_chunk_id": "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and::chunk48",
-      "reasoning": "The source text mentions that the flux of landslide material towards the deeper basin is controlled by the largest landslides occurring on passive margins. While it does not directly state that mass t"
+      "reasoning": "The source text mentions that the flux of landslide material towards the deeper basin is controlled by the largest landslides occurring on passive margins. While it does not directly state that mass t",
+      "support_count": 2,
+      "supporting_papers": [
+        "Giacomo Dalla Valle",
+        "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and"
+      ]
     },
     {
       "subject": "passive margins",
@@ -1565,7 +1986,12 @@
       "query": "Does submarine landslide occur in continental slope?",
       "strategy": "context",
       "best_chunk_id": "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and::chunk48",
-      "reasoning": "The source text indicates that large landslides occur on passive margins, which strongly implies that submarine landslides can occur in these settings."
+      "reasoning": "The source text indicates that large landslides occur on passive margins, which strongly implies that submarine landslides can occur in these settings.",
+      "support_count": 2,
+      "supporting_papers": [
+        "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and",
+        "Simon E. Lee"
+      ]
     },
     {
       "subject": "sediment failure",
@@ -1582,7 +2008,12 @@
       "query": "Does mass transport deposit occur in passive margin?",
       "strategy": "context",
       "best_chunk_id": "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and::chunk48",
-      "reasoning": "The source text mentions that relatively small earthquakes can trigger large-magnitude slope failures in certain margins, which are likely referring to passive margins given the context."
+      "reasoning": "The source text mentions that relatively small earthquakes can trigger large-magnitude slope failures in certain margins, which are likely referring to passive margins given the context.",
+      "support_count": 2,
+      "supporting_papers": [
+        "Giacomo Dalla Valle",
+        "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and"
+      ]
     },
     {
       "subject": "submarine landslides",
@@ -1599,7 +2030,12 @@
       "query": "Does submarine landslide occur in continental margin?",
       "strategy": "context",
       "best_chunk_id": "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and::chunk48",
-      "reasoning": "The source text indicates that large submarine landslides are controlled by passive margins, implying they occur there."
+      "reasoning": "The source text indicates that large submarine landslides are controlled by passive margins, implying they occur there.",
+      "support_count": 2,
+      "supporting_papers": [
+        "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and",
+        "Submarine_Mass_Movements_on_Continental"
+      ]
     },
     {
       "subject": "turbidity current",
@@ -1616,7 +2052,12 @@
       "query": "Does turbidite occur in continental slope?",
       "strategy": "context",
       "best_chunk_id": "Simon E. Lee::chunk29",
-      "reasoning": "The reference to the New Jersey continental slope provides context for where evidence of submarine canyon initiation by downslope eroding sediment flows was observed, which could include turbidity cur"
+      "reasoning": "The reference to the New Jersey continental slope provides context for where evidence of submarine canyon initiation by downslope eroding sediment flows was observed, which could include turbidity cur",
+      "support_count": 2,
+      "supporting_papers": [
+        "D. Leynaud",
+        "Simon E. Lee"
+      ]
     },
     {
       "subject": "upper surface",
@@ -1633,7 +2074,12 @@
       "query": "Is upper surface a structural component of mass transport deposit?",
       "strategy": "context",
       "best_chunk_id": "RichardsonetalBasinResearch2011-online (1)::chunk12",
-      "reasoning": "While the text does describe the relationship between the upper surface and the basal shear surface, it specifically mentions that the basal shear surface curves upwards towards the lakebed, which imp"
+      "reasoning": "While the text does describe the relationship between the upper surface and the basal shear surface, it specifically mentions that the basal shear surface curves upwards towards the lakebed, which imp",
+      "support_count": 2,
+      "supporting_papers": [
+        "Moscardelli_and_Wood_2008",
+        "RichardsonetalBasinResearch2011-online (1)"
+      ]
     },
     {
       "subject": "mass transport deposit",
@@ -1650,7 +2096,10 @@
       "query": "What are the components of a mass transport complex?",
       "strategy": "context",
       "best_chunk_id": "RichardsonetalBasinResearch2011-online (1)::chunk15",
-      "reasoning": ""
+      "reasoning": "",
+      "support_count": 0,
+      "supporting_papers": [],
+      "provenance_note": "older pipeline iteration \u2014 chunk provenance not preserved"
     },
     {
       "subject": "mass transport deposit",
@@ -1667,7 +2116,10 @@
       "query": "What are the components of a mass transport complex?",
       "strategy": "context",
       "best_chunk_id": "RichardsonetalBasinResearch2011-online (1)::chunk15",
-      "reasoning": ""
+      "reasoning": "",
+      "support_count": 0,
+      "supporting_papers": [],
+      "provenance_note": "older pipeline iteration \u2014 chunk provenance not preserved"
     }
   ]
 }
