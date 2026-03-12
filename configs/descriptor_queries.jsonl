@@ -232,3 +232,18 @@
 {"query": "What is the relationship between pore pressure and slope instability?", "strategy": "causal", "focus": "pore pressure"}
 {"query": "Does debris flow transform into turbidity current?", "strategy": "causal", "focus": "debris flow transformation"}
 {"query": "In what geological settings do mass transport deposits occur — continental slope abyssal plain?", "strategy": "setting", "focus": "MTD setting"}
+{"query": "What seismic facies characterize turbidites? parallel continuous layered reflectors?", "strategy": "descriptor", "focus": "subject:turbidite"}
+{"query": "Are turbidites described as parallel or continuous reflectors in seismic data?", "strategy": "descriptor", "focus": "turbidite:parallel"}
+{"query": "What seismic character do turbidites show — high amplitude layered?", "strategy": "descriptor", "focus": "turbidite:layered"}
+{"query": "How are debris flows characterized seismically — chaotic hummocky facies?", "strategy": "descriptor", "focus": "subject:debris_flow"}
+{"query": "What seismic facies describe slide deposits — blocky undeformed reflectors?", "strategy": "descriptor", "focus": "subject:slide"}
+{"query": "Are slides characterized by undeformed or blocky seismic facies?", "strategy": "descriptor", "focus": "slide:undeformed"}
+{"query": "What seismic character do hemipelagites show — parallel continuous low amplitude?", "strategy": "descriptor", "focus": "subject:hemipelagite"}
+{"query": "How does slope failure generate or produce mass transport deposits?", "strategy": "causal", "focus": "slope_failure:causes:MTD"}
+{"query": "What triggers slope failure — earthquake seismic loading?", "strategy": "causal", "focus": "earthquake:triggers:slope_failure"}
+{"query": "How does pore pressure control slope stability and failure?", "strategy": "causal", "focus": "pore_pressure:controls:slope_failure"}
+{"query": "Can debris flows transform into turbidity currents?", "strategy": "causal", "focus": "turbidity_current:formedBy:debris_flow"}
+{"query": "Where do mass transport deposits occur — continental slope abyssal plain?", "strategy": "spatial", "focus": "MTD:occursIn:continental_slope"}
+{"query": "Where do debris flows occur — continental slope setting?", "strategy": "spatial", "focus": "debris_flow:occursIn:continental_slope"}
+{"query": "Where do turbidites deposit — basin floor abyssal plain?", "strategy": "spatial", "focus": "turbidite:occursIn:basin_floor"}
+{"query": "Do slides overlie hemipelagic sediments stratigraphically?", "strategy": "spatial", "focus": "slide:overlies:hemipelagite"}

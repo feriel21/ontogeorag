@@ -82,6 +82,33 @@ def load_jsonl(path: str) -> list[dict]:
     return triples
 
 
+
+def load_triples(path: str) -> list[dict]:
+    """Load triples from .jsonl or .json (dict with 'triples' key)."""
+    with open(path, encoding="utf-8") as f:
+        content = f.read().strip()
+    if content.startswith('{') or content.startswith('['):
+        data = json.loads(content)
+        if isinstance(data, list):
+            return data
+        if isinstance(data, dict):
+            return data.get("triples", [])
+    # Fallback: JSONL
+    triples, errors = [], 0
+    for i, line in enumerate(content.splitlines()):
+        line = line.strip()
+        if not line:
+            continue
+        try:
+            triples.append(json.loads(line))
+        except json.JSONDecodeError as e:
+            errors += 1
+            if errors <= 3:
+                print(f"  Warning line {i+1}: {e}")
+    if errors:
+        print(f"  Total malformed lines skipped: {errors}")
+    return triples
+
 def extract_doc_ids(t: dict) -> list[str]:
     """Extract unique paper doc_ids from provenance chunk ids."""
     prov = t.get("_provenance", {}) or {}
@@ -144,8 +171,8 @@ def main():
     print("TIERED KG FUSION")
     print("=" * 60)
 
-    iter_a = load_jsonl(args.iter_a)
-    iter_b = load_jsonl(args.iter_b)
+    iter_a = load_triples(args.iter_a)
+    iter_b = load_triples(args.iter_b)
     print(f"\n  Iter-A: {len(iter_a)} triples  ({args.iter_a})")
     print(f"  Iter-B: {len(iter_b)} triples  ({args.iter_b})")
 
