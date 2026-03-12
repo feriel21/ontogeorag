@@ -84,16 +84,22 @@ def load_jsonl(path: str) -> list[dict]:
 
 
 def load_triples(path: str) -> list[dict]:
-    """Load triples from .jsonl or .json (dict with 'triples' key)."""
+    """Load triples from .jsonl or .json (dict with 'triples' key).
+    Detection: .json extension OR content starts with '[' = JSON array/object.
+    Everything else (including .jsonl starting with '{') = JSONL.
+    """
     with open(path, encoding="utf-8") as f:
         content = f.read().strip()
-    if content.startswith('{') or content.startswith('['):
+    # Only treat as single JSON if it's a JSON array OR a .json file
+    import os
+    ext = os.path.splitext(path)[1].lower()
+    if ext == '.json' or content.startswith('['):
         data = json.loads(content)
         if isinstance(data, list):
             return data
         if isinstance(data, dict):
             return data.get("triples", [])
-    # Fallback: JSONL
+    # JSONL: one dict per line
     triples, errors = [], 0
     for i, line in enumerate(content.splitlines()):
         line = line.strip()
