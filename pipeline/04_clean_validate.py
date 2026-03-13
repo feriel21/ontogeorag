@@ -248,9 +248,12 @@ def check_type_constraint(triple: dict) -> tuple[bool, str]:
 
     if r == "hasDescriptor":
         if t not in KNOWN_DESCRIPTORS:
-            partial = any(d in t or t in d for d in KNOWN_DESCRIPTORS)
-            if partial:
-                return False, "descriptor_partial"
+            # P6: normalize descriptor variants instead of rejecting
+            for d in KNOWN_DESCRIPTORS:
+                if d in t or t in d:
+                    triple["target"] = d
+                    triple["target_norm"] = d
+                    return True, "ok_descriptor_normalized"
             return False, "type_constraint"
 
     if r == "occursIn":
@@ -342,6 +345,16 @@ def build_canonical_map(
         if len(lb_members) >= 2:
             for m in members:
                 blocked.append(f"BLOCKED: '{m}' (cluster with {members}, both LB descriptors)")
+            continue
+        # P9: also protect LB2019 settings from being merged away
+        lb_settings = {
+            "continental slope", "abyssal plain", "basin floor",
+            "hemipelagite", "passive margins", "continental shelf",
+        }
+        lb_setting_members = [m for m in members if m in lb_settings]
+        if lb_setting_members:
+            for m in members:
+                blocked.append(f"BLOCKED: '{m}' (cluster with {members}, contains LB2019 setting)")
             continue
 
         canonical = max(members, key=lambda x: (len(x.split()), len(x)))

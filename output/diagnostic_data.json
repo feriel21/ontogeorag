@@ -1,0 +1,37 @@
+{
+  "funnel": {
+    "raw_a": 0,
+    "raw_b": 0,
+    "verified_a": 0,
+    "verified_b": 0,
+    "canonical_a": 70,
+    "canonical_b": 66,
+    "final_kg": 86
+  },
+  "missing_edges": 16,
+  "matched_edges": 10,
+  "root_causes": {
+    "mass transport deposit\u2192massive": "CORPUS_ABSENT",
+    "turbidite\u2192layered": "CORPUS_ABSENT",
+    "turbidite\u2192high-amplitude": "QUERY_MISS",
+    "debris flow\u2192chaotic": "QUERY_MISS",
+    "debris flow\u2192hummocky": "QUERY_MISS",
+    "slide\u2192blocky": "QUERY_MISS",
+    "slide\u2192undeformed": "QUERY_MISS",
+    "hemipelagite\u2192parallel": "QUERY_MISS",
+    "hemipelagite\u2192continuous": "QUERY_MISS",
+    "hemipelagite\u2192low-amplitude": "CORPUS_ABSENT",
+    "slope failure\u2192mass transport deposit": "QUERY_MISS",
+    "turbidity current\u2192debris flow": "QUERY_MISS",
+    "mass transport deposit\u2192abyssal plain": "QUERY_MISS",
+    "debris flow\u2192continental slope": "QUERY_MISS",
+    "turbidite\u2192basin floor": "QUERY_MISS",
+    "slide\u2192hemipelagite": "QUERY_MISS"
+  },
+  "corpus_absent": 3,
+  "query_miss": 13,
+  "verifier_kill": 0,
+  "canon_kill": 0,
+  "fusion_loss": 0,
+  "max_possible_recall_pct": 88.5
+}

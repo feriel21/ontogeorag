@@ -1,0 +1,331 @@
+
+======================================================================
+  1. EXTRACTION FUNNEL — How many triples survive each stage?
+======================================================================
+Stage                              Pass A     Pass B      Total
+--------------------------------------------------------------
+1. Raw extracted                        0          0          0
+2. Verified (all verdicts)              0          0          0
+3. Canonical (post-filter)             70         66        136
+4. Final KG (fused A+B)                                      86
+
+======================================================================
+  2. VERDICT BREAKDOWN — Where does the verifier send triples?
+======================================================================
+Pass A: no verified triples found
+Pass B: no verified triples found
+
+======================================================================
+  3. CANONICALIZATION LOSSES — Why do verified triples get dropped?
+======================================================================
+
+======================================================================
+  4. BENCHMARK GAP — Which reference edges are missing and why?
+======================================================================
+Matched: 10/26   Missing: 16/26
+
+--- MISSING EDGES — detailed analysis ---
+
+  MISSING: mass transport deposit --[hasDescriptor]--> massive
+    In raw extraction?     NO
+    In verified triples?   NO
+    In canonical triples?  NO
+    Subject seen anywhere? NO
+    Co-occur in corpus?    0 chunks
+    ROOT CAUSE: CORPUS ABSENCE — both subject and object never co-occur in text
+
+  MISSING: turbidite --[hasDescriptor]--> layered
+    In raw extraction?     NO
+    In verified triples?   NO
+    In canonical triples?  NO
+    Subject seen anywhere? NO
+    Co-occur in corpus?    0 chunks
+    ROOT CAUSE: CORPUS ABSENCE — both subject and object never co-occur in text
+
+  MISSING: turbidite --[hasDescriptor]--> high-amplitude
+    In raw extraction?     NO
+    In verified triples?   NO
+    In canonical triples?  NO
+    Subject seen anywhere? NO
+    Co-occur in corpus?    31 chunks
+    ROOT CAUSE: QUERY MISS — corpus has evidence but LLM never extracted it
+
+  MISSING: debris flow --[hasDescriptor]--> chaotic
+    In raw extraction?     NO
+    In verified triples?   NO
+    In canonical triples?  NO
+    Subject seen anywhere? NO
+    Co-occur in corpus?    14 chunks
+    ROOT CAUSE: QUERY MISS — corpus has evidence but LLM never extracted it
+
+  MISSING: debris flow --[hasDescriptor]--> hummocky
+    In raw extraction?     NO
+    In verified triples?   NO
+    In canonical triples?  NO
+    Subject seen anywhere? NO
+    Co-occur in corpus?    4 chunks
+    ROOT CAUSE: QUERY MISS — corpus has evidence but LLM never extracted it
+
+  MISSING: slide --[hasDescriptor]--> blocky
+    In raw extraction?     NO
+    In verified triples?   NO
+    In canonical triples?  NO
+    Subject seen anywhere? NO
+    Co-occur in corpus?    11 chunks
+    ROOT CAUSE: QUERY MISS — corpus has evidence but LLM never extracted it
+
+  MISSING: slide --[hasDescriptor]--> undeformed
+    In raw extraction?     NO
+    In verified triples?   NO
+    In canonical triples?  NO
+    Subject seen anywhere? NO
+    Co-occur in corpus?    54 chunks
+    ROOT CAUSE: QUERY MISS — corpus has evidence but LLM never extracted it
+
+  MISSING: hemipelagite --[hasDescriptor]--> parallel
+    In raw extraction?     NO
+    In verified triples?   NO
+    In canonical triples?  NO
+    Subject seen anywhere? NO
+    Co-occur in corpus?    4 chunks
+    ROOT CAUSE: QUERY MISS — corpus has evidence but LLM never extracted it
+
+  MISSING: hemipelagite --[hasDescriptor]--> continuous
+    In raw extraction?     NO
+    In verified triples?   NO
+    In canonical triples?  NO
+    Subject seen anywhere? NO
+    Co-occur in corpus?    12 chunks
+    ROOT CAUSE: QUERY MISS — corpus has evidence but LLM never extracted it
+
+  MISSING: hemipelagite --[hasDescriptor]--> low-amplitude
+    In raw extraction?     NO
+    In verified triples?   NO
+    In canonical triples?  NO
+    Subject seen anywhere? NO
+    Co-occur in corpus?    0 chunks
+    ROOT CAUSE: CORPUS ABSENCE — both subject and object never co-occur in text
+
+  MISSING: slope failure --[causes]--> mass transport deposit
+    In raw extraction?     NO
+    In verified triples?   NO
+    In canonical triples?  NO
+    Subject seen anywhere? NO
+    Co-occur in corpus?    44 chunks
+    ROOT CAUSE: QUERY MISS — corpus has evidence but LLM never extracted it
+
+  MISSING: turbidity current --[formedBy]--> debris flow
+    In raw extraction?     NO
+    In verified triples?   NO
+    In canonical triples?  NO
+    Subject seen anywhere? NO
+    Co-occur in corpus?    69 chunks
+    ROOT CAUSE: QUERY MISS — corpus has evidence but LLM never extracted it
+
+  MISSING: mass transport deposit --[occursIn]--> abyssal plain
+    In raw extraction?     NO
+    In verified triples?   NO
+    In canonical triples?  NO
+    Subject seen anywhere? NO
+    Co-occur in corpus?    6 chunks
+    ROOT CAUSE: QUERY MISS — corpus has evidence but LLM never extracted it
+
+  MISSING: debris flow --[occursIn]--> continental slope
+    In raw extraction?     NO
+    In verified triples?   NO
+    In canonical triples?  NO
+    Subject seen anywhere? NO
+    Co-occur in corpus?    32 chunks
+    ROOT CAUSE: QUERY MISS — corpus has evidence but LLM never extracted it
+
+  MISSING: turbidite --[occursIn]--> basin floor
+    In raw extraction?     NO
+    In verified triples?   NO
+    In canonical triples?  NO
+    Subject seen anywhere? NO
+    Co-occur in corpus?    46 chunks
+    ROOT CAUSE: QUERY MISS — corpus has evidence but LLM never extracted it
+
+  MISSING: slide --[overlies]--> hemipelagite
+    In raw extraction?     NO
+    In verified triples?   NO
+    In canonical triples?  NO
+    Subject seen anywhere? NO
+    Co-occur in corpus?    18 chunks
+    ROOT CAUSE: QUERY MISS — corpus has evidence but LLM never extracted it
+
+======================================================================
+  5. QUERY COVERAGE — Which reference subjects have queries?
+======================================================================
+Total queries: 249
+Unique query subjects: 1
+
+Reference subject                         Queries   Has coverage
+-----------------------------------------------------------------
+  debris flow                                 249   ✓
+  earthquake                                  249   ✓
+  hemipelagite                                249   ✓
+  mass transport deposit                      249   ✓
+  pore pressure                               249   ✓
+  slide                                       249   ✓
+  slope failure                               249   ✓
+  turbidite                                   249   ✓
+  turbidity current                           249   ✓
+
+======================================================================
+  6. DESCRIPTOR DEEP DIVE — massive, stratified and other misses
+======================================================================
+
+--- Descriptor: 'massive' ---
+  Chunks containing 'massive': 89
+  Triples extracted with 'massive' as object: 0
+  Triples verified with 'massive': 0
+  Triples canonical with 'massive': 0
+  Triples in final KG with 'massive': 0
+  !! IN CORPUS BUT NEVER EXTRACTED — sample chunk:
+     strengthening of the sediment, which results in minor MTDs compared to turbidite-system deposits. Messinian desiccation of the Mediterranean Sea caused a deeply eroded Ebro subaerial canyon and an unstable central segment with an MTD sheet, whereas other stable Ebro margin segments have only turbidi...
+
+--- Descriptor: 'stratified' ---
+  Chunks containing 'stratified': 13
+  Triples extracted with 'stratified' as object: 0
+  Triples verified with 'stratified': 0
+  Triples canonical with 'stratified': 0
+  Triples in final KG with 'stratified': 0
+  !! IN CORPUS BUT NEVER EXTRACTED — sample chunk:
+     from 5 to 13 km, and their thicknesses vary from 200 to 450 ms (about 170 to 380 m) (Table 1; Escutia et al., 2007). Multi-event MTDs at the base of the slope are observed and include deposits from WL-S4 to WL-S6, and possibly WL-S7 (Figs. 18, 19). Seismic units above the WL-U7 unconformity are not ...
+
+--- Descriptor: 'parallel' ---
+  Chunks containing 'parallel': 358
+  Triples extracted with 'parallel' as object: 0
+  Triples verified with 'parallel': 0
+  Triples canonical with 'parallel': 5
+  Triples in final KG with 'parallel': 3
+  !! IN CORPUS BUT NEVER EXTRACTED — sample chunk:
+     and southwest of the fan. The south- eastern corner of the Bering margin apparently has had a stable morphology, so that during sea-level lowstands a canyon to FIG. 1.—Classification and terminology of gravity-driven deposi- tional processes used in this study. MTDs result from all processes shown e...
+
+--- Descriptor: 'undeformed' ---
+  Chunks containing 'undeformed': 173
+  Triples extracted with 'undeformed' as object: 0
+  Triples verified with 'undeformed': 0
+  Triples canonical with 'undeformed': 1
+  Triples in final KG with 'undeformed': 1
+  !! IN CORPUS BUT NEVER EXTRACTED — sample chunk:
+     lent to the Rio Doce (siliciclastic), Caravelas (carbon- ate), and Urucutuca (shaley) Members (Figure 5B). In the BES-100 volume, the N20–N60 sequences comprise an alternation of the three latter units (França et al., 2007) (Figures 3B, 4B). In the BE- MS-1 volume, the interpreted MTDs are part of a...
+
+--- Descriptor: 'layered' ---
+  Chunks containing 'layered': 58
+  Triples extracted with 'layered' as object: 0
+  Triples verified with 'layered': 0
+  Triples canonical with 'layered': 3
+  Triples in final KG with 'layered': 2
+  !! IN CORPUS BUT NEVER EXTRACTED — sample chunk:
+     for steeply steeping strata flanking diapir B (Figures 13B, 14B, 16A). In this CDE plot, we discriminate be- tween strata with distinct degrees of disaggregation alternating and intact blocks with remnant sub- horizontal strata. Based on the plot in Figure 17 and on data from the two other case stud...
+
+--- Descriptor: 'high-amplitude' ---
+  Chunks containing 'high-amplitude': 101
+  Triples extracted with 'high-amplitude' as object: 0
+  Triples verified with 'high-amplitude': 0
+  Triples canonical with 'high-amplitude': 4
+  Triples in final KG with 'high-amplitude': 1
+  !! IN CORPUS BUT NEVER EXTRACTED — sample chunk:
+     Assessing the internal character, reservoir potential, and seal competence of mass-transport deposits using seismic texture: A geophysical and petrophysical approach Tiago M. Alves, Kuncho Kurtev, Gregory F. Moore, and Michael Strasser ABSTRACT Three-dimensional (3-D) seismic volumes from southeast ...
+
+--- Descriptor: 'blocky' ---
+  Chunks containing 'blocky': 64
+  Triples extracted with 'blocky' as object: 0
+  Triples verified with 'blocky': 0
+  Triples canonical with 'blocky': 2
+  Triples in final KG with 'blocky': 1
+  !! IN CORPUS BUT NEVER EXTRACTED — sample chunk:
+     migration. In this work, MTDs are imaged using root-mean- square (RMS) amplitude, coherence, and dip maps. Root-mean-square amplitude data provide mea- surements of the RMS amplitude of a seismic wave reflected at normal incidence on an inter- face (Brown, 2011). The peak amplitudes of re- flected s...
+
+--- Descriptor: 'chaotic' ---
+  Chunks containing 'chaotic': 264
+  Triples extracted with 'chaotic' as object: 0
+  Triples verified with 'chaotic': 0
+  Triples canonical with 'chaotic': 2
+  Triples in final KG with 'chaotic': 1
+  !! IN CORPUS BUT NEVER EXTRACTED — sample chunk:
+     length (Fig. 2; Karl et al., 1996). The extensive gullied nature of these canyon walls and down-slope presence of MTDs can be observed in the GLORIA side-scan sonar mosaics of the Bering continental mar- gin and in seismic profiles (Figs. 2, 3; see Middle Canyon floor; EEZ SCAN Scientific Staff, 199...
+
+======================================================================
+  7. RELATION DISTRIBUTION — Raw extraction vs Final KG
+======================================================================
+Relation                     Raw A+B   Final KG
+-----------------------------------------------
+  occursin                         0         12
+  affects                          0         10
+  triggers                         0         13
+  underlies                        0          1
+  overlies                         0          2
+  controls                         0          3
+  partof                           0          5
+  hasdescriptor                    0         17
+  causes                           0         23
+
+======================================================================
+  8. SUBJECT BIAS — Distribution of subjects in final KG
+======================================================================
+Subject                                         Count      %
+------------------------------------------------------------
+  mass transport deposit                           17  19.8%
+  wave action                                       3   3.5%
+  displaced blocks                                  3   3.5%
+  turbidite                                         3   3.5%
+  degradation of shear strength                     2   2.3%
+  higher sedimentation rates                        2   2.3%
+  hydrate dissociation                              2   2.3%
+  high excess pore pressures                        2   2.3%
+  sediment approaches a state of liquefaction       2   2.3%
+  small permeability                                2   2.3%
+  upper unit                                        2   2.3%
+  submarine landslide                               2   2.3%
+  earthquake                                        2   2.3%
+  mudflow                                           2   2.3%
+  preserved block                                   2   2.3%
+  undeformed mass transport deposits                2   2.3%
+  increasing burial                                 1   1.2%
+  sediment physical properties                      1   1.2%
+  shear stresses on the seafloor                    1   1.2%
+  combination of load increase and strength decrease       1   1.2%
+
+Reference subjects absent as subject in final KG:
+  ✗ 'debris flow' — never appears as subject
+  ✗ 'hemipelagite' — never appears as subject
+  ✗ 'slope failure' — never appears as subject
+
+======================================================================
+  9. DIAGNOSTIC SYNTHESIS — Prioritized improvements
+======================================================================
+ROOT CAUSE SUMMARY (16 missing edges):
+  CORPUS_ABSENT  (evidence not in 41 papers):   3  — nothing to do, fundamental limit
+  QUERY_MISS     (corpus has it, LLM missed):   13  — fix: better queries or prompts
+  VERIFIER_KILL  (extracted but rejected):       0  — fix: relax verifier or context window
+  CANON_KILL     (verified but type-dropped):    0  — fix: check type constraints
+  FUSION_LOSS    (survived but lost at merge):   0  — fix: fusion logic
+
+Theoretically fixable: 13/16 missing edges
+Hard ceiling (corpus absent): 3/16 — cannot improve without corpus expansion
+
+If all fixable issues resolved: recall = (10+13)/26 = 88.5%
+
+RECOMMENDED ACTIONS (by expected impact):
+
+  [A] [HIGH] QUERY/PROMPT FIX
+       13 edges exist in corpus but LLM never extracted them.
+       → Inspect which edges are QUERY_MISS. For each: check if query exists,
+         check if chunk actually contains the relation, add targeted few-shot example.
+
+  [D] [MEDIUM] DENSE RETRIEVAL
+       BM25 misses semantic matches (e.g., 'massive' in different phrasing).
+       → Add sentence-BERT + FAISS retrieval alongside BM25 (hybrid retrieval).
+         Expected gain: 2-4 additional descriptors per pass.
+
+  [E] [LOW] CORPUS EXPANSION
+       3 edges have no corpus evidence at all.
+       → 35 pre-screened candidate papers available (G1-G9 gap codes).
+         Add papers targeting: turbidite descriptors, hemipelagite, debris flow.
+
+
+✓ Report saved: /home/talbi/ontogeorag/output/diagnostic_report.txt
+✓ Data saved:   /home/talbi/ontogeorag/output/diagnostic_data.json

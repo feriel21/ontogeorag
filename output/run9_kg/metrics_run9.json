@@ -1,0 +1,1442 @@
+{
+  "summary": {
+    "tier1_triples": 44,
+    "tier12_triples": 59,
+    "total_triples": 59,
+    "unique_entities": 81
+  },
+  "descriptor_coverage": {
+    "tier1": {
+      "found": [
+        "blocky",
+        "chaotic",
+        "continuous",
+        "deformed",
+        "discontinuous",
+        "high-amplitude",
+        "low-amplitude",
+        "transparent"
+      ],
+      "missing": [
+        "layered",
+        "massive",
+        "parallel",
+        "stratified",
+        "undeformed"
+      ],
+      "n_found": 8,
+      "n_total": 13,
+      "coverage": 0.6153846153846154
+    },
+    "tier12": {
+      "found": [
+        "blocky",
+        "chaotic",
+        "continuous",
+        "deformed",
+        "discontinuous",
+        "high-amplitude",
+        "layered",
+        "low-amplitude",
+        "transparent"
+      ],
+      "missing": [
+        "massive",
+        "parallel",
+        "stratified",
+        "undeformed"
+      ],
+      "n_found": 9,
+      "n_total": 13,
+      "coverage": 0.6923076923076923
+    }
+  },
+  "recall_vs_lb2019": {
+    "tier1": {
+      "recall": 0.19230769230769232,
+      "hits": 5,
+      "total_reference": 26,
+      "matched_edges": [
+        [
+          "mass transport deposit",
+          "hasdescriptor",
+          "chaotic"
+        ],
+        [
+          "mass transport deposit",
+          "hasdescriptor",
+          "transparent"
+        ],
+        [
+          "mass transport deposit",
+          "hasdescriptor",
+          "blocky"
+        ],
+        [
+          "mass transport deposit",
+          "hasdescriptor",
+          "continuous"
+        ],
+        [
+          "mass transport deposit",
+          "hasdescriptor",
+          "low-amplitude"
+        ]
+      ]
+    },
+    "tier12": {
+      "recall": 0.2692307692307692,
+      "hits": 7,
+      "total_reference": 26,
+      "matched_edges": [
+        [
+          "mass transport deposit",
+          "hasdescriptor",
+          "chaotic"
+        ],
+        [
+          "mass transport deposit",
+          "hasdescriptor",
+          "transparent"
+        ],
+        [
+          "mass transport deposit",
+          "hasdescriptor",
+          "blocky"
+        ],
+        [
+          "mass transport deposit",
+          "hasdescriptor",
+          "layered"
+        ],
+        [
+          "mass transport deposit",
+          "hasdescriptor",
+          "continuous"
+        ],
+        [
+          "mass transport deposit",
+          "hasdescriptor",
+          "discontinuous"
+        ],
+        [
+          "mass transport deposit",
+          "hasdescriptor",
+          "low-amplitude"
+        ]
+      ]
+    }
+  },
+  "hallucination": {
+    "strong_support": 33,
+    "weak_support": 10,
+    "not_supported": 16,
+    "total": 59,
+    "hallucination_rate": 0.2711864406779661
+  },
+  "relation_distribution_by_tier": {
+    "1": {
+      "affects": 7,
+      "causes": 7,
+      "controls": 2,
+      "hasDescriptor": 12,
+      "occursIn": 5,
+      "partOf": 1,
+      "triggers": 9,
+      "underlies": 1,
+      "overlies": 0
+    },
+    "2": {
+      "affects": 2,
+      "causes": 2,
+      "hasDescriptor": 3,
+      "occursIn": 5,
+      "overlies": 1,
+      "triggers": 2,
+      "partOf": 0,
+      "controls": 0,
+      "underlies": 0
+    }
+  },
+  "triples_final": [
+    {
+      "subject": "basal shear surface",
+      "relation": "affects",
+      "object": "scours",
+      "subject_type": "entity",
+      "object_type": "entity",
+      "tier": 1,
+      "tier_label": "verified",
+      "verdict": "STRONG_SUPPORT",
+      "origin": "iter_b",
+      "evidence": "and basal shear surface scours. (a) Shaded depth map of the basal shear surface showing wide basal scours.",
+      "query": "Describe the relationship between erosion and basal surface in mass transport deposits.",
+      "strategy": "causal",
+      "model": "Qwen/Qwen2.5-7B-Instruct",
+      "reasoning": "The source text mentions \"basal shear surface scours\" which directly indicates that the basal shear surface influences or modifies the formation of scours.",
+      "support_count": 2,
+      "supporting_papers": [
+        "1-s2.0-S0025322713000571-main-checkpoint",
+        "RichardsonetalBasinResearch2011-online (1)"
+      ]
+    },
+    {
+      "subject": "burial compaction",
+      "relation": "affects",
+      "object": "shear strength",
+      "subject_type": "process",
+      "object_type": "property",
+      "tier": 1,
+      "tier_label": "verified",
+      "verdict": "STRONG_SUPPORT",
+      "origin": "iter_b",
+      "evidence": "\"The sediment slowly densiﬁed, and the shear strength increased by about 65%.\"",
+      "query": "Describe the relationship between burial compaction and thickness in mass transport deposits.",
+      "strategy": "causal",
+      "model": "Qwen/Qwen2.5-7B-Instruct",
+      "reasoning": "The source text directly states that densification of the sediment led to an increase in shear strength, which supports the claim that burial compaction affects shear strength.",
+      "support_count": 3,
+      "supporting_papers": [
+        "Moscardelli_and_Wood_2008",
+        "Submarine_Mass_Movements_on_Continental",
+        "Submarine_Mass_Movements_on_Continental-checkpoint"
+      ]
+    },
+    {
+      "subject": "detachment_of_blocks_from_headscarp",
+      "relation": "affects",
+      "object": "progressive_breakup_into_smaller_blocks",
+      "subject_type": "process",
+      "object_type": "process",
+      "tier": 1,
+      "tier_label": "verified",
+      "verdict": "STRONG_SUPPORT",
+      "origin": "iter_b",
+      "evidence": "\"As each block detached from the main headscarp, it was progressively broken up into smaller blocks as it migrated through the system and accumulated at the back of the lobe deposit.\"",
+      "query": "Describe the relationship between retrogressive failure and headscarp in mass transport deposits.",
+      "strategy": "causal",
+      "model": "Qwen/Qwen2.5-7B-Instruct",
+      "reasoning": "The source text directly states that blocks detached from the headscarp and were progressively broken up into smaller blocks.",
+      "support_count": 2,
+      "supporting_papers": [
+        "1-s2.0-S0025322712000412-main",
+        "1-s2.0-S0025322712000412-main-checkpoint"
+      ]
+    },
+    {
+      "subject": "gas hydrate dissociation",
+      "relation": "affects",
+      "object": "pore pressure buildup",
+      "subject_type": "process",
+      "object_type": "condition",
+      "tier": 1,
+      "tier_label": "verified",
+      "verdict": "STRONG_SUPPORT",
+      "origin": "iter_b",
+      "evidence": "\"In theory, when methane hydrate dissociates this results in an increase of volume and pressure buildup, because 1 m3 of methane hydrate dissociation develops into 164 m3 of methane gas at standard temperature and pressure conditions.\"",
+      "query": "What is the relationship between gas hydrate dissociation and slope failure in submarine environments?",
+      "strategy": "causal",
+      "model": "Qwen/Qwen2.5-7B-Instruct",
+      "reasoning": "The source text directly states that methane hydrate dissociation leads to an increase in volume and pressure buildup, which can be interpreted as affecting pore pressure.",
+      "support_count": 2,
+      "supporting_papers": [
+        "3-s2.0-B9780128130810007047-main",
+        "3-s2.0-B9780128130810007047-main-checkpoint"
+      ]
+    },
+    {
+      "subject": "gas hydrate melting",
+      "relation": "affects",
+      "object": "retrogressive failures",
+      "subject_type": "process",
+      "object_type": "event",
+      "tier": 1,
+      "tier_label": "verified",
+      "verdict": "STRONG_SUPPORT",
+      "origin": "iter_b",
+      "evidence": "\"Sultan et al. (2004b) propose that gas solubility changes play a role in hydrate dissociation as well, at the top of the gas hydrate stability zone, leading to gas hydrate melting and potentially retrogressive failures.\"",
+      "query": "Describe the relationship between gas hydrate dissociation and slope failure in mass transport deposits.",
+      "strategy": "causal",
+      "model": "Qwen/Qwen2.5-7B-Instruct",
+      "reasoning": "The source text directly states that gas hydrate melting can lead to retrogressive failures.",
+      "support_count": 3,
+      "supporting_papers": [
+        "3-s2.0-B9780128130810007047-main",
+        "D. Leynaud",
+        "D. Leynaud-checkpoint"
+      ]
+    },
+    {
+      "subject": "low flow factor",
+      "relation": "affects",
+      "object": "slope is essentially unaffected",
+      "subject_type": "Flow factor",
+      "object_type": "Slope condition",
+      "tier": 1,
+      "tier_label": "verified",
+      "verdict": "STRONG_SUPPORT",
+      "origin": "iter_b",
+      "evidence": "\"In cases where flow factor is low, the zone immediately adjacent to the stress-drop experiences failure but far from the stress drop, the slope is essentially unaffected.\"",
+      "query": "What is the relationship between slope failure and mass transport deposit in submarine environments?",
+      "strategy": "causal",
+      "model": "Qwen/Qwen2.5-7B-Instruct",
+      "reasoning": "The sentence directly states that when the flow factor is low, the slope is essentially unaffected.",
+      "support_count": 3,
+      "supporting_papers": [
+        "1-s2.0-S0025322712000412-main",
+        "1-s2.0-S0025322712000412-main-checkpoint",
+        "RichardsonetalBasinResearch2011-online (1)"
+      ]
+    },
+    {
+      "subject": "wave action",
+      "relation": "affects",
+      "object": "equilibrium conditions",
+      "subject_type": "",
+      "object_type": "",
+      "tier": 1,
+      "tier_label": "verified",
+      "verdict": "",
+      "origin": "both",
+      "evidence": "",
+      "query": "",
+      "strategy": "",
+      "model": "",
+      "reasoning": "",
+      "support_count": 3,
+      "supporting_papers": [
+        "9781565762879_ch02",
+        "9781565762879_ch02-checkpoint",
+        "Moscardelli_and_Wood_2008"
+      ]
+    },
+    {
+      "subject": "downslope increase in the basal shear surface tilt",
+      "relation": "causes",
+      "object": "increases in fault angle",
+      "subject_type": "basal shear surface",
+      "object_type": "fault angles",
+      "tier": 1,
+      "tier_label": "verified",
+      "verdict": "STRONG_SUPPORT",
+      "origin": "iter_b",
+      "evidence": "Secondly, the increases in fault angle maybe caused by a corresponding downslope increase in the basal shear surface tilt;",
+      "query": "What controls the thickness of mass transport deposits?",
+      "strategy": "causal",
+      "model": "Qwen/Qwen2.5-7B-Instruct",
+      "reasoning": "The source text directly states that the increases in fault angle are caused by a corresponding downslope increase in the basal shear surface tilt.",
+      "support_count": 3,
+      "supporting_papers": [
+        "9781565762879_ch02",
+        "9781565762879_ch02-checkpoint",
+        "RichardsonetalBasinResearch2011-online (1)"
+      ]
+    },
+    {
+      "subject": "gas solubility changes",
+      "relation": "causes",
+      "object": "gas hydrate dissociation",
+      "subject_type": "process",
+      "object_type": "process",
+      "tier": 1,
+      "tier_label": "verified",
+      "verdict": "STRONG_SUPPORT",
+      "origin": "iter_b",
+      "evidence": "\"Sultan et al. (2004b) propose that gas solubility changes play a role in hydrate dissociation as well, at the top of the gas hydrate stability zone, leading to gas hydrate melting and potentially retrogressive failures.\"",
+      "query": "What role does gas hydrate dissociation play in submarine landslides?",
+      "strategy": "causal",
+      "model": "Qwen/Qwen2.5-7B-Instruct",
+      "reasoning": "The source text suggests that gas solubility changes can lead to hydrate dissociation, which aligns with the claim.",
+      "support_count": 3,
+      "supporting_papers": [
+        "3-s2.0-B9780128130810007047-main",
+        "D. Leynaud",
+        "D. Leynaud-checkpoint"
+      ]
+    },
+    {
+      "subject": "higher sedimentation rates from the amazon fan system",
+      "relation": "causes",
+      "object": "increased frequency of slope instabilities",
+      "subject_type": "phenomenon",
+      "object_type": "phenomenon",
+      "tier": 1,
+      "tier_label": "verified",
+      "verdict": "STRONG_SUPPORT",
+      "origin": "iter_b",
+      "evidence": "The thinner and more frequent episodes of mass-transport deposits that occurred in the Amapá Megaslide Complex could result from higher sedimentation rates from the Amazon fan system, leading to increased frequency of slope instabilities.",
+      "query": "Describe the relationship between rapid sedimentation and fluid overpressure in mass transport deposits.",
+      "strategy": "causal",
+      "model": "Qwen/Qwen2.5-7B-Instruct",
+      "reasoning": "The source text directly links higher sedimentation rates from the Amazon fan system to an increase in the frequency of slope instabilities through the occurrence of more frequent mass-transport depos",
+      "support_count": 2,
+      "supporting_papers": [
+        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_",
+        "Moscardelli_and_Wood_2008"
+      ]
+    },
+    {
+      "subject": "low flow factor",
+      "relation": "causes",
+      "object": "zone immediately adjacent to the stress-drop experiences failure",
+      "subject_type": "Flow factor",
+      "object_type": "Slope failure",
+      "tier": 1,
+      "tier_label": "verified",
+      "verdict": "STRONG_SUPPORT",
+      "origin": "iter_b",
+      "evidence": "In cases where flow factor is low, the zone immediately adjacent to the stress-drop experiences failure but far from the stress drop, the slope is essentially unaffected.",
+      "query": "What is the relationship between slope failure and mass transport deposit in submarine environments?",
+      "strategy": "causal",
+      "model": "Qwen/Qwen2.5-7B-Instruct",
+      "reasoning": "The sentence directly links a low flow factor to the failure of the zone immediately adjacent to the stress-drop.",
+      "support_count": 3,
+      "supporting_papers": [
+        "1-s2.0-S0025322712000412-main",
+        "1-s2.0-S0025322712000412-main-checkpoint",
+        "RichardsonetalBasinResearch2011-online (1)"
+      ]
+    },
+    {
+      "subject": "sea-level lowstands",
+      "relation": "causes",
+      "object": "slope failure",
+      "subject_type": "condition",
+      "object_type": "event",
+      "tier": 1,
+      "tier_label": "verified",
+      "verdict": "STRONG_SUPPORT",
+      "origin": "iter_b",
+      "evidence": "\"Also during sea-level lowstands, dissociation of clathrates due to depressurization in the near-subsurface section has been tied to slope instability and hence slope failure (Carpenter, 1987; Maslin et al., 1998; Maslin et al., 2004).\"",
+      "query": "Describe the relationship between wave loading and slope failure in mass transport deposits.",
+      "strategy": "causal",
+      "model": "Qwen/Qwen2.5-7B-Instruct",
+      "reasoning": "The source text directly links sea-level lowstands to slope failure through the mechanism of clathrate dissociation leading to slope instability.",
+      "support_count": 3,
+      "supporting_papers": [
+        "9781565762879_ch02",
+        "9781565762879_ch02-checkpoint",
+        "Moscardelli_and_Wood_2008"
+      ]
+    },
+    {
+      "subject": "stress drop",
+      "relation": "causes",
+      "object": "zone immediately adjacent to the stress-drop experiences failure",
+      "subject_type": "Geological feature",
+      "object_type": "Slope failure",
+      "tier": 1,
+      "tier_label": "verified",
+      "verdict": "STRONG_SUPPORT",
+      "origin": "iter_b",
+      "evidence": "\"In cases where flow factor is low, the zone immediately adjacent to the stress-drop experiences failure but far from the stress drop, the slope is essentially unaffected.\"",
+      "query": "What is the relationship between slope failure and mass transport deposit in submarine environments?",
+      "strategy": "causal",
+      "model": "Qwen/Qwen2.5-7B-Instruct",
+      "reasoning": "The sentence indicates that when the flow factor is low, the zone next to the stress drop experiences failure, which aligns with the claim.",
+      "support_count": 3,
+      "supporting_papers": [
+        "1-s2.0-S0025322712000412-main",
+        "1-s2.0-S0025322712000412-main-checkpoint",
+        "RichardsonetalBasinResearch2011-online (1)"
+      ]
+    },
+    {
+      "subject": "wave action",
+      "relation": "causes",
+      "object": "potential for mass-transport events",
+      "subject_type": "",
+      "object_type": "",
+      "tier": 1,
+      "tier_label": "verified",
+      "verdict": "",
+      "origin": "both",
+      "evidence": "",
+      "query": "",
+      "strategy": "",
+      "model": "",
+      "reasoning": "",
+      "support_count": 3,
+      "supporting_papers": [
+        "9781565762879_ch02",
+        "9781565762879_ch02-checkpoint",
+        "Moscardelli_and_Wood_2008"
+      ]
+    },
+    {
+      "subject": "coarse-grained strata (turbidites) and associated seabed topographic highs",
+      "relation": "controls",
+      "object": "location of mtds headwall scarps",
+      "subject_type": "geological feature",
+      "object_type": "geological feature",
+      "tier": 1,
+      "tier_label": "verified",
+      "verdict": "STRONG_SUPPORT",
+      "origin": "iter_b",
+      "evidence": "data, the distribution of coarse- grained strata (turbidites) and associated seabed topographic highs, were found to be important in controlling the location of MTDs headwall scarps in parts of the South China Sea (Sun et al., 2017).",
+      "query": "What controls the basal surface morphology of MTDs?",
+      "strategy": "causal",
+      "model": "Qwen/Qwen2.5-7B-Instruct",
+      "reasoning": "The sentence directly states that the distribution of coarse-grained strata and associated seabed topographic highs control the location of MTDs headwall scarps.",
+      "support_count": 3,
+      "supporting_papers": [
+        "1-s2.0-S0264817216304585-main",
+        "1-s2.0-S0264817216304585-main-checkpoint",
+        "3-s2.0-B9780128130810007047-main-checkpoint"
+      ]
+    },
+    {
+      "subject": "pre-tectonic geometry above the basal shear surface",
+      "relation": "controls",
+      "object": "thickness increase",
+      "subject_type": "strata",
+      "object_type": "strata",
+      "tier": 1,
+      "tier_label": "verified",
+      "verdict": "STRONG_SUPPORT",
+      "origin": "iter_b",
+      "evidence": "Firstly, the deformed strata were not initially bedded in a flat layer, but along a downslope thickening growth stratal wedge; some of the thickness increase is therefore caused by the pre-tectonic geometry above the basal shear surface.",
+      "query": "What controls the thickness of mass transport deposits?",
+      "strategy": "causal",
+      "model": "Qwen/Qwen2.5-7B-Instruct",
+      "reasoning": "The source text directly states that the pre-tectonic geometry above the basal shear surface causes part of the thickness increase.",
+      "support_count": 3,
+      "supporting_papers": [
+        "9781565762879_ch02",
+        "9781565762879_ch02-checkpoint",
+        "RichardsonetalBasinResearch2011-online (1)"
+      ]
+    },
+    {
+      "subject": "debris flow",
+      "relation": "hasDescriptor",
+      "object": "low-amplitude",
+      "subject_type": "SeismicObject",
+      "object_type": "Descriptor",
+      "tier": 1,
+      "tier_label": "verified",
+      "verdict": "STRONG_SUPPORT",
+      "origin": "iter_b",
+      "evidence": "Debrites and other mass-wasted strata are seen as low-amplitude regions (Figures 13A, 14A).",
+      "query": "What deposits or features show low-amplitude seismic facies?",
+      "strategy": "descriptor",
+      "model": "Qwen/Qwen2.5-7B-Instruct",
+      "reasoning": "The source text directly states that debrites are seen as low-amplitude regions.",
+      "support_count": 3,
+      "supporting_papers": [
+        "9781565762879_ch02",
+        "Alves_AAPG_MTDs_14",
+        "Alves_AAPG_MTDs_14-checkpoint"
+      ]
+    },
+    {
+      "subject": "folds and thrusts",
+      "relation": "hasDescriptor",
+      "object": "discontinuous",
+      "subject_type": "SeismicObject",
+      "object_type": "Descriptor",
+      "tier": 1,
+      "tier_label": "verified",
+      "verdict": "STRONG_SUPPORT",
+      "origin": "iter_b",
+      "evidence": "\"Chaotic, discontinuous and weak amplitude reﬂection characterizes large-scale thrusts and fold systems.\"",
+      "query": "What objects show weak amplitude seismic character?",
+      "strategy": "descriptor",
+      "model": "Qwen/Qwen2.5-7B-Instruct",
+      "reasoning": "The source text describes \"discontinuous\" as a characteristic of large-scale thrusts and fold systems, which aligns with the claim.",
+      "support_count": 3,
+      "supporting_papers": [
+        "Chinese J of Geophysics - 2013 - WU - Analysis on Seismic Characteristics and Triggering Mechanisms of Mass Transport",
+        "Chinese J of Geophysics - 2013 - WU - Analysis on Seismic Characteristics and Triggering Mechanisms of Mass Transport-checkpoint",
+        "RichardsonetalBasinResearch2011-online (1)"
+      ]
+    },
+    {
+      "subject": "hummocky deposits",
+      "relation": "hasDescriptor",
+      "object": "hummocky",
+      "subject_type": "SeismicObject",
+      "object_type": "Descriptor",
+      "tier": 1,
+      "tier_label": "verified",
+      "verdict": "STRONG_SUPPORT",
+      "origin": "iter_b",
+      "evidence": "Huntec seismic data show local hummocky deposits (< 5 m thick) that unconformably overlie the slope below the gullies (Fig. 16).",
+      "query": "What objects show hummocky surface seismic character?",
+      "strategy": "descriptor",
+      "model": "Qwen/Qwen2.5-7B-Instruct",
+      "reasoning": "The source text directly mentions \"hummocky deposits,\" which characterizes these deposits as such.",
+      "support_count": 3,
+      "supporting_papers": [
+        "9781565762879_ch03-checkpoint",
+        "Submarine_Mass_Movements_on_Continental",
+        "Submarine_Mass_Movements_on_Continental-checkpoint"
+      ]
+    },
+    {
+      "subject": "mass transport deposit",
+      "relation": "hasDescriptor",
+      "object": "low-amplitude",
+      "subject_type": "",
+      "object_type": "",
+      "tier": 1,
+      "tier_label": "verified",
+      "verdict": "",
+      "origin": "both",
+      "evidence": "",
+      "query": "",
+      "strategy": "",
+      "model": "",
+      "reasoning": "",
+      "support_count": 3,
+      "supporting_papers": [
+        "9781565762879_ch02-checkpoint",
+        "Giacomo Dalla Valle",
+        "Giacomo Dalla Valle-checkpoint"
+      ]
+    },
+    {
+      "subject": "mass transport deposit",
+      "relation": "hasDescriptor",
+      "object": "chaotic",
+      "subject_type": "",
+      "object_type": "",
+      "tier": 1,
+      "tier_label": "verified",
+      "verdict": "",
+      "origin": "both",
+      "evidence": "",
+      "query": "",
+      "strategy": "",
+      "model": "",
+      "reasoning": "",
+      "support_count": 3,
+      "supporting_papers": [
+        "1-s2.0-S0264817216304585-main",
+        "1-s2.0-S0264817216304585-main-checkpoint",
+        "9781565762879_ch02"
+      ]
+    },
+    {
+      "subject": "mass transport deposit",
+      "relation": "hasDescriptor",
+      "object": "transparent",
+      "subject_type": "",
+      "object_type": "",
+      "tier": 1,
+      "tier_label": "verified",
+      "verdict": "",
+      "origin": "both",
+      "evidence": "",
+      "query": "",
+      "strategy": "",
+      "model": "",
+      "reasoning": "",
+      "support_count": 3,
+      "supporting_papers": [
+        "9781565762879_ch02",
+        "9781565762879_ch02-checkpoint",
+        "Dos-Reis-et-al-2016-MPG"
+      ]
+    },
+    {
+      "subject": "mass transport deposit",
+      "relation": "hasDescriptor",
+      "object": "continuous",
+      "subject_type": "",
+      "object_type": "",
+      "tier": 1,
+      "tier_label": "verified",
+      "verdict": "",
+      "origin": "both",
+      "evidence": "",
+      "query": "",
+      "strategy": "",
+      "model": "",
+      "reasoning": "",
+      "support_count": 4,
+      "supporting_papers": [
+        "1-s2.0-S0025322713000571-main",
+        "1-s2.0-S0025322713000571-main-checkpoint",
+        "Alves_AAPG_MTDs_14-checkpoint",
+        "Moscardelli_and_Wood_2008"
+      ]
+    },
+    {
+      "subject": "mass transport deposit",
+      "relation": "hasDescriptor",
+      "object": "blocky",
+      "subject_type": "",
+      "object_type": "",
+      "tier": 1,
+      "tier_label": "verified",
+      "verdict": "",
+      "origin": "both",
+      "evidence": "",
+      "query": "",
+      "strategy": "",
+      "model": "",
+      "reasoning": "",
+      "support_count": 3,
+      "supporting_papers": [
+        "1-s2.0-S0025322713000571-main",
+        "Alves_AAPG_MTDs_14",
+        "Alves_AAPG_MTDs_14-checkpoint"
+      ]
+    },
+    {
+      "subject": "mass transport deposit",
+      "relation": "hasDescriptor",
+      "object": "hummocky",
+      "subject_type": "",
+      "object_type": "",
+      "tier": 1,
+      "tier_label": "verified",
+      "verdict": "",
+      "origin": "both",
+      "evidence": "",
+      "query": "",
+      "strategy": "",
+      "model": "",
+      "reasoning": "",
+      "support_count": 3,
+      "supporting_papers": [
+        "9781565762879_ch02",
+        "9781565762879_ch02-checkpoint",
+        "RichardsonetalBasinResearch2011-online (1)"
+      ]
+    },
+    {
+      "subject": "mass transport deposit",
+      "relation": "hasDescriptor",
+      "object": "faulted",
+      "subject_type": "SeismicObject",
+      "object_type": "Descriptor",
+      "tier": 1,
+      "tier_label": "verified",
+      "verdict": "STRONG_SUPPORT",
+      "origin": "iter_b",
+      "evidence": "The location of the three seismic sections is shown in Figure 2. MTD = mass transport deposit. Alves et al. 799 800 Mass-Transport Deposits and Seismic Texture Note the presence of a high-to moderate-amplitude faulted MTD A in sequences N20–N60 and growing diapirs deforming older MTDs in E40–N10.",
+      "query": "Describe the seismic character of mass transport complex including amplitude, continuity, and internal reflections.",
+      "strategy": "descriptor",
+      "model": "Qwen/Qwen2.5-7B-Instruct",
+      "reasoning": "The source text mentions that there is a \"faulted MTD A\" present in certain sequences, which directly supports the claim.",
+      "support_count": 3,
+      "supporting_papers": [
+        "1-s2.0-S0025322713000571-main",
+        "Alves_AAPG_MTDs_14",
+        "Alves_AAPG_MTDs_14-checkpoint"
+      ]
+    },
+    {
+      "subject": "mass transport deposit",
+      "relation": "hasDescriptor",
+      "object": "deformed",
+      "subject_type": "SeismicObject",
+      "object_type": "Descriptor",
+      "tier": 1,
+      "tier_label": "verified",
+      "verdict": "STRONG_SUPPORT",
+      "origin": "iter_b",
+      "evidence": "and are expressed in highly distorted and deformed beds that contrast sharply against layered beds. As such, the deformed rocks are described as a separate package, and we refer to these deposits as MTDs (or as the deformed shallow Frio, Figures 5, 6).",
+      "query": "Are mass transport deposits characterized by undeformed seismic facies?",
+      "strategy": "descriptor",
+      "model": "Qwen/Qwen2.5-7B-Instruct",
+      "reasoning": "The source text directly mentions that the mass-transport deposits (MTDs) are deformed and contrasts them with undistorted beds.",
+      "support_count": 2,
+      "supporting_papers": [
+        "845",
+        "845-checkpoint"
+      ]
+    },
+    {
+      "subject": "mtd_2.2",
+      "relation": "hasDescriptor",
+      "object": "high-amplitude",
+      "subject_type": "SeismicObject",
+      "object_type": "Descriptor",
+      "tier": 1,
+      "tier_label": "verified",
+      "verdict": "STRONG_SUPPORT",
+      "origin": "iter_b",
+      "evidence": "\"MTD_2.2 is characterized by discontinuous to chaotic reflectors with high\"",
+      "query": "Are mass transport deposits characterized by high-amplitude seismic facies?",
+      "strategy": "descriptor",
+      "model": "Qwen/Qwen2.5-7B-Instruct",
+      "reasoning": "The source text indicates that MTD_2.2 is characterized by high-amplitude reflectors, which directly supports the claim.",
+      "support_count": 3,
+      "supporting_papers": [
+        "9781565762879_ch02-checkpoint",
+        "Giacomo Dalla Valle",
+        "Giacomo Dalla Valle-checkpoint"
+      ]
+    },
+    {
+      "subject": "mass transport complexes (mtcs)",
+      "relation": "occursIn",
+      "object": "deep-water areas",
+      "subject_type": "geological_feature",
+      "object_type": "environment",
+      "tier": 1,
+      "tier_label": "verified",
+      "verdict": "STRONG_SUPPORT",
+      "origin": "iter_b",
+      "evidence": "\"An incredible variety of Plio-cene- and Pleistocene-age MTCs have been documented in deep-water areas around o¡shoreTrinidad (Moscardelli et al., 2006).\"",
+      "query": "Does mass transport deposit occur in deep-water environment?",
+      "strategy": "context",
+      "model": "Qwen/Qwen2.5-7B-Instruct",
+      "reasoning": "The source text directly states that MTCs have been documented in deep-water areas.",
+      "support_count": 3,
+      "supporting_papers": [
+        "Giacomo Dalla Valle",
+        "Giacomo Dalla Valle-checkpoint",
+        "Moscardelli_and_Wood_2008"
+      ]
+    },
+    {
+      "subject": "mass transport complexes (mtcs)",
+      "relation": "occursIn",
+      "object": "basins in offshore northeastern south america",
+      "subject_type": "geological_feature",
+      "object_type": "geological_location",
+      "tier": 1,
+      "tier_label": "verified",
+      "verdict": "STRONG_SUPPORT",
+      "origin": "iter_b",
+      "evidence": "\"Mass transport complexes (MTCs) play a large role in the stratigraphic fill of basins in offshore northeastern South America, as well as along other continental margins around the world (Table 1).\"",
+      "query": "Does mass transport deposit occur in deep-water environment?",
+      "strategy": "context",
+      "model": "Qwen/Qwen2.5-7B-Instruct",
+      "reasoning": "The source text directly states that MTCs play a significant role in the stratigraphic fill of basins in offshore northeastern South America.",
+      "support_count": 3,
+      "supporting_papers": [
+        "Giacomo Dalla Valle",
+        "Giacomo Dalla Valle-checkpoint",
+        "Moscardelli_and_Wood_2008"
+      ]
+    },
+    {
+      "subject": "mass transport deposit",
+      "relation": "occursIn",
+      "object": "progradational margin-clinotheme",
+      "subject_type": "",
+      "object_type": "",
+      "tier": 1,
+      "tier_label": "verified",
+      "verdict": "",
+      "origin": "both",
+      "evidence": "",
+      "query": "",
+      "strategy": "",
+      "model": "",
+      "reasoning": "",
+      "support_count": 3,
+      "supporting_papers": [
+        "Giacomo Dalla Valle",
+        "Giacomo Dalla Valle-checkpoint",
+        "RichardsonetalBasinResearch2011-online (1)"
+      ]
+    },
+    {
+      "subject": "mass transport deposit",
+      "relation": "occursIn",
+      "object": "shelf-edge",
+      "subject_type": "geological_feature",
+      "object_type": "geological_feature",
+      "tier": 1,
+      "tier_label": "verified",
+      "verdict": "STRONG_SUPPORT",
+      "origin": "iter_b",
+      "evidence": "\"Each MTD is a relatively extensive but “thin skinned” deposit (typically less than 80 m) generated at the expense of one progradational margin-clinotheme and may form either at the shelf-edge or in the slope.\"",
+      "query": "Does mass transport deposit occur in continental margin?",
+      "strategy": "context",
+      "model": "Qwen/Qwen2.5-7B-Instruct",
+      "reasoning": "The source text mentions that MTDs can form \"at the shelf-edge,\" which directly supports the claim.",
+      "support_count": 3,
+      "supporting_papers": [
+        "Giacomo Dalla Valle",
+        "Giacomo Dalla Valle-checkpoint",
+        "RichardsonetalBasinResearch2011-online (1)"
+      ]
+    },
+    {
+      "subject": "pará-maranhão megalandslide",
+      "relation": "occursIn",
+      "object": "foz do amazonas basin",
+      "subject_type": "mass transport deposit",
+      "object_type": "basin",
+      "tier": 1,
+      "tier_label": "verified",
+      "verdict": "STRONG_SUPPORT",
+      "origin": "iter_b",
+      "evidence": "This megaslide was named Pará-Maranhão Megalisde since a great part of it extends to the neighbor Pará-Maranhão basin (Figs. 1 and 2).",
+      "query": "What is the vertical sequence around mass transport deposits?",
+      "strategy": "context",
+      "model": "Qwen/Qwen2.5-7B-Instruct",
+      "reasoning": "The source text directly mentions that the Pará-Maranhão Megalandslide extends into the Pará-Maranhão basin, which is adjacent to the Foz do Amazonas Basin.",
+      "support_count": 3,
+      "supporting_papers": [
+        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_",
+        "Moscardelli_and_Wood_2008",
+        "RichardsonetalBasinResearch2011-online (1)"
+      ]
+    },
+    {
+      "subject": "turbidite",
+      "relation": "partOf",
+      "object": "mass transport deposit",
+      "subject_type": "STRATIGRAPHIC_UNIT",
+      "object_type": "GEOMORPHOLOGIC_FORMATION",
+      "tier": 1,
+      "tier_label": "verified",
+      "verdict": "STRONG_SUPPORT",
+      "origin": "iter_b",
+      "evidence": "\"Figure 10 illustrates a mass-transport deposit comprising a succession of thrusted, deep-water turbidite deposits that have largely remained intact.\"",
+      "query": "In what geological setting does turbidite occur?",
+      "strategy": "context",
+      "model": "Qwen/Qwen2.5-7B-Instruct",
+      "reasoning": "The source text directly states that turbidite deposits are part of a mass-transport deposit.",
+      "support_count": 3,
+      "supporting_papers": [
+        "1-s2.0-S0264817216304585-main",
+        "9781565762879_ch02",
+        "9781565762879_ch02-checkpoint"
+      ]
+    },
+    {
+      "subject": "front portions of these beds",
+      "relation": "triggers",
+      "object": "failure",
+      "subject_type": "Mass-transport deposit",
+      "object_type": "Slope",
+      "tier": 1,
+      "tier_label": "verified",
+      "verdict": "STRONG_SUPPORT",
+      "origin": "iter_b",
+      "evidence": "\"is more difficult to discern because only the front portions of these beds actually failed (Fig. 8).\"",
+      "query": "What is the relationship between slope failure and mass transport deposit in submarine environments?",
+      "strategy": "causal",
+      "model": "Qwen/Qwen2.5-7B-Instruct",
+      "reasoning": "The sentence directly states that the front portions of these beds fail, which aligns with the claim that they trigger failure.",
+      "support_count": 3,
+      "supporting_papers": [
+        "1-s2.0-S0025322712000412-main",
+        "1-s2.0-S0025322712000412-main-checkpoint",
+        "RichardsonetalBasinResearch2011-online (1)"
+      ]
+    },
+    {
+      "subject": "gas hydrate dissociation",
+      "relation": "triggers",
+      "object": "secondary slope failures",
+      "subject_type": "process",
+      "object_type": "event",
+      "tier": 1,
+      "tier_label": "verified",
+      "verdict": "STRONG_SUPPORT",
+      "origin": "iter_b",
+      "evidence": "Modelling illustrated that the area of critical hydrate stability changes along the mid-Norwegian margin correspond remarkably well with the location of the Storegga Headwall, as inferred from seismic reflection profiles (Mienert et al., 2005), and hence, hydrate dissociation could precondition secondary slope failures along the upper slope in the retrogressive slide development of the Storegga la",
+      "query": "What role does gas hydrate dissociation play in submarine landslides?",
+      "strategy": "causal",
+      "model": "Qwen/Qwen2.5-7B-Instruct",
+      "reasoning": "The source text directly states that hydrate dissociation could precondition secondary slope failures, which aligns with the claim.",
+      "support_count": 3,
+      "supporting_papers": [
+        "3-s2.0-B9780128130810007047-main",
+        "D. Leynaud",
+        "D. Leynaud-checkpoint"
+      ]
+    },
+    {
+      "subject": "gate release",
+      "relation": "triggers",
+      "object": "prominent headscarp formation",
+      "subject_type": "",
+      "object_type": "",
+      "tier": 1,
+      "tier_label": "verified",
+      "verdict": "",
+      "origin": "both",
+      "evidence": "",
+      "query": "",
+      "strategy": "",
+      "model": "",
+      "reasoning": "",
+      "support_count": 2,
+      "supporting_papers": [
+        "1-s2.0-S0025322712000412-main",
+        "1-s2.0-S0025322712000412-main-checkpoint"
+      ]
+    },
+    {
+      "subject": "headscarp",
+      "relation": "triggers",
+      "object": "zone of horst-graben structures and detached blocks",
+      "subject_type": "landform",
+      "object_type": "geological feature",
+      "tier": 1,
+      "tier_label": "verified",
+      "verdict": "STRONG_SUPPORT",
+      "origin": "iter_b",
+      "evidence": "Within 5 s of flow initiation, a prominent headscarp formed ~25 cm upslope of the gate (Fig. 10B). A zone of horst-graben structures and detached blocks developed between this headscarp and the gate.",
+      "query": "What is the relationship between retrogressive failure and headscarp in submarine environments?",
+      "strategy": "causal",
+      "model": "Qwen/Qwen2.5-7B-Instruct",
+      "reasoning": "The source text directly states that a headscarp forms first, followed by the development of a zone of horst-graben structures and detached blocks between the headscarp and the gate. This indicates th",
+      "support_count": 2,
+      "supporting_papers": [
+        "1-s2.0-S0025322712000412-main",
+        "1-s2.0-S0025322712000412-main-checkpoint"
+      ]
+    },
+    {
+      "subject": "headscarp",
+      "relation": "triggers",
+      "object": "formation_of_horst_graben_structures_and_detached_blocks",
+      "subject_type": "landform",
+      "object_type": "geological_process",
+      "tier": 1,
+      "tier_label": "verified",
+      "verdict": "STRONG_SUPPORT",
+      "origin": "iter_b",
+      "evidence": "\"Within 5 s of flow initiation, a prominent headscarp formed ~25 cm upslope of the gate (Fig. 10B). A zone of horst-graben structures and detached blocks developed between this headscarp and the gate.\"",
+      "query": "Describe the relationship between retrogressive failure and headscarp in mass transport deposits.",
+      "strategy": "causal",
+      "model": "Qwen/Qwen2.5-7B-Instruct",
+      "reasoning": "The source text directly states that the headscarp forms first, followed by the development of horst-graben structures and detached blocks between the headscarp and the gate.",
+      "support_count": 2,
+      "supporting_papers": [
+        "1-s2.0-S0025322712000412-main",
+        "1-s2.0-S0025322712000412-main-checkpoint"
+      ]
+    },
+    {
+      "subject": "higher sedimentation rates from the amazon fan system",
+      "relation": "triggers",
+      "object": "thinner and more frequent episodes of mass-transport deposits",
+      "subject_type": "phenomenon",
+      "object_type": "phenomenon",
+      "tier": 1,
+      "tier_label": "verified",
+      "verdict": "STRONG_SUPPORT",
+      "origin": "iter_b",
+      "evidence": "The thinner and more frequent episodes of mass-transport deposits that occurred in the Amapá Megaslide Complex could result from higher sedimentation rates from the Amazon fan system, leading to increased frequency of slope instabilities.",
+      "query": "Describe the relationship between rapid sedimentation and fluid overpressure in mass transport deposits.",
+      "strategy": "causal",
+      "model": "Qwen/Qwen2.5-7B-Instruct",
+      "reasoning": "The source text directly states that higher sedimentation rates from the Amazon fan system resulted in thinner and more frequent episodes of mass-transport deposits.",
+      "support_count": 2,
+      "supporting_papers": [
+        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_",
+        "Moscardelli_and_Wood_2008"
+      ]
+    },
+    {
+      "subject": "increased seismic activity",
+      "relation": "triggers",
+      "object": "large failures",
+      "subject_type": "event",
+      "object_type": "event",
+      "tier": 1,
+      "tier_label": "verified",
+      "verdict": "STRONG_SUPPORT",
+      "origin": "iter_b",
+      "evidence": "The largest submarine slides (e.g. Storegga, Trænadjupet, Andøya) on the glaciated Norwegian margin occurred during the Holocene, a time of rapid ice sheet decay, continental uplift and increased seismic activity, one of the most important triggering mechanisms for large failures during deglaciation processes.",
+      "query": "What is the role of seismic loading in triggering mass movements?",
+      "strategy": "causal",
+      "model": "Qwen/Qwen2.5-7B-Instruct",
+      "reasoning": "The source text directly states that increased seismic activity is one of the most important triggering mechanisms for large failures during deglaciation processes.",
+      "support_count": 3,
+      "supporting_papers": [
+        "1-s2.0-S0264817216304585-main",
+        "D. Leynaud",
+        "D. Leynaud-checkpoint"
+      ]
+    },
+    {
+      "subject": "rapid rate of sedimentation",
+      "relation": "triggers",
+      "object": "build-up of overpressure",
+      "subject_type": "event",
+      "object_type": "process",
+      "tier": 1,
+      "tier_label": "verified",
+      "verdict": "STRONG_SUPPORT",
+      "origin": "iter_b",
+      "evidence": "\"If the load increases quickly (due, for example, to a rapid rate of sedimentation or to tectonic thickening) and the permeability is small enough, then Tc/Td and diffusion can be neglected, so that Eq. (6) becomes: dP dt Z ab fb Ca � � dst dt (7)\"",
+      "query": "What is the relationship between rapid sedimentation and fluid overpressure in submarine environments?",
+      "strategy": "causal",
+      "model": "Qwen/Qwen2.5-7B-Instruct",
+      "reasoning": "The source text directly states that a rapid rate of sedimentation can trigger the build-up of overpressure under certain conditions.",
+      "support_count": 3,
+      "supporting_papers": [
+        "1-s2.0-S0191814106000101-main",
+        "1-s2.0-S0191814106000101-main-checkpoint",
+        "1-s2.0-S0264817216304585-main"
+      ]
+    },
+    {
+      "subject": "small permeability",
+      "relation": "triggers",
+      "object": "build-up of overpressure",
+      "subject_type": "property",
+      "object_type": "process",
+      "tier": 1,
+      "tier_label": "verified",
+      "verdict": "STRONG_SUPPORT",
+      "origin": "iter_b",
+      "evidence": "\"If the load increases quickly (due, for example, to a rapid rate of sedimentation or to tectonic thickening) and the permeability is small enough, then Tc/Td and diffusion can be neglected, so that Eq. (6) becomes: dP dt Z ab fb Ca � � dst dt (7)\"",
+      "query": "What is the relationship between rapid sedimentation and fluid overpressure in submarine environments?",
+      "strategy": "causal",
+      "model": "Qwen/Qwen2.5-7B-Instruct",
+      "reasoning": "The sentence indicates that when permeability is small, the build-up of overpressure is triggered under certain conditions such as quick load increase due to factors like rapid sedimentation or tecton",
+      "support_count": 3,
+      "supporting_papers": [
+        "1-s2.0-S0191814106000101-main",
+        "1-s2.0-S0191814106000101-main-checkpoint",
+        "1-s2.0-S0264817216304585-main"
+      ]
+    },
+    {
+      "subject": "basal shear surface",
+      "relation": "underlies",
+      "object": "upper surface",
+      "subject_type": "",
+      "object_type": "",
+      "tier": 1,
+      "tier_label": "verified",
+      "verdict": "",
+      "origin": "both",
+      "evidence": "",
+      "query": "",
+      "strategy": "",
+      "model": "",
+      "reasoning": "",
+      "support_count": 1,
+      "supporting_papers": [
+        "RichardsonetalBasinResearch2011-online (1)"
+      ]
+    },
+    {
+      "subject": "burial",
+      "relation": "affects",
+      "object": "shear strength",
+      "subject_type": "process",
+      "object_type": "property",
+      "tier": 2,
+      "tier_label": "literature-implied",
+      "verdict": "WEAK_SUPPORT",
+      "origin": "iter_b",
+      "evidence": "\"The SEDCON curves, which simulate the process of increasing stress from sediment accumulation, allow the extrapolation of experimental data to greater depths in a manner similar to standard consolidation tests (Richards, 1976). The SEDCON curves can be expressed in terms of density, water content, or liquidity index versus depth (Locat et al., 2002).\"\n\"During each earthquake, pore-water pressures",
+      "query": "What is the relationship between burial compaction and thickness in submarine environments?",
+      "strategy": "causal",
+      "model": "Qwen/Qwen2.5-7B-Instruct",
+      "reasoning": "While the source text does not directly state that burial affects shear strength, it discusses how the SEDCON curves model changes in density and shear strength as a function of burial depth. Addition",
+      "support_count": 3,
+      "supporting_papers": [
+        "1-s2.0-S0264817216304585-main",
+        "Submarine_Mass_Movements_on_Continental",
+        "Submarine_Mass_Movements_on_Continental-checkpoint"
+      ]
+    },
+    {
+      "subject": "detached blocks",
+      "relation": "affects",
+      "object": "headscarp formation",
+      "subject_type": "object",
+      "object_type": "phenomenon",
+      "tier": 2,
+      "tier_label": "literature-implied",
+      "verdict": "WEAK_SUPPORT",
+      "origin": "iter_b",
+      "evidence": "\"As each block detached from the main headscarp, it was progressively broken up into smaller blocks as it migrated through the system and accumulated at the back of the lobe deposit.\"",
+      "query": "What causes retrogressive failure and headscarp formation?",
+      "strategy": "causal",
+      "model": "Qwen/Qwen2.5-7B-Instruct",
+      "reasoning": "While the evidence does describe how detached blocks interact with the headscarps, it does not directly state that they affect the formation of headscarps. It only describes their movement relative to",
+      "support_count": 2,
+      "supporting_papers": [
+        "1-s2.0-S0025322712000412-main",
+        "1-s2.0-S0025322712000412-main-checkpoint"
+      ]
+    },
+    {
+      "subject": "sea-level lowstands",
+      "relation": "causes",
+      "object": "rates of sedimentation at the outer shelf and upper slope",
+      "subject_type": "condition",
+      "object_type": "rate",
+      "tier": 2,
+      "tier_label": "literature-implied",
+      "verdict": "WEAK_SUPPORT",
+      "origin": "iter_b",
+      "evidence": "\"During relative lowstands of sea level, marginal marine depocenters shift towards the outer shelf in association with the process of forced regression (Posamentier et al., 1992). Rates of sedimentation at the outer shelf and upper slope are greatest, again potentially creating disequilibrium conditions and slope failure (associated with oversteepening and loading of the upper slope).\"",
+      "query": "Describe the relationship between wave loading and slope failure in mass transport deposits.",
+      "strategy": "causal",
+      "model": "Qwen/Qwen2.5-7B-Instruct",
+      "reasoning": "The source text indicates that during sea-level lowstands, rates of sedimentation at the outer shelf and upper slope are greatest, which could be interpreted as these lowstands causing increased sedim",
+      "support_count": 3,
+      "supporting_papers": [
+        "9781565762879_ch02",
+        "9781565762879_ch02-checkpoint",
+        "Moscardelli_and_Wood_2008"
+      ]
+    },
+    {
+      "subject": "sea-level lowstands",
+      "relation": "causes",
+      "object": "disequilibrium conditions",
+      "subject_type": "condition",
+      "object_type": "conditions",
+      "tier": 2,
+      "tier_label": "literature-implied",
+      "verdict": "WEAK_SUPPORT",
+      "origin": "iter_b",
+      "evidence": "\"During relative lowstands of sea level, marginal marine depocenters shift towards the outer shelf in association with the process of forced regression (Posamentier et al., 1992). Rates of sedimentation at the outer shelf and upper slope are greatest, again potentially creating disequilibrium conditions and slope failure (associated with oversteepening and loading of the upper slope).\"",
+      "query": "Describe the relationship between wave loading and slope failure in mass transport deposits.",
+      "strategy": "causal",
+      "model": "Qwen/Qwen2.5-7B-Instruct",
+      "reasoning": "The source text mentions that during sea-level lowstands, rates of sedimentation increase at the outer shelf and upper slope, which could create disequilibrium conditions. This suggests a causal relat",
+      "support_count": 3,
+      "supporting_papers": [
+        "9781565762879_ch02",
+        "9781565762879_ch02-checkpoint",
+        "Moscardelli_and_Wood_2008"
+      ]
+    },
+    {
+      "subject": "channel levee",
+      "relation": "hasDescriptor",
+      "object": "continuous",
+      "subject_type": "SeismicObject",
+      "object_type": "Descriptor",
+      "tier": 2,
+      "tier_label": "literature-implied",
+      "verdict": "WEAK_SUPPORT",
+      "origin": "iter_b",
+      "evidence": "Unit PM2 contains several channel levee systems, which are larger and much more apparent on seismic sections that those described from within unit PM1. These channels are up to 2 km wide, and show clear, wedge shaped levee deposits which taper away from the channel axis.",
+      "query": "Describe the seismic character of channel levee including amplitude, continuity, and internal reflections.",
+      "strategy": "descriptor",
+      "model": "Qwen/Qwen2.5-7B-Instruct",
+      "reasoning": "While the source text describes the levee deposits as \"wedge shaped\" and tapering away from the channel axis, it does not specifically state that they are continuous. Therefore, we can infer but canno",
+      "support_count": 1,
+      "supporting_papers": [
+        "Ian R. Clark, Joseph A. Cartwright"
+      ]
+    },
+    {
+      "subject": "mass transport deposit",
+      "relation": "hasDescriptor",
+      "object": "layered",
+      "subject_type": "",
+      "object_type": "",
+      "tier": 2,
+      "tier_label": "literature-implied",
+      "verdict": "",
+      "origin": "both",
+      "evidence": "",
+      "query": "",
+      "strategy": "",
+      "model": "",
+      "reasoning": "",
+      "support_count": 3,
+      "supporting_papers": [
+        "845",
+        "845-checkpoint",
+        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_"
+      ]
+    },
+    {
+      "subject": "mass transport deposit",
+      "relation": "hasDescriptor",
+      "object": "discontinuous",
+      "subject_type": "",
+      "object_type": "",
+      "tier": 2,
+      "tier_label": "literature-implied",
+      "verdict": "",
+      "origin": "both",
+      "evidence": "",
+      "query": "",
+      "strategy": "",
+      "model": "",
+      "reasoning": "",
+      "support_count": 1,
+      "supporting_papers": [
+        "RichardsonetalBasinResearch2011-online (1)"
+      ]
+    },
+    {
+      "subject": "mass transport deposit",
+      "relation": "occursIn",
+      "object": "slope",
+      "subject_type": "",
+      "object_type": "",
+      "tier": 2,
+      "tier_label": "literature-implied",
+      "verdict": "",
+      "origin": "both",
+      "evidence": "",
+      "query": "",
+      "strategy": "",
+      "model": "",
+      "reasoning": "",
+      "support_count": 3,
+      "supporting_papers": [
+        "Giacomo Dalla Valle",
+        "Giacomo Dalla Valle-checkpoint",
+        "RichardsonetalBasinResearch2011-online (1)"
+      ]
+    },
+    {
+      "subject": "mass transport deposit",
+      "relation": "occursIn",
+      "object": "passive margins",
+      "subject_type": "",
+      "object_type": "",
+      "tier": 2,
+      "tier_label": "literature-implied",
+      "verdict": "",
+      "origin": "both",
+      "evidence": "",
+      "query": "",
+      "strategy": "",
+      "model": "",
+      "reasoning": "",
+      "support_count": 3,
+      "supporting_papers": [
+        "Giacomo Dalla Valle",
+        "Giacomo Dalla Valle-checkpoint",
+        "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and"
+      ]
+    },
+    {
+      "subject": "sediment failure",
+      "relation": "occursIn",
+      "object": "passive margins",
+      "subject_type": "event",
+      "object_type": "tectonic_setting",
+      "tier": 2,
+      "tier_label": "literature-implied",
+      "verdict": "WEAK_SUPPORT",
+      "origin": "iter_b",
+      "evidence": "\"As said earlier, relatively small earthquakes could actually trigger large-magnitude slope failures if the right set of conditions (most likely related to sedimentation patterns and margin hydrogeology) exist in those margins.\"",
+      "query": "Does mass transport deposit occur in passive margin?",
+      "strategy": "context",
+      "model": "Qwen/Qwen2.5-7B-Instruct",
+      "reasoning": "The source text mentions that relatively small earthquakes can trigger large-magnitude slope failures in certain margins, which are likely referring to passive margins given the context.",
+      "support_count": 3,
+      "supporting_papers": [
+        "Giacomo Dalla Valle",
+        "Giacomo Dalla Valle-checkpoint",
+        "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and"
+      ]
+    },
+    {
+      "subject": "submarine landslides",
+      "relation": "occursIn",
+      "object": "passive margins",
+      "subject_type": "phenomenon",
+      "object_type": "geological_setting",
+      "tier": 2,
+      "tier_label": "literature-implied",
+      "verdict": "WEAK_SUPPORT",
+      "origin": "iter_b",
+      "evidence": "\"As shown earlier, most of the ﬂux of landslide material toward the deeper basin is controlled by the largest landslides that occur on passive margins, thus stressing the role of these preconditioning factors.\"",
+      "query": "Does submarine landslide occur in continental margin?",
+      "strategy": "context",
+      "model": "Qwen/Qwen2.5-7B-Instruct",
+      "reasoning": "The source text indicates that large submarine landslides are controlled by passive margins, implying they occur there.",
+      "support_count": 3,
+      "supporting_papers": [
+        "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and",
+        "Submarine_Mass_Movements_on_Continental",
+        "Submarine_Mass_Movements_on_Continental-checkpoint"
+      ]
+    },
+    {
+      "subject": "turbidity current",
+      "relation": "occursIn",
+      "object": "new jersey continental slope",
+      "subject_type": "process",
+      "object_type": "location",
+      "tier": 2,
+      "tier_label": "literature-implied",
+      "verdict": "WEAK_SUPPORT",
+      "origin": "iter_b",
+      "evidence": "Pratson, L.F., Ryan, W.B.F., Mountain, G.S., Twitchell, D.C., 1994. Submarine canyon initiation by downslope eroding sediment flows: Evidence in late Cenozoic strata on the New Jersey continental slope. Geol. Soc. Am. Bull. 106, 395^412.",
+      "query": "Does turbidite occur in continental slope?",
+      "strategy": "context",
+      "model": "Qwen/Qwen2.5-7B-Instruct",
+      "reasoning": "The reference to the New Jersey continental slope provides context for where evidence of submarine canyon initiation by downslope eroding sediment flows was observed, which could include turbidity cur",
+      "support_count": 3,
+      "supporting_papers": [
+        "D. Leynaud",
+        "Simon E. Lee",
+        "Simon E. Lee-checkpoint"
+      ]
+    },
+    {
+      "subject": "upper surface",
+      "relation": "overlies",
+      "object": "basal shear surface",
+      "subject_type": "",
+      "object_type": "",
+      "tier": 2,
+      "tier_label": "literature-implied",
+      "verdict": "",
+      "origin": "both",
+      "evidence": "",
+      "query": "",
+      "strategy": "",
+      "model": "",
+      "reasoning": "",
+      "support_count": 1,
+      "supporting_papers": [
+        "RichardsonetalBasinResearch2011-online (1)"
+      ]
+    },
+    {
+      "subject": "convex downslope headwall scarp outlines",
+      "relation": "triggers",
+      "object": "kinematic information",
+      "subject_type": "entity",
+      "object_type": "entity",
+      "tier": 2,
+      "tier_label": "literature-implied",
+      "verdict": "WEAK_SUPPORT",
+      "origin": "iter_b",
+      "evidence": "\"Kinematic information was interpreted in the extensional domain from convex upslope headwall scarp outlines and their associated structures,\"",
+      "query": "Describe the relationship between erosion and basal surface in mass transport deposits.",
+      "strategy": "causal",
+      "model": "Qwen/Qwen2.5-7B-Instruct",
+      "reasoning": "The source text mentions that kinematic information is interpreted from convex upslope headwall scarp outlines, which suggests these features trigger or initiate the interpretation process.",
+      "support_count": 2,
+      "supporting_papers": [
+        "1-s2.0-S0025322713000571-main-checkpoint",
+        "RichardsonetalBasinResearch2011-online (1)"
+      ]
+    },
+    {
+      "subject": "gas hydrate dissociation",
+      "relation": "triggers",
+      "object": "slope failure",
+      "subject_type": "process",
+      "object_type": "event",
+      "tier": 2,
+      "tier_label": "literature-implied",
+      "verdict": "WEAK_SUPPORT",
+      "origin": "iter_b",
+      "evidence": "\"Gas hydrate dissociation is another factor that is becoming more frequently used to decipher what controls slope failure.\"",
+      "query": "How does gas hydrate dissociation trigger slope failure?",
+      "strategy": "causal",
+      "model": "Qwen/Qwen2.5-7B-Instruct",
+      "reasoning": "The source text mentions that gas hydrate dissociation is increasingly being considered as a factor controlling slope failure, which implies that it can trigger such events.",
+      "support_count": 2,
+      "supporting_papers": [
+        "3-s2.0-B9780128130810007047-main",
+        "3-s2.0-B9780128130810007047-main-checkpoint"
+      ]
+    }
+  ]
+}

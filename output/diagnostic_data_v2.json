@@ -1,0 +1,23 @@
+{
+  "funnel": {
+    "raw_a": 189,
+    "raw_b": 185,
+    "ver_a": 189,
+    "ver_b": 185,
+    "can_a": 70,
+    "can_b": 66,
+    "rej_a": 81,
+    "rej_b": 82,
+    "final_kg": 86
+  },
+  "matched": 10,
+  "missing": 16,
+  "root_causes": {
+    "CORPUS_ABSENT": 3,
+    "CANON_KILL": 4,
+    "RELATION_MISSED \u2014 subject extracted but not with this object/relation": 9
+  },
+  "fixable": 13,
+  "hard_ceiling": 3,
+  "max_possible_recall_pct": 88.5
+}

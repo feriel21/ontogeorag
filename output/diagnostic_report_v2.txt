@@ -1,0 +1,563 @@
+Loading data...
+Loaded: raw_a=189, ver_a=189, can_a=70, rej_a=81
+Loaded: raw_b=185, ver_b=185, can_b=66, rej_b=82
+Loaded: final_kg=86, chunks=3386, queries=249
+
+======================================================================
+  1. EXTRACTION FUNNEL
+======================================================================
+Stage                                 Pass A   Pass B    Total
+--------------------------------------------------------------
+Raw extracted                            189      185      374
+Verified (all verdicts)                  189      185      374
+Rejected at cleaning                      81       82      163
+Canonical (kept)                          70       66      136
+Final KG (fused)                                            86
+Pass A: raw→verified loss=0.0%  verified→canonical loss=63.0%
+Pass B: raw→verified loss=0.0%  verified→canonical loss=64.3%
+
+======================================================================
+  2. VERDICT BREAKDOWN
+======================================================================
+
+--- Pass A verified ---
+  STRONG_SUPPORT            86 ( 45.5%)  ██████████████████
+  NOT_SUPPORTED             63 ( 33.3%)  █████████████
+  WEAK_SUPPORT              40 ( 21.2%)  ████████
+
+--- Pass B verified ---
+  STRONG_SUPPORT            79 ( 42.7%)  █████████████████
+  NOT_SUPPORTED             65 ( 35.1%)  ██████████████
+  WEAK_SUPPORT              41 ( 22.2%)  ████████
+
+--- Pass A rejected ---
+  NOT_SUPPORTED             63 ( 77.8%)  ███████████████████████████████
+  STRONG_SUPPORT            11 ( 13.6%)  █████
+  WEAK_SUPPORT               7 (  8.6%)  ███
+
+--- Pass B rejected ---
+  NOT_SUPPORTED             65 ( 79.3%)  ███████████████████████████████
+  STRONG_SUPPORT            12 ( 14.6%)  █████
+  WEAK_SUPPORT               5 (  6.1%)  ██
+
+======================================================================
+  3. VERIFICATION STATS FROM JSON FILES
+======================================================================
+{
+  "model": "Qwen/Qwen2.5-7B-Instruct",
+  "backend": "hf",
+  "total_triples": 189,
+  "counts": {
+    "STRONG_SUPPORT": 86,
+    "WEAK_SUPPORT": 40,
+    "NOT_SUPPORTED": 63,
+    "NO_CHUNK": 0,
+    "UNPARSEABLE": 0,
+    "BACKEND_ERROR": 0,
+    "SKIPPED_RELATION": 0
+  },
+  "decided_total": 189,
+  "hallucination_rate_decided": 0.3333333333333333,
+  "elapsed_seconds": 443.7
+}
+
+======================================================================
+  4. BENCHMARK GAP — Root cause per missing edge
+======================================================================
+Matched: 10/26   Missing: 16/26
+
+  MISSING: mass transport deposit --[hasDescriptor]--> massive
+    corpus co-occur: 0 chunks
+    in raw:          YES  |  subj seen: YES  |  obj seen:  YES
+    in verified:     YES  |  in rejected:  YES
+    in canonical:    NO  |  in final KG:  NO
+    ROOT CAUSE: CORPUS_ABSENT
+
+  MISSING: turbidite --[hasDescriptor]--> layered
+    corpus co-occur: 0 chunks
+    in raw:          NO  |  subj seen: YES  |  obj seen:  YES
+    in verified:     NO  |  in rejected:  NO
+    in canonical:    NO  |  in final KG:  NO
+    ROOT CAUSE: CORPUS_ABSENT
+    What WAS extracted for 'turbidite':
+      --[hasdescriptor]--> continuous
+      --[hasdescriptor]--> moderate- to high-amplitude
+      --[occursin]--> continental slope
+      --[occursin]--> horseshoe abyssal plain
+      --[hasdescriptor]--> parallel
+
+  MISSING: turbidite --[hasDescriptor]--> high-amplitude
+    corpus co-occur: 31 chunks
+    in raw:          YES  |  subj seen: YES  |  obj seen:  YES
+    in verified:     YES  |  in rejected:  YES
+    in canonical:    NO  |  in final KG:  NO
+    ROOT CAUSE: CANON_KILL
+
+  MISSING: debris flow --[hasDescriptor]--> chaotic
+    corpus co-occur: 14 chunks
+    in raw:          NO  |  subj seen: YES  |  obj seen:  YES
+    in verified:     NO  |  in rejected:  NO
+    in canonical:    NO  |  in final KG:  NO
+    ROOT CAUSE: RELATION_MISSED — subject extracted but not with this object/relation
+    What WAS extracted for 'debris flow':
+      --[occursin]--> continental slope
+      --[occursin]--> continental slope
+
+  MISSING: debris flow --[hasDescriptor]--> hummocky
+    corpus co-occur: 4 chunks
+    in raw:          NO  |  subj seen: YES  |  obj seen:  YES
+    in verified:     NO  |  in rejected:  NO
+    in canonical:    NO  |  in final KG:  NO
+    ROOT CAUSE: RELATION_MISSED — subject extracted but not with this object/relation
+    What WAS extracted for 'debris flow':
+      --[occursin]--> continental slope
+      --[occursin]--> continental slope
+
+  MISSING: slide --[hasDescriptor]--> blocky
+    corpus co-occur: 11 chunks
+    in raw:          NO  |  subj seen: YES  |  obj seen:  YES
+    in verified:     NO  |  in rejected:  NO
+    in canonical:    NO  |  in final KG:  NO
+    ROOT CAUSE: RELATION_MISSED — subject extracted but not with this object/relation
+    What WAS extracted for 'slide':
+      --[occursin]--> passive margins
+      --[occursin]--> continental slope
+      --[occursin]--> passive margins
+      --[occursin]--> continental slope
+      --[occursin]--> gulf of mexico
+
+  MISSING: slide --[hasDescriptor]--> undeformed
+    corpus co-occur: 54 chunks
+    in raw:          NO  |  subj seen: YES  |  obj seen:  YES
+    in verified:     NO  |  in rejected:  NO
+    in canonical:    NO  |  in final KG:  NO
+    ROOT CAUSE: RELATION_MISSED — subject extracted but not with this object/relation
+    What WAS extracted for 'slide':
+      --[occursin]--> passive margins
+      --[occursin]--> continental slope
+      --[occursin]--> passive margins
+      --[occursin]--> continental slope
+      --[occursin]--> gulf of mexico
+
+  MISSING: hemipelagite --[hasDescriptor]--> parallel
+    corpus co-occur: 4 chunks
+    in raw:          NO  |  subj seen: YES  |  obj seen:  YES
+    in verified:     NO  |  in rejected:  NO
+    in canonical:    NO  |  in final KG:  NO
+    ROOT CAUSE: RELATION_MISSED — subject extracted but not with this object/relation
+    What WAS extracted for 'hemipelagite':
+      --[hasdescriptor]--> continuous
+
+  MISSING: hemipelagite --[hasDescriptor]--> continuous
+    corpus co-occur: 12 chunks
+    in raw:          YES  |  subj seen: YES  |  obj seen:  YES
+    in verified:     YES  |  in rejected:  YES
+    in canonical:    NO  |  in final KG:  NO
+    ROOT CAUSE: CANON_KILL
+
+  MISSING: hemipelagite --[hasDescriptor]--> low-amplitude
+    corpus co-occur: 0 chunks
+    in raw:          NO  |  subj seen: YES  |  obj seen:  YES
+    in verified:     NO  |  in rejected:  NO
+    in canonical:    NO  |  in final KG:  NO
+    ROOT CAUSE: CORPUS_ABSENT
+    What WAS extracted for 'hemipelagite':
+      --[hasdescriptor]--> continuous
+
+  MISSING: slope failure --[causes]--> mass transport deposit
+    corpus co-occur: 44 chunks
+    in raw:          YES  |  subj seen: YES  |  obj seen:  YES
+    in verified:     YES  |  in rejected:  YES
+    in canonical:    NO  |  in final KG:  NO
+    ROOT CAUSE: CANON_KILL
+
+  MISSING: turbidity current --[formedBy]--> debris flow
+    corpus co-occur: 69 chunks
+    in raw:          NO  |  subj seen: YES  |  obj seen:  NO
+    in verified:     NO  |  in rejected:  NO
+    in canonical:    NO  |  in final KG:  NO
+    ROOT CAUSE: RELATION_MISSED — subject extracted but not with this object/relation
+    What WAS extracted for 'turbidity current':
+      --[hasdescriptor]--> high-amplitude
+      --[hasdescriptor]--> continuous
+      --[occursin]--> continental slope
+      --[hasdescriptor]--> high-amplitude
+      --[hasdescriptor]--> continuous
+
+  MISSING: mass transport deposit --[occursIn]--> abyssal plain
+    corpus co-occur: 6 chunks
+    in raw:          NO  |  subj seen: YES  |  obj seen:  YES
+    in verified:     NO  |  in rejected:  NO
+    in canonical:    NO  |  in final KG:  NO
+    ROOT CAUSE: RELATION_MISSED — subject extracted but not with this object/relation
+    What WAS extracted for 'mass transport deposit':
+      --[hasdescriptor]--> high-amplitude
+      --[hasdescriptor]--> low-amplitude
+      --[hasdescriptor]--> discontinuous
+      --[hasdescriptor]--> rugose
+      --[hasdescriptor]--> positive
+
+  MISSING: debris flow --[occursIn]--> continental slope
+    corpus co-occur: 32 chunks
+    in raw:          YES  |  subj seen: YES  |  obj seen:  YES
+    in verified:     YES  |  in rejected:  YES
+    in canonical:    NO  |  in final KG:  NO
+    ROOT CAUSE: CANON_KILL
+
+  MISSING: turbidite --[occursIn]--> basin floor
+    corpus co-occur: 46 chunks
+    in raw:          NO  |  subj seen: YES  |  obj seen:  NO
+    in verified:     NO  |  in rejected:  NO
+    in canonical:    NO  |  in final KG:  NO
+    ROOT CAUSE: RELATION_MISSED — subject extracted but not with this object/relation
+    What WAS extracted for 'turbidite':
+      --[hasdescriptor]--> continuous
+      --[hasdescriptor]--> moderate- to high-amplitude
+      --[occursin]--> continental slope
+      --[occursin]--> horseshoe abyssal plain
+      --[hasdescriptor]--> parallel
+
+  MISSING: slide --[overlies]--> hemipelagite
+    corpus co-occur: 18 chunks
+    in raw:          NO  |  subj seen: YES  |  obj seen:  NO
+    in verified:     NO  |  in rejected:  NO
+    in canonical:    NO  |  in final KG:  NO
+    ROOT CAUSE: RELATION_MISSED — subject extracted but not with this object/relation
+    What WAS extracted for 'slide':
+      --[occursin]--> passive margins
+      --[occursin]--> continental slope
+      --[occursin]--> passive margins
+      --[occursin]--> continental slope
+      --[occursin]--> gulf of mexico
+
+======================================================================
+  5. QUERY STRUCTURE — What do the 249 queries look like?
+======================================================================
+Total queries loaded: 249
+Keys in first query: ['query', 'strategy', 'focus']
+
+Sample of 5 queries:
+  {"query": "What are the seismic facies and descriptors of mass transport deposit?", "strategy": "descriptor", "focus": "mass transport deposit"}
+  {"query": "Describe the seismic character of mass transport deposit including amplitude, continuity, and internal reflections.", "strategy": "descriptor", "focus": "mass transport deposit"}
+  {"query": "What are the seismic facies and descriptors of mass transport complex?", "strategy": "descriptor", "focus": "mass transport complex"}
+  {"query": "Describe the seismic character of mass transport complex including amplitude, continuity, and internal reflections.", "strategy": "descriptor", "focus": "mass transport complex"}
+  {"query": "What are the seismic facies and descriptors of debris flow?", "strategy": "descriptor", "focus": "debris flow"}
+
+Field [strategy]: {'descriptor': 122, 'causal': 72, 'context': 39, 'profile': 11, 'setting': 1, 'spatial': 4}
+
+======================================================================
+  6. DEEP DIVE — QUERY_MISS analysis for key edges
+======================================================================
+
+--- turbidite --[hasDescriptor]--> high-amplitude  (31 chunks) ---
+  Query exists for this edge? YES — 1 queries
+  Sample query: {"query": "Does turbidite show parallel continuous layered high-amplitude seismic character?", "strategy": "descriptor", "focus": "turbidite"}
+  Raw triples with subject 'turbidite': 17
+    [UNKNOWN] --[hasdescriptor]--> continuous
+    [UNKNOWN] --[hasdescriptor]--> moderate- to high-amplitude
+    [UNKNOWN] --[occursin]--> continental slope
+    [UNKNOWN] --[occursin]--> horseshoe abyssal plain
+    [UNKNOWN] --[hasdescriptor]--> parallel
+  Best corpus sentence: "808 Mass-Transport Deposits and Seismic Texture On 3-D seismic data, MTDs 5 and 6 are shown as chaotic, poorly continuous strata of low ampli- tude, whereas turbidites in unit Ib are revealed as continuous moderate- to high-amplitude reflec- tions (Figures"
+  BM25 overlap terms (query∩chunk): ['turbidite', 'continuous', 'high-amplitude', 'seismic']
+
+--- debris flow --[hasDescriptor]--> chaotic  (14 chunks) ---
+  Query exists for this edge? YES — 2 queries
+  Sample query: {"query": "What are the seismic characteristics of debris flow deposits including chaotic and hummocky facies?", "strategy": "descriptor", "focus": "debris flow"}
+  Raw triples with subject 'debris flow': 2
+    [UNKNOWN] --[occursin]--> continental slope
+    [UNKNOWN] --[occursin]--> continental slope
+  Best corpus sentence: "5, 6) contain the chaotic deposits of debris flows (Goldfinger et al., 2000; Nelson et al., 2000)"
+  BM25 overlap terms (query∩chunk): ['seismic', 'debris', 'deposits', 'including', 'chaotic', 'hummocky']
+
+--- slide --[hasDescriptor]--> undeformed  (54 chunks) ---
+  Query exists for this edge? YES — 5 queries
+  Sample query: {"strategy": "descriptor", "query": "What geological objects contain parallel or sub-horizontal reflectors? Consider preserved blocks, slides, and undeformed sediments.", "target_descriptors": ["paral
+  Raw triples with subject 'slide': 15
+    [UNKNOWN] --[occursin]--> passive margins
+    [UNKNOWN] --[occursin]--> continental slope
+    [UNKNOWN] --[occursin]--> passive margins
+    [UNKNOWN] --[occursin]--> continental slope
+    [UNKNOWN] --[occursin]--> gulf of mexico
+  Best corpus chunk (first 300): this region, triggered a destructive tsunami related to both coastal uplift (with eruption of mud volcanoes) and submarine landslides (Ambraseys & Melville, 1982; Byrne et al., 1992). During this event, submarine Makran telegraph cables were also severed at eight places offshore, suggesting that gra
+  BM25 overlap terms (query∩chunk): ['parallel', 'undeformed']
+
+--- slope failure --[causes]--> mass transport deposit  (44 chunks) ---
+  Query exists for this edge? YES — 8 queries
+  Sample query: {"query": "How does slope failure cause mass transport deposit?", "strategy": "causal", "focus": "LB:slope failure->mass transport deposit"}
+  Raw triples with subject 'slope failure': 2
+    [UNKNOWN] --[causes]--> mass transport deposit
+    [UNKNOWN] --[causes]--> mass transport deposit
+  Best corpus chunk (first 300): F. Cohen, M. Anis, T. W. Cooley, M. M. Honarpour, J. P. Wallace, and M. R. Chambers, 1998, Ubit field rejuvenation: A case history of reservoir man- agement of a giant oil field, offshore Nigeria: Society of Petroleum Engineers Annual Technical Conference and Exhibition, SPE Paper 49165, 16 p., doi:
+  BM25 overlap terms (query∩chunk): ['slope', 'failure', 'cause', 'transport', 'transport']
+
+--- turbidity current --[formedBy]--> debris flow  (69 chunks) ---
+  Query exists for this edge? YES — 6 queries
+  Sample query: {"query": "How does debris flow cause turbidity current?", "strategy": "causal", "focus": "LB:debris flow->turbidity current"}
+  Raw triples with subject 'turbidity current': 6
+    [UNKNOWN] --[hasdescriptor]--> high-amplitude
+    [UNKNOWN] --[hasdescriptor]--> continuous
+    [UNKNOWN] --[occursin]--> continental slope
+    [UNKNOWN] --[hasdescriptor]--> high-amplitude
+    [UNKNOWN] --[hasdescriptor]--> continuous
+  Best corpus sentence: "Mass-transport deposit (MTD) is a general term that refers to all slumps, slides, and debris flows generated and emplaced by gravity-controlled processes except for turbidity currents"
+  BM25 overlap terms (query∩chunk): ['debris', 'turbidity']
+
+--- turbidite --[occursIn]--> basin floor  (46 chunks) ---
+  Query exists for this edge? YES — 1 queries
+  Sample query: {"query": "Where do turbidites deposit \u2014 basin floor abyssal plain?", "strategy": "spatial", "focus": "turbidite:occursIn:basin_floor"}
+  Raw triples with subject 'turbidite': 17
+    [UNKNOWN] --[hasdescriptor]--> continuous
+    [UNKNOWN] --[hasdescriptor]--> moderate- to high-amplitude
+    [UNKNOWN] --[occursin]--> continental slope
+    [UNKNOWN] --[occursin]--> horseshoe abyssal plain
+    [UNKNOWN] --[hasdescriptor]--> parallel
+  Best corpus sentence: "Our case studies provide the following new insights: (1) MTDs can dominate entire margins, dominate segments of a margin, be equally mixed with turbidites, or dominate a margin during some geologic times and not others; (2) on active tectonic margins with great earthquakes, the maximum run-out dista"
+  BM25 overlap terms (query∩chunk): ['turbidites', 'deposit', 'basin', 'floor', 'abyssal']
+
+--- debris flow --[occursIn]--> continental slope  (32 chunks) ---
+  Query exists for this edge? YES — 2 queries
+  Sample query: {"query": "Does debris flow occur in continental slope?", "strategy": "context", "focus": "debris flow->continental slope"}
+  Raw triples with subject 'debris flow': 2
+    [UNKNOWN] --[occursin]--> continental slope
+    [UNKNOWN] --[occursin]--> continental slope
+  Best corpus chunk (first 300): hundreds of meters of topography. MTD DIFFERENCES IN ACTIVE VERSUS PASSIVE MARGINS We make new observations that there are significantly greater amounts of MTDs and maximum run-out distances of MTD sheets in passive margins than in active tectonic continental margins (Table 1). Frequent shaking by g
+  BM25 overlap terms (query∩chunk): ['debris', 'continental']
+
+--- slide --[overlies]--> hemipelagite  (18 chunks) ---
+  Query exists for this edge? YES — 1 queries
+  Sample query: {"query": "Do slides overlie hemipelagic sediments stratigraphically?", "strategy": "spatial", "focus": "slide:overlies:hemipelagite"}
+  Raw triples with subject 'slide': 15
+    [UNKNOWN] --[occursin]--> passive margins
+    [UNKNOWN] --[occursin]--> continental slope
+    [UNKNOWN] --[occursin]--> passive margins
+    [UNKNOWN] --[occursin]--> continental slope
+    [UNKNOWN] --[occursin]--> gulf of mexico
+  Best corpus chunk (first 300): by MTDs. In regions where large continental glaciers reach the shelf edge, thick unstable sediments are rapidly depos- ited (e.g., Escutia et al., 2005; Solheim et al., 2005). Extremely large and/or multiple sediment failures result in extensive MTD sheets that cover hundreds of square kilometers of
+  BM25 overlap terms (query∩chunk): ['slides', 'overlie', 'sediments']
+
+--- slide --[hasDescriptor]--> blocky  (11 chunks) ---
+  Query exists for this edge? YES — 3 queries
+  Sample query: {"query": "How are slide deposits characterized in seismic data \u2014 blocky and undeformed reflections?", "strategy": "descriptor", "focus": "slide"}
+  Raw triples with subject 'slide': 15
+    [UNKNOWN] --[occursin]--> passive margins
+    [UNKNOWN] --[occursin]--> continental slope
+    [UNKNOWN] --[occursin]--> passive margins
+    [UNKNOWN] --[occursin]--> continental slope
+    [UNKNOWN] --[occursin]--> gulf of mexico
+  Best corpus chunk (first 300): shown in A). Downward-pointing arrows indicate location of grooves. (D) Seismic section through horizon shown in C. Downward-pointing arrows indicate location of grooves. Note the narrow, ‘v’-shaped cross-sectional character (location shown in B). Bold arrows in (A) and (C) indicate translation dire
+  BM25 overlap terms (query∩chunk): ['slide', 'seismic', 'blocky']
+
+--- debris flow --[hasDescriptor]--> hummocky  (4 chunks) ---
+  Query exists for this edge? YES — 2 queries
+  Sample query: {"query": "What are the seismic characteristics of debris flow deposits including chaotic and hummocky facies?", "strategy": "descriptor", "focus": "debris flow"}
+  Raw triples with subject 'debris flow': 2
+    [UNKNOWN] --[occursin]--> continental slope
+    [UNKNOWN] --[occursin]--> continental slope
+  Best corpus chunk (first 300): most MTD sheets generated by such failures are relatively thin (120 to 300 ms) and have short run-out distances of 5 to 35 km across the abyssal seafloor adjacent to the slope (Table 1; Goldfinger et al., 2000; Nelson et al., 2000). These short run-out distances (Figs. 5, 6) contrast with MTD sheets
+  BM25 overlap terms (query∩chunk): ['seismic', 'characteristics', 'debris', 'deposits', 'including', 'chaotic', 'hummocky']
+
+======================================================================
+  7. LLM OUTPUT — What does the model extract for missing subjects?
+======================================================================
+
+--- Subject: 'turbidite' ---
+  raw=17  verified=17  canonical=5  rejected=11  kg=3
+  Raw extractions:
+    [UNKNOWN        ] --[hasdescriptor]--> continuous
+    [UNKNOWN        ] --[hasdescriptor]--> moderate- to high-amplitude
+    [UNKNOWN        ] --[occursin]--> continental slope
+    [UNKNOWN        ] --[occursin]--> horseshoe abyssal plain
+    [UNKNOWN        ] --[hasdescriptor]--> parallel
+    [UNKNOWN        ] --[hasdescriptor]--> high-amplitude
+    [UNKNOWN        ] --[hasdescriptor]--> parallel
+    [UNKNOWN        ] --[hasdescriptor]--> continuous
+  Rejected triples:
+    [NOT_SUPPORTED  ] --[occursin]--> horseshoe abyssal plain
+    [NOT_SUPPORTED  ] --[hasdescriptor]--> parallel
+    [NOT_SUPPORTED  ] --[hasdescriptor]--> high-amplitude
+    [NOT_SUPPORTED  ] --[hasdescriptor]--> parallel
+    [NOT_SUPPORTED  ] --[hasdescriptor]--> continuous
+  In final KG (T1):
+    [T1] --[hasdescriptor]--> continuous
+    [T1] --[hasdescriptor]--> parallel
+    [T2] --[occursin]--> continental margin
+
+--- Subject: 'debris flow' ---
+  raw=2  verified=2  canonical=0  rejected=2  kg=0
+  Raw extractions:
+    [UNKNOWN        ] --[occursin]--> continental slope
+    [UNKNOWN        ] --[occursin]--> continental slope
+  Rejected triples:
+    [NOT_SUPPORTED  ] --[occursin]--> continental slope
+    [NOT_SUPPORTED  ] --[occursin]--> continental slope
+
+--- Subject: 'slide' ---
+  raw=15  verified=15  canonical=4  rejected=8  kg=2
+  Raw extractions:
+    [UNKNOWN        ] --[occursin]--> passive margins
+    [UNKNOWN        ] --[occursin]--> continental slope
+    [UNKNOWN        ] --[occursin]--> passive margins
+    [UNKNOWN        ] --[occursin]--> continental slope
+    [UNKNOWN        ] --[occursin]--> gulf of mexico
+    [UNKNOWN        ] --[occursin]--> passive margin
+    [UNKNOWN        ] --[affects]--> subsequent flows
+    [UNKNOWN        ] --[causes]--> mass transport deposit
+  Rejected triples:
+    [NOT_SUPPORTED  ] --[occursin]--> continental slope
+    [NOT_SUPPORTED  ] --[occursin]--> continental slope
+    [NOT_SUPPORTED  ] --[occursin]--> gulf of mexico
+    [NOT_SUPPORTED  ] --[causes]--> mass transport deposit
+    [NOT_SUPPORTED  ] --[occursin]--> continental slope
+  In final KG (T1):
+    [T1] --[occursin]--> passive margins
+    [T2] --[affects]--> subsequent flows
+
+--- Subject: 'hemipelagite' ---
+  raw=1  verified=1  canonical=0  rejected=1  kg=0
+  Raw extractions:
+    [UNKNOWN        ] --[hasdescriptor]--> continuous
+  Rejected triples:
+    [NOT_SUPPORTED  ] --[hasdescriptor]--> continuous
+
+--- Subject: 'slope failure' ---
+  raw=1  verified=1  canonical=0  rejected=1  kg=0
+  Raw extractions:
+    [UNKNOWN        ] --[causes]--> mass transport deposit
+  Rejected triples:
+    [NOT_SUPPORTED  ] --[causes]--> mass transport deposit
+
+--- Subject: 'turbidity current' ---
+  raw=6  verified=6  canonical=2  rejected=4  kg=1
+  Raw extractions:
+    [UNKNOWN        ] --[hasdescriptor]--> high-amplitude
+    [UNKNOWN        ] --[hasdescriptor]--> continuous
+    [UNKNOWN        ] --[occursin]--> continental slope
+    [UNKNOWN        ] --[hasdescriptor]--> high-amplitude
+    [UNKNOWN        ] --[hasdescriptor]--> continuous
+    [UNKNOWN        ] --[occursin]--> continental slope
+  Rejected triples:
+    [NOT_SUPPORTED  ] --[hasdescriptor]--> high-amplitude
+    [NOT_SUPPORTED  ] --[hasdescriptor]--> continuous
+    [NOT_SUPPORTED  ] --[hasdescriptor]--> high-amplitude
+    [NOT_SUPPORTED  ] --[hasdescriptor]--> continuous
+  In final KG (T2):
+    [T2] --[occursin]--> continental margin
+
+======================================================================
+  8. CANONICALIZATION — Rejection reasons
+======================================================================
+Rejected triples total: 163
+  NOT_SUPPORTED               128 (78.5%)
+  STRONG_SUPPORT               23 (14.1%)
+  WEAK_SUPPORT                 12 (7.4%)
+
+--- Relations in rejected triples ---
+  hasdescriptor             96
+  occursin                  40
+  causes                    10
+  affects                   5
+  triggers                  4
+  overlies                  3
+  controls                  2
+  partof                    2
+  underlies                 1
+
+--- Top 15 subjects in rejected triples ---
+  mass transport deposit                        50
+  mass transport complex                        27
+  turbidite                                     11
+  submarine landslide                           8
+  channel levee                                 7
+  turbidity current                             4
+  channel                                       4
+  excess pore pressure                          4
+  detached blocks                               3
+  debris flow                                   2
+  reverse faults                                2
+  fluid overpressure                            2
+  upper-slope sediments                         2
+  gas-hydrate disruptions                       2
+  earthquakes                                   2
+
+--- Rejected triples for missing-subject entities ---
+
+  'turbidite' rejected (11 total):
+    [NOT_SUPPORTED] --[occursin]--> horseshoe abyssal plain
+    [NOT_SUPPORTED] --[hasdescriptor]--> parallel
+    [NOT_SUPPORTED] --[hasdescriptor]--> high-amplitude
+    [NOT_SUPPORTED] --[hasdescriptor]--> parallel
+    [NOT_SUPPORTED] --[hasdescriptor]--> continuous
+
+  'debris flow' rejected (2 total):
+    [NOT_SUPPORTED] --[occursin]--> continental slope
+    [NOT_SUPPORTED] --[occursin]--> continental slope
+
+  'slide' rejected (8 total):
+    [NOT_SUPPORTED] --[occursin]--> continental slope
+    [NOT_SUPPORTED] --[occursin]--> continental slope
+    [NOT_SUPPORTED] --[occursin]--> gulf of mexico
+    [NOT_SUPPORTED] --[causes]--> mass transport deposit
+    [NOT_SUPPORTED] --[occursin]--> continental slope
+
+  'hemipelagite' rejected (1 total):
+    [NOT_SUPPORTED] --[hasdescriptor]--> continuous
+
+======================================================================
+  9. SYNTHESIS — Root causes and recommended actions
+======================================================================
+ROOT CAUSE COUNTS:
+  RELATION_MISSED — subject extracted but not with this object/relation 9
+  CANON_KILL                                    4
+  CORPUS_ABSENT                                 3
+
+Matched:          10/26 = 38.5%
+Fixable:          13/16 missing edges
+Hard ceiling:     3/16 (corpus absent)
+Max possible recall if all fixed: (10+13)/26 = 88.5%
+
+============================================================
+WHAT TO DO NEXT — ordered by expected recall gain
+============================================================
+
+[FIX 2] PROMPTS — Add BAD EXAMPLES for the specific missed patterns
+  The model extracts 'mass transport deposit' well but ignores 
+  co-occurring objects in the same chunk. 
+  
+  Action: For each QUERY_MISS edge, manually inspect the best chunk
+  (printed in Section 6), then add a few-shot example using that 
+  exact chunk showing how to extract the missed triple.
+  
+  Priority edges (most corpus evidence):
+    turbidity current --[formedBy]--> debris flow  (69 chunks)
+    slide             --[hasDescriptor]--> undeformed (54 chunks)
+    turbidite         --[occursIn]--> basin floor  (46 chunks)
+    slope failure     --[causes]--> mass transport deposit (44 chunks)
+
+
+[FIX 3] BM25 QUERY TERMS — Check if rescue queries retrieve the right chunks
+  The rescue queries may exist but BM25 may not retrieve the chunks 
+  that contain both subject+relation+object together.
+  
+  Action: For each QUERY_MISS edge, run BM25 manually with the query
+  and check if any of the 'good chunks' (from Section 6) are in top-3.
+  If not: rephrase query terms to match corpus vocabulary.
+  
+  Test command:
+    python3 -c "
+    import sys; sys.path.insert(0,'.')
+    from pipeline.rag.bm25_index import load_index
+    idx = load_index('/home/talbi/kg_test/output/step1/')
+    results = idx.search('turbidite high-amplitude seismic facies', k=5)
+    for r in results: print(r['score'], r['text'][:200])
+    "
+
+
+[FIX 4] CORPUS ABSENT — 3 edges (hard limit)
+  massive, turbidite→layered, hemipelagite→low-amplitude
+  have zero corpus co-occurrence. Only corpus expansion fixes this.
+  Note for paper: frame as corpus limitation, not pipeline failure.
+
+
+✓ Report: /home/talbi/ontogeorag/output/diagnostic_report_v2.txt
+✓ Data:   /home/talbi/ontogeorag/output/diagnostic_data_v2.json

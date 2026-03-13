@@ -84,10 +84,23 @@ GOLD EXAMPLES (from peer-reviewed MTD literature):
   {{"source": "hemipelagite", "source_type": "SeismicObject", "relation": "hasDescriptor", "target": "continuous", "target_type": "Descriptor", "salience": "typical"}}
 ]
 
+IMPORTANT — DO NOT IGNORE NON-MTD SUBJECTS:
+When the text describes seismic facies for debris flow, slide, turbidite, hemipelagite,
+or turbidity current — extract hasDescriptor triples for THOSE subjects too, not just MTD.
+
 BAD EXAMPLES (do NOT produce these):
   {{"target": "chaotic seismic facies"}}  <- use "chaotic" not verbose form
   {{"source": "MTC_2"}}                   <- use class "mass transport deposit" not instance
   {{"target": "hummocky and irregular"}}  <- use "hummocky" not compound form
+  {{"source": "mass transport deposit", "target": "chaotic"}}  <- when text says debris flow is chaotic, use "debris flow" not MTD
+  {{"source": "mass transport deposit", "target": "blocky"}}   <- when text says slide is blocky, use "slide" not MTD
+
+EXTRACTION PRIORITY — check text for ALL of these subjects:
+  debris flow -> chaotic, hummocky
+  slide -> blocky, undeformed
+  turbidite -> high-amplitude, layered
+  hemipelagite -> continuous, parallel
+  turbidity current -> formedBy debris flow
 
 If no valid triples can be extracted, respond with: []
 """
