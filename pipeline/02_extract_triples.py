@@ -253,9 +253,17 @@ def parse_response(response: str, strategy: str) -> list[dict]:
     return []
 
 
-def load_bm25(index_dir: str):
-    """Load BM25 index from chunks.jsonl and return retrieve(query, top_n) function."""
+def load_bm25(index_dir: str, reranker_model: str = None):
+    """Load BM25 index from chunks.jsonl and return retrieve(query, top_n) function.
+    P10: if reranker_model is set, rerank BM25 top-N with CrossEncoder before returning top_k.
+    """
     from rank_bm25 import BM25Okapi
+    reranker = None
+    if reranker_model:
+        from sentence_transformers import CrossEncoder
+        print(f"  Loading CrossEncoder reranker: {reranker_model}")
+        reranker = CrossEncoder(reranker_model)
+        print(f"  Reranker loaded.")
 
     chunks_path = Path(index_dir) / "chunks.jsonl"
     if not chunks_path.exists():
@@ -276,7 +284,8 @@ def load_bm25(index_dir: str):
         tokens = query.lower().split()
         scores = bm25.get_scores(tokens)
         top_idx = scores.argsort()[-top_n:][::-1]
-        return [
+        top_idx = scores.argsort()[-top_n:][::-1]
+        candidates = [
             {
                 "chunk_id":    chunks[i].get("chunk_id", f"chunk_{i}"),
                 "text":        chunks[i].get("text", ""),
@@ -285,7 +294,13 @@ def load_bm25(index_dir: str):
             }
             for i in top_idx
         ]
-
+        if reranker is not None:
+            pairs = [(query, c["text"]) for c in candidates]
+            rerank_scores = reranker.predict(pairs)
+            for c, s in zip(candidates, rerank_scores):
+                c["rerank_score"] = float(s)
+            candidates = sorted(candidates, key=lambda x: x["rerank_score"], reverse=True)
+        return candidates
     return retrieve
 
 
@@ -309,6 +324,8 @@ def main():
     parser.add_argument("--top-k",      type=int,   default=3)
     parser.add_argument("--bm25-topn",  type=int,   default=25)
     parser.add_argument("--max-chars",  type=int,   default=2800)
+    parser.add_argument("--reranker",   type=str,   default=None,
+                        help="CrossEncoder model for reranking (e.g. cross-encoder/ms-marco-MiniLM-L-6-v2)")
     parser.add_argument("--min-bm25",   type=float, default=0.0,
                         help="Default BM25 gating threshold")
     parser.add_argument("--min-bm25-desc",    type=float, default=None)
@@ -358,7 +375,7 @@ def main():
             )
             return r.json().get("response", "")
 
-    retrieve = load_bm25(args.index_dir)
+    retrieve = load_bm25(args.index_dir, reranker_model=args.reranker)
     outpath = Path(args.output)
     outpath.parent.mkdir(parents=True, exist_ok=True)
 
