@@ -2,8 +2,8 @@
 #SBATCH --job-name=run11_ontogeorag
 #SBATCH --partition=convergence
 #SBATCH --gres=gpu:a100_3g.40gb:1
-#SBATCH --mem=48G
-#SBATCH --time=2:30:00
+#SBATCH --mem=16G
+#SBATCH --time=1:00:00
 #SBATCH --cpus-per-task=8
 #SBATCH --output=/home/talbi/ontogeorag/logs/run11_%j.out
 #SBATCH --error=/home/talbi/ontogeorag/logs/run11_%j.err
