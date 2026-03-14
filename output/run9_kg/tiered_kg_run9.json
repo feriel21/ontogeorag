@@ -1,95 +1,26 @@
 {
-  "summary": {
-    "tier1_triples": 0,
-    "tier12_triples": 9,
+  "metadata": {
+    "iter_a_file": "/home/talbi/ontogeorag/output/run9_kg/tmp_ab_v7.json",
+    "iter_b_file": "/home/talbi/kg_test/output/step4/canonical_triples_v4.jsonl",
+    "iter_a_count": 59,
+    "iter_b_count": 137,
     "total_triples": 9,
-    "unique_entities": 15
-  },
-  "descriptor_coverage": {
-    "tier1": {
-      "found": [],
-      "missing": [
-        "blocky",
-        "chaotic",
-        "continuous",
-        "deformed",
-        "discontinuous",
-        "high-amplitude",
-        "layered",
-        "low-amplitude",
-        "massive",
-        "parallel",
-        "stratified",
-        "transparent",
-        "undeformed"
-      ],
-      "n_found": 0,
-      "n_total": 13,
-      "coverage": 0.0
+    "tier_distribution": {
+      "2": 9,
+      "1": 0
     },
-    "tier12": {
-      "found": [
-        "blocky"
-      ],
-      "missing": [
-        "chaotic",
-        "continuous",
-        "deformed",
-        "discontinuous",
-        "high-amplitude",
-        "layered",
-        "low-amplitude",
-        "massive",
-        "parallel",
-        "stratified",
-        "transparent",
-        "undeformed"
-      ],
-      "n_found": 1,
-      "n_total": 13,
-      "coverage": 0.07692307692307693
-    }
-  },
-  "recall_vs_lb2019": {
-    "tier1": {
-      "recall": 0.0,
-      "hits": 0,
-      "total_reference": 26,
-      "matched_edges": []
-    },
-    "tier12": {
-      "recall": 0.038461538461538464,
-      "hits": 1,
-      "total_reference": 26,
-      "matched_edges": [
-        [
-          "mass transport deposit",
-          "hasdescriptor",
-          "blocky"
-        ]
-      ]
-    }
-  },
-  "hallucination": {
-    "strong_support": 0,
-    "weak_support": 8,
-    "not_supported": 1,
-    "total": 9,
-    "hallucination_rate": 0.1111111111111111
-  },
-  "relation_distribution_by_tier": {
-    "2": {
+    "relation_distribution": {
       "causes": 5,
       "hasDescriptor": 3,
       "relatedTo": 1
     },
-    "1": {
-      "relatedTo": 0,
-      "hasDescriptor": 0,
-      "causes": 0
-    }
+    "origin_distribution": {
+      "iter_b": 8,
+      "both": 1
+    },
+    "include_tier3": false
   },
-  "triples_final": [
+  "triples": [
     {
       "subject": "fluid overpressure",
       "relation": "causes",
