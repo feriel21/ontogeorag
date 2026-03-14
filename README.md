@@ -6,9 +6,7 @@ reranking, and tiered verification. Developed for mass transport deposit (MTD) i
 in seismic data.
 
 
-> *OntoGeoRAG: Ontology-Constrained Knowledge Graph Construction from Geological Literature
-> via Retrieval-Augmented Generation.*
-> Computers & Geosciences. (under review)
+
 
 ---
 
