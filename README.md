@@ -228,17 +228,6 @@ See `setup.sh` for full install. Tested on NVIDIA A100 80 GB, CUDA 12.1.
 
 ---
 
-## Citation
 
-```bibtex
-@article{talbi2026ontogeorag,
-  title   = {{OntoGeoRAG}: Ontology-Constrained Knowledge Graph Construction
-             from Geological Literature via Retrieval-Augmented Generation},
-  author  = {Talbi, Feryal and Armitage, John and Rabaute, Alain and
-             Charl{\'e}ty, Jean and Vittaut, Jean-No{\"e}l and
-             Bouziat, Antoine and Leroy, Sylvie},
-  journal = {Computers \& Geosciences},
-  year    = {2026},
-  note    = {Under review}
-}
-```
+
+
