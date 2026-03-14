@@ -1,0 +1,63 @@
+============================================================
+EXPERIMENT B — NO-RAG BASELINE
+============================================================
+Model:        Qwen/Qwen2.5-7B-Instruct
+Temperature:  0.0
+Wall time:    1.3 min
+
+EXTRACTION
+  Queries:    249
+  Raw triples:66
+  Canonical:  53
+  Silent:     219/249 (88.0%)
+
+EVALUATION vs LB2019 (26 edges)
+  Matched:    9/26 = 34.6%
+
+MATCHED EDGES:
+  ✓  mass transport deposit         --[hasDescriptor]-->  chaotic
+  ✓  mass transport deposit         --[hasDescriptor]-->  blocky
+  ✓  debris flow                    --[hasDescriptor]-->  chaotic
+  ✓  debris flow                    --[hasDescriptor]-->  hummocky
+  ✓  slide                          --[hasDescriptor]-->  blocky
+  ✓  slide                          --[hasDescriptor]-->  undeformed
+  ✓  slope failure                  --[causes]-->  mass transport deposit
+  ✓  earthquake                     --[triggers]-->  slope failure
+  ✓  mass transport deposit         --[occursIn]-->  continental slope
+
+UNMATCHED EDGES:
+  ✗  mass transport deposit         --[hasDescriptor]-->  transparent
+  ✗  mass transport deposit         --[hasDescriptor]-->  hummocky
+  ✗  mass transport deposit         --[hasDescriptor]-->  discontinuous
+  ✗  mass transport deposit         --[hasDescriptor]-->  massive
+  ✗  turbidite                      --[hasDescriptor]-->  parallel
+  ✗  turbidite                      --[hasDescriptor]-->  continuous
+  ✗  turbidite                      --[hasDescriptor]-->  layered
+  ✗  turbidite                      --[hasDescriptor]-->  high-amplitude
+  ✗  hemipelagite                   --[hasDescriptor]-->  parallel
+  ✗  hemipelagite                   --[hasDescriptor]-->  continuous
+  ✗  hemipelagite                   --[hasDescriptor]-->  low-amplitude
+  ✗  pore pressure                  --[controls]-->  slope failure
+  ✗  turbidity current              --[formedBy]-->  debris flow
+  ✗  mass transport deposit         --[occursIn]-->  abyssal plain
+  ✗  debris flow                    --[occursIn]-->  continental slope
+  ✗  turbidite                      --[occursIn]-->  basin floor
+  ✗  slide                          --[overlies]-->  hemipelagite
+
+RELATION DISTRIBUTION:
+  hasDescriptor                  18
+  occursIn                       14
+  causes                         9
+  associatedWith                 3
+  triggers                       3
+  formedBy                       3
+  affects                        2
+  controls                       1
+
+COMPARISON (for paper):
+  Exp B  (no-RAG)          : 34.6%
+  C9     (BM25 only)       : 50.0%
+  C10    (BM25+reranker)   : 69.2%
+  Delta RAG vs no-RAG      : +15.4pp (C9)
+  Delta reranker vs no-RAG : +34.6pp (C10)
+============================================================

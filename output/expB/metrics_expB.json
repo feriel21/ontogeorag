@@ -1,0 +1,24 @@
+{
+  "experiment": "B_no_rag",
+  "n_queries": 249,
+  "n_raw": 66,
+  "n_canonical": 53,
+  "n_silent": 219,
+  "silent_pct": 88.0,
+  "n_matched": 9,
+  "n_ref": 26,
+  "recall_pct": 34.6,
+  "relation_dist": {
+    "causes": 9,
+    "hasDescriptor": 18,
+    "occursIn": 14,
+    "controls": 1,
+    "associatedWith": 3,
+    "triggers": 3,
+    "affects": 2,
+    "formedBy": 3
+  },
+  "wall_seconds": 77.9,
+  "temperature": 0.0,
+  "model": "Qwen/Qwen2.5-7B-Instruct"
+}
