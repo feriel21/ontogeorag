@@ -149,7 +149,13 @@ def find_evidence(triple, chunks, max_chunks=3):
     Uses stored source_chunk if available, otherwise text search.
     """
     # 1. Use stored evidence from the triple itself
-    stored = triple.get('evidence_quote') or triple.get('supporting_sentence', '')
+    # Field is named 'evidence' in the C10 KG (confirmed from tiered_kg_run11.json)
+    stored = (triple.get('evidence') or
+              triple.get('evidence_quote') or
+              triple.get('supporting_sentence', ''))
+    # Strip surrounding quotes if present
+    if stored:
+        stored = stored.strip().strip('"')
     if stored and len(stored) > 20:
         return stored[:1500]
 

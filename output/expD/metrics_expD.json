@@ -3,25 +3,21 @@
   "model_extractor": "Qwen/Qwen2.5-7B-Instruct",
   "model_verifier": "meta-llama/Llama-3.1-8B-Instruct",
   "n_triples": 100,
-  "n_strong": 32,
-  "n_weak": 30,
-  "n_not_supported": 9,
+  "n_strong": 73,
+  "n_weak": 23,
+  "n_not_supported": 4,
   "n_unresolved": 0,
-  "n_no_evidence": 29,
-  "ns_rate_pct": 9.0,
-  "agreement_rate_pct": 62.0,
-  "wall_seconds": 263.5,
+  "n_no_evidence": 0,
+  "ns_rate_pct": 4.0,
+  "agreement_rate_pct": 96.0,
+  "wall_seconds": 330.6,
   "verdict_dist": {
-    "NO_EVIDENCE": 29,
-    "STRONG_SUPPORT": 32,
-    "WEAK_SUPPORT": 30,
-    "NOT_SUPPORTED": 9
+    "STRONG_SUPPORT": 73,
+    "WEAK_SUPPORT": 23,
+    "NOT_SUPPORTED": 4
   },
   "ns_by_relation": {
-    "affects": 1,
     "hasDescriptor": 3,
-    "causes": 3,
-    "triggers": 1,
-    "occursIn": 1
+    "partOf": 1
   }
 }
