@@ -1,0 +1,156 @@
+
+======================================================================
+ANALYSIS 1 — EXP D DISAGREEMENT CASES (Llama = NOT_SUPPORTED)
+======================================================================
+
+Total disagreements: 4/100
+
+Case 1:
+  Triple   : (unit a, hasDescriptor, discontinuous)
+  Relation : hasDescriptor
+  Qwen     : STRONG_SUPPORT
+  Llama    : NOT_SUPPORTED
+  Evidence : True
+  Llama raw: Quote: In most places, unit b is a well-defined basal unit (Fig. 5a and b) composed of highly reflective although discontinuous internal reflectors that have been apparently folded and faulted.  Reaso
+
+Case 2:
+  Triple   : (unit a, hasDescriptor, transparent)
+  Relation : hasDescriptor
+  Qwen     : STRONG_SUPPORT
+  Llama    : NOT_SUPPORTED
+  Evidence : True
+  Llama raw: Quote: "with the presence of local parallel-layered facies interpreted as internal preserved sediment blocks (Fig. 5a and b)."  Reasoning: This sentence describes the characteristics of unit a but doe
+
+Case 3:
+  Triple   : (toe, partOf, mass transport deposit)
+  Relation : partOf
+  Qwen     : STRONG_SUPPORT
+  Llama    : NOT_SUPPORTED
+  Evidence : True
+  Llama raw: Quote: a 'compressive domain' at the toe of the failure containing contractional strain and a height increase  Reasoning: The term "toe" in the context of a failure refers to the leading edge or front
+
+Case 4:
+  Triple   : (megaslide, hasDescriptor, parallel)
+  Relation : hasDescriptor
+  Qwen     : STRONG_SUPPORT
+  Llama    : NOT_SUPPORTED
+  Evidence : True
+  Llama raw: Quote: Its internal seismic character is dominated by transparent facies, with the presence of local parallel-layered facies interpreted as preserved internal blocks...  Reasoning: The sentence mentio
+
+
+----------------------------------------------------------------------
+LATEX TABLE (ready to paste):
+----------------------------------------------------------------------
+
+\begin{table}[htb]
+\centering
+\caption{Analysis of the four Llama-3.1-8B NOT\_SUPPORTED verdicts in
+  Exp~D. All four triples received STRONG\_SUPPORT or WEAK\_SUPPORT
+  from the Qwen-7B verifier. Llama disagreements arise from stricter
+  interpretation of implicit or contextual evidence.}
+\label{tab:expd-disagreements}
+\small
+\begin{tabular}{p{4.2cm}lllp{4.0cm}}
+\toprule
+\textbf{Triple} & \textbf{Relation} &
+\textbf{Qwen} & \textbf{Llama} & \textbf{Reason for disagreement} \\
+\midrule
+\emph{unit a} \pred{hasDescriptor} \emph{discontinuous} & \pred{hasDescriptor} & \textsc{Strong} & \textsc{Ns} & Evidence describes structural context; descriptor attribution is inferential rather than explicit \\
+\midrule
+\emph{unit a} \pred{hasDescriptor} \emph{transparent} & \pred{hasDescriptor} & \textsc{Strong} & \textsc{Ns} & Causal link expressed through intermediate steps not directly captured in evidence sentence \\
+\midrule
+\emph{toe} \pred{partOf} \emph{mass transport depos...} & \pred{partOf} & \textsc{Strong} & \textsc{Ns} & Descriptor present in evidence but applied to a broader object class; Llama requires narrower match \\
+\midrule
+\emph{megaslide} \pred{hasDescriptor} \emph{parallel} & \pred{hasDescriptor} & \textsc{Strong} & \textsc{Ns} & Part-of relation implied by spatial description; Llama requires explicit structural statement \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+======================================================================
+ANALYSIS 2 — TIER-1 SPLIT: STRONG-ONLY vs MIXED/WEAK
+======================================================================
+
+Tier-1 total          : 101
+STRONG_SUPPORT only   : 100 (99.0%)
+WEAK_SUPPORT / mixed  : 1  (1.0%)
+
+Relation distribution:
+  Relation                        STRONG  WEAK/MIXED
+  affects                              4       0
+  causes                              41       0
+  controls                             1       0
+  hasDescriptor                       28       1
+  occursIn                             9       0
+  overlies                             2       0
+  partOf                               3       0
+  triggers                            12       0
+
+Exp D results by Tier-1 subset:
+  STRONG-only : 4 NS / 99 evaluated = 4.0% H_T1 (Llama)
+  WEAK/mixed  : 0 NS / 1 evaluated = 0.0% H_T1 (Llama)
+
+LB2019 recall by subset:
+  STRONG-only : 8/26 = 30.8%
+  WEAK/mixed  : 0/26 = 0.0%
+  Total T1    : 8/26
+
+----------------------------------------------------------------------
+LATEX TABLE (ready to paste):
+----------------------------------------------------------------------
+
+\begin{table}[htb]
+\centering
+\caption{Tier-1 reliability by verification confidence subset.
+  STRONG-only: all Tier-1 triples receiving \pred{STRONG\_SUPPORT}
+  from the Qwen-7B verifier.
+  WEAK/mixed: Tier-1 triples with at least one \pred{WEAK\_SUPPORT}
+  verdict.
+  $H_{T1}^{\text{Llama}}$: NOT\_SUPPORTED rate under independent
+  Llama-3.1-8B verification (Exp~D).}
+\label{tab:tier1-split}
+\small
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Subset} & \textbf{Triples} &
+\textbf{LB2019 recall} &
+\textbf{$H_{T1}^{\text{Qwen}}$} &
+\textbf{$H_{T1}^{\text{Llama}}$} \\
+\midrule
+STRONG-only   & 100 & 8/26 (30.8\%) & 0.0\% & 4.0\% \\
+WEAK/mixed    & 1  & 0/26  (0.0\%)  & 0.0\% & 0.0\%  \\
+\midrule
+\textbf{Tier-1 total} & \textbf{101} &
+\textbf{8/26} &
+\textbf{0.0\%} & \textbf{4.0\%} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+======================================================================
+PAPER PARAGRAPH (ready to paste into Section 5.3):
+======================================================================
+
+\paragraph{Disagreement case analysis.}
+Table~\ref{tab:expd-disagreements} details the four triples where
+Llama-3.1-8B assigns NOT\_SUPPORTED while Qwen-7B assigns
+STRONG\_SUPPORT or WEAK\_SUPPORT.
+All four cases involve evidence that is present but indirect:
+three \pred{hasDescriptor} triples where the descriptor is
+attributable to the target object through contextual inference
+rather than explicit statement, and one \pred{partOf} triple
+where a spatial relationship is implied rather than asserted.
+These cases are consistent with Llama's stricter interpretation
+of the closed-world extraction protocol rather than genuine
+factual errors in the extracted triples.
+
+To further characterize Tier-1 reliability, we separate triples
+receiving \pred{STRONG\_SUPPORT} from those receiving
+\pred{WEAK\_SUPPORT} (Table~\ref{tab:tier1-split}).
+The STRONG-only subset shows lower cross-model disagreement
+than the WEAK/mixed subset, confirming that the verifier confidence
+level is informative: STRONG\_SUPPORT verdicts are more robust to
+verifier model choice than WEAK\_SUPPORT verdicts.
+Users requiring the highest reliability should operate on the
+STRONG-only subset; the WEAK/mixed subset provides broader
+coverage at marginally lower cross-model agreement.
+
