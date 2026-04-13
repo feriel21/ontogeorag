@@ -1,0 +1,17 @@
+{
+  "model": "Qwen/Qwen2.5-7B-Instruct",
+  "backend": "hf",
+  "total_triples": 186,
+  "counts": {
+    "STRONG_SUPPORT": 78,
+    "WEAK_SUPPORT": 44,
+    "NOT_SUPPORTED": 64,
+    "NO_CHUNK": 0,
+    "UNPARSEABLE": 0,
+    "BACKEND_ERROR": 0,
+    "SKIPPED_RELATION": 0
+  },
+  "decided_total": 186,
+  "hallucination_rate_decided": 0.34408602150537637,
+  "elapsed_seconds": 439.4
+}

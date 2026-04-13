@@ -1,0 +1,402 @@
+{
+  "instructions": "For each statement, assign verdict: Y (correct), P (partially correct / context-dependent), N (incorrect). Provide brief evidence or comment.",
+  "verdict_scale": {
+    "Y": "Geologically correct and well-supported",
+    "P": "Partially correct, context-dependent, or imprecise",
+    "N": "Incorrect, unsupported, or misattributed"
+  },
+  "statements": [
+    {
+      "id": 1,
+      "triple": {
+        "subject": "channel",
+        "relation": "hasDescriptor",
+        "object": "high-amplitude"
+      },
+      "statement": "channel is characterized by high-amplitude seismic facies.",
+      "evidence": "\"some channels having a high amplitude fill of discontinuous reflections and others having a low amplitude, transparent fill.\"",
+      "tier": 1,
+      "verdict_automated": "STRONG_SUPPORT",
+      "verdict_expert": null,
+      "comment_expert": null
+    },
+    {
+      "id": 2,
+      "triple": {
+        "subject": "channel",
+        "relation": "hasDescriptor",
+        "object": "discontinuous"
+      },
+      "statement": "channel is characterized by discontinuous seismic facies.",
+      "evidence": "Some channels having a high amplitude fill of discontinuous reflections and others having a low amplitude, transparent fill.",
+      "tier": 1,
+      "verdict_automated": "STRONG_SUPPORT",
+      "verdict_expert": null,
+      "comment_expert": null
+    },
+    {
+      "id": 3,
+      "triple": {
+        "subject": "channel levee",
+        "relation": "hasDescriptor",
+        "object": "high-amplitude"
+      },
+      "statement": "channel levee is characterized by high-amplitude seismic facies.",
+      "evidence": "\"some channels having a high amplitude fill of discontinuous reflections and others having a low amplitude, transparent fill. High amplitude channel fills are often associated with development of mounds above the channel axis that may be due to differential compaction of the sand-rich channel fill a",
+      "tier": 1,
+      "verdict_automated": "STRONG_SUPPORT",
+      "verdict_expert": null,
+      "comment_expert": null
+    },
+    {
+      "id": 4,
+      "triple": {
+        "subject": "channel levee",
+        "relation": "hasDescriptor",
+        "object": "discontinuous"
+      },
+      "statement": "channel levee is characterized by discontinuous seismic facies.",
+      "evidence": "Some channels having a high amplitude fill of discontinuous reflections and others having a low amplitude, transparent fill.",
+      "tier": 1,
+      "verdict_automated": "STRONG_SUPPORT",
+      "verdict_expert": null,
+      "comment_expert": null
+    },
+    {
+      "id": 5,
+      "triple": {
+        "subject": "channel levee complex",
+        "relation": "hasDescriptor",
+        "object": "thin"
+      },
+      "statement": "channel levee complex is characterized by thin seismic facies.",
+      "evidence": "Unit PM2 displays internal thickness variations related to channel levee complexes where thinning of the channel levees occurs away from the channel axis.",
+      "tier": 1,
+      "verdict_automated": "STRONG_SUPPORT",
+      "verdict_expert": null,
+      "comment_expert": null
+    },
+    {
+      "id": 6,
+      "triple": {
+        "subject": "debris-flow deposit",
+        "relation": "hasDescriptor",
+        "object": "chaotic"
+      },
+      "statement": "debris-flow deposit is characterized by chaotic seismic facies.",
+      "evidence": "Unit a is the upper unit, consisting of a continuous layer of rather chaotic to transparent seismic facies, which can be indicative of debris-flow deposits (Evans et al. 2005), with the presence of local parallel-layered facies interpreted as internal preserved sediment blocks (Fig. 5a and b).",
+      "tier": 1,
+      "verdict_automated": "STRONG_SUPPORT",
+      "verdict_expert": null,
+      "comment_expert": null
+    },
+    {
+      "id": 7,
+      "triple": {
+        "subject": "fold",
+        "relation": "hasDescriptor",
+        "object": "discontinuous"
+      },
+      "statement": "fold is characterized by discontinuous seismic facies.",
+      "evidence": "\"Chaotic, discontinuous and weak amplitude reﬂection characterizes large-scale thrusts and fold systems.\"",
+      "tier": 1,
+      "verdict_automated": "STRONG_SUPPORT",
+      "verdict_expert": null,
+      "comment_expert": null
+    },
+    {
+      "id": 8,
+      "triple": {
+        "subject": "combination of load increase and strength decrease",
+        "relation": "causes",
+        "object": "sediment or rock failure"
+      },
+      "statement": "combination of load increase and strength decrease causes sediment or rock failure.",
+      "evidence": "Mass movements can result either from an increase in the environmental loads, a decrease in the strength of the sediment/rock, or a combination of load increase and strength decrease.",
+      "tier": 1,
+      "verdict_automated": "STRONG_SUPPORT",
+      "verdict_expert": null,
+      "comment_expert": null
+    },
+    {
+      "id": 9,
+      "triple": {
+        "subject": "compressive domain",
+        "relation": "causes",
+        "object": "up to 500m in thickness"
+      },
+      "statement": "compressive domain causes up to 500m in thickness.",
+      "evidence": "\"structures In the compressive domain mass transport deposits reach up to 500m in thickness...\"",
+      "tier": 1,
+      "verdict_automated": "STRONG_SUPPORT",
+      "verdict_expert": null,
+      "comment_expert": null
+    },
+    {
+      "id": 10,
+      "triple": {
+        "subject": "decrease in the strength of the sediment/rock",
+        "relation": "causes",
+        "object": "sediment or rock failure"
+      },
+      "statement": "decrease in the strength of the sediment/rock causes sediment or rock failure.",
+      "evidence": "Mass movements can result either from an increase in the environmental loads, a decrease in the strength of the sediment/rock, or a combination of load increase and strength decrease.",
+      "tier": 1,
+      "verdict_automated": "STRONG_SUPPORT",
+      "verdict_expert": null,
+      "comment_expert": null
+    },
+    {
+      "id": 11,
+      "triple": {
+        "subject": "effective stress decreases",
+        "relation": "causes",
+        "object": "sediment approaches a state of liquefaction"
+      },
+      "statement": "effective stress decreases causes sediment approaches a state of liquefaction.",
+      "evidence": "As the storm-wave-induced pore-water pressures build up, the effective stress decreases and the sediment approaches a state of liquefaction.",
+      "tier": 1,
+      "verdict_automated": "STRONG_SUPPORT",
+      "verdict_expert": null,
+      "comment_expert": null
+    },
+    {
+      "id": 12,
+      "triple": {
+        "subject": "environmental loads",
+        "relation": "causes",
+        "object": "sediment or rock failure"
+      },
+      "statement": "environmental loads causes sediment or rock failure.",
+      "evidence": "Mass movements can result either from an increase in the environmental loads, a decrease in the strength of the sediment/rock, or a combination of load increase and strength decrease.",
+      "tier": 1,
+      "verdict_automated": "STRONG_SUPPORT",
+      "verdict_expert": null,
+      "comment_expert": null
+    },
+    {
+      "id": 13,
+      "triple": {
+        "subject": "mass transport deposit",
+        "relation": "occursIn",
+        "object": "deepwater basinal setting"
+      },
+      "statement": "mass transport deposit occurs in deepwater basinal setting.",
+      "evidence": "of mass-transport deposits in deepwater basinal settings.",
+      "tier": 1,
+      "verdict_automated": "STRONG_SUPPORT",
+      "verdict_expert": null,
+      "comment_expert": null
+    },
+    {
+      "id": 14,
+      "triple": {
+        "subject": "mass transport deposit",
+        "relation": "occursIn",
+        "object": "continental margin"
+      },
+      "statement": "mass transport deposit occurs in continental margin.",
+      "evidence": "\"Then we provide three examples that exhibit mixed MTD and turbidite systems, such as the Mediterranean continental margin off the Ebro River in Spain, which has some segments dominated by MTDs and others dominated by turbidite systems, and the continental margins off the Mississippi and Amazon Rive",
+      "tier": 1,
+      "verdict_automated": "STRONG_SUPPORT",
+      "verdict_expert": null,
+      "comment_expert": null
+    },
+    {
+      "id": 15,
+      "triple": {
+        "subject": "submarine landslides",
+        "relation": "occursIn",
+        "object": "continental slope"
+      },
+      "statement": "submarine landslides occurs in continental slope.",
+      "evidence": "Based on multibeam bathymetric data and GLORIA sidescan surveys, McAdoo et al. (2000) identified a total of 83 gravity flows, slides and slumps on the continental slopes of Oregon (Fig. 33a), central California (Fig. 33b), Texas (Fig. 33c) and New Jersey (Fig. 33d).",
+      "tier": 1,
+      "verdict_automated": "STRONG_SUPPORT",
+      "verdict_expert": null,
+      "comment_expert": null
+    },
+    {
+      "id": 16,
+      "triple": {
+        "subject": "submarine landslides",
+        "relation": "occursIn",
+        "object": "mediterranean continental margin"
+      },
+      "statement": "submarine landslides occurs in mediterranean continental margin.",
+      "evidence": "\"Submarine landslides are ubiquitous along Mediterranean continental margins.\"",
+      "tier": 1,
+      "verdict_automated": "STRONG_SUPPORT",
+      "verdict_expert": null,
+      "comment_expert": null
+    },
+    {
+      "id": 17,
+      "triple": {
+        "subject": "decreased strength",
+        "relation": "triggers",
+        "object": "failure"
+      },
+      "statement": "decreased strength triggers failure.",
+      "evidence": "The source text states, \"TRIGGERS Submarine landslides are triggered either by an increase in the driving stresses, a decrease in strength, or a combination of the two.\"",
+      "tier": 1,
+      "verdict_automated": "STRONG_SUPPORT",
+      "verdict_expert": null,
+      "comment_expert": null
+    },
+    {
+      "id": 18,
+      "triple": {
+        "subject": "earthquake",
+        "relation": "triggers",
+        "object": "slope failure"
+      },
+      "statement": "earthquake triggers slope failure.",
+      "evidence": "\"It is speculated that earthquake loading is the final trigger for the initiation of the slides at the end of each glaciation.\"",
+      "tier": 1,
+      "verdict_automated": "STRONG_SUPPORT",
+      "verdict_expert": null,
+      "comment_expert": null
+    },
+    {
+      "id": 19,
+      "triple": {
+        "subject": "earthquake",
+        "relation": "triggers",
+        "object": "slope failures"
+      },
+      "statement": "earthquake triggers slope failures.",
+      "evidence": "\"It is speculated that earthquake loading is the final trigger for the initiation of the slides at the end of each glaciation.\"",
+      "tier": 1,
+      "verdict_automated": "STRONG_SUPPORT",
+      "verdict_expert": null,
+      "comment_expert": null
+    },
+    {
+      "id": 20,
+      "triple": {
+        "subject": "earthquake",
+        "relation": "triggers",
+        "object": "initiation of the slides"
+      },
+      "statement": "earthquake triggers initiation of the slides.",
+      "evidence": "\"It is speculated that earthquake loading is the final trigger for the initiation of the slides at the end of each glaciation.\"",
+      "tier": 1,
+      "verdict_automated": "STRONG_SUPPORT",
+      "verdict_expert": null,
+      "comment_expert": null
+    },
+    {
+      "id": 21,
+      "triple": {
+        "subject": "compressive domain",
+        "relation": "affects",
+        "object": "thickness of mass transport deposits"
+      },
+      "statement": "compressive domain affects thickness of mass transport deposits.",
+      "evidence": "\"structures In the compressive domain mass transport deposits reach up to 500m in thickness, elevating upper surfaces by up to 100m with respect to the adjacent lakebed.\"",
+      "tier": 1,
+      "verdict_automated": "STRONG_SUPPORT",
+      "verdict_expert": null,
+      "comment_expert": null
+    },
+    {
+      "id": 22,
+      "triple": {
+        "subject": "compressive domain",
+        "relation": "affects",
+        "object": "elevation of upper surfaces"
+      },
+      "statement": "compressive domain affects elevation of upper surfaces.",
+      "evidence": "\"In the compressive domain mass transport deposits reach up to 500m in thickness, elevating upper surfaces by up to 100m with respect to the adjacent lakebed.\"",
+      "tier": 1,
+      "verdict_automated": "STRONG_SUPPORT",
+      "verdict_expert": null,
+      "comment_expert": null
+    },
+    {
+      "id": 23,
+      "triple": {
+        "subject": "strongly deformed allochthonous masses",
+        "relation": "affects",
+        "object": "chaotic-to-transparent facies"
+      },
+      "statement": "strongly deformed allochthonous masses affects chaotic-to-transparent facies.",
+      "evidence": "Strongly deformed allochthonous masses present chaotic-to-transparent facies, interbedded laterally and vertically with non-deformed units and blocks.",
+      "tier": 1,
+      "verdict_automated": "STRONG_SUPPORT",
+      "verdict_expert": null,
+      "comment_expert": null
+    },
+    {
+      "id": 24,
+      "triple": {
+        "subject": "rough topography",
+        "relation": "controls",
+        "object": "disintegration and transformation of the debris flows into a turbidity current"
+      },
+      "statement": "rough topography controls disintegration and transformation of the debris flows into a turbidity current.",
+      "evidence": "A rough topography leading to a varying flow velocity may have been important for the disintegration and transformation of the debris flows into a turbidity current (according to the terminology of Piper et al. (1999) and Piper and Normark (2009)).",
+      "tier": 1,
+      "verdict_automated": "STRONG_SUPPORT",
+      "verdict_expert": null,
+      "comment_expert": null
+    },
+    {
+      "id": 25,
+      "triple": {
+        "subject": "mass transport deposit",
+        "relation": "partOf",
+        "object": "basal shear surface"
+      },
+      "statement": "mass transport deposit is a structural component of basal shear surface.",
+      "evidence": "translated downslope over the basal shear surface, which also acts as a detachment surface.",
+      "tier": 1,
+      "verdict_automated": "STRONG_SUPPORT",
+      "verdict_expert": null,
+      "comment_expert": null
+    },
+    {
+      "id": 26,
+      "triple": {
+        "subject": "mass transport deposit",
+        "relation": "partOf",
+        "object": "upper surface"
+      },
+      "statement": "mass transport deposit is a structural component of upper surface.",
+      "evidence": "palaeo-lakebed and mass transport deposit upper surface showing main components of a mass transport deposit.",
+      "tier": 1,
+      "verdict_automated": "STRONG_SUPPORT",
+      "verdict_expert": null,
+      "comment_expert": null
+    },
+    {
+      "id": 27,
+      "triple": {
+        "subject": "blocky material",
+        "relation": "overlies",
+        "object": "curved ramp"
+      },
+      "statement": "blocky material overlies curved ramp.",
+      "evidence": "\"High ampli- tude, blocky material near the base of the deposit (de- scribed in the section above) remains semi-continuous above the curved ramp, forming a lobe of blocky material that drapes and follows the topography of the basal shear surface (Fig. 3a and b).\"",
+      "tier": 1,
+      "verdict_automated": "STRONG_SUPPORT",
+      "verdict_expert": null,
+      "comment_expert": null
+    },
+    {
+      "id": 28,
+      "triple": {
+        "subject": "rugged upper surface",
+        "relation": "overlies",
+        "object": "stable paleo-lakebed"
+      },
+      "statement": "rugged upper surface overlies stable paleo-lakebed.",
+      "evidence": "The compressive domain is comparatively thick; the mass transport deposit upper surface is rugose and elevated with respect to the stable palaeo-lakebed.",
+      "tier": 1,
+      "verdict_automated": "STRONG_SUPPORT",
+      "verdict_expert": null,
+      "comment_expert": null
+    }
+  ]
+}

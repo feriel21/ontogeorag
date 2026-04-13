@@ -1,0 +1,7 @@
+{
+  "memory_only_recall_34edge": 0.2647058823529412,
+  "tp": 9,
+  "n_benchmark": 34,
+  "n_triples": 53,
+  "note": "Exact measurement from output/expB/canonical_expB.jsonl"
+}

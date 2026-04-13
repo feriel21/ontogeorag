@@ -1,0 +1,78 @@
+{
+  "edges": [
+    {
+      "subject": "mass transport deposit",
+      "relation": "hasDescriptor",
+      "object": "low-amplitude",
+      "co_occurring_chunks": 6,
+      "subject_chunks": 145,
+      "object_chunks": 39,
+      "status": "GROUNDED"
+    },
+    {
+      "subject": "mass transport deposit",
+      "relation": "hasDescriptor",
+      "object": "high-amplitude",
+      "co_occurring_chunks": 4,
+      "subject_chunks": 145,
+      "object_chunks": 101,
+      "status": "GROUNDED"
+    },
+    {
+      "subject": "mass transport deposit",
+      "relation": "hasDescriptor",
+      "object": "continuous",
+      "co_occurring_chunks": 22,
+      "subject_chunks": 145,
+      "object_chunks": 318,
+      "status": "GROUNDED"
+    },
+    {
+      "subject": "slide",
+      "relation": "hasDescriptor",
+      "object": "hummocky",
+      "co_occurring_chunks": 32,
+      "subject_chunks": 1400,
+      "object_chunks": 60,
+      "status": "GROUNDED"
+    },
+    {
+      "subject": "submarine landslides",
+      "relation": "occursIn",
+      "object": "continental slope",
+      "co_occurring_chunks": 74,
+      "subject_chunks": 275,
+      "object_chunks": 492,
+      "status": "GROUNDED"
+    },
+    {
+      "subject": "megaslide",
+      "relation": "hasDescriptor",
+      "object": "chaotic",
+      "co_occurring_chunks": 34,
+      "subject_chunks": 113,
+      "object_chunks": 264,
+      "status": "GROUNDED"
+    },
+    {
+      "subject": "megaslide",
+      "relation": "hasDescriptor",
+      "object": "transparent",
+      "co_occurring_chunks": 32,
+      "subject_chunks": 113,
+      "object_chunks": 91,
+      "status": "GROUNDED"
+    },
+    {
+      "subject": "megaslide",
+      "relation": "hasDescriptor",
+      "object": "layered",
+      "co_occurring_chunks": 17,
+      "subject_chunks": 113,
+      "object_chunks": 58,
+      "status": "GROUNDED"
+    }
+  ],
+  "all_grounded": true,
+  "corpus_gaps": []
+}

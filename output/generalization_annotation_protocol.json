@@ -1,0 +1,360 @@
+{
+  "instructions": "GENERALIZATION TEST — 11 papers NOT used in pipeline development (published 2020–2025). Same scale as main validation: Y = geologically correct, P = partially correct or context-dependent, N = incorrect.",
+  "verdict_scale": {
+    "Y": "Geologically correct and well-supported",
+    "P": "Partially correct, context-dependent, or imprecise",
+    "N": "Incorrect, unsupported, or misattributed"
+  },
+  "statements": [
+    {
+      "id": 1,
+      "triple": {
+        "subject": "banghittu landslide",
+        "relation": "hasDescriptor",
+        "object": "chaotic"
+      },
+      "statement": "banghittu landslide is characterized by chaotic seismic facies.",
+      "evidence": "These deposits, often associated with gravity-driven downslope processes, were identified by their characteristic opaque, chaotic, and discontinuous seismic facies.",
+      "tier": 1,
+      "verdict_automated": "STRONG_SUPPORT",
+      "verdict_expert": null,
+      "comment_expert": null
+    },
+    {
+      "id": 2,
+      "triple": {
+        "subject": "debris flow",
+        "relation": "hasDescriptor",
+        "object": "chaotic"
+      },
+      "statement": "debris flow is characterized by chaotic seismic facies.",
+      "evidence": "These deposits, often associated with gravity-driven downslope processes, were identified by their characteristic opaque, chaotic, and discontinuous seismic facies.",
+      "tier": 1,
+      "verdict_automated": "STRONG_SUPPORT",
+      "verdict_expert": null,
+      "comment_expert": null
+    },
+    {
+      "id": 3,
+      "triple": {
+        "subject": "debris flow",
+        "relation": "hasDescriptor",
+        "object": "discontinuous"
+      },
+      "statement": "debris flow is characterized by discontinuous seismic facies.",
+      "evidence": "These deposits, often associated with gravity-driven downslope processes, were identified by their characteristic opaque, chaotic, and discontinuous seismic facies.",
+      "tier": 1,
+      "verdict_automated": "STRONG_SUPPORT",
+      "verdict_expert": null,
+      "comment_expert": null
+    },
+    {
+      "id": 4,
+      "triple": {
+        "subject": "debris flow",
+        "relation": "hasDescriptor",
+        "object": "stratified"
+      },
+      "statement": "debris flow is characterized by stratified seismic facies.",
+      "evidence": "\"The mega-clasts, measuring about 0.4–1.5 km high and 0.7 km–1 km in width, are internally stratiﬁed and characterised by coherent reﬂections that are separated by extensional planar contacts, encased within a chaotic mix (Fig. 4b and c).\"",
+      "tier": 1,
+      "verdict_automated": "STRONG_SUPPORT",
+      "verdict_expert": null,
+      "comment_expert": null
+    },
+    {
+      "id": 5,
+      "triple": {
+        "subject": "mass transport deposit",
+        "relation": "hasDescriptor",
+        "object": "chaotic"
+      },
+      "statement": "mass transport deposit is characterized by chaotic seismic facies.",
+      "evidence": "These deposits, often associated with gravity-driven downslope processes, were identified by their characteristic opaque, chaotic, and discontinuous seismic facies.",
+      "tier": 1,
+      "verdict_automated": "STRONG_SUPPORT",
+      "verdict_expert": null,
+      "comment_expert": null
+    },
+    {
+      "id": 6,
+      "triple": {
+        "subject": "mass transport deposit",
+        "relation": "hasDescriptor",
+        "object": "discontinuous"
+      },
+      "statement": "mass transport deposit is characterized by discontinuous seismic facies.",
+      "evidence": "These deposits, often associated with gravity-driven downslope processes, were identified by their characteristic opaque, chaotic, and discontinuous seismic facies.",
+      "tier": 1,
+      "verdict_automated": "STRONG_SUPPORT",
+      "verdict_expert": null,
+      "comment_expert": null
+    },
+    {
+      "id": 7,
+      "triple": {
+        "subject": "mass transport deposit",
+        "relation": "hasDescriptor",
+        "object": "stratified"
+      },
+      "statement": "mass transport deposit is characterized by stratified seismic facies.",
+      "evidence": "\"The mega-clasts, measuring about 0.4–1.5 km high and 0.7 km–1 km in width, are internally stratiﬁed and characterised by coherent reﬂections that are separated by extensional planar contacts, encased within a chaotic mix (Fig. 4b and c).\"",
+      "tier": 1,
+      "verdict_automated": "STRONG_SUPPORT",
+      "verdict_expert": null,
+      "comment_expert": null
+    },
+    {
+      "id": 8,
+      "triple": {
+        "subject": "mass transport deposit",
+        "relation": "hasDescriptor",
+        "object": "irregular"
+      },
+      "statement": "mass transport deposit is characterized by irregular seismic facies.",
+      "evidence": "\"Protruding angular megaclasts within a chaotic mix, and with characteristic irregularity of the upper surface;\"",
+      "tier": 1,
+      "verdict_automated": "STRONG_SUPPORT",
+      "verdict_expert": null,
+      "comment_expert": null
+    },
+    {
+      "id": 9,
+      "triple": {
+        "subject": "erosion",
+        "relation": "causes",
+        "object": "liquefaction"
+      },
+      "statement": "erosion causes liquefaction.",
+      "evidence": "\"According to Allen (1982), liquefaction occurs when fine sediments produced by the erosion process are fluidized by excess pore pressure triggered by mass transport events.\"",
+      "tier": 1,
+      "verdict_automated": "STRONG_SUPPORT",
+      "verdict_expert": null,
+      "comment_expert": null
+    },
+    {
+      "id": 10,
+      "triple": {
+        "subject": "excess pore pressure",
+        "relation": "causes",
+        "object": "liquefaction"
+      },
+      "statement": "excess pore pressure causes liquefaction.",
+      "evidence": "\"According to Allen (1982), liquefaction occurs when fine sediments produced by the erosion process are fluidized by excess pore pressure triggered by mass transport events.\"",
+      "tier": 1,
+      "verdict_automated": "STRONG_SUPPORT",
+      "verdict_expert": null,
+      "comment_expert": null
+    },
+    {
+      "id": 11,
+      "triple": {
+        "subject": "fine sediments",
+        "relation": "causes",
+        "object": "liquefaction"
+      },
+      "statement": "fine sediments causes liquefaction.",
+      "evidence": "According to Allen (1982), liquefaction occurs when fine sediments produced by the erosion process are fluidized by excess pore pressure triggered by mass transport events.",
+      "tier": 1,
+      "verdict_automated": "STRONG_SUPPORT",
+      "verdict_expert": null,
+      "comment_expert": null
+    },
+    {
+      "id": 12,
+      "triple": {
+        "subject": "fluid overpressure",
+        "relation": "causes",
+        "object": "weakening of the sediment sequence"
+      },
+      "statement": "fluid overpressure causes weakening of the sediment sequence.",
+      "evidence": "\"These fluids interact with sedimentary materials by increasing pore pressure which, in turn, induces frictional resistance between sediment particles and a reduction in shear strength, thus promoting the initiation of landslides (Hovland et al., 1993; Hampton et al., 1996; Lastras et al., 2004).\"",
+      "tier": 1,
+      "verdict_automated": "STRONG_SUPPORT",
+      "verdict_expert": null,
+      "comment_expert": null
+    },
+    {
+      "id": 13,
+      "triple": {
+        "subject": "high sedimentation rates",
+        "relation": "causes",
+        "object": "mtds"
+      },
+      "statement": "high sedimentation rates causes mtds.",
+      "evidence": "\"Mass transport deposits (MTDs) widely occur worldwide [1–5] and are unstable transport caused by various controlling factors (high sedimentation rates, paleo–marine landslides and mass failures, sea level fluctuations, volcanism, water temperatures, ocean currents, tsunamis, storms, hurricanes, tid",
+      "tier": 1,
+      "verdict_automated": "STRONG_SUPPORT",
+      "verdict_expert": null,
+      "comment_expert": null
+    },
+    {
+      "id": 14,
+      "triple": {
+        "subject": "earthquake",
+        "relation": "triggers",
+        "object": "liquefaction"
+      },
+      "statement": "earthquake triggers liquefaction.",
+      "evidence": "\"Only sufficiently large earthquakes can induce liquefaction and fluidization effects (Owen and Moretti, 2008). Liquefaction is unlikely in earthquake below magnitude 5, while stronger quakes may cause it over a broader area (Allen, 1986; Ambraseys, 1988; Galli, 2000).\"",
+      "tier": 1,
+      "verdict_automated": "STRONG_SUPPORT",
+      "verdict_expert": null,
+      "comment_expert": null
+    },
+    {
+      "id": 15,
+      "triple": {
+        "subject": "excess pore pressure",
+        "relation": "triggers",
+        "object": "liquefaction"
+      },
+      "statement": "excess pore pressure triggers liquefaction.",
+      "evidence": "\"Allen (1982), liquefaction occurs when fine sediments produced by the erosion process are fluidized by excess pore pressure triggered by mass transport events.\"",
+      "tier": 1,
+      "verdict_automated": "STRONG_SUPPORT",
+      "verdict_expert": null,
+      "comment_expert": null
+    },
+    {
+      "id": 16,
+      "triple": {
+        "subject": "gravitational forces",
+        "relation": "triggers",
+        "object": "slope failure"
+      },
+      "statement": "gravitational forces triggers slope failure.",
+      "evidence": "\"This study suggests that slope sediments can fail under their own gravity when gravitational forces along the slope overcome the shear strength of sediments. This failure mechanism does not require other triggers, such as earthquakes, gas hydrate dissolution and sea-level fluctuations, and is likel",
+      "tier": 1,
+      "verdict_automated": "STRONG_SUPPORT",
+      "verdict_expert": null,
+      "comment_expert": null
+    },
+    {
+      "id": 17,
+      "triple": {
+        "subject": "horizontal acceleration",
+        "relation": "triggers",
+        "object": "sediment failure"
+      },
+      "statement": "horizontal acceleration triggers sediment failure.",
+      "evidence": "Horizontal acceleration has the highest contribution to the shear stress and can drive sediment failure near continental slope edges (Hampton et al., 1996).",
+      "tier": 1,
+      "verdict_automated": "STRONG_SUPPORT",
+      "verdict_expert": null,
+      "comment_expert": null
+    },
+    {
+      "id": 18,
+      "triple": {
+        "subject": "mass transport events",
+        "relation": "triggers",
+        "object": "liquefaction"
+      },
+      "statement": "mass transport events triggers liquefaction.",
+      "evidence": "\"According to Allen (1982), liquefaction occurs when fine sediments produced by the erosion process are fluidized by excess pore pressure triggered by mass transport events.\"",
+      "tier": 1,
+      "verdict_automated": "STRONG_SUPPORT",
+      "verdict_expert": null,
+      "comment_expert": null
+    },
+    {
+      "id": 19,
+      "triple": {
+        "subject": "fluid overpressure",
+        "relation": "affects",
+        "object": "frictional resistance between sediment particles"
+      },
+      "statement": "fluid overpressure affects frictional resistance between sediment particles.",
+      "evidence": "\"These fluids interact with sedimentary materials by increasing pore pressure which, in turn, induces frictional resistance between sediment particles and a reduction in shear strength, thus promoting the initiation of landslides.\"",
+      "tier": 1,
+      "verdict_automated": "STRONG_SUPPORT",
+      "verdict_expert": null,
+      "comment_expert": null
+    },
+    {
+      "id": 20,
+      "triple": {
+        "subject": "fluid overpressure",
+        "relation": "affects",
+        "object": "reduction in shear strength"
+      },
+      "statement": "fluid overpressure affects reduction in shear strength.",
+      "evidence": "\"These fluids interact with sedimentary materials by increasing pore pressure which, in turn, induces frictional resistance between sediment particles and a reduction in shear strength, thus promoting the initiation of landslides.\"",
+      "tier": 1,
+      "verdict_automated": "STRONG_SUPPORT",
+      "verdict_expert": null,
+      "comment_expert": null
+    },
+    {
+      "id": 21,
+      "triple": {
+        "subject": "fluid overpressure",
+        "relation": "affects",
+        "object": "shear strength of the sediment"
+      },
+      "statement": "fluid overpressure affects shear strength of the sediment.",
+      "evidence": "\"These fluids interact with sedimentary materials by increasing pore pressure which, in turn, induces frictional resistance between sediment particles and a reduction in shear strength, thus promoting the initiation of landslides.\"",
+      "tier": 1,
+      "verdict_automated": "STRONG_SUPPORT",
+      "verdict_expert": null,
+      "comment_expert": null
+    },
+    {
+      "id": 22,
+      "triple": {
+        "subject": "fluid overpressure",
+        "relation": "affects",
+        "object": "shear strength"
+      },
+      "statement": "fluid overpressure affects shear strength.",
+      "evidence": "\"These fluids interact with sedimentary materials by increasing pore pressure which, in turn, induces frictional resistance between sediment particles and a reduction in shear strength, thus promoting the initiation of landslides.\"",
+      "tier": 1,
+      "verdict_automated": "STRONG_SUPPORT",
+      "verdict_expert": null,
+      "comment_expert": null
+    },
+    {
+      "id": 23,
+      "triple": {
+        "subject": "mass transport deposit",
+        "relation": "occursIn",
+        "object": "continental slope"
+      },
+      "statement": "mass transport deposit occurs in continental slope.",
+      "evidence": "youngest Mass Transport Deposit (MTD) located on the continental slope of the Gulf of Cagliari.",
+      "tier": 1,
+      "verdict_automated": "STRONG_SUPPORT",
+      "verdict_expert": null,
+      "comment_expert": null
+    },
+    {
+      "id": 24,
+      "triple": {
+        "subject": "mass transport deposit",
+        "relation": "occursIn",
+        "object": "deep-water taranaki basin"
+      },
+      "statement": "mass transport deposit occurs in deep-water taranaki basin.",
+      "evidence": "\"With the aid of a high-quality 3D-seismic reflection dataset a buried Pleistocene MTD has been identified in the deep-water Taranaki Basin.\"",
+      "tier": 1,
+      "verdict_automated": "STRONG_SUPPORT",
+      "verdict_expert": null,
+      "comment_expert": null
+    },
+    {
+      "id": 25,
+      "triple": {
+        "subject": "mass transport deposit (mtd)",
+        "relation": "occursIn",
+        "object": "continental slope"
+      },
+      "statement": "mass transport deposit (mtd) occurs in continental slope.",
+      "evidence": "youngest Mass Transport Deposit (MTD) located on the continental slope of the Gulf of Cagliari.",
+      "tier": 1,
+      "verdict_automated": "STRONG_SUPPORT",
+      "verdict_expert": null,
+      "comment_expert": null
+    }
+  ]
+}

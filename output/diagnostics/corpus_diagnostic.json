@@ -1,0 +1,236 @@
+[
+  {
+    "subject": "mass transport deposit",
+    "relation": "hasDescriptor",
+    "object": "chaotic",
+    "corpus_chunks": 20,
+    "recovered_c9": true,
+    "recovered_c10": true,
+    "outcome": "RECOVERED"
+  },
+  {
+    "subject": "mass transport deposit",
+    "relation": "hasDescriptor",
+    "object": "transparent",
+    "corpus_chunks": 4,
+    "recovered_c9": true,
+    "recovered_c10": true,
+    "outcome": "RECOVERED"
+  },
+  {
+    "subject": "mass transport deposit",
+    "relation": "hasDescriptor",
+    "object": "hummocky",
+    "corpus_chunks": 8,
+    "recovered_c9": true,
+    "recovered_c10": true,
+    "outcome": "RECOVERED"
+  },
+  {
+    "subject": "mass transport deposit",
+    "relation": "hasDescriptor",
+    "object": "blocky",
+    "corpus_chunks": 12,
+    "recovered_c9": true,
+    "recovered_c10": true,
+    "outcome": "RECOVERED"
+  },
+  {
+    "subject": "mass transport deposit",
+    "relation": "hasDescriptor",
+    "object": "discontinuous",
+    "corpus_chunks": 13,
+    "recovered_c9": true,
+    "recovered_c10": true,
+    "outcome": "RECOVERED"
+  },
+  {
+    "subject": "mass transport deposit",
+    "relation": "hasDescriptor",
+    "object": "massive",
+    "corpus_chunks": 0,
+    "recovered_c9": false,
+    "recovered_c10": false,
+    "outcome": "CORPUS_GAP"
+  },
+  {
+    "subject": "turbidite",
+    "relation": "hasDescriptor",
+    "object": "parallel",
+    "corpus_chunks": 43,
+    "recovered_c9": true,
+    "recovered_c10": true,
+    "outcome": "RECOVERED"
+  },
+  {
+    "subject": "turbidite",
+    "relation": "hasDescriptor",
+    "object": "continuous",
+    "corpus_chunks": 39,
+    "recovered_c9": false,
+    "recovered_c10": true,
+    "outcome": "RECOVERED"
+  },
+  {
+    "subject": "turbidite",
+    "relation": "hasDescriptor",
+    "object": "layered",
+    "corpus_chunks": 0,
+    "recovered_c9": true,
+    "recovered_c10": true,
+    "outcome": "CORPUS_GAP"
+  },
+  {
+    "subject": "turbidite",
+    "relation": "hasDescriptor",
+    "object": "high-amplitude",
+    "corpus_chunks": 31,
+    "recovered_c9": true,
+    "recovered_c10": true,
+    "outcome": "RECOVERED"
+  },
+  {
+    "subject": "debris flow",
+    "relation": "hasDescriptor",
+    "object": "chaotic",
+    "corpus_chunks": 14,
+    "recovered_c9": true,
+    "recovered_c10": false,
+    "outcome": "PIPELINE_FAILURE"
+  },
+  {
+    "subject": "debris flow",
+    "relation": "hasDescriptor",
+    "object": "hummocky",
+    "corpus_chunks": 4,
+    "recovered_c9": false,
+    "recovered_c10": false,
+    "outcome": "PIPELINE_FAILURE"
+  },
+  {
+    "subject": "slide",
+    "relation": "hasDescriptor",
+    "object": "blocky",
+    "corpus_chunks": 11,
+    "recovered_c9": true,
+    "recovered_c10": false,
+    "outcome": "PIPELINE_FAILURE"
+  },
+  {
+    "subject": "slide",
+    "relation": "hasDescriptor",
+    "object": "undeformed",
+    "corpus_chunks": 54,
+    "recovered_c9": true,
+    "recovered_c10": true,
+    "outcome": "RECOVERED"
+  },
+  {
+    "subject": "hemipelagite",
+    "relation": "hasDescriptor",
+    "object": "parallel",
+    "corpus_chunks": 4,
+    "recovered_c9": false,
+    "recovered_c10": false,
+    "outcome": "PIPELINE_FAILURE"
+  },
+  {
+    "subject": "hemipelagite",
+    "relation": "hasDescriptor",
+    "object": "continuous",
+    "corpus_chunks": 12,
+    "recovered_c9": false,
+    "recovered_c10": true,
+    "outcome": "RECOVERED"
+  },
+  {
+    "subject": "hemipelagite",
+    "relation": "hasDescriptor",
+    "object": "low-amplitude",
+    "corpus_chunks": 0,
+    "recovered_c9": false,
+    "recovered_c10": false,
+    "outcome": "CORPUS_GAP"
+  },
+  {
+    "subject": "slope failure",
+    "relation": "causes",
+    "object": "mass transport deposit",
+    "corpus_chunks": 44,
+    "recovered_c9": false,
+    "recovered_c10": true,
+    "outcome": "RECOVERED"
+  },
+  {
+    "subject": "earthquake",
+    "relation": "triggers",
+    "object": "slope failure",
+    "corpus_chunks": 116,
+    "recovered_c9": true,
+    "recovered_c10": true,
+    "outcome": "RECOVERED"
+  },
+  {
+    "subject": "pore pressure",
+    "relation": "controls",
+    "object": "slope failure",
+    "corpus_chunks": 84,
+    "recovered_c9": false,
+    "recovered_c10": false,
+    "outcome": "PIPELINE_FAILURE"
+  },
+  {
+    "subject": "turbidity current",
+    "relation": "formedBy",
+    "object": "debris flow",
+    "corpus_chunks": 69,
+    "recovered_c9": false,
+    "recovered_c10": false,
+    "outcome": "PIPELINE_FAILURE"
+  },
+  {
+    "subject": "mass transport deposit",
+    "relation": "occursIn",
+    "object": "continental slope",
+    "corpus_chunks": 30,
+    "recovered_c9": false,
+    "recovered_c10": true,
+    "outcome": "RECOVERED"
+  },
+  {
+    "subject": "mass transport deposit",
+    "relation": "occursIn",
+    "object": "abyssal plain",
+    "corpus_chunks": 6,
+    "recovered_c9": false,
+    "recovered_c10": false,
+    "outcome": "PIPELINE_FAILURE"
+  },
+  {
+    "subject": "debris flow",
+    "relation": "occursIn",
+    "object": "continental slope",
+    "corpus_chunks": 32,
+    "recovered_c9": false,
+    "recovered_c10": false,
+    "outcome": "PIPELINE_FAILURE"
+  },
+  {
+    "subject": "turbidite",
+    "relation": "occursIn",
+    "object": "basin floor",
+    "corpus_chunks": 46,
+    "recovered_c9": false,
+    "recovered_c10": true,
+    "outcome": "RECOVERED"
+  },
+  {
+    "subject": "slide",
+    "relation": "overlies",
+    "object": "hemipelagite",
+    "corpus_chunks": 18,
+    "recovered_c9": false,
+    "recovered_c10": false,
+    "outcome": "PIPELINE_FAILURE"
+  }
+]

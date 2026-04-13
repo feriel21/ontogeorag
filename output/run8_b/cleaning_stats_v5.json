@@ -1,0 +1,45 @@
+{
+  "input_triples": 174,
+  "after_verif_filter": 116,
+  "verif_policy": "normal",
+  "verif_rejected": {
+    "verif_not_supported": 58
+  },
+  "after_validation": 67,
+  "validation_rejected": {
+    "type_constraint": 17,
+    "descriptor_partial": 1,
+    "invalid_relation": 1
+  },
+  "duplicates_pass1": 30,
+  "duplicates_pass2": 5,
+  "self_loops_removed": 0,
+  "entities_before": 82,
+  "entities_after": 77,
+  "merge_rules": 5,
+  "output_triples": 62,
+  "lb_recall": "7/26",
+  "lb_recall_pct": 0.2692,
+  "desc_coverage": "10/13",
+  "desc_found": [
+    "blocky",
+    "chaotic",
+    "continuous",
+    "discontinuous",
+    "high-amplitude",
+    "hummocky",
+    "layered",
+    "low-amplitude",
+    "parallel",
+    "transparent"
+  ],
+  "desc_missing": [
+    "massive",
+    "stratified",
+    "undeformed"
+  ],
+  "final_halluc_rate": 0.0,
+  "final_strong_support": 43,
+  "final_supported": 62,
+  "final_decided": 62
+}

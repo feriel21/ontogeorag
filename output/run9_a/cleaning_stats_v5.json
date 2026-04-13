@@ -1,0 +1,43 @@
+{
+  "input_triples": 189,
+  "after_verif_filter": 126,
+  "verif_policy": "normal",
+  "verif_rejected": {
+    "verif_not_supported": 63
+  },
+  "after_validation": 76,
+  "validation_rejected": {
+    "type_constraint": 17
+  },
+  "duplicates_pass1": 33,
+  "duplicates_pass2": 5,
+  "self_loops_removed": 0,
+  "entities_before": 90,
+  "entities_after": 83,
+  "merge_rules": 7,
+  "output_triples": 71,
+  "lb_recall": "9/26",
+  "lb_recall_pct": 0.3462,
+  "desc_coverage": "10/13",
+  "desc_found": [
+    "blocky",
+    "chaotic",
+    "continuous",
+    "discontinuous",
+    "high-amplitude",
+    "hummocky",
+    "layered",
+    "low-amplitude",
+    "parallel",
+    "transparent"
+  ],
+  "desc_missing": [
+    "massive",
+    "stratified",
+    "undeformed"
+  ],
+  "final_halluc_rate": 0.0,
+  "final_strong_support": 48,
+  "final_supported": 71,
+  "final_decided": 71
+}

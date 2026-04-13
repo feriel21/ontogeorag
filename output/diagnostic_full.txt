@@ -1,0 +1,117 @@
+OntoGeoRAG — Full Provenance & Contribution Diagnostic
+=================================================================
+
+=================================================================
+DIAGNOSTIC 1 — PROVENANCE OF 29 NO-EVIDENCE TRIPLES
+=================================================================
+
+Tier-1 total triples : 101
+Has evidence_quote   : 0 (0%)
+Has chunk_id         : 0 (0%)
+Has supporting_sent  : 0 (0%)
+Has supporting_papers: 0 (0%)
+Has ANY evidence     : 0 (0%)
+Missing ALL evidence : 101 (100%)
+
+Sample triples with NO evidence fields (5 shown):
+  (compressive domain, affects, thickness of mass transport deposits)
+  Keys: ['subject', 'relation', 'object', 'subject_type', 'object_type', 'tier', 'tier_label', 'verdict', 'origin', 'evidence', 'query', 'strategy', 'model', 'reasoning', 'support_count', 'supporting_papers']
+  (compressive domain, affects, elevation of upper surfaces)
+  Keys: ['subject', 'relation', 'object', 'subject_type', 'object_type', 'tier', 'tier_label', 'verdict', 'origin', 'evidence', 'query', 'strategy', 'model', 'reasoning', 'support_count', 'supporting_papers']
+  (strongly deformed allochthonous masses, affects, chaotic-to-transparent facies)
+  Keys: ['subject', 'relation', 'object', 'subject_type', 'object_type', 'tier', 'tier_label', 'verdict', 'origin', 'evidence', 'query', 'strategy', 'model', 'reasoning', 'support_count', 'supporting_papers']
+  (wave action, affects, equilibrium conditions)
+  Keys: ['subject', 'relation', 'object', 'subject_type', 'object_type', 'tier', 'tier_label', 'verdict', 'origin', 'evidence', 'query', 'strategy', 'model', 'reasoning', 'support_count', 'supporting_papers']
+  (combination of load increase and strength decrease, causes, sediment or rock failure)
+  Keys: ['subject', 'relation', 'object', 'subject_type', 'object_type', 'tier', 'tier_label', 'verdict', 'origin', 'evidence', 'query', 'strategy', 'model', 'reasoning', 'support_count', 'supporting_papers']
+
+Chunks available: 3386
+Text-search fallback possible: YES
+Found via text search  : 72/101 (71%)
+
+=================================================================
+DIAGNOSTIC 2 — RAG NET CONTRIBUTION
+=================================================================
+
+C10 matched edges      : 18/26 = 69.2%
+Exp B matched edges    : 9/26 = 34.6%
+Both (parametric+RAG)  : 9
+RAG-only (net new)     : 9  ← pure RAG contribution
+Exp B only (regression): 0  ← lost in C10 vs Exp B
+
+RAG-only edges (C10 adds over parametric memory):
+  ✓  hemipelagite                        --[hasDescriptor]--> continuous
+  ✓  mass transport deposit              --[hasDescriptor]--> discontinuous
+  ✓  mass transport deposit              --[hasDescriptor]--> hummocky
+  ✓  mass transport deposit              --[hasDescriptor]--> transparent
+  ✓  turbidite                           --[hasDescriptor]--> continuous
+  ✓  turbidite                           --[hasDescriptor]--> high-amplitude
+  ✓  turbidite                           --[hasDescriptor]--> layered
+  ✓  turbidite                           --[hasDescriptor]--> parallel
+  ✓  turbidite                           --[occursIn]--> basin floor
+
+Shared edges (Exp B + C10 both find):
+  =  debris flow                         --[hasDescriptor]--> chaotic
+  =  debris flow                         --[hasDescriptor]--> hummocky
+  =  earthquake                          --[triggers]--> slope failure
+  =  mass transport deposit              --[hasDescriptor]--> blocky
+  =  mass transport deposit              --[hasDescriptor]--> chaotic
+  =  mass transport deposit              --[occursIn]--> continental slope
+  =  slide                               --[hasDescriptor]--> blocky
+  =  slide                               --[hasDescriptor]--> undeformed
+  =  slope failure                       --[causes]--> mass transport deposit
+
+SUMMARY FOR PAPER:
+  Total C10 recall     : 18/26 = 69.2%
+  Parametric baseline  : 9/26 = 34.6%
+  Net RAG contribution : 9/26 = 34.6%
+  Shared (both)        : 9/26 = 34.6%
+
+=================================================================
+DIAGNOSTIC 3 — INTER-MODEL KAPPA (Qwen vs Llama)
+=================================================================
+
+Triples with Llama verdict: 71/100
+
+Confusion matrix (rows=Qwen, cols=Llama):
+            Llama:SUP  Llama:NS
+  Qwen:SUP      62         9
+  Qwen:NS        0         0
+
+Observed agreement p_o : 0.873 (62/71)
+Expected agreement p_e : 0.873
+Cohen's kappa          : 0.000
+Interpretation         : Slight (very poor)
+
+FOR PAPER:
+  Qwen-Llama inter-model κ = 0.00 (slight (very poor))
+  Qwen H_T1 = 0%,  Llama H_T1 = 9/71 = 12.7%
+  The gap (12.7pp) reflects partial self-verification bias
+
+=================================================================
+DIAGNOSTIC 4 — T1 REGRESSION C9→C10
+=================================================================
+
+C9  Tier-1 matched : 9/26
+C10 Tier-1 matched : 8/26
+Lost from T1 (C9→C10) : 3
+  Of which still in C10 T1+2: 3 ← confirmed redistribution
+  Of which truly lost       : 0 ← actual regression
+Gained in T1 (C9→C10) : 2
+
+Edges lost from T1:
+  (debris flow, hasdescriptor, chaotic) → still in T1+2
+  (mass transport deposit, hasdescriptor, chaotic) → still in T1+2
+  (slide, hasdescriptor, blocky) → still in T1+2
+
+CONCLUSION:
+  ✅ T1 regression is PURE redistribution — no edges truly lost
+     Claim "redistribution T1→T2" is CONFIRMED
+
+=================================================================
+SUMMARY FOR PAPER REVISION
+=================================================================
+  Point 1 (provenance) : see Diagnostic 1 above
+  Point 2 (RAG net)    : 9 new edges from RAG
+  Point 3 (kappa)      : κ = 0.00 Qwen-Llama
+  Point 4 (T1 regress) : see Diagnostic 4 above

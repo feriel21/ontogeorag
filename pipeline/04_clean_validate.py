@@ -214,6 +214,11 @@ def check_basic(triple: dict) -> tuple[bool, str]:
         return False, "empty_field"
     if len(s) < 3 or len(t) < 3:
         return False, "too_short"
+    # Entity length filter: more than 5 words = extracted phrase, not entity
+    if len(s.split()) > 5:
+        return False, "entity_too_long_subject"
+    if len(t.split()) > 5:
+        return False, "entity_too_long_object"
     if s.lower() == t.lower():
         return False, "self_loop"
 
@@ -305,7 +310,10 @@ def build_canonical_map(
     entities: list[str],
     distance_threshold: float = 0.06,
     lb_descriptors: set = LB_DESCRIPTORS,
+    lexicon: set = None,
 ) -> dict[str, str]:
+    if lexicon is None:
+        lexicon = set()
     if len(entities) < 2:
         return {}
 
@@ -357,7 +365,13 @@ def build_canonical_map(
                 blocked.append(f"BLOCKED: '{m}' (cluster with {members}, contains LB2019 setting)")
             continue
 
-        canonical = max(members, key=lambda x: (len(x.split()), len(x)))
+        # Prefer: in lexicon > shorter > alphabetical
+        # (opposite of previous: long phrases were wrongly preferred)
+        def canonical_score(x, _lex=lexicon):
+            in_lex = 1 if x in _lex else 0
+            short = -len(x.split())  # fewer words = better
+            return (in_lex, short)
+        canonical = max(members, key=canonical_score)
         for m in members:
             if m != canonical:
                 canonical_map[m] = canonical
@@ -585,6 +599,7 @@ def main():
         entity_list,
         distance_threshold=args.cluster_threshold,
         lb_descriptors=LB_DESCRIPTORS,
+        lexicon=lexicon,
     )
     print(f"  Canonical map: {len(canonical_map)} merge rules")
 
