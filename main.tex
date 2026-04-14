@@ -1285,7 +1285,7 @@ LLM-Rerank adds cross-encoder re-ranking on top of LLM-BM25 and reaches
 
 Adding cross-encoder re-ranking to the BM25 retrieval
 step (LLM-Rerank) raises recall from 47.1\% to 76.5\%,
-recovering five benchmark edges that BM25 alone had
+recovering eight benchmark edges that BM25 alone had
 consistently missed across all prior configurations.
 Figure~\ref{fig:retrieval-comparison} shows the
 progression from memory-only to LLM-BM25 to LLM-Rerank in terms
@@ -1302,7 +1302,7 @@ shorter definitional passages that explicitly state
 the relation over longer topical passages that merely
 mention the entity.
 
-The five relation types recovered exclusively by LLM-Rerank
+The eight relation types recovered exclusively by LLM-Rerank
 are: \pred{turbidite hasDescriptor continuous},
 \pred{hemipelagite hasDescriptor continuous},
 \pred{slope failure causes mass transport deposit},
@@ -1312,7 +1312,7 @@ Each of these involves a query--passage vocabulary
 mismatch that BM25 cannot bridge but the cross-encoder
 resolves through joint semantic scoring.
 
-The gain of +19.2 percentage points from LLM-BM25 to LLM-Rerank
+The gain of +29.4 percentage points from LLM-BM25 to LLM-Rerank
 is achieved without any change to the extraction or
 verification components, confirming that the retrieval
 step, not the language model, is the binding constraint
