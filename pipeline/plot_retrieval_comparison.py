@@ -14,7 +14,7 @@ BG = '#FFFFFF'
 
 configs      = ['Memory only\n(no retrieval)', 'C9\n(BM25 only)',
                 'C10\n(BM25 +\ncross-encoder\nre-ranking)']
-recall       = [34.6, 50.0, 69.2]
+recall       = [26.5, 47.1, 76.5]
 silent       = [88.0, 58.2, 41.8]
 bar_colors   = ['#9E9E9E', '#90CAF9', '#1565C0']
 edge_colors  = ['#000000', '#000000', '#000000']
@@ -35,8 +35,8 @@ bars1 = ax1.bar(x, recall, WIDTH,
                 zorder=3)
 
 # Corpus-gap corrected ceiling
-ax1.axhline(75.0, color='#E65100', lw=2.0, ls='--', zorder=4,
-            label='Corpus-gap corrected ceiling (75.0%)')
+ax1.axhline(94.1, color='#E65100', lw=2.0, ls='--', zorder=4,
+            label='Corpus-gap corrected ceiling (94.1%)')
 
 # Value labels on bars
 for bar, val in zip(bars1, recall):

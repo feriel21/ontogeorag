@@ -148,8 +148,172 @@ def hallucination(triples):
     return {"strong_support": counts["strong"], "weak_support": counts["weak"],
             "not_supported": counts["not_supported"], "total": total,
             "hallucination_rate": rate}
+def compute_expert_metrics(protocol_path: str) -> dict:
+    """
+    Compute relaxed precision and Cohen's kappa from expert annotation.
+    Reads output/expert_annotation_protocol.json filled by Antoine.
+    Returns empty dict if no verdicts yet.
+    """
+    import json
+    from pathlib import Path
 
+    path = Path(protocol_path)
+    if not path.exists():
+        print(f"  Expert protocol not found: {path}")
+        return {}
 
+    protocol = json.load(open(path))
+    statements = protocol.get('statements', [])
+    filled = [s for s in statements
+              if s.get('verdict_expert') is not None]
+
+    if not filled:
+        pending = len(statements) - len(filled)
+        print(f"  Expert validation pending: "
+              f"0/{len(statements)} verdicts received.")
+        return {}
+
+    Y  = sum(1 for s in filled if s['verdict_expert'] == 'Y')
+    P  = sum(1 for s in filled if s['verdict_expert'] == 'P')
+    N  = sum(1 for s in filled if s['verdict_expert'] == 'N')
+    n  = len(filled)
+
+    relaxed = (Y + 0.5 * P) / n
+    strict  = Y / n
+
+    # Cohen's kappa: automated verifier vs expert
+    auto_map = {
+        'STRONG_SUPPORT': 'Y',
+        'WEAK_SUPPORT':   'P',
+        'NOT_SUPPORTED':  'N',
+        'UNCERTAIN':      'P'
+    }
+    cats    = ['Y', 'P', 'N']
+    cat_idx = {c: i for i, c in enumerate(cats)}
+    n_cat   = len(cats)
+
+    conf = [[0] * n_cat for _ in range(n_cat)]
+    for s in filled:
+        a = auto_map.get(s.get('verdict_automated', ''), 'P')
+        h = s['verdict_expert']
+        if a in cat_idx and h in cat_idx:
+            conf[cat_idx[a]][cat_idx[h]] += 1
+
+    total = sum(sum(row) for row in conf)
+    po    = sum(conf[i][i] for i in range(n_cat)) / total
+    pe    = sum(
+        (sum(conf[i][j] for j in range(n_cat)) *
+         sum(conf[j][i] for j in range(n_cat)))
+        for i in range(n_cat)
+    ) / (total ** 2)
+    kappa = (po - pe) / (1 - pe) if pe < 1 else 0.0
+
+    if   kappa >= 0.8: interp = 'almost perfect'
+    elif kappa >= 0.6: interp = 'substantial'
+    elif kappa >= 0.4: interp = 'moderate'
+    else:              interp = 'fair'
+
+    print(f"\n{'='*50}")
+    print(f"  EXPERT VALIDATION METRICS")
+    print(f"{'='*50}")
+    print(f"  Annotated: {n}/{len(statements)}")
+    print(f"  Y={Y}  P={P}  N={N}")
+    print(f"  Strict precision:  {strict*100:.1f}%")
+    print(f"  Relaxed precision: {relaxed*100:.1f}%")
+    print(f"  Cohen kappa:       {kappa:.3f} ({interp})")
+
+    # By relation type
+    by_rel = {}
+    for s in filled:
+        r = s['triple']['relation']
+        by_rel.setdefault(r, []).append(s['verdict_expert'])
+    print(f"\n  Precision by relation:")
+    for rel, verdicts in sorted(by_rel.items()):
+        y = verdicts.count('Y')
+        p = verdicts.count('P')
+        nn = verdicts.count('N')
+        rp = (y + 0.5*p) / len(verdicts)
+        print(f"    {rel:<20} Y={y} P={p} N={nn}  "
+              f"relaxed={rp*100:.0f}%")
+
+    # LaTeX line for Section 5.3
+    print(f"\n  LATEX FOR SECTION 5.3:")
+    print(f"  Of {n} sampled Tier-1 triples, {Y} were rated \\emph{{Y}}, "
+          f"{P} rated \\emph{{P}}, and {N} rated \\emph{{N}}, "
+          f"yielding a relaxed precision of {relaxed*100:.1f}\\% "
+          f"(strict: {strict*100:.1f}\\%). "
+          f"Cohen's $\\kappa = {kappa:.2f}$ ({interp} agreement).")
+
+    return {
+        'n': n, 'Y': Y, 'P': P, 'N': N,
+        'relaxed_precision': relaxed,
+        'strict_precision':  strict,
+        'kappa':             kappa,
+        'interpretation':    interp
+    }
+def compute_generalization_metrics(
+    gen_protocol_path: str,
+    dev_protocol_path: str
+) -> dict:
+    """
+    Computes precision on generalization corpus and compares with development.
+    gen_protocol_path = output/generalization_annotation_protocol.json
+    dev_protocol_path = output/expert_annotation_protocol.json
+    """
+    import json
+    from pathlib import Path
+
+    gen_path = Path(gen_protocol_path)
+    dev_path = Path(dev_protocol_path)
+
+    if not gen_path.exists():
+        print(f"  Generalization protocol not found: {gen_path}")
+        return {}
+
+    gen = json.load(open(gen_path))
+    filled_gen = [s for s in gen['statements']
+                  if s.get('verdict_expert') is not None]
+
+    if not filled_gen:
+        print(f"  Generalization validation pending: "
+              f"0/{len(gen['statements'])} verdicts.")
+        return {}
+
+    Y  = sum(1 for s in filled_gen if s['verdict_expert'] == 'Y')
+    P  = sum(1 for s in filled_gen if s['verdict_expert'] == 'P')
+    N  = sum(1 for s in filled_gen if s['verdict_expert'] == 'N')
+    n  = len(filled_gen)
+    gen_relaxed = (Y + 0.5 * P) / n
+
+    print(f"\n{'='*55}")
+    print(f"  GENERALIZATION VALIDATION")
+    print(f"{'='*55}")
+    print(f"  Annotated: {n}/{len(gen['statements'])}")
+    print(f"  Y={Y}  P={P}  N={N}")
+    print(f"  Relaxed precision: {gen_relaxed*100:.1f}%")
+
+    # Compare with development corpus precision
+    if dev_path.exists():
+        dev = json.load(open(dev_path))
+        filled_dev = [s for s in dev['statements']
+                      if s.get('verdict_expert') is not None]
+        if filled_dev:
+            Yd = sum(1 for s in filled_dev if s['verdict_expert'] == 'Y')
+            Pd = sum(1 for s in filled_dev if s['verdict_expert'] == 'P')
+            dev_relaxed = (Yd + 0.5 * Pd) / len(filled_dev)
+            diff = gen_relaxed - dev_relaxed
+            print(f"  Dev corpus precision:  {dev_relaxed*100:.1f}%")
+            print(f"  Difference:            {diff*100:+.1f} pp")
+            if abs(diff) <= 0.10:
+                verdict = "GENERALIZATION HOLDS (within 10pp)"
+            elif diff < -0.10:
+                verdict = "PRECISION DROP on new corpus"
+            else:
+                verdict = "PRECISION HIGHER on new corpus"
+            print(f"  {verdict}")
+
+    return {'n': n, 'Y': Y, 'P': P, 'N': N,
+            'relaxed_precision': gen_relaxed}
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--kg", required=True)
