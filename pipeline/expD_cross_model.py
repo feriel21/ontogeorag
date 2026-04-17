@@ -134,7 +134,7 @@ def load_chunks(index_dir):
     chunks_path = Path(index_dir) / 'chunks.jsonl'
     if not chunks_path.exists():
         # Try alternate path used in the project
-        chunks_path = Path('/home/talbi/kg_test/output/step1/chunks.jsonl')
+        chunks_path = Path('output/step1/chunks.jsonl')
     if not chunks_path.exists():
         log.warning(f'Chunks file not found at {chunks_path}')
         return []

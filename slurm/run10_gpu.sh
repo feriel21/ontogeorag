@@ -11,7 +11,7 @@
 
 REPO=/home/talbi/ontogeorag
 VENV=/home/talbi/kg_test/venv
-INDEX=/home/talbi/kg_test/output/step1
+INDEX=$REPO/output/step1
 SCHEMA=$REPO/configs/ontology_schema.json
 QUERIES=$REPO/configs/descriptor_queries.jsonl
 MODEL=Qwen/Qwen2.5-7B-Instruct

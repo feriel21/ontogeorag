@@ -18,9 +18,9 @@ Runtime: ~3–4 hours on CPU for 100 triples.
 
 Usage:
   python exp_d_cross_model_verification.py \
-      --verified  ~/kg_test/output/step7/verified_triples_v7.jsonl \
-      --bm25      ~/kg_test/output/step2/bm25_index.json \
-      --out       ~/kg_test/output/exp_d/ \
+      --verified  output/step7/verified_triples_v7.jsonl \
+      --bm25      output/step2/bm25_index.json \
+      --out       output/exp_d/ \
       --model     Qwen/Qwen2.5-1.5B-Instruct \
       --backend   hf \
       --n-triples 100
@@ -417,12 +417,12 @@ def run_exp_d(args):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--verified", default=os.path.expanduser(
-        "~/kg_test/output/step7/verified_triples_v7.jsonl"),
+        "output/step7/verified_triples_v7.jsonl"),
         help="Run-7 verified triples JSONL (Qwen-7B verdicts)")
     parser.add_argument("--bm25",    default=os.path.expanduser(
-        "~/kg_test/output/step2/bm25_index.json"))
+        "output/step2/bm25_index.json"))
     parser.add_argument("--out",     default=os.path.expanduser(
-        "~/kg_test/output/exp_d/"))
+        "output/exp_d/"))
     parser.add_argument("--model",   default="Qwen/Qwen2.5-1.5B-Instruct",
         help="Cross-verifier model. Options: Qwen/Qwen2.5-1.5B-Instruct, "
              "meta-llama/Llama-3.1-8B-Instruct")

@@ -12,15 +12,15 @@
 
 REPO=/home/talbi/ontogeorag
 VENV=/home/talbi/kg_test/venv
-INDEX=/home/talbi/kg_test/output/step1
+INDEX=$REPO/output/step1
 SCHEMA=$REPO/configs/ontology_schema.json
 QUERIES=$REPO/configs/descriptor_queries.jsonl
 MODEL=Qwen/Qwen2.5-7B-Instruct
 A=$REPO/output/run9_a
 B=$REPO/output/run9_b
 KG=$REPO/output/run9_kg
-V4=/home/talbi/kg_test/output/step4/canonical_triples_v4.jsonl
-V7=/home/talbi/kg_test/output/step7/canonical_triples_v7.jsonl
+V4=$REPO/output/step4/canonical_triples_v4.jsonl
+V7=$REPO/output/step7/canonical_triples_v7.jsonl
 
 mkdir -p $A $B $KG $REPO/logs
 cd $REPO

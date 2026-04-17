@@ -24,10 +24,10 @@ export PYTHONPATH=$REPO:$PYTHONPATH   # ← this line fixes it
 mkdir -p $REPO/logs $REPO/output/exp_e
 
 python -u experiments/exp_e_llama_extraction.py \
-    --index-dir /home/talbi/kg_test/output/step1/ \
+    --index-dir $REPO/output/step1/ \
     --schema    $REPO/configs/ontology_schema.json \
     --queries   $REPO/configs/descriptor_queries.jsonl \
-    --qwen-ref  /home/talbi/kg_test/output/step7/raw_triples_v7.jsonl \
+    --qwen-ref  $REPO/output/step7/raw_triples_v7.jsonl \
     --out       $REPO/output/exp_e/ \
     --model     meta-llama/Llama-3.1-8B-Instruct \
     --backend   hf

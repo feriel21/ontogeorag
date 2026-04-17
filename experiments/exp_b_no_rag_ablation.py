@@ -17,10 +17,10 @@ Runtime: ~6 hours on CPU (200 triples × ~2 queries each, no GPU)
 
 Usage:
   python exp_b_no_rag_ablation.py \
-      --queries    ~/kg_test/output/step7/raw_triples_v7.jsonl \
-      --lexicon    ~/kg_test/mtd-kg-pipeline/configs/lexicon.json \
-      --schema     ~/kg_test/mtd-kg-pipeline/configs/schema_step1.json \
-      --out        ~/kg_test/output/exp_b/ \
+      --queries    output/step7/raw_triples_v7.jsonl \
+      --lexicon    configs/lexicon.json \
+      --schema     configs/schema_step1.json \
+      --out        output/exp_b/ \
       --model      Qwen/Qwen2.5-7B-Instruct \
       --backend    hf \
       --n-triples  100
@@ -274,7 +274,7 @@ def run_exp_b(args):
     ns_rate_no_rag = verdicts["NOT_SUPPORTED"] / max(decided, 1)
 
     # Load Run7 WITH-RAG stats for comparison
-    run7_stats_path = os.path.expanduser("~/kg_test/output/step7/verification_stats_v5.json")
+    run7_stats_path = os.path.expanduser("output/step7/verification_stats_v5.json")
     run7_ns_rate = None
     if os.path.exists(run7_stats_path):
         with open(run7_stats_path) as f:
@@ -333,14 +333,14 @@ def run_exp_b(args):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--queries",  default=os.path.expanduser(
-        "~/kg_test/output/step7/raw_triples_v7.jsonl"),
+        "output/step7/raw_triples_v7.jsonl"),
         help="Run-7 raw triples JSONL (contains original queries)")
     parser.add_argument("--lexicon",  default=os.path.expanduser(
-        "~/kg_test/mtd-kg-pipeline/configs/lexicon.json"))
+        "configs/lexicon.json"))
     parser.add_argument("--schema",   default=os.path.expanduser(
-        "~/kg_test/mtd-kg-pipeline/configs/schema_step1.json"))
+        "configs/schema_step1.json"))
     parser.add_argument("--out",      default=os.path.expanduser(
-        "~/kg_test/output/exp_b/"))
+        "output/exp_b/"))
     parser.add_argument("--model",    default="Qwen/Qwen2.5-7B-Instruct")
     parser.add_argument("--backend",  default="hf", choices=["hf", "ollama"])
     parser.add_argument("--ollama-url", default="http://localhost:11434")

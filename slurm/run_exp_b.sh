@@ -18,7 +18,7 @@ export CUDA_VISIBLE_DEVICES=""
 mkdir -p $REPO/logs $REPO/output/exp_b
 
 python -u experiments/exp_b_no_rag_ablation.py \
-    --index-dir /home/talbi/kg_test/output/step1/ \
+    --index-dir $REPO/output/step1/ \
     --schema    $REPO/configs/ontology_schema.json \
     --queries   $REPO/configs/descriptor_queries.jsonl \
     --out       $REPO/output/exp_b/ \

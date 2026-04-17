@@ -17,9 +17,9 @@ Runtime: ~10–15 minutes (pure Python, no GPU needed)
 
 Usage:
   python exp_a_corpus_recoverability.py \
-      --bm25   ~/kg_test/output/step2/bm25_index.json \
+      --bm25   output/step2/bm25_index.json \
       --ref    ~/mtd-kg-pipeline/mtd-kg-pipeline/configs/lb_reference_edges.json \
-      --out    ~/kg_test/output/exp_a/
+      --out    output/exp_a/
 """
 
 import argparse
@@ -294,11 +294,11 @@ def run_exp_a(bm25_path, ref_path, out_dir, top_k=10, threshold=2.0):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--bm25",  default=os.path.expanduser(
-        "~/kg_test/output/step2/bm25_index.json"))
+        "output/step2/bm25_index.json"))
     parser.add_argument("--ref",   default=os.path.expanduser(
         "~/mtd-kg-pipeline/mtd-kg-pipeline/configs/lb_reference_edges.json"))
     parser.add_argument("--out",   default=os.path.expanduser(
-        "~/kg_test/output/exp_a/"))
+        "output/exp_a/"))
     parser.add_argument("--threshold", type=float, default=2.0,
         help="BM25 score threshold for CORPUS_PRESENT classification")
     parser.add_argument("--topk", type=int, default=10)

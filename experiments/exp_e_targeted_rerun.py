@@ -129,7 +129,7 @@ def main():
     # Run targeted extraction
     from pipeline.rag.llm_hf import make_hf_fn
     generate = make_hf_fn("meta-llama/Llama-3.1-8B-Instruct")
-    retrieve = load_bm25("/home/talbi/kg_test/output/step1/")
+    retrieve = load_bm25("output/step1/")
     schema = json.loads(Path("/home/talbi/ontogeorag/configs/ontology_schema.json").read_text())
     relations = [r["name"] if isinstance(r,dict) else r for r in schema.get("relations",[])]
 

@@ -20,7 +20,7 @@ mkdir -p $REPO/logs
 
 echo "[1/6] Extract triples..."
 python -u pipeline/02_extract_triples.py \
-    --index-dir /home/talbi/kg_test/output/step1/ \
+    --index-dir $REPO/output/step1/ \
     --schema    $REPO/configs/ontology_schema.json \
     --queries   $REPO/configs/descriptor_queries.jsonl \
     --out       $OUT/step_extract/ \
@@ -30,7 +30,7 @@ python -u pipeline/02_extract_triples.py \
 echo "[2/6] Verify triples..."
 python -u pipeline/03_verify_triples.py \
     --triples   $OUT/step_extract/raw_triples.jsonl \
-    --index-dir /home/talbi/kg_test/output/step1/ \
+    --index-dir $REPO/output/step1/ \
     --schema    $REPO/configs/ontology_schema.json \
     --out       $OUT/step_verify/ \
     --model     Qwen/Qwen2.5-7B-Instruct

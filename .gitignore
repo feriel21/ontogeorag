@@ -1,26 +1,49 @@
+# Python
 __pycache__/
 *.pyc
+*.pyo
 .ipynb_checkpoints/
 venv/
 
-# Corpus PDFs (copyright)
+# Corpus PDFs (copyright — ne pas committer)
 data/full_corpus/
 data/extra_full_corpus/
 data/small_corpus/
 
-# Large derived index files
+# Gros fichiers d'index et outputs intermédiaires
 output/step1/
 output/step2/
 output/step_extract/
 output/step_verify/
 output/step_clean/
 output/step_canon/
+output/run8_a/
+output/run8_b/
+output/run9_a/
+output/run9_b/
+output/run10_a/
+output/run10_b/
+output/run11_a/
+output/run11_b/
 logs/
 
-# Keep experiment results and final KG
+# Fichiers de diagnostic temporaires
+output/diagnostic_data.json
+output/diagnostic_data_v2.json
+output/diagnostic_full.txt
+output/diagnostic_report.txt
+output/diagnostic_report_v2.txt
+output/.ipynb_checkpoints/
+
+# Garder les résultats finaux importants
+!output/run10_kg/
+!output/run11_kg/
+!output/expB/
+!output/expD/
 !output/exp_a/
-!output/exp_b/
-!output/exp_d/
-!output/exp_e/
-!output/improved_kg/
-!output/figures/
+!output/generalization/
+!output/diagnostics/
+!output/benchmark_circularity_report.json
+!output/retrieval_ablation_table.json
+!output/expert_annotation_protocol.json
+!output/generalization_annotation_protocol.json

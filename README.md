@@ -269,3 +269,15 @@ See `setup.sh` for full install. Tested on NVIDIA A100 80 GB, CUDA 12.1 (SLURM c
 
 This project is co-funded by the European Union's Horizon Europe research and innovation
 programme Cofund SOUND.AI under the Marie Skłodowska-Curie Grant Agreement No. 101081674.
+
+## Environment
+
+The virtual environment is located at `/home/talbi/kg_test/venv` (shared across projects on the cluster). To recreate it elsewhere:
+
+```bash
+python -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
+
+Update the `VENV` variable in `slurm/*.sh` to point to your venv location.

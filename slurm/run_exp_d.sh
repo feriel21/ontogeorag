@@ -18,8 +18,8 @@ export CUDA_VISIBLE_DEVICES=""
 mkdir -p $REPO/logs $REPO/output/exp_d
 
 python -u experiments/exp_d_cross_model.py \
-    --triples   /home/talbi/kg_test/output/step7/raw_triples_v7.jsonl \
-    --index-dir /home/talbi/kg_test/output/step1/ \
+    --triples   $REPO/output/step7/raw_triples_v7.jsonl \
+    --index-dir $REPO/output/step1/ \
     --schema    $REPO/configs/ontology_schema.json \
     --out       $REPO/output/exp_d/ \
     --model     Qwen/Qwen2.5-7B-Instruct
