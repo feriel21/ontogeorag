@@ -326,6 +326,15 @@ def main():
     parser.add_argument("--max-chars",  type=int,   default=2800)
     parser.add_argument("--reranker",   type=str,   default=None,
                         help="CrossEncoder model for reranking (e.g. cross-encoder/ms-marco-MiniLM-L-6-v2)")
+    parser.add_argument("--hybrid", action="store_true",
+                    help="Use hybrid BM25+dense retrieval instead of BM25 only")
+    parser.add_argument("--hybrid-model", type=str,
+                    default="BAAI/bge-small-en-v1.5",
+                    help="Dense encoder model for hybrid retrieval")
+    parser.add_argument("--fusion-alpha", type=float, default=0.5,
+                    help="RRF fusion weight: 0=BM25 only, 1=dense only")
+
+
     parser.add_argument("--min-bm25",   type=float, default=0.0,
                         help="Default BM25 gating threshold")
     parser.add_argument("--min-bm25-desc",    type=float, default=None)
@@ -375,26 +384,17 @@ def main():
             )
             return r.json().get("response", "")
 
-    retrieve = load_bm25(args.index_dir, reranker_model=args.reranker)
-    outpath = Path(args.output)
-    outpath.parent.mkdir(parents=True, exist_ok=True)
-
-    stats = defaultdict(int)
-    t0 = time.time()
-
-    with open(outpath, "w", encoding="utf-8") as fout:
-        for qi, q in enumerate(queries):
-            query_text = (q.get("query", q.get("text", "")) or "").strip()
-            if not query_text:
-                continue
-
-            strategy = q.get("strategy", "descriptor")
-            focus    = q.get("focus", "")
-
-            candidates = retrieve(query_text, top_n=args.bm25_topn)
-            if not candidates:
-                stats["skipped_no_chunks"] += 1
-                continue
+    if args.hybrid:
+        from pipeline.rag.hybrid_retriever import load_hybrid_retriever
+        retrieve = load_hybrid_retriever(
+            index_dir=args.index_dir,
+            dense_model_name=args.hybrid_model,
+            reranker_model=args.reranker or "cross-encoder/ms-marco-MiniLM-L-6-v2",
+            fusion_alpha=args.fusion_alpha,
+            device="cuda",
+        )
+    else:
+        retrieve = load_bm25(args.index_dir, reranker_model=args.reranker)
 
             best_score = candidates[0]["score"]
             thr = thresholds.get(strategy) or thresholds["default"]
