@@ -281,3 +281,66 @@ pip install -r requirements.txt
 ```
 
 Update the `VENV` variable in `slurm/*.sh` to point to your venv location.
+
+---
+
+## Reusing OntoGeoRAG for a New Geological Domain
+
+The entire pipeline — all 7 scripts, all models, and the SLURM infrastructure — is domain-agnostic. The only MTD-specific components are 4 configuration files:
+configs/ontology_schema.json          → defines the relation schema (11 types, 5 entity types)
+configs/descriptor_queries.jsonl      → defines what the pipeline searches for (249 queries)
+configs/lb_reference_edges.json       → defines what counts as correct (evaluation benchmark)
+pipeline/rag/constants.py             → hardcoded descriptor list + geological lexicon
+To apply OntoGeoRAG to a new geological object (e.g. turbidites, contourites, submarine channels), replace these 4 files. The code runs unchanged.
+
+### What each file needs to contain
+
+**`configs/ontology_schema.json`** — define the relation types and entity types relevant to your domain. The 11 MTD relation types (`hasDescriptor`, `occursIn`, `formedBy`, etc.) can be reused as-is or extended.
+
+**`configs/descriptor_queries.jsonl`** — one JSON object per line, each with a `query` string, a `strategy` field (`descriptor`, `causal`, `context`, or `profile`), and a `focus` field. Queries should be derived from your domain ontology entity pairs.
+
+**`configs/lb_reference_edges.json`** — a list of reference edges in the format:
+```json
+[
+  {"subject": "turbidite", "relation": "hasDescriptor", "object": "parallel"},
+  {"subject": "turbidite", "relation": "occursIn",      "object": "basin floor"}
+]
+```
+This file defines the evaluation benchmark. If no expert graph exists for your domain, this file can be left empty and the pipeline will still run — only recall computation will be skipped.
+
+**`pipeline/rag/constants.py`** — update `LB2019_DESCRIPTORS` with the seismic descriptors relevant to your domain, and extend `ENTITY_NORMS` with domain-specific synonym mappings.
+
+### Minimal steps to run on a new domain
+
+```bash
+# 1. Prepare your PDF corpus
+mkdir -p data/new_domain_corpus/
+# place your PDFs here
+
+
+# 2. Build the index
+python pipeline/01_build_index.py \
+    --pdf-dir data/new_domain_corpus/ \
+    --outdir  output/new_domain_step1/
+
+# 3. Run the pipeline with your new config files
+python pipeline/02_extract_triples.py \
+    --index-dir output/new_domain_step1/ \
+    --schema    configs/ontology_schema.json \
+    --queries   configs/your_domain_queries.jsonl \
+    --output    output/new_domain_a/raw_triples.jsonl \
+    --model     Qwen/Qwen2.5-7B-Instruct --backend hf \
+    --reranker  cross-encoder/ms-marco-MiniLM-L-6-v2 \
+    --bm25-topn 20 --top-k 5
+
+# Steps 4-8 follow the same pattern as the MTD pipeline (see Quick Start above)
+```
+
+### What does NOT need to change
+
+- All 7 pipeline scripts (`01_build_index.py` through `07_final_metrics.py`)
+- The LLM models (Qwen-7B, CrossEncoder, SciBERT)
+- The verification protocol (`03_verify_triples.py`)
+- The tiered graph assembly (`06_tiered_fusion.py`)
+- The SLURM job scripts (update `INDEX`, `QUERIES`, and `KG` paths only)
+"
