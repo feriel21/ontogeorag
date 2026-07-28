@@ -76,6 +76,7 @@ EV_SCORE_AS_DETECTOR = {"SUPPORTED": 0.0, "PARTIALLY_SUPPORTED": 0.5,
 # ── generate ───────────────────────────────────────────────────────────
 
 def cmd_generate(args):
+    """`generate` subcommand: build the balanced positive/negative control set from --kg (4 corruption classes, seeded by --seed) and write controls.jsonl + controls_meta.json to --output."""
     rng = random.Random(args.seed)
     out_dir = Path(args.output).expanduser()
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -97,6 +98,7 @@ def cmd_generate(args):
     controls = []
 
     def emit(b, corruption, s, r, o, passage):
+        """Append one control record (original or corrupted variant of base triple `b`) to the outer `controls` list."""
         controls.append({
             "subject": s, "relation": r, "object": o,
             "supporting_passage": passage,
@@ -186,6 +188,7 @@ def auc_mann_whitney(scores_pos, scores_neg):
 
 
 def prf(tp, fp, tn, fn):
+    """Compute sensitivity/specificity/precision/F1/balanced-accuracy from a 2x2 confusion count; returns a dict with rounded metrics (None where undefined) plus the raw counts, no side effects."""
     sens = tp / (tp + fn) if tp + fn else None      # recall on corrupted
     spec = tn / (tn + fp) if tn + fp else None      # on originals
     prec = tp / (tp + fp) if tp + fp else None
@@ -201,6 +204,7 @@ def prf(tp, fp, tn, fn):
 
 
 def cmd_report(args):
+    """`report` subcommand: joins --controls with --verdicts by index, computes overall/per-class detection metrics (prf + ROC-AUC), and writes negatives_report.json to --output."""
     out_dir = Path(args.output).expanduser()
     out_dir.mkdir(parents=True, exist_ok=True)
 
@@ -274,6 +278,7 @@ def cmd_report(args):
 
 
 def main():
+    """CLI entry point: dispatches to the `generate` or `report` subcommand based on args.cmd."""
     ap = argparse.ArgumentParser(description=__doc__)
     sub = ap.add_subparsers(dest="cmd", required=True)
 

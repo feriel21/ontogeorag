@@ -41,6 +41,7 @@ from m4_verify import load_triples, triple_fields, evidence_from_provenance
 
 
 def load_jsonl(path):
+    """Read `path` as one JSON object per line; no side effects."""
     out = []
     with open(Path(path).expanduser(), encoding="utf-8") as f:
         for line in f:
@@ -51,10 +52,12 @@ def load_jsonl(path):
 
 
 def norm_key(s, r, o):
+    """Build a lowercase/stripped (subject, relation, object) tuple key for cross-file joins; no side effects."""
     return (s.strip().lower(), r.strip(), o.strip().lower())
 
 
 def main():
+    """CLI entry point: selects Group A (parametric_risk) and Group B (hasDescriptor UNCERTAIN) triples from --decisions, and writes the side-by-side review sheet as m4_inspection_list.md/.csv to --output."""
     ap = argparse.ArgumentParser()
     ap.add_argument("--decisions", required=True)
     ap.add_argument("--verdicts", required=True)
@@ -85,6 +88,7 @@ def main():
     csv_path = out_dir / "m4_inspection_list.csv"
 
     def write_group(fmd, writer, title, note, items, prefix):
+        """Write one titled group's `items` (with blind/evidence reasoning, source passage, and blank expert-verdict fields) as Markdown to `fmd` and as rows via `writer`."""
         fmd.write(f"\n## {title}\n\n{note}\n")
         for j, d in enumerate(items, 1):
             v = verdicts.get(d["m4_index"], {})

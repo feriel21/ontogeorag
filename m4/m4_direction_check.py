@@ -95,6 +95,7 @@ DIR_VERDICTS = ("FORWARD", "REVERSE", "UNDIRECTED", "ABSENT")
 
 
 def load_jsonl(path):
+    """Read `path` as one JSON object per line; no side effects."""
     out = []
     with open(Path(path).expanduser(), encoding="utf-8") as f:
         for line in f:
@@ -105,6 +106,7 @@ def load_jsonl(path):
 
 
 def main():
+    """CLI entry point: for every ACCEPTed directional-relation triple in --decisions, asks the --model verifier which direction its passage states, and writes m4_direction_verdicts.jsonl + m4_direction_summary.json to --output."""
     ap = argparse.ArgumentParser()
     ap.add_argument("--kg", required=True)
     ap.add_argument("--decisions", required=True)

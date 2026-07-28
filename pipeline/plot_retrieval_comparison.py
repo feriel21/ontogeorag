@@ -1,7 +1,16 @@
 """
-plot_retrieval_comparison.py
-Bold, fully opaque retrieval comparison figure.
-Two panels: recall and silent query rate.
+pipeline/plot_retrieval_comparison.py — Retrieval Configuration Comparison Figure
+======================================================================================
+WHY
+    The paper's ablation claim ("retrieval grounding helps") needs a
+    figure comparing memory-only vs BM25 vs BM25+reranker side by side,
+    not just a table.
+
+WHAT
+    Bold, fully opaque retrieval comparison figure with two panels:
+    recall and silent query rate, across the three retrieval configs
+    (values hardcoded from prior experiment runs). Rendered to
+    figures/fig_retrieval_comparison.{pdf,png}. Run directly (no CLI args).
 """
 
 import matplotlib

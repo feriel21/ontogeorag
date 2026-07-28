@@ -82,6 +82,7 @@ def confidence(blind_v: str, ev_v: str) -> float:
 
 
 def main():
+    """CLI entry point: loads --verdicts, applies decide()/confidence() to each record, and writes per-triple decisions (m4_decisions.jsonl) plus a decision-rate summary (m4_decision_summary.json) to --output."""
     ap = argparse.ArgumentParser()
     ap.add_argument("--verdicts", required=True)
     ap.add_argument("--output", required=True)

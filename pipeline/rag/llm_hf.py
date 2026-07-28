@@ -43,6 +43,7 @@ def make_hf_fn(model_name: str, max_new_tokens: int = 512):
     tokenizer, model = _MODEL_CACHE[model_name]
 
     def generate(system: str, user: str, temperature: float = 0.0) -> str:
+        """Render `system`/`user` via the model's chat template and generate a completion (greedy if temperature==0.0, sampled otherwise); returns the decoded response text, no side effects on the cached model."""
         messages = []
         if system:
             messages.append({"role": "system", "content": system})

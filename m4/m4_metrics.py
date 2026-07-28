@@ -45,6 +45,7 @@ from pathlib import Path
 # ── Cohen's kappa (unweighted + linear-weighted) ───────────────────────
 
 def cohens_kappa(labels_a, labels_b, categories=None, weighted=False):
+    """Compute Cohen's kappa between paired `labels_a`/`labels_b` (unweighted, or linear-weighted by category distance if `weighted`); returns the rounded kappa, no side effects."""
     assert len(labels_a) == len(labels_b) and labels_a
     cats = categories or sorted(set(labels_a) | set(labels_b))
     idx = {c: i for i, c in enumerate(cats)}
@@ -88,11 +89,13 @@ EXPERT_TO_DECISION = {"Y": "ACCEPT", "P": "UNCERTAIN", "N": "REJECT"}
 
 
 def norm_key(subject, relation, obj):
+    """Build a lowercase/stripped (subject, relation, object) tuple key for joining against expert-label CSV rows; no side effects."""
     return (subject.strip().lower(), relation.strip(),
             obj.strip().lower())
 
 
 def main():
+    """CLI entry point: loads --decisions, computes verdict distributions, blind-vs-evidence and M4-vs-Qwen agreement (with kappa), optionally M4-vs-experts kappa from --experts, and writes m4_report.json to --output."""
     ap = argparse.ArgumentParser()
     ap.add_argument("--decisions", required=True)
     ap.add_argument("--output", required=True)

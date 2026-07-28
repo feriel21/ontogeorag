@@ -1,9 +1,17 @@
 #!/usr/bin/env python3
 """
-pipeline/02_extract_triples.py — RAG Triple Extraction
+pipeline/02_extract_triples.py — RAG Triple Extraction (Stage 2)
+==================================================================
+WHY
+    Manual annotation of the corpus does not scale; this stage turns
+    retrieved chunks into candidate (subject, relation, object) triples
+    via LLM extraction, so later stages (verify/clean/canonicalize) have
+    a structured artifact to work from instead of raw text.
 
-BM25 retrieval → multi-chunk context → LLM extraction.
-Supports Qwen, Llama, Mistral (any chat-template HF model) via --model.
+WHAT
+    BM25 (or hybrid BM25+dense, if --hybrid) retrieval → multi-chunk
+    context → LLM extraction. Supports Qwen, Llama, Mistral (any
+    chat-template HF model) via --model.
 
 Key design decisions (documented for reviewers):
   - Top-k chunk concatenation (k=3) gives the LLM the same context seen during human reading
@@ -11,7 +19,7 @@ Key design decisions (documented for reviewers):
   - Brace escaping ({{ }}) in prompt templates prevents Python .format() KeyError on JSON examples
   - Salience levels (typical/common/occasional) are required for hasDescriptor triples
 
-Usage:
+USAGE
     python pipeline/02_extract_triples.py \\
         --index-dir output/step1/ \\
         --schema    configs/ontology_schema.json \\
@@ -209,6 +217,7 @@ PROMPTS = {
 
 
 def get_prompt(strategy: str, **kwargs: Any) -> str:
+    """Fill the PROMPTS template for `strategy` (falls back to descriptor) with `kwargs`; returns the rendered prompt string, no side effects."""
     template = PROMPTS.get(strategy, DESCRIPTOR_PROMPT)
     return template.format(**kwargs)
 
@@ -305,6 +314,7 @@ def load_bm25(index_dir: str, reranker_model: str = None):
 
 
 def concat_chunks(chunks: list[dict], max_chars: int = 2800) -> str:
+    """Join retrieved `chunks`' text into a single labeled context block, truncated to `max_chars`; no side effects."""
     parts = []
     for i, c in enumerate(chunks, 1):
         txt = (c.get("text", "")).strip()
@@ -314,6 +324,7 @@ def concat_chunks(chunks: list[dict], max_chars: int = 2800) -> str:
 
 
 def main():
+    """CLI entry point: retrieves candidate chunks per query, prompts the configured LLM, filters/normalizes relations, and writes triples + provenance to --output plus a stats JSON alongside it."""
     parser = argparse.ArgumentParser(description="RAG triple extraction")
     parser.add_argument("--index-dir",  required=True)
     parser.add_argument("--schema",     required=True)

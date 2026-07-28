@@ -1,15 +1,22 @@
 #!/usr/bin/env python3
 """
-pipeline/03_verify_triples.py — CoT Triple Verification (GraphJudge-inspired)
+pipeline/03_verify_triples.py — CoT Triple Verification (Stage 3)
+====================================================================
+WHY
+    Stage 2's LLM extraction hallucinates; this stage cross-checks each
+    candidate triple against its own source chunk(s) before it is allowed
+    into the KG, so downstream tier assignment (06) has a hallucination
+    signal to act on. Approach is GraphJudge-inspired.
 
-For each extracted triple, retrieves the source chunk(s) and asks the LLM:
-"Does the text support this triple?" with chain-of-thought reasoning.
+WHAT
+    For each extracted triple, retrieves the source chunk(s) and asks the
+    LLM "Does the text support this triple?" with chain-of-thought
+    reasoning. Outputs one of:
+    STRONG_SUPPORT | WEAK_SUPPORT | NOT_SUPPORTED | NO_CHUNK | UNPARSEABLE
 
-Outputs one of: STRONG_SUPPORT | WEAK_SUPPORT | NOT_SUPPORTED | NO_CHUNK | UNPARSEABLE
+    Supports any chat-template HF model via --model (Qwen, Llama, Mistral, etc.)
 
-Supports any chat-template HF model via --model (Qwen, Llama, Mistral, etc.)
-
-Usage:
+USAGE
     python pipeline/03_verify_triples.py \\
         --input   output/step2/raw_triples.jsonl \\
         --output  output/step3/verified_triples.jsonl \\
@@ -78,6 +85,7 @@ SYSTEM = (
 
 
 def parse_cot(response: str) -> dict:
+    """Extract EVIDENCE/REASONING/VERDICT fields from the LLM's CoT `response`; returns a dict with verdict defaulting to UNPARSEABLE, no side effects."""
     result = {"evidence": "", "reasoning": "", "verdict": "UNPARSEABLE", "raw": response}
 
     m = re.search(r"EVIDENCE:\s*(.+?)(?=\nREASONING:|\nVERDICT:|\Z)", response, re.DOTALL | re.I)
@@ -196,6 +204,7 @@ def verify_triple(triple: dict, generate_fn, chunk_chars: int = 1500) -> dict:
 
 
 def main():
+    """CLI entry point: loads --input triples, runs verify_triple over each with the configured LLM backend, and writes verified triples (--output), a per-triple audit log, and verification_stats.json."""
     parser = argparse.ArgumentParser(description="CoT triple verification")
     parser.add_argument("--input",   required=True)
     parser.add_argument("--output",  required=True)

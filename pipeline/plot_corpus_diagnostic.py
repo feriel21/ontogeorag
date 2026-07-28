@@ -1,5 +1,16 @@
 """
-plot_corpus_diagnostic.py — bold, fully opaque, publication-ready.
+pipeline/plot_corpus_diagnostic.py — Benchmark Edge Diagnostic Figure
+==========================================================================
+WHY
+    corpus_diagnostic.py's raw output needs manual correction (a few
+    outcomes were reclassified after inspecting retrieved passages) and a
+    readable ranked-bar rendering for the paper's failure-mode breakdown.
+
+WHAT
+    Loads output/diagnostics/corpus_diagnostic_corrected.json, applies
+    the manual `corrections` overrides, and renders a bold, fully opaque,
+    publication-ready horizontal bar chart to figures/fig_corpus_diagnostic.{pdf,png}.
+    Run directly (no CLI args).
 """
 
 import json
@@ -76,6 +87,7 @@ REL_SHORT = {
 }
 
 def make_label(e):
+    """Format benchmark edge `e` as a truncated "subject [rel] object" y-axis label; no side effects."""
     subj = e['subject']
     obj  = e['object']
     rel  = REL_SHORT.get(e['relation'], e['relation'][:2])

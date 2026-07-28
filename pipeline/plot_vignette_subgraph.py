@@ -1,6 +1,16 @@
 """
-plot_vignette_subgraph.py
-Vignette subgraph — bold labels, bold edges, bold everything.
+pipeline/plot_vignette_subgraph.py — Worked-Example Vignette Figure
+========================================================================
+WHY
+    The paper walks through one concrete interpretation scenario (trigger
+    chain -> MTD -> seismic descriptors -> downslope evolution) as a
+    vignette; this hand-laid-out small subgraph is that figure.
+
+WHAT
+    Vignette subgraph — bold labels, bold edges, bold everything.
+    Fixed node/edge/position dicts (hand-curated, not KG-driven),
+    rendered to figures/fig_vignette_subgraph.{pdf,png}. Run directly
+    (no CLI args).
 """
 
 import matplotlib

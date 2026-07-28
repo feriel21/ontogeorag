@@ -1,3 +1,17 @@
+"""
+pipeline/plot_pipeline_overview.py — Pipeline Architecture Diagram
+=======================================================================
+WHY
+    The paper needs a single figure explaining the end-to-end pipeline
+    (corpus -> retrieval -> extraction -> verification -> KG) alongside
+    the ontology and expert-validation side-paths, for readers who won't
+    read the full methods section.
+
+WHAT
+    Hand-laid-out box-and-arrow diagram of the OntoGeoRAG pipeline,
+    rendered to ontogeorag_pipeline_v3.png. Run directly (no CLI args).
+"""
+
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt

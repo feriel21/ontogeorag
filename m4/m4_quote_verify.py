@@ -47,6 +47,7 @@ from m4_verify import (load_triples, triple_fields,
 
 
 def normalize(text: str) -> str:
+    """Lowercase `text`, fix known OCR ligature artefacts, strip bracketed ellipses/quotation marks, and collapse to alphanumeric tokens; no side effects."""
     t = text.lower()
     # OCR ligature artefacts present in the corpus PDFs
     t = t.replace("¢", "fi").replace("£", "fl")
@@ -58,6 +59,7 @@ def normalize(text: str) -> str:
 
 
 def pipeline_quote(t: dict) -> str:
+    """Extract the extraction-time evidence quote string from triple `t`'s `evidence` field, if present; no side effects."""
     ev = t.get("evidence", {})
     if isinstance(ev, dict):
         return str(ev.get("quote", "") or "")
@@ -84,6 +86,7 @@ def best_similarity(quote: str, target: str) -> float:
 
 
 def classify(quote: str, target: str, near: float) -> tuple:
+    """Classify `quote` against `target` as EXACT/EXACT_FRAGMENTED/NEAR (>= `near` similarity)/NOT_FOUND/EMPTY_QUOTE/NO_TARGET; returns (status, similarity_score), no side effects."""
     nq, nt = normalize(quote), normalize(target)
     if not nq:
         return "EMPTY_QUOTE", 0.0
@@ -102,6 +105,7 @@ def classify(quote: str, target: str, near: float) -> tuple:
 
 
 def load_jsonl(path):
+    """Read `path` as one JSON object per line; no side effects."""
     out = []
     with open(Path(path).expanduser(), encoding="utf-8") as f:
         for line in f:
@@ -112,6 +116,7 @@ def load_jsonl(path):
 
 
 def main():
+    """CLI entry point: audits --kg pipeline quotes against their provenance passage (Check A) and, if --verdicts given, M4 judge quotes against their shown passage (Check B); writes quote_verification.jsonl + quote_verification_summary.json to --output."""
     ap = argparse.ArgumentParser()
     ap.add_argument("--kg", required=True)
     ap.add_argument("--verdicts", default=None,

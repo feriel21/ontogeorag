@@ -1,3 +1,18 @@
+"""
+pipeline/plot_kg_subgraph.py — Representative Tier-1 Subgraph Figure
+=========================================================================
+WHY
+    The full KG is too dense to show in the paper; this script hand-picks
+    a representative, force-laid-out Tier-1 subgraph (causal chain +
+    seismic descriptors + spatial context) for the manuscript figure.
+
+WHAT
+    Loads output/run11_kg/tiered_kg_run11.json (Tier-1 slice, unused
+    beyond that check), lays out a hand-curated TRIPLES list with a
+    simple spring-force simulation, and renders it to
+    figures/fig_kg_subgraph.{pdf,png}. Run directly (no CLI args).
+"""
+
 import json
 import matplotlib
 matplotlib.use('Agg')
@@ -10,34 +25,34 @@ kg = json.load(open('output/run11_kg/tiered_kg_run11.json'))
 tier1 = [t for t in kg['triples'] if t['tier'] == 1]
 
 TRIPLES = [
-    # Chaîne causale directe vers MTD
+    # Direct causal chain to MTD
     ('earthquake',               'triggers',      'slope failure'),
     ('slope failure',            'causes',        'mass transport deposit'),
     ('growth stratal wedge',     'causes',        'mass transport deposit'),
 
-    # MTD hasDescriptor — descripteurs sismiques
+    # MTD hasDescriptor — seismic descriptors
     ('mass transport deposit',   'hasDescriptor', 'transparent'),
     ('mass transport deposit',   'hasDescriptor', 'hummocky'),
     ('mass transport deposit',   'hasDescriptor', 'high-amplitude'),
     ('mass transport deposit',   'hasDescriptor', 'blocky'),
     ('mass transport deposit',   'hasDescriptor', 'continuous'),
 
-    # Autres objets géologiques + descripteurs
+    # Other geological objects + descriptors
     ('turbidite',                'hasDescriptor', 'parallel'),
     ('turbidite',                'hasDescriptor', 'continuous'),
     ('megaslide',                'hasDescriptor', 'chaotic'),
     ('megaslide',                'hasDescriptor', 'layered'),
     ('debris-flow deposit',      'hasDescriptor', 'chaotic'),
 
-    # Contexte spatial — connecté à MTD
+    # Spatial context — connected to MTD
     ('mass transport deposit',   'occursIn',      'continental margin'),
     ('mass transport deposit',   'occursIn',      'deepwater basinal setting'),
 
-    # Structure — connecté à MTD
+    # Structure — connected to MTD
     ('mass transport deposit',   'partOf',        'basal shear surface'),
     ('toe',                      'partOf',        'mass transport deposit'),
 
-    # Connexions turbidite et megaslide à MTD
+    # Turbidite and megaslide connections to MTD
     ('turbidite',                'occursIn',      'continental margin'),
     ('megaslide',                'hasDescriptor', 'transparent'),
 ]
@@ -73,6 +88,7 @@ SETTINGS = {
 }
 
 def classify(name):
+    """Guess `name`'s node type (Descriptor/Process/Setting/SeismicObject) from the fixed vocab sets and keyword fallbacks; no side effects."""
     n = name.lower()
     if n in DESCRIPTORS: return 'Descriptor'
     if n in PROCESSES:   return 'Process'

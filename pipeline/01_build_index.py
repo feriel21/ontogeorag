@@ -1,12 +1,19 @@
 #!/usr/bin/env python3
 """
-pipeline/01_build_index.py — Corpus Indexing
+pipeline/01_build_index.py — Corpus Indexing (Stage 1)
+========================================================
+WHY
+    Every downstream stage (retrieval, extraction, verification) needs the
+    corpus split into retrievable units. This stage is the single place
+    PDFs are parsed and chunked, so all later stages see the same chunk
+    boundaries and IDs.
 
-Converts PDF corpus to normalized text, chunks it,
-builds BM25 index, and (optionally) builds a dense
-embedding index for hybrid retrieval.
+WHAT
+    Converts the PDF corpus to normalized text, splits it into overlapping
+    character-level chunks, writes the BM25 source file (chunks.jsonl),
+    and optionally builds a dense embedding index for hybrid retrieval.
 
-Usage:
+USAGE
     python pipeline/01_build_index.py \
         --pdf-dir data/corpus/ \
         --outdir  output/step1/
@@ -40,6 +47,7 @@ SYNONYM_MAP = {
 }
 
 def normalize_text(text: str) -> str:
+    """Lowercase `text` and expand corpus-specific abbreviations via SYNONYM_MAP; returns the normalized string, no side effects."""
     text = text.lower()
     for abbr, full in SYNONYM_MAP.items():
         text = re.sub(r'\b' + re.escape(abbr) + r'\b', full, text)
@@ -190,6 +198,7 @@ def build_and_save_dense_index(
 # ── Main ──────────────────────────────────────────────────────────────
 
 def main() -> None:
+    """CLI entry point: parses --pdf-dir/--outdir/etc., runs PDF→text→chunks→BM25(+dense) and writes chunks.jsonl, index_meta.json (and failed_pdfs.json on parse errors) under --outdir."""
     parser = argparse.ArgumentParser(
         description="Build BM25 + optional dense index from PDF corpus"
     )

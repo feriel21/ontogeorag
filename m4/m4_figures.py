@@ -75,6 +75,7 @@ MM = 1 / 25.4  # mm -> inch
 
 
 def load_jsonl(path):
+    """Read `path` as one JSON object per line; no side effects."""
     out = []
     with open(Path(path).expanduser(), encoding="utf-8") as f:
         for line in f:
@@ -85,6 +86,7 @@ def load_jsonl(path):
 
 
 def save(fig, out_dir, name):
+    """Save `fig` as `name`.pdf (vector) and `name`.png (300dpi) under `out_dir`, close it, and log the filenames."""
     fig.savefig(out_dir / f"{name}.pdf")
     fig.savefig(out_dir / f"{name}.png", dpi=300)
     plt.close(fig)
@@ -92,6 +94,7 @@ def save(fig, out_dir, name):
 
 
 def short(label):
+    """Map a verdict/decision `label` to its compact figure-axis form; returns `label` unchanged if not in the lookup, no side effects."""
     return {"PARTIALLY_SUPPORTED": "PARTIAL", "NOT_SUPPORTED": "NOT SUPP.",
             "STRONG_SUPPORT": "STRONG", "WEAK_SUPPORT": "WEAK",
             "IMPLAUSIBLE": "IMPLAUS.", "UNCERTAIN": "UNCERT.",
@@ -102,6 +105,7 @@ def short(label):
 # ── Fig 1: evidence verdicts by tier ───────────────────────────────────
 
 def fig_verdicts_by_tier(decisions, out_dir):
+    """Render the evidence-verdict-distribution-by-tier stacked bar chart from `decisions` and save it as fig_m4_verdicts under `out_dir`."""
     tiers = sorted({str(d.get("tier")) for d in decisions})
     counts = {t: Counter() for t in tiers}
     for d in decisions:
@@ -137,6 +141,7 @@ def fig_verdicts_by_tier(decisions, out_dir):
 
 def heatmap(matrix, rows, cols, xlabel, ylabel, out_dir, name,
             highlight=None):
+    """Render `matrix` as an annotated Blues heatmap with `rows`/`cols` labels (optionally outlining cell `highlight`) and save it as `name` under `out_dir`."""
     fig, ax = plt.subplots(figsize=(80 * MM, 62 * MM))
     m = np.array(matrix, dtype=float)
     im = ax.imshow(m, cmap="Blues", aspect="auto",
@@ -163,6 +168,7 @@ def heatmap(matrix, rows, cols, xlabel, ylabel, out_dir, name,
 
 
 def fig_blind_vs_evidence(decisions, out_dir):
+    """Build the blind x evidence verdict count matrix from `decisions` and render it as the fig_m4_blind_vs_evidence heatmap (highlighting the PLAUSIBLE x NOT_SUPPORTED over-interpretation cell) under `out_dir`."""
     m = [[0] * len(EV_ORDER) for _ in BLIND_ORDER]
     for d in decisions:
         b, e = d["blind_verdict"], d["evidence_verdict"]
@@ -177,6 +183,7 @@ def fig_blind_vs_evidence(decisions, out_dir):
 
 
 def fig_m4_vs_qwen(decisions, out_dir):
+    """Build the Qwen(mapped) x M4-evidence verdict count matrix from `decisions` and render it as the fig_m4_vs_qwen heatmap under `out_dir`."""
     m = [[0] * len(EV_ORDER) for _ in EV_ORDER]
     for d in decisions:
         q = QWEN_TO_M4.get(d.get("qwen_verdict", ""))
@@ -192,6 +199,7 @@ def fig_m4_vs_qwen(decisions, out_dir):
 # ── Fig 4: decisions by relation ───────────────────────────────────────
 
 def fig_by_relation(decisions, out_dir):
+    """Render the ACCEPT/UNCERTAIN/REJECT-by-relation stacked bar chart (relations sorted by triple count) from `decisions` and save it as fig_m4_by_relation under `out_dir`."""
     by_rel = defaultdict(Counter)
     for d in decisions:
         by_rel[d["relation"]][d["m4_decision"]] += 1
@@ -221,6 +229,7 @@ def fig_by_relation(decisions, out_dir):
 # ── Fig 5: tier flow (two-column alluvial) ─────────────────────────────
 
 def fig_tier_flow(decisions, out_dir):
+    """Render the original-tier -> new-tier/quarantine two-column alluvial flow diagram from `decisions` and save it as fig_m4_tier_flow under `out_dir`."""
     flows = Counter()
     for d in decisions:
         orig = f"Tier {d.get('tier')}"
@@ -290,6 +299,7 @@ def fig_tier_flow(decisions, out_dir):
 
 
 def main():
+    """CLI entry point: loads --decisions and renders all M4 publication figures (skipping verdict-based ones for multi-judge panel files) to --output."""
     ap = argparse.ArgumentParser()
     ap.add_argument("--decisions", required=True)
     ap.add_argument("--output", required=True)

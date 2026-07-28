@@ -1,9 +1,16 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-KG Quantitative Analysis — OntoGeoRAG
-======================================
-Self-contained script producing three deliverables from the final KG:
+m4/kg_quantitative_analysis.py — KG Quantitative Analysis — OntoGeoRAG
+==========================================================================
+WHY
+    The manuscript's KG-description figures/tables (portrait, MTD
+    vignette subgraph, duplicate-entity audit) need to be regenerated
+    from whichever KG file is the current final artifact, not hand-built
+    once and left to drift out of sync with the data.
+
+WHAT
+    Self-contained script producing three deliverables from the final KG:
 
   1. KG Portrait (for figure C3 and §3 of the manuscript)
      - Node count by entity type
@@ -38,6 +45,7 @@ from pathlib import Path
 
 # ─── Lazy imports for optional dependencies ───────────────────────────
 def _import_networkx():
+    """Import and return the networkx module, exiting with an install hint if it's missing."""
     try:
         import networkx as nx
         return nx
@@ -46,6 +54,7 @@ def _import_networkx():
         sys.exit(1)
 
 def _import_matplotlib():
+    """Import matplotlib with the non-interactive 'Agg' backend and return pyplot."""
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
@@ -625,6 +634,7 @@ def _string_heuristic_scan(entities, entity_info, outdir, threshold=0.8):
 # MAIN
 # ═══════════════════════════════════════════════════════════════════════
 def main():
+    """CLI entry point: loads --kg and runs kg_portrait, mtd_ego_subgraph and duplicate_scan in sequence, writing all CSV/JSON/figure/GraphML outputs to --outdir."""
     parser = argparse.ArgumentParser(
         description="KG Quantitative Analysis — OntoGeoRAG",
         formatter_class=argparse.RawDescriptionHelpFormatter,

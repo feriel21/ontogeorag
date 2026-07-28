@@ -1,11 +1,22 @@
 #!/usr/bin/env python3
 """
-03_validate_and_clean_v5.py — Validation, Cleaning & Canonicalization (v5)
-=========================================================================
+pipeline/04_clean_validate.py — Validation, Cleaning & Canonicalization (Stage 4, v5)
+========================================================================================
+WHY
+    Stage 3's verification only says whether a triple is text-supported; it
+    doesn't catch structurally bad triples (wrong relation, vague entities,
+    off-ontology descriptors) or near-duplicate entity mentions. This stage
+    is the ontology/lexicon gate and the entity-canonicalization step, so
+    stages 5+ operate on a clean, deduplicated triple set.
 
-Includes:
-  FIX #1 — relation mapping BEFORE ontology check (recover SKIPPED_RELATION)
-  FIX #2 — soft lexicon: if both_not_in_lexicon but verified STRONG/WEAK => keep as novel_term=True
+    FIX #1 — relation mapping BEFORE ontology check (recover SKIPPED_RELATION)
+    FIX #2 — soft lexicon: if both_not_in_lexicon but verified STRONG/WEAK => keep as novel_term=True
+
+WHAT
+    Runs the verification filter, then structural/ontology validation, then
+    SciBERT-embedding-based entity clustering to merge near-duplicate
+    mentions (protecting LB2019 descriptor/setting terms from being merged
+    away — see build_canonical_map).
 
 Inputs:
   - verified_triples_v5.jsonl  (from verification script)
@@ -134,6 +145,7 @@ RELATION_MAP = {
 }
 
 def normalize_relation(rel: str) -> str:
+    """Collapse camelCase/spaces/hyphens/underscores in `rel` into a lowercase lookup key for RELATION_MAP; returns the key, no side effects."""
     rel = (rel or "").strip()
     if not rel:
         return ""
@@ -143,6 +155,7 @@ def normalize_relation(rel: str) -> str:
     return rel
 
 def apply_relation_mapping(triple: dict) -> None:
+    """If `triple`'s relation is a known non-canonical alias (RELATION_MAP), rewrite its relation/relation_norm fields in place; returns None."""
     raw_rel = triple.get("relation_norm", triple.get("relation", ""))
     key = normalize_relation(raw_rel)
     if key in RELATION_MAP:
@@ -156,6 +169,7 @@ def apply_relation_mapping(triple: dict) -> None:
 # ═══════════════════════════════════════════════════════════════════════
 
 def check_verification(triple: dict, policy: str) -> tuple[bool, str]:
+    """Decide whether `triple` survives its stage-3 `_verification` verdict under the given `policy` (strict/normal/relaxed/off); returns (passes, reason_code), no side effects."""
     if policy == "off":
         return True, "ok"
 
@@ -190,12 +204,14 @@ def check_verification(triple: dict, policy: str) -> tuple[bool, str]:
 # ═══════════════════════════════════════════════════════════════════════
 
 def normalize_entity(text: str) -> str:
+    """Lowercase, collapse whitespace, and strip trailing punctuation from `text`; returns the normalized string, no side effects."""
     text = (text or "").lower().strip()
     text = re.sub(r"\s+", " ", text)
     text = text.rstrip(".,;:")
     return text
 
 def check_basic(triple: dict) -> tuple[bool, str]:
+    """Reject `triple` on empty/too-short/too-long fields, self-loops, blacklist patterns, or vague-term entities; returns (passes, reason_code), no side effects."""
     s = (triple.get("source_norm", triple.get("source", "")) or "").strip()
     t = (triple.get("target_norm", triple.get("target", "")) or "").strip()
     r = (triple.get("relation_norm", triple.get("relation", "")) or "").strip()
@@ -230,10 +246,12 @@ def check_basic(triple: dict) -> tuple[bool, str]:
     return True, "ok"
 
 def check_relation(triple: dict) -> tuple[bool, str]:
+    """Reject `triple` if its relation is outside VALID_RELATIONS; returns (passes, reason_code), no side effects."""
     r = triple.get("relation_norm", triple.get("relation", ""))
     return (r in VALID_RELATIONS), ("ok" if r in VALID_RELATIONS else "invalid_relation")
 
 def check_type_constraint(triple: dict) -> tuple[bool, str]:
+    """Enforce TYPE_CONSTRAINTS for hasDescriptor/occursIn objects, normalizing near-miss descriptor variants onto a KNOWN_DESCRIPTORS entry in place when possible; returns (passes, reason_code)."""
     r = triple.get("relation_norm", triple.get("relation", ""))
     t = normalize_entity(triple.get("target_norm", triple.get("target", "")))
 
@@ -286,6 +304,7 @@ def check_lexicon_coverage_soft(triple: dict, lexicon: set) -> tuple[bool, str]:
     return True, "ok"
 
 def triple_key(triple: dict) -> str:
+    """Build the `subject||relation||object` dedup key for `triple` from its normalized entities; returns the key string, no side effects."""
     s = normalize_entity(triple.get("source_norm", triple.get("source", "")))
     r = triple.get("relation_norm", triple.get("relation", ""))
     t = normalize_entity(triple.get("target_norm", triple.get("target", "")))
@@ -302,6 +321,7 @@ def build_canonical_map(
     lb_descriptors: set = LB_DESCRIPTORS,
     lexicon: set = None,
 ) -> dict[str, str]:
+    """Cluster `entities` by SciBERT embedding similarity (agglomerative, cosine, threshold `distance_threshold`) and pick one canonical form per cluster, preferring lexicon membership then shorter phrasing; clusters containing 2+ LB2019 descriptors/settings are left unmerged. Prints progress/decisions; returns {variant: canonical} (empty if sentence-transformers/sklearn unavailable or <2 entities)."""
     if lexicon is None:
         lexicon = set()
     if len(entities) < 2:
@@ -379,6 +399,7 @@ def build_canonical_map(
     return canonical_map
 
 def apply_canonical_map(triples: list[dict], canonical_map: dict) -> int:
+    """Rewrite source/target fields of `triples` in place wherever their normalized form is a key in `canonical_map`; returns the number of field occurrences merged."""
     merged = 0
     for t in triples:
         for field in ["source_norm", "target_norm", "source", "target"]:
@@ -395,6 +416,7 @@ def apply_canonical_map(triples: list[dict], canonical_map: dict) -> int:
 # ═══════════════════════════════════════════════════════════════════════
 
 def compute_lb_recall(triples: list[dict]) -> tuple[int, int, list]:
+    """Count how many of the 26 LB_REFERENCE_EDGES appear (exact normalized-tuple match) in `triples`; returns (hits, total_reference_edges, missing_edges), no side effects."""
     found_keys = set()
     for t in triples:
         s = normalize_entity(t.get("source_norm", t.get("source", "")))
@@ -413,6 +435,7 @@ def compute_lb_recall(triples: list[dict]) -> tuple[int, int, list]:
     return hits, len(LB_REFERENCE_EDGES), missing
 
 def compute_descriptor_coverage(triples: list[dict]) -> tuple[set, set]:
+    """Find which of the 13 LB_DESCRIPTORS appear as hasDescriptor objects in `triples`; returns (found, missing) sets, no side effects."""
     found = set()
     for t in triples:
         r = t.get("relation_norm", t.get("relation", ""))
@@ -429,6 +452,7 @@ def compute_descriptor_coverage(triples: list[dict]) -> tuple[set, set]:
 # ═══════════════════════════════════════════════════════════════════════
 
 def main():
+    """CLI entry point: runs the verification filter, structural/ontology validation, SciBERT canonicalization and re-dedup over --input, writing canonical_triples_v5.jsonl, canonical_map_v5.json, rejected_triples_v5.jsonl and cleaning_stats_v5.json under --outdir."""
     parser = argparse.ArgumentParser(description="Validate, clean & canonicalize KG triples (v5)")
     parser.add_argument("--input", default=None, help="Input JSONL (default: $KG_INPUT)")
     parser.add_argument("--outdir", default=None, help="Output directory (default: $KG_OUTPUT_DIR)")

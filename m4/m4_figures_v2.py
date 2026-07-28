@@ -52,6 +52,7 @@ plt.rcParams.update({
 
 
 def wilson(k, n, z=1.96):
+    """Compute the Wilson score interval for k successes out of n trials at confidence z (default 1.96 ~= 95%); returns (lower, upper), no side effects."""
     if n == 0:
         return 0.0, 0.0
     p = k / n
@@ -62,6 +63,7 @@ def wilson(k, n, z=1.96):
 
 
 def save(fig, out_dir, name):
+    """Save `fig` as `name`.pdf (vector) and `name`.png (300dpi) under `out_dir`, close it, and log the filenames."""
     fig.savefig(out_dir / f"{name}.pdf")
     fig.savefig(out_dir / f"{name}.png", dpi=300)
     plt.close(fig)
@@ -77,6 +79,7 @@ CLASS_LABELS = {"passage_perm": "Passage\npermutation",
 
 
 def fig_sensitivity(report_path, out_dir):
+    """Render per-corruption-class detection sensitivity (with Wilson 95% CIs and AUC annotations) from `report_path`'s negatives report and save it as fig_m4_negatives_sensitivity under `out_dir`."""
     rep = json.loads(Path(report_path).expanduser().read_text(
         encoding="utf-8"))
     per = rep["per_corruption_class"]
@@ -123,6 +126,7 @@ DIR_COLORS = {"FORWARD": OI["green"], "REVERSE": OI["red"],
 
 
 def fig_direction(summary_path, out_dir):
+    """Render the directional-check verdict breakdown from `summary_path`'s direction summary as a single stacked horizontal bar and save it as fig_m4_direction under `out_dir`."""
     rep = json.loads(Path(summary_path).expanduser().read_text(
         encoding="utf-8"))
     verdicts = rep["verdicts"]
@@ -155,6 +159,7 @@ def fig_direction(summary_path, out_dir):
 # ── Fig: panel agreement vs human reference ────────────────────────────
 
 def fig_panel(panel_path, out_dir):
+    """Render per-judge evidence-verdict distributions plus inter-judge kappa (vs the human inter-expert reference band, if present) from `panel_path`'s panel report, and save it as fig_m4_panel_agreement under `out_dir`."""
     rep = json.loads(Path(panel_path).expanduser().read_text(
         encoding="utf-8"))
     names = rep["judges"]
@@ -220,6 +225,7 @@ def fig_panel(panel_path, out_dir):
 
 
 def main():
+    """CLI entry point: renders whichever of the sensitivity/direction/panel-agreement figures have their input report provided (--negatives/--direction/--panel) to --output."""
     ap = argparse.ArgumentParser()
     ap.add_argument("--negatives", default=None)
     ap.add_argument("--direction", default=None)

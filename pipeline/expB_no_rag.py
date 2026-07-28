@@ -1,12 +1,17 @@
 #!/usr/bin/env python3
 """
-Experiment B — No-RAG Baseline
-================================
-Same LLM (Qwen2.5-7B-Instruct), same queries, same prompts.
-NO BM25, NO chunks, NO retrieval context.
-LLM answers from parametric memory only.
+pipeline/expB_no_rag.py — Experiment B: No-RAG Baseline
+============================================================
+WHY
+    To claim RAG helps, we need a controlled baseline that isolates its
+    contribution: same model, same queries, same prompts, but with
+    retrieval context removed entirely. The recall gap between this and
+    the RAG pipeline (C9/C10) is what the paper attributes to retrieval.
 
-This establishes the baseline recall to show what RAG adds.
+WHAT
+    Same LLM (Qwen2.5-7B-Instruct), same queries, same prompts.
+    NO BM25, NO chunks, NO retrieval context.
+    LLM answers from parametric memory only.
 
 Usage:
     python pipeline/expB_no_rag.py \
@@ -73,6 +78,7 @@ Output JSON only:"""
 
 
 def load_model(model_name, device):
+    """Load `model_name`'s tokenizer + causal LM in fp16 onto `device` (via device_map='auto'); returns (tokenizer, model) in eval mode."""
     log.info(f'Loading model: {model_name}')
     tok = AutoTokenizer.from_pretrained(model_name, trust_remote_code=True)
     mdl = AutoModelForCausalLM.from_pretrained(
@@ -87,6 +93,7 @@ def load_model(model_name, device):
 
 
 def generate(tok, mdl, system, user, max_new_tokens=512, temperature=0.0):
+    """Render `system`/`user` via the chat template and generate a completion (greedy if temperature==0.0, sampled otherwise); returns the decoded response text, no side effects."""
     messages = [
         {'role': 'system',  'content': system},
         {'role': 'user',    'content': user},
@@ -137,6 +144,7 @@ def parse_json(text):
 
 
 def normalize_relation(rel):
+    """Map common lowercase/snake_case/space variants of `rel` onto the canonical camelCase relation name; returns `rel` unchanged if no mapping applies, no side effects."""
     if not rel:
         return ''
     rel = rel.strip()
@@ -155,6 +163,7 @@ def normalize_relation(rel):
 
 
 def normalize_text(s):
+    """Lowercase, collapse whitespace, and strip trailing punctuation from `s`; no side effects."""
     return re.sub(r'\s+', ' ', (s or '').lower().strip()).rstrip('.,;:')
 
 
@@ -259,6 +268,7 @@ def evaluate(canonical, ref_edges):
 
 
 def main():
+    """CLI entry point: runs no-RAG extraction over --queries, canonicalizes and evaluates against --ref, and writes raw/canonical triples, metrics_expB.json and report_expB.txt to --output."""
     p = argparse.ArgumentParser()
     p.add_argument('--queries', default='configs/descriptor_queries.jsonl')
     p.add_argument('--ref',     default='configs/lb_reference_edges.json')

@@ -1,12 +1,19 @@
 #!/usr/bin/env python3
 """
-Experiment D — Cross-Model Verifier
-=====================================
-Verifies 100 Tier-1 triples from C10 using Llama-3.1-8B-Instruct
-as an INDEPENDENT verifier (different from Qwen-7B extractor).
+pipeline/expD_cross_model.py — Experiment D: Cross-Model Verifier
+======================================================================
+WHY
+    Stage 3's verifier and stage 2's extractor share a model family
+    (Qwen), so 0% Tier-1 hallucination could just be self-verification
+    bias. This experiment re-verifies the same triples with a different
+    model family (Llama) to check whether that result holds up.
 
-Goal: assess whether 0% NOT_SUPPORTED in Tier-1 is robust to
-verifier model choice, or reflects self-verification bias.
+WHAT
+    Verifies 100 Tier-1 triples from C10 using Llama-3.1-8B-Instruct
+    as an INDEPENDENT verifier (different from Qwen-7B extractor).
+
+    Goal: assess whether 0% NOT_SUPPORTED in Tier-1 is robust to
+    verifier model choice, or reflects self-verification bias.
 
 Usage:
     python pipeline/expD_cross_model.py \
@@ -66,6 +73,7 @@ Verdict: <STRONG_SUPPORT|WEAK_SUPPORT|NOT_SUPPORTED>"""
 
 
 def load_model(model_name):
+    """Load `model_name`'s tokenizer + causal LM in fp16 (device_map='auto'), filling in a pad token if missing; returns (tokenizer, model) in eval mode."""
     log.info(f'Loading model: {model_name}')
     tok = AutoTokenizer.from_pretrained(model_name, trust_remote_code=True)
     if tok.pad_token is None:
@@ -82,6 +90,7 @@ def load_model(model_name):
 
 
 def generate(tok, mdl, system, user, max_new_tokens=512):
+    """Render `system`/`user` via the model's chat template (falling back to a manual Llama-style prompt if unsupported) and greedily generate; returns the decoded response text, no side effects."""
     messages = [
         {'role': 'system', 'content': system},
         {'role': 'user',   'content': user},
@@ -222,6 +231,7 @@ def sample_tier1_triples(kg_path, n, seed):
 
 
 def main():
+    """CLI entry point: samples Tier-1 triples from --kg, re-verifies each with the --model Llama verifier against retrieved evidence, and writes per-triple results, metrics_expD.json and report_expD.txt to --output."""
     p = argparse.ArgumentParser()
     p.add_argument('--kg',        default='output/run11_kg/tiered_kg_run11.json')
     p.add_argument('--index',     default='output/step1/')

@@ -1,11 +1,19 @@
 """
-corpus_diagnostic.py
-For each of the 26 LB2019 benchmark edges, reports:
-  - corpus_chunks: number of chunks where both subject and object co-occur
-  - retrieved_bm25: number of those chunks that appear in C9 retrieved sets
-  - retrieved_c10: number of those chunks that appear in C10 retrieved sets
-  - recovered: whether the edge is matched in the final KG
-  - outcome: RECOVERED | CORPUS_GAP | PIPELINE_FAILURE
+pipeline/corpus_diagnostic.py — Benchmark Edge Recovery Diagnostic
+======================================================================
+WHY
+    When a benchmark edge is missing from the final KG, it matters whether
+    the corpus simply never states it (CORPUS_GAP) or whether the pipeline
+    failed to extract/verify a statement that IS in the corpus
+    (PIPELINE_FAILURE) — the two call for very different fixes.
+
+WHAT
+    For each of the 26 LB2019 benchmark edges, reports:
+      - corpus_chunks: number of chunks where both subject and object co-occur
+      - retrieved_bm25: number of those chunks that appear in C9 retrieved sets
+      - retrieved_c10: number of those chunks that appear in C10 retrieved sets
+      - recovered: whether the edge is matched in the final KG
+      - outcome: RECOVERED | CORPUS_GAP | PIPELINE_FAILURE
 """
 
 import json
@@ -15,6 +23,7 @@ from rank_bm25 import BM25Okapi
 
 
 def load_json(path):
+    """Load `path` as JSONL (one object per line) if it ends in .jsonl, else as a single JSON document; no side effects."""
     path = str(path)
     if path.endswith(".jsonl"):
         with open(path) as f:
@@ -24,6 +33,7 @@ def load_json(path):
 
 
 def normalize(text):
+    """Lowercase and strip `text`; no side effects."""
     return text.lower().strip()
 
 
@@ -53,6 +63,7 @@ def edge_recovered(kg, subj, rel, obj):
 
 
 def main():
+    """CLI entry point: classifies every --reference edge as RECOVERED/CORPUS_GAP/PIPELINE_FAILURE by cross-referencing corpus chunk co-occurrence against --kg-c9/--kg-c10, and writes the per-edge results to --output."""
     parser = argparse.ArgumentParser()
     parser.add_argument("--index-dir", required=True)
     parser.add_argument("--reference", required=True)

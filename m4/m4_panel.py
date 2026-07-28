@@ -48,6 +48,7 @@ CAUTION = {"REJECT": 2, "UNCERTAIN": 1, "ACCEPT": 0}
 
 
 def load_jsonl(path):
+    """Read `path` as one JSON object per line; no side effects."""
     out = []
     with open(Path(path).expanduser(), encoding="utf-8") as f:
         for line in f:
@@ -69,6 +70,7 @@ def panel_vote(decisions: list) -> str:
 
 
 def main():
+    """CLI entry point: loads each --judges verdict file, computes pairwise inter-judge agreement/kappa, takes a conservative majority vote per triple, and writes m4_panel_decisions.jsonl + m4_panel_report.json to --output."""
     ap = argparse.ArgumentParser()
     ap.add_argument("--judges", nargs="+", required=True,
                     help="name=path pairs of m4_verdicts.jsonl files")

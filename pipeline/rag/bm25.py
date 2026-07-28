@@ -1,4 +1,17 @@
-# pipeline/rag/hybrid_retriever.py
+"""
+pipeline/rag/bm25.py
+=====================
+NOTE (doc pass, not a logic change): despite the filename, this module's
+content is hybrid BM25+dense retrieval code (RetrievedChunk / build_dense_index
+/ hybrid_retrieve), not a BM25 index implementation. It is NOT what
+experiments/exp_e_targeted_rerun.py imports (`build_bm25_index`, `retrieve`) —
+neither name is defined here — and hybrid_retrieve() below calls an
+undefined `bm25_retrieve` helper, so calling it would raise NameError.
+pipeline/rag/hybrid_retriever.py's load_hybrid_retriever() is the version
+actually wired into 02_extract_triples.py's --hybrid path. Flagged as a
+dead-code/likely-stale-duplicate candidate for task 6; left unmodified here
+(behavior-preserving pass).
+"""
 
 from dataclasses import dataclass
 from typing import List
@@ -56,6 +69,9 @@ def hybrid_retrieve(
     1. BM25 top-50 + dense top-50 → union candidate set
     2. Reciprocal Rank Fusion of BM25 and dense scores
     3. Cross-encoder re-rank → top-5
+
+    Calls an undefined `bm25_retrieve` name (see module note above) — will
+    raise NameError if invoked as-is.
     """
     # --- BM25 candidates ---
     bm25_results = bm25_retrieve(bm25_index, query, top_k=bm25_top_k)

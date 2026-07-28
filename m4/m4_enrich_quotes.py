@@ -36,6 +36,7 @@ from m4_verify import load_triples, triple_fields
 
 
 def load_canonical_map(run_dir: Path) -> dict:
+    """Load `run_dir`/canonical_map_v5.json (lowercased key/value) if present; returns {} otherwise, no side effects."""
     p = run_dir / "canonical_map_v5.json"
     if p.exists():
         return {k.strip().lower(): v.strip().lower()
@@ -44,6 +45,7 @@ def load_canonical_map(run_dir: Path) -> dict:
 
 
 def canon(name: str, cmap: dict) -> str:
+    """Lowercase/strip `name` and apply `cmap`'s canonicalization if present; no side effects."""
     n = name.strip().lower()
     return cmap.get(n, n)
 
@@ -73,6 +75,7 @@ def load_audit(run_dir: Path, cmap: dict, tag: str) -> dict:
 
 
 def main():
+    """CLI entry point: joins --pass-a/--pass-b verification audits onto --kg's triples by canonicalized key, and writes the enriched KG (with evidence quotes + join stats) to --output; the source KG is never modified."""
     ap = argparse.ArgumentParser()
     ap.add_argument("--kg", required=True)
     ap.add_argument("--pass-a", required=True)

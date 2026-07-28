@@ -43,10 +43,12 @@ from m4_verify import load_triples, triple_fields
 
 
 def norm_key(subject, relation, obj):
+    """Build a lowercase/stripped (subject, relation, object) tuple key for joining against m4 decisions/direction verdicts; no side effects."""
     return (subject.strip().lower(), relation.strip(), obj.strip().lower())
 
 
 def main():
+    """CLI entry point: reassigns each --kg triple's tier from its --decisions M4 verdict (and optional --direction check), quarantines REJECTed triples, and writes tiered_kg_m4.json + m4_quarantine.jsonl to --output."""
     ap = argparse.ArgumentParser()
     ap.add_argument("--kg", required=True)
     ap.add_argument("--decisions", required=True)

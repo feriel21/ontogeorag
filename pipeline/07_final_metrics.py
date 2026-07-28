@@ -1,11 +1,23 @@
 #!/usr/bin/env python3
 """
-Step 3 CORRIGE: Final Metrics for Article
-- Fix hallucination: supporte SUPPORTED/STRONG_SUPPORT/UNCERTAIN/WEAK_SUPPORT
-- Fix entites: fusionne mass-transport deposit / mtd / mass transport deposits
+pipeline/07_final_metrics.py — Final Metrics for Article (Stage 7)
+======================================================================
+WHY
+    The manuscript needs a single reproducible source for the headline
+    numbers (descriptor coverage, LB2019 recall, hallucination rate,
+    expert-validation precision/kappa). This stage computes them all from
+    the fused KG (06) so every reported number traces back to one script.
 
-Usage:
-    python step3_final_metrics.py \
+WHAT
+    - Fix hallucination: supports SUPPORTED/STRONG_SUPPORT/UNCERTAIN/WEAK_SUPPORT verdicts
+    - Fix entities: merges mass-transport deposit / mtd / mass transport deposits variants
+    - Descriptor coverage against the 13-term LB2019_BENCHMARK_DESCRIPTORS (imported from
+      pipeline.rag.constants — see run13 restructure), counted post-synonym-mapping (norm_desc).
+    - Recall against configs/lb_reference_edges.json (34 edges) and, separately,
+      configs/lb_reference_edges_original26.json (the original 26-edge set).
+
+USAGE
+    python pipeline/07_final_metrics.py \
         --kg output/improved_kg/tiered_kg_normalized.json \
         --output output/improved_kg/article_metrics.json
 """
@@ -87,6 +99,7 @@ ENTITY_NORMS.update({
 
 
 def norm(text):
+    """Lowercase/collapse-whitespace `text` and apply ENTITY_NORMS (MTD/debris-flow/etc. variant merging); returns the normalized string, no side effects."""
     if not text:
         return ""
     t = " ".join(str(text).lower().strip().split())
@@ -94,11 +107,13 @@ def norm(text):
 
 
 def norm_desc(text):
+    """Apply norm() then DESCRIPTOR_SYNONYMS (e.g. stratified->layered) to `text`; returns the canonical descriptor string, no side effects."""
     t = norm(text)
     return DESCRIPTOR_SYNONYMS.get(t, t)
 
 
 def verdict_to_tier(verdict):
+    """Map a verification verdict string to its tier number (1=STRONG/SUPPORTED, 2=WEAK/UNCERTAIN, 3=otherwise); no side effects."""
     v = str(verdict).upper().strip()
     if "STRONG" in v or v == "SUPPORTED":
         return 1
@@ -108,6 +123,7 @@ def verdict_to_tier(verdict):
 
 
 def coverage(triples):
+    """Compute LB2019 descriptor coverage over `triples`' hasDescriptor objects (post norm_desc); returns found/missing sets, n_found, n_total=13 and coverage fraction, no side effects."""
     found = set()
     for t in triples:
         d = norm_desc(t.get("object", ""))
@@ -195,6 +211,7 @@ def recall(triples, ref_path="configs/lb_reference_edges.json"):
     }
 
 def hallucination(triples):
+    """Tally `triples` by verdict_to_tier and compute the not-supported (tier-3) fraction of the total; returns counts dict + hallucination_rate, no side effects."""
     counts = defaultdict(int)
     for t in triples:
         tier = verdict_to_tier(t.get("verdict", ""))
@@ -376,6 +393,7 @@ def compute_generalization_metrics(
     return {'n': n, 'Y': Y, 'P': P, 'N': N,
             'relaxed_precision': gen_relaxed}
 def main():
+    """CLI entry point: loads --kg, normalizes/dedups triples, computes coverage/recall(34)/recall(orig26)/hallucination, prints the article table, and writes the full metrics JSON to --output."""
     parser = argparse.ArgumentParser()
     parser.add_argument("--kg", required=True)
     parser.add_argument("--output", default="output/improved_kg/article_metrics.json")

@@ -1,5 +1,19 @@
 """
-pipeline/rag/constants.py — Shared ontology constants.
+pipeline/rag/constants.py — Shared ontology constants
+========================================================
+WHY
+    Relation names, descriptor vocabularies and LB2019 ground truth were
+    previously copy-pasted (and drifted) across pipeline stages — see the
+    run13 restructure that unified them here. Importing from this single
+    module is what keeps 02/03/04/06/07 in agreement about what a valid
+    relation or descriptor is.
+
+WHAT
+    Relation ontology (ALLOWED_RELATIONS, RELATION_MAP, RELATION_GLOSSES)
+    and normalization helpers; LB2019 ground truth (LB2019_BENCHMARK_DESCRIPTORS,
+    LB2019_REFERENCE_EDGES) and the extraction closed-world vocabulary
+    (KNOWN_DESCRIPTORS, KNOWN_SETTINGS); entity/descriptor normalization
+    helpers used throughout the pipeline.
 
 Single source of truth — import from here in every pipeline script.
 """

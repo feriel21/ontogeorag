@@ -95,6 +95,7 @@ def resolve_local(model_name: str) -> str:
 
 
 def load_model(model_name: str):
+    """Resolve `model_name` to a local snapshot and load its tokenizer + causal LM in bfloat16 (device_map='auto'); returns (tokenizer, model) in eval mode."""
     import torch
     from transformers import AutoTokenizer, AutoModelForCausalLM
     model_name = resolve_local(model_name)
@@ -114,6 +115,7 @@ def load_model(model_name: str):
 
 
 def generate(tok, mdl, system: str, user: str) -> str:
+    """Render `system`/`user` via the chat template and greedily generate a completion; returns the decoded response text, no side effects."""
     import torch
     messages = [{"role": "system", "content": system},
                 {"role": "user",   "content": user}]
@@ -162,6 +164,7 @@ def parse_pass(response: str, allowed: tuple, fields: tuple) -> dict:
 # ── Input loading (handles tiered-KG JSON and triples JSONL) ───────────
 
 def load_triples(kg_path: Path) -> list:
+    """Load triples from a tiered-KG JSON (list, {"triples"/"all_triples": [...]}, or {"tierN": [...]}) or a .jsonl of triples, inferring a `tier` field from key names where absent; no side effects."""
     text = kg_path.read_text(encoding="utf-8").strip()
     triples = []
     if kg_path.suffix == ".jsonl":
@@ -194,6 +197,7 @@ def load_triples(kg_path: Path) -> list:
 
 
 def triple_fields(t: dict) -> tuple:
+    """Extract (subject, relation, object) strings from `t`, preferring normalized fields over raw ones; no side effects."""
     subj = t.get("subject") or t.get("source_norm") or t.get("source", "")
     rel  = t.get("relation_norm") or t.get("relation", "")
     obj  = t.get("object")  or t.get("target_norm") or t.get("target", "")
@@ -279,6 +283,7 @@ def evidence_from_index(t: dict, chunks: list) -> str:
 # ── Main ───────────────────────────────────────────────────────────────
 
 def main():
+    """CLI entry point: loads --kg triples, runs the blind + evidence passes on each with the --model verifier, and writes per-triple verdicts (m4_verdicts.jsonl) plus run metadata (m4_run_meta.json) to --output."""
     ap = argparse.ArgumentParser(description="M4 cross-family verifier")
     ap.add_argument("--kg", required=True, help="Tiered KG JSON or triples JSONL")
     ap.add_argument("--index", default=None, help="Chunk index dir (fallback)")

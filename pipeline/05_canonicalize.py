@@ -1,14 +1,23 @@
 #!/usr/bin/env python3
 """
-03b_canonicalize.py — Entity Canonicalization (EDC-inspired).
+pipeline/05_canonicalize.py — Entity Canonicalization (Stage 5, EDC-inspired)
+================================================================================
+WHY
+    Different chunks/queries surface the same real-world entity under
+    slightly different strings ("mtd" vs "mass transport deposit"); left
+    unmerged these fragment degree/coverage counts in stage 7. This is a
+    standalone v4-era canonicalization pass (04_clean_validate.py's v5
+    pipeline now has its own built-in canonicalization — check which one
+    a given run actually invokes before assuming this stage runs).
 
-Groups semantically similar entities via embedding clustering,
-then selects a canonical form for each group.
+WHAT
+    Groups semantically similar entities via SciBERT embedding clustering,
+    then selects a canonical form for each group.
 
-FIXED:
-- Threshold lowered to 0.06 (was 0.15 — caused wrong merges)
-- Added same-type constraint (never merge Process with Descriptor)
-- Protected LB2019 descriptor terms from being merged
+    FIXED:
+    - Threshold lowered to 0.06 (was 0.15 — caused wrong merges)
+    - Added same-type constraint (never merge Process with Descriptor)
+    - Protected LB2019 descriptor terms from being merged
 
 Input:  cleaned_triples_v4.jsonl (from step 03)
 Output: canonical_triples_v4.jsonl (with merged entities)
@@ -122,6 +131,7 @@ _embed_model = None
 
 
 def get_embed_model():
+    """Lazily load and cache the SciBERT SentenceTransformer used for entity embeddings; returns the shared model instance."""
     global _embed_model
     if _embed_model is None:
         from sentence_transformers import SentenceTransformer
@@ -210,6 +220,7 @@ def validate_canonical_map(canonical_map):
 # ── Main ──────────────────────────────────────────────────────────────────
 
 def main():
+    """CLI entry point: embeds unique entities from --input, clusters them, validates/applies the resulting canonical map, re-dedups and writes --output plus --map."""
     parser = argparse.ArgumentParser(
         description="03b — Entity canonicalization (EDC-inspired)"
     )

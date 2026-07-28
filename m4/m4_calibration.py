@@ -63,6 +63,7 @@ plt.rcParams.update({
 
 
 def load_jsonl(path):
+    """Read `path` as one JSON object per line; no side effects."""
     out = []
     with open(Path(path).expanduser(), encoding="utf-8") as f:
         for line in f:
@@ -100,6 +101,7 @@ def compute_bins(scores, labels, edges=None):
 
 
 def main():
+    """CLI entry point: joins --controls with --verdicts, computes M4 confidence scores, bins them against the original/corrupted label to get ECE/MCE/Brier, and writes calibration_report.json plus the reliability-diagram figure to --output."""
     ap = argparse.ArgumentParser()
     ap.add_argument("--controls", required=True,
                     help="controls.jsonl from m4_negatives.py generate")

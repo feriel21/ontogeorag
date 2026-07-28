@@ -1,12 +1,18 @@
 """
-failure_analysis.py
-For each pipeline failure edge (corpus present but not recovered),
-logs the top-5 retrieved passages under C10 and asks the LLM
-to attempt extraction with verbose reasoning.
-Output classifies each failure as:
-  RETRIEVAL_FAILURE  - relevant passage not in top-5
-  EXTRACTION_FAILURE - relevant passage retrieved but triple not produced
-  SCHEMA_FAILURE     - triple produced but relation type mismatched
+pipeline/failure_analysis.py — Pipeline Failure Mode Diagnostic
+====================================================================
+WHY
+    corpus_diagnostic.py flags PIPELINE_FAILURE edges but not why they
+    failed; this script drills into each one to say whether the fault is
+    retrieval (relevant passage never surfaced) or extraction (surfaced
+    but not turned into a triple), which point to different fixes.
+
+WHAT
+    For each pipeline failure edge (corpus present but not recovered),
+    logs the top-5 retrieved passages under C10. Classifies each failure as:
+      RETRIEVAL_FAILURE  - relevant passage not in top-5
+      EXTRACTION_FAILURE - relevant passage retrieved but triple not produced
+      SCHEMA_FAILURE     - triple produced but relation type mismatched
 """
 
 import json
@@ -19,6 +25,7 @@ from sentence_transformers import CrossEncoder
 
 
 def load_json(path):
+    """Load `path` as JSONL (one object per line) if it ends in .jsonl, else as a single JSON document; no side effects."""
     path = str(path)
     if path.endswith(".jsonl"):
         with open(path) as f:
@@ -28,10 +35,12 @@ def load_json(path):
 
 
 def normalize(text):
+    """Lowercase and strip `text`; no side effects."""
     return text.lower().strip()
 
 
 def edge_recovered(kg, subj, rel, obj):
+    """Check whether the (subj, rel, obj) benchmark edge is present in `kg`'s triples after normalization; no side effects."""
     subj_n, obj_n, rel_n = normalize(subj), normalize(obj), normalize(rel)
     for triple in kg.get("triples", []):
         if (normalize(triple.get("subject", "")) == subj_n and
@@ -42,6 +51,7 @@ def edge_recovered(kg, subj, rel, obj):
 
 
 def chunks_containing_both(chunks, subj, obj):
+    """Return indices of `chunks` whose text contains both `subj` and `obj` (normalized substring match); no side effects."""
     subj_n, obj_n = normalize(subj), normalize(obj)
     return [i for i, c in enumerate(chunks)
             if subj_n in normalize(c.get("text", ""))
@@ -94,6 +104,7 @@ def classify_failure(retrieved_indices, relevant_indices,
 
 
 def main():
+    """CLI entry point: finds edges with corpus support but no KG recovery, retrieves+classifies each as RETRIEVAL/EXTRACTION/SCHEMA failure, and writes per-edge results plus a failure-mode summary to --output."""
     parser = argparse.ArgumentParser()
     parser.add_argument("--index-dir", required=True)
     parser.add_argument("--reference", required=True)
