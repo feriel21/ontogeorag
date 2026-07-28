@@ -13,6 +13,12 @@ WHAT
     context → LLM extraction. Supports Qwen, Llama, Mistral (any
     chat-template HF model) via --model.
 
+    --hybrid is EXPERIMENTAL: it's used by slurm/run12_hybrid.sh and
+    slurm/run12b_only.sh but is not part of the canonical run13 chain
+    (analysis_suite/run13_pipeline.sh runs BM25-only). Keep this in mind
+    before assuming hybrid retrieval numbers are load-bearing for the
+    frozen run13 results.
+
 Key design decisions (documented for reviewers):
   - Top-k chunk concatenation (k=3) gives the LLM the same context seen during human reading
   - Per-strategy BM25 gating thresholds prevent low-signal queries from consuming LLM calls
@@ -352,7 +358,8 @@ def main():
     parser.add_argument(
         "--hybrid",
         action="store_true",
-        help="Use hybrid BM25+dense retrieval instead of BM25 only",
+        help="Use hybrid BM25+dense retrieval instead of BM25 only "
+        "(experimental; not part of the canonical run13 chain)",
     )
     parser.add_argument(
         "--hybrid-model",
