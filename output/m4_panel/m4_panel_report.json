@@ -1,0 +1,83 @@
+{
+  "judges": [
+    "llama",
+    "mistral"
+  ],
+  "n_common_triples": 153,
+  "note_two_judges": "with two judges, majority vote reduces to consensus; on disagreement the more cautious decision is taken",
+  "evidence_distributions": {
+    "llama": {
+      "PARTIALLY_SUPPORTED": 82,
+      "SUPPORTED": 40,
+      "NOT_SUPPORTED": 31
+    },
+    "mistral": {
+      "SUPPORTED": 82,
+      "PARTIALLY_SUPPORTED": 63,
+      "NOT_SUPPORTED": 8
+    }
+  },
+  "blind_distributions": {
+    "llama": {
+      "PLAUSIBLE": 136,
+      "IMPLAUSIBLE": 10,
+      "UNCERTAIN": 7
+    },
+    "mistral": {
+      "UNCERTAIN": 41,
+      "PLAUSIBLE": 100,
+      "IMPLAUSIBLE": 12
+    }
+  },
+  "inter_judge": {
+    "llama_x_mistral": {
+      "evidence": {
+        "n": 153,
+        "exact_agreement_3class": 0.5098,
+        "binary_agreement": 0.8366,
+        "kappa_unweighted": 0.2202,
+        "kappa_linear": 0.3297
+      },
+      "blind": {
+        "n": 153,
+        "exact_agreement": 0.6928,
+        "kappa_unweighted": 0.2352,
+        "kappa_linear": 0.288
+      },
+      "decisions": {
+        "exact_agreement": 0.7255,
+        "kappa_unweighted": 0.2614,
+        "kappa_linear": 0.314
+      }
+    }
+  },
+  "human_reference": {
+    "inter_expert_kappa_section_4_4": [
+      0.3,
+      0.37
+    ],
+    "note": "Machine inter-judge kappa above vs human inter-expert kappa: comparable levels indicate the task itself has an agreement ceiling; higher machine agreement indicates the judges are more consistent than human annotators on this taxonomy."
+  },
+  "panel_decisions": {
+    "ACCEPT": 99,
+    "UNCERTAIN": 49,
+    "REJECT": 5
+  },
+  "panel_decision_rates": {
+    "ACCEPT": 0.6471,
+    "UNCERTAIN": 0.3203,
+    "REJECT": 0.0327
+  },
+  "disagreement_patterns": {
+    "ACCEPT_UNCERTAIN": 38,
+    "REJECT_UNCERTAIN": 4
+  },
+  "consensus_parametric_risk": {
+    "n": 2,
+    "indices": [
+      72,
+      131
+    ],
+    "note": "flagged parametric_risk by ALL judges \u2014 highest-priority residual set"
+  }
+}

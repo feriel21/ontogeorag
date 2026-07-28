@@ -1,0 +1,13 @@
+concept_a,concept_b,rule,string_sim,scibert_dist,n_detectors
+continuous,discontinuous,0,0.87,,1
+debris flow deposit,debris-flow deposit,1,0.947,,2
+disequilibrium conditions,equilibrium conditions,0,0.936,,1
+excess pore pressure,high excess pore pressure,0,0.889,,1
+fluid overpressure,fluid_overpressure,1,0.944,,2
+gas hydrate disassociation,gas hydrate dissipation,0,0.898,,1
+increase in excess pore water pressure,increase of excess pore water pressure,0,0.947,,1
+mediterranean continental margin,mediterranean continental margins,1,0.985,,2
+rapid sediment accumulation,sediment accumulation,0,0.875,,1
+sediment or rock failure,sediment or rock to fail,0,0.875,,1
+slope failure,slope failures,1,0.963,,2
+submarine landslides,submarine slide,0,0.857,,1

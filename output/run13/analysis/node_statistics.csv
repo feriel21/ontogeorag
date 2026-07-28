@@ -1,0 +1,160 @@
+node,degree,in_degree,out_degree,betweenness,closeness,eigenvector,pagerank,community,n_papers
+mass transport deposit,33,12,21,0.3027,0.2927,0.6707,0.035,0,17
+slope failure,9,6,3,0.1063,0.2214,0.1438,0.0279,1,12
+submarine landslide,7,1,6,0.058,0.1648,0.0246,0.0058,3,21
+turbidite,6,0,6,0.021,0.1618,0.0734,0.0041,2,13
+slide,5,0,5,0.0025,0.1609,0.115,0.0041,5,20
+basal shear surface,5,5,0,0.0426,0.2045,0.1254,0.017,4,6
+particle segregation,4,1,3,0.0005,0.0253,0.0,0.0075,-1,1
+high-amplitude,4,4,0,0.0189,0.2045,0.1343,0.0112,6,9
+chaotic,4,4,0,0.0133,0.2029,0.1395,0.0092,7,10
+hummocky,4,4,0,0.0103,0.2014,0.1466,0.009,7,7
+megaslide,4,0,4,0.0084,0.1609,0.0728,0.0041,2,2
+transparent,4,4,0,0.0207,0.2045,0.1472,0.0082,2,12
+continuous,4,4,0,0.0198,0.206,0.1395,0.0104,2,13
+fluid overpressure,4,2,2,0.0218,0.1638,0.026,0.011,1,2
+mass movement initiation,3,3,0,0.0001,0.1492,0.0605,0.0092,0,2
+excess pressure,3,1,2,0.0287,0.1648,0.0253,0.0058,1,2
+high excess pore pressure,3,2,1,0.0146,0.1078,0.0007,0.0092,3,1
+migration of depocenters,3,0,3,0.0072,0.1984,0.1251,0.0041,8,2
+rise of hydrostatic pressure,3,0,3,0.0072,0.1984,0.1251,0.0041,8,3
+discontinuous,3,3,0,0.0106,0.1984,0.1218,0.0107,6,12
+debris flow,3,0,3,0.0063,0.1618,0.0495,0.0041,7,4
+low-amplitude,3,3,0,0.0157,0.1999,0.1342,0.0079,5,4
+siliciclastic unit,3,0,3,0.0093,0.1562,0.028,0.0041,2,1
+erosion,3,0,3,0.0146,0.1535,0.022,0.0041,4,13
+slope destabilization,3,3,0,0.0002,0.019,0.0,0.0144,-1,1
+layered,3,3,0,0.015,0.2029,0.127,0.0095,2,3
+undeformed,3,3,0,0.0085,0.1984,0.1341,0.0096,5,14
+pushing the slope toward failure,2,2,0,0.0001,0.0127,0.0,0.011,-1,1
+overpressure,2,0,2,0.0001,0.0127,0.0,0.0041,-1,1
+critical length,2,2,0,0.0001,0.0127,0.0,0.011,-1,1
+decrease in effective stress,2,1,1,0.0001,0.0127,0.0,0.0075,-1,1
+catastrophic mass-transport processes,2,2,0,0.0001,0.0127,0.0,0.011,-1,1
+erosion of canyon heads,2,0,2,0.0024,0.1969,0.1214,0.0041,0,1
+formation stress gathering,2,1,1,0.0073,0.1294,0.0043,0.0065,1,1
+gas hydrate dissolution,2,0,2,0.0073,0.1294,0.0043,0.0041,1,1
+gas hydrates destabilization,2,0,2,0.0024,0.1969,0.1214,0.0041,0,2
+gravitational collapse,2,0,2,0.0001,0.0127,0.0,0.0041,-1,1
+higher sedimentation rates,2,0,2,0.0024,0.1969,0.1214,0.0041,0,2
+flow becoming less cohesive,2,2,0,0.0001,0.0127,0.0,0.011,-1,1
+methane hydrate dissociation,2,0,2,0.0215,0.1307,0.0042,0.0041,3,1
+instabilities,2,2,0,0.0,0.1492,0.0416,0.0064,8,3
+slope gravitational instabilities,2,2,0,0.0,0.1492,0.0416,0.0064,8,1
+channel,2,0,2,0.0003,0.1535,0.0425,0.0041,6,8
+debris-flow deposit,2,0,2,0.0001,0.1526,0.0475,0.0041,7,3
+blocky,2,2,0,0.0012,0.1969,0.1304,0.0062,5,6
+folded,2,2,0,0.0073,0.1969,0.1145,0.0089,0,2
+continental slope,2,2,0,0.0591,0.2109,0.1154,0.0063,3,18
+failure,2,2,0,0.0002,0.0142,0.0,0.0092,-1,3
+rapid sediment accumulation,2,0,2,0.0002,0.0142,0.0,0.0041,-1,3
+compressive domain,2,0,2,0.0073,0.1969,0.1145,0.0041,0,1
+growth stratal wedge,2,0,2,0.0073,0.1969,0.1145,0.0041,0,1
+stratified,2,2,0,0.0073,0.1969,0.1145,0.0089,0,2
+channel levee complex,2,0,2,0.0073,0.1501,0.0229,0.0041,5,1
+parallel,2,2,0,0.001,0.1294,0.0168,0.0058,2,6
+unstable condition,2,1,1,0.0073,0.1618,0.0245,0.0075,1,1
+coarse-grained turbidites,2,0,2,0.0073,0.1969,0.1145,0.0041,0,1
+passive margin,2,2,0,0.0023,0.1333,0.0123,0.006,7,3
+flow,1,0,1,0.0,0.0063,0.0,0.0041,-1,1
+erosive capability of the flow,1,1,0,0.0,0.0063,0.0,0.0075,-1,1
+increased development of shear stress,1,0,1,0.0,0.0084,0.0,0.0041,-1,1
+bore-hole stability,1,1,0,0.0,0.0084,0.0,0.0058,-1,1
+formation of upper low-density layer,1,1,0,0.0,0.0145,0.0,0.0062,-1,1
+formation of bipartite flow,1,1,0,0.0,0.0145,0.0,0.0062,-1,1
+sea floor slope,1,0,1,0.0,0.0084,0.0,0.0041,-1,1
+wave action,1,0,1,0.0,0.0063,0.0,0.0041,-1,1
+equilibrium conditions,1,1,0,0.0,0.0063,0.0,0.0075,-1,1
+sediment approaching liquefaction,1,1,0,0.0,0.0084,0.0,0.0105,-1,1
+enhanced sediment supply,1,0,1,0.0,0.0084,0.0,0.0041,-1,1
+excess pore-water pressures,1,0,1,0.0,0.0063,0.0,0.0041,-1,1
+degradation in shear strength,1,1,0,0.0,0.0063,0.0,0.0075,-1,1
+developing mtds,1,1,0,0.0,0.1061,0.0007,0.0096,1,1
+discontinuous erosion surfaces,1,1,0,0.0,0.0084,0.0,0.0058,-1,1
+basal erosion surface,1,1,0,0.0,0.0084,0.0,0.0058,-1,1
+increased sand content,1,0,1,0.0,0.0084,0.0,0.0041,-1,1
+bore-hole instability,1,1,0,0.0,0.0084,0.0,0.0058,-1,1
+bipartite flow,1,1,0,0.0,0.0145,0.0,0.0062,-1,1
+sand content increase,1,0,1,0.0,0.0084,0.0,0.0041,-1,1
+water intrusion and fluidisation,1,0,1,0.0,0.0145,0.0,0.0041,-1,1
+wave loading,1,0,1,0.0,0.0063,0.0,0.0041,-1,1
+development of excess pore-water pressures,1,1,0,0.0,0.0063,0.0,0.0075,-1,1
+wave-loading effects,1,0,1,0.0,0.0084,0.0,0.0041,-1,1
+wedge-shaped,1,1,0,0.0,0.1955,0.1114,0.0055,0,2
+faulted,1,1,0,0.0,0.1955,0.1114,0.0055,0,3
+remnant and rafted blocks,1,0,1,0.0,0.1518,0.0223,0.0041,6,2
+tabular,1,1,0,0.0,0.1234,0.0046,0.0052,2,1
+slide sheet,1,0,1,0.0,0.1476,0.019,0.0041,0,1
+deep-water basinal settings,1,1,0,0.0,0.1955,0.1114,0.0055,0,1
+ebro margin,1,1,0,0.0,0.1955,0.1114,0.0055,0,1
+mediterranean continental margin,1,1,0,0.0,0.1288,0.0041,0.0049,3,1
+continental margin,1,1,0,0.0,0.1288,0.0041,0.0049,3,20
+rugged upper surface,1,0,1,0.0,0.0063,0.0,0.0041,-1,1
+stable paleo-lakebed,1,1,0,0.0,0.0063,0.0,0.0075,-1,1
+earthquake,1,0,1,0.0,0.1609,0.0239,0.0041,1,6
+external perturbations,1,0,1,0.0,0.0095,0.0,0.0041,-1,1
+seismic activity,1,0,1,0.0,0.0063,0.0,0.0041,-1,1
+"liquefaction of coarse-grained, cohesionless soils",1,1,0,0.0,0.0063,0.0,0.0075,-1,1
+incision of lateral ramps,1,1,0,0.0,0.1609,0.0239,0.012,1,0
+translational sliding,1,0,1,0.0,0.0063,0.0,0.0041,-1,1
+gravitational spreading,1,1,0,0.0,0.0063,0.0,0.0075,-1,1
+seaﬂoor,1,1,0,0.0,0.1217,0.0037,0.0052,4,10
+free gas,1,0,1,0.0,0.0063,0.0,0.0041,-1,2
+slope stability,1,1,0,0.0,0.0063,0.0,0.0075,-1,2
+late period erosion,1,0,1,0.0,0.1518,0.0208,0.0041,4,1
+retarded strength development,1,0,1,0.0,0.0084,0.0,0.0041,-1,1
+up to 500m in thickness,1,1,0,0.0,0.1476,0.019,0.0058,0,1
+whole wedge failures,1,1,0,0.0,0.1476,0.019,0.0058,0,1
+rapid rate of sedimentation,1,0,1,0.0,0.1282,0.0043,0.0041,1,1
+overpressure development,1,1,0,0.0,0.0095,0.0,0.0058,-1,1
+rapid sedimentation,1,0,1,0.0,0.1282,0.0043,0.0041,1,1
+steepest portion of the slope,1,0,1,0.0,0.0063,0.0,0.0041,-1,1
+area where no scarp exists,1,1,0,0.0,0.0063,0.0,0.0075,-1,1
+amapá megaslide complex,1,0,1,0.0,0.1476,0.019,0.0041,0,1
+thin,1,1,0,0.0,0.1196,0.0038,0.0058,5,1
+fold,1,0,1,0.0,0.1484,0.0202,0.0041,6,6
+deltaic wedge,1,1,0,0.0,0.1288,0.0041,0.0049,3,1
+extensional domain,1,0,1,0.0,0.1955,0.1114,0.0041,0,3
+upper surface,1,1,0,0.0,0.1955,0.1114,0.0055,0,2
+three structural domains,1,1,0,0.0,0.1955,0.1114,0.0055,0,1
+ramps and promontories,1,1,0,0.0,0.1217,0.0037,0.0052,4,1
+erosion grooves,1,0,1,0.0,0.1518,0.0208,0.0041,4,1
+50–60 ka failure event,1,0,1,0.0,0.0063,0.0,0.0041,-1,1
+lower headwall formation,1,1,0,0.0,0.0063,0.0,0.0075,-1,1
+disequilibrium conditions,1,0,1,0.0,0.0063,0.0,0.0041,-1,1
+potential for mass-transport events,1,1,0,0.0,0.0063,0.0,0.0075,-1,1
+excess pore pressure,1,0,1,0.0,0.1609,0.0239,0.0041,1,5
+gas hydrate disassociation,1,0,1,0.0,0.0114,0.0,0.0041,-1,1
+formation of layer of weakness,1,1,0,0.0,0.1061,0.0007,0.0058,1,1
+gas-hydrate dissociation,1,0,1,0.0,0.0084,0.0,0.0041,-1,1
+higher shear stresses,1,0,1,0.0,0.0063,0.0,0.0041,-1,1
+instability,1,1,0,0.0,0.0063,0.0,0.0075,-1,1
+sea level fall,1,0,1,0.0,0.0911,0.0001,0.0041,3,1
+erosional scour,1,1,0,0.0,0.1609,0.0239,0.012,1,0
+steepening up-dip,1,0,1,0.0,0.1269,0.0041,0.0041,1,1
+subaqueous slope failure,1,0,1,0.0,0.1955,0.1114,0.0041,0,2
+volume and pressure buildup,1,0,1,0.0,0.0063,0.0,0.0041,-1,1
+pore-fluid overpressure,1,1,0,0.0,0.0063,0.0,0.0075,-1,1
+cohesion of the basal detachment,1,0,1,0.0,0.0063,0.0,0.0041,-1,1
+stability criterion,1,1,0,0.0,0.0063,0.0,0.0075,-1,1
+length of the sliding sheet,1,0,1,0.0,0.0084,0.0,0.0041,-1,1
+hemipelagite,1,0,1,0.0,0.1526,0.0232,0.0041,2,3
+variable-amplitude,1,1,0,0.0,0.1955,0.1114,0.0055,0,1
+disrupted,1,1,0,0.0,0.1263,0.0121,0.0049,2,1
+preserved block,1,0,1,0.0,0.1509,0.0211,0.0041,2,2
+remnant block,1,0,1,0.0,0.1484,0.0223,0.0041,5,2
+espírito santo basin,1,1,0,0.0,0.1476,0.019,0.0058,0,1
+tectonically active margin,1,1,0,0.0,0.1288,0.0041,0.0049,3,4
+basin floor,1,1,0,0.0,0.1269,0.0122,0.0046,2,2
+upper slope,1,1,0,0.0,0.1269,0.0122,0.0046,2,5
+turbidite system,1,0,1,0.0,0.0063,0.0,0.0041,-1,5
+amazon fan,1,1,0,0.0,0.0063,0.0,0.0075,-1,5
+blocky material,1,0,1,0.0,0.1518,0.0208,0.0041,4,1
+translational domain,1,0,1,0.0,0.1955,0.1114,0.0041,0,1
+canyon erosion,1,0,1,0.0,0.0114,0.0,0.0041,-1,1
+slope instability,1,1,0,0.0,0.1282,0.0043,0.0087,1,2
+slumping,1,1,0,0.0,0.0911,0.0001,0.0119,3,1
+seismic loading,1,0,1,0.0,0.1609,0.0239,0.0041,1,3
+seismic trigger,1,0,1,0.0,0.0114,0.0,0.0041,-1,1
+storm waves,1,0,1,0.0,0.0063,0.0,0.0041,-1,1
+seabed instability,1,1,0,0.0,0.0063,0.0,0.0075,-1,1

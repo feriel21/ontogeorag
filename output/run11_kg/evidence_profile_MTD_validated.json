@@ -1,0 +1,428 @@
+{
+  "kg_source": "tiered_kg_run11.json",
+  "mtd_canonical": "mass transport deposit",
+  "n_triples": 153,
+  "method_notes": [
+    "kg_specificity = 1 / (distinct canonical objects bearing the descriptor via the same relation); measured from the KG, not a learned weight.",
+    "A KG triple (MTD, rel, X) means an MTD MAY show X; attachment to a body requires SIGNAL OBSERVATION (OBSERVED config).",
+    "No aggregate MTD score is produced by design; power is structural (specificity, contrast, context, absence).",
+    "Variant normalization: generic (case/whitespace/hyphen) + optional lexicon.json.",
+    "expert_validation attached from Table 2 (3 experts); verdicts stored as a list to preserve inter-expert disagreement; transparent/hummocky not in sheet."
+  ],
+  "observed_descriptors": [
+    {
+      "relation": "hasDescriptor",
+      "object": "transparent",
+      "kg_support": true,
+      "tier": 1,
+      "tier_label": "verified",
+      "verdict": "STRONG_SUPPORT",
+      "evidence": "\"some channels having a high amplitude fill of discontinuous reflections and others having a low amplitude, transparent fill.\"",
+      "bearer_count": 3,
+      "kg_specificity": 0.3333,
+      "discriminating": false,
+      "contrast_set": [
+        "megaslide",
+        "unit a"
+      ],
+      "expert_validation": {
+        "status": "not_in_sheet",
+        "note": "not present in Table 2",
+        "source": "Expert validation sheet (Table 2), 3 experts (Elia & Alain + 1)"
+      }
+    },
+    {
+      "relation": "hasDescriptor",
+      "object": "chaotic",
+      "kg_support": true,
+      "tier": 2,
+      "tier_label": "literature-implied",
+      "verdict": "WEAK_SUPPORT",
+      "evidence": "\"Variable amplitude, semi-continuous to chaotic reflections in packages that have an erosional base and irregular top (b & c).\"",
+      "bearer_count": 4,
+      "kg_specificity": 0.25,
+      "discriminating": false,
+      "contrast_set": [
+        "debris flow deposit",
+        "megaslide",
+        "unit a"
+      ],
+      "expert_validation": {
+        "status": "validated",
+        "source": "Expert validation sheet (Table 2), 3 experts (Elia & Alain + 1)",
+        "note": "23 validates chaotic facies of debris flows (Y); 22 carries the non-diagnostic caveat (process vs facies, MTD can be a debris flow).",
+        "verdicts": [
+          {
+            "statement_id": 23,
+            "statement": "Debris flows may display chaotic seismic facies.",
+            "verdict": "Y",
+            "comment": ""
+          },
+          {
+            "statement_id": 22,
+            "statement": "Debris flows may occur on continental slopes.",
+            "verdict": "P",
+            "comment": "Debris flows refer to a sedimentary process, while MTD is a seismic facies. A MTD can be a debris flow. It is necessary to be more specific about those terms."
+          }
+        ],
+        "verdict_counts": {
+          "Y": 1,
+          "P": 1
+        }
+      }
+    },
+    {
+      "relation": "hasDescriptor",
+      "object": "hummocky",
+      "kg_support": true,
+      "tier": 1,
+      "tier_label": "verified",
+      "verdict": "STRONG_SUPPORT",
+      "evidence": "\"On seismic data, mass-transport deposits can be recognized by certain geomorphologic as well as stratigraphic distinguishing characteristics: basal linear grooved and scoured surfaces, hummocky relief at the top, and internal chaotic to transparent seismic facies, with internal thrust faulting common.\"",
+      "bearer_count": 3,
+      "kg_specificity": 0.3333,
+      "discriminating": false,
+      "contrast_set": [
+        "debris flow deposit",
+        "slide"
+      ],
+      "expert_validation": {
+        "status": "not_in_sheet",
+        "note": "not present in Table 2",
+        "source": "Expert validation sheet (Table 2), 3 experts (Elia & Alain + 1)"
+      }
+    },
+    {
+      "relation": "partOf",
+      "object": "basal shear surface",
+      "kg_support": true,
+      "tier": 1,
+      "tier_label": "verified",
+      "verdict": "STRONG_SUPPORT",
+      "evidence": "translated downslope over the basal shear surface, which also acts as a detachment surface.",
+      "bearer_count": 1,
+      "kg_specificity": 1.0,
+      "discriminating": true,
+      "contrast_set": [],
+      "expert_validation": {
+        "status": "validated",
+        "source": "Expert validation sheet (Table 2), 3 experts (Elia & Alain + 1)",
+        "note": "Two terminological P verdicts on the basal/upper surface definition. ACTION: clarify 'basal shear surface' vs 'continuous basal surface' in figure/wording.",
+        "verdicts": [
+          {
+            "statement_id": 28,
+            "statement": "Basal surfaces of MTDs can display disrupted reflectors.",
+            "verdict": "P",
+            "comment": "The statement is true if talking about seismic profile. However, there is always a continuous basal surface in an MTD."
+          },
+          {
+            "statement_id": 6,
+            "statement": "The basal shear surface of an MTD lies beneath the upper surface of the deposit.",
+            "verdict": "P",
+            "comment": "The statement is not clear. If there is an upper surface, one has to define a lower surface. Is it the same as the basal shear surface?"
+          },
+          {
+            "statement_id": 6,
+            "statement": "The basal shear surface of an MTD lies beneath the upper surface of the deposit.",
+            "verdict": "N",
+            "comment": "what is the upper surface of the deposit?"
+          }
+        ],
+        "verdict_counts": {
+          "P": 2,
+          "N": 1
+        }
+      }
+    }
+  ],
+  "global_contrast_set": [
+    {
+      "object": "megaslide",
+      "shared_observed_descriptors": 2
+    },
+    {
+      "object": "unit a",
+      "shared_observed_descriptors": 2
+    },
+    {
+      "object": "debris flow deposit",
+      "shared_observed_descriptors": 2
+    },
+    {
+      "object": "slide",
+      "shared_observed_descriptors": 1
+    }
+  ],
+  "discriminating_features": [
+    "basal shear surface"
+  ],
+  "not_observed_kg_expected": {
+    "hasDescriptor": [
+      {
+        "object": "blocky",
+        "tier": 1,
+        "verdict": "STRONG_SUPPORT",
+        "evidence": "\"Coherence maps provide measurements of the continuity between Figure 4. (B) Poststack time migrated (PSTM) seismic profile from southeast Brazil (BES-100) depicting the deposition of a heterogeneous, blocky MTD, the second case study considered in this article.\""
+      },
+      {
+        "object": "continuous",
+        "tier": 1,
+        "verdict": "WEAK_SUPPORT",
+        "evidence": "4 H6 and H7 Miocene Continuous, high amplitude basal surface, with a moderate amplitude, hummocky upper s"
+      },
+      {
+        "object": "discontinuous",
+        "tier": 2,
+        "verdict": "WEAK_SUPPORT",
+        "evidence": "On seismic proflies a mass transport deposit is identified by its characteristic facies: a rugose upper bounding surface located above discontinuous and low amplitude reflections (e.g. Posamentier & Kolla, 2003)."
+      },
+      {
+        "object": "erosional",
+        "tier": 2,
+        "verdict": "WEAK_SUPPORT",
+        "evidence": "The basal shear surface is an erosional surface that is generally parallel to refections but cuts down through strata leaving a stepped ramp and flat type geometry."
+      },
+      {
+        "object": "high-amplitude",
+        "tier": 1,
+        "verdict": "STRONG_SUPPORT",
+        "evidence": "In this study area, a mass transport deposit upper surface is commonly a high amplitude, positive reflection."
+      },
+      {
+        "object": "layered",
+        "tier": 2,
+        "verdict": "WEAK_SUPPORT",
+        "evidence": "\"We can recognize a sharp transition between upslope undisturbed plan-parallel siliciclastic units and the chaotic and/or transparent seismic facies depicting these megaslides downslope (Fig. 8).\"\n\"AM2-AM6 headscarps are found just downslope from the rotated block as buried stepped scarps, resulting in paleorelief as high as ~150e300 m cutting into undisturbed layers.\"\n\"AM2 stands as one of the la"
+      },
+      {
+        "object": "low-amplitude",
+        "tier": 1,
+        "verdict": "STRONG_SUPPORT",
+        "evidence": "On seismic proflies a mass transport deposit is identified by its characteristic facies: a rugose upper bounding surface located above discontinuous and low amplitude refections (e.g. Posamentier & Kolla, 2003), although they can also contain seismic facies of higher amplitudes (e.g. Moscardelli&Wood, 2008)."
+      },
+      {
+        "object": "parallel",
+        "tier": 1,
+        "verdict": "STRONG_SUPPORT",
+        "evidence": "\"These continuous strong plan-parallel reﬂectors: as thick as 300 ms as in the case of that between AM2 and AM3; or as thick as 700 ms, as in the case of that between AM1 and AM2. These continuous strong plan-parallel units were seismically interpreted as a combination of turbiditic and hemipelagic deposition (Figs. 8 and 9B).\""
+      },
+      {
+        "object": "undeformed",
+        "tier": 1,
+        "verdict": "STRONG_SUPPORT",
+        "evidence": "Blocks of undisturbed and continuous reflections may remain as undeformed ‘islands’ surrounded by the deformed translated mass (Frey Martinez et al., 2005)."
+      },
+      {
+        "object": "wedge-shaped",
+        "tier": 1,
+        "verdict": "STRONG_SUPPORT",
+        "evidence": "\"Extensive MTDs in the Wilkes Land have irregular upper surfaces and commonly lens-shaped or wedge-shaped external geometries (Fig. 18).\""
+      }
+    ],
+    "occursIn": [
+      {
+        "object": "continental margin",
+        "tier": 1,
+        "verdict": "STRONG_SUPPORT",
+        "evidence": "\"Then we provide three examples that exhibit mixed MTD and turbidite systems, such as the Mediterranean continental margin off the Ebro River in Spain, which has some segments dominated by MTDs and others dominated by turbidite systems, and the continental margins off the Mississippi and Amazon Rivers, which exhibit a complete intermixture of MTDs and turbidite deposits.\""
+      },
+      {
+        "object": "continental slope",
+        "tier": 2,
+        "verdict": "WEAK_SUPPORT",
+        "evidence": "Basin, Gulf of Mexico continental slope."
+      },
+      {
+        "object": "deepwater basinal setting",
+        "tier": 1,
+        "verdict": "STRONG_SUPPORT",
+        "evidence": "of mass-transport deposits in deepwater basinal settings."
+      }
+    ],
+    "partOf": [
+      {
+        "object": "upper surface",
+        "tier": 1,
+        "verdict": "STRONG_SUPPORT",
+        "evidence": "palaeo-lakebed and mass transport deposit upper surface showing main components of a mass transport deposit."
+      }
+    ]
+  },
+  "context_relations": [
+    {
+      "relation": "occursIn",
+      "object": "continental margin",
+      "tier": 1,
+      "verdict": "STRONG_SUPPORT",
+      "evidence": "\"Then we provide three examples that exhibit mixed MTD and turbidite systems, such as the Mediterranean continental margin off the Ebro River in Spain, which has some segments dominated by MTDs and others dominated by turbidite systems, and the continental margins off the Mississippi and Amazon Rivers, which exhibit a complete intermixture of MTDs and turbidite deposits.\""
+    },
+    {
+      "relation": "occursIn",
+      "object": "continental slope",
+      "tier": 2,
+      "verdict": "WEAK_SUPPORT",
+      "evidence": "Basin, Gulf of Mexico continental slope."
+    },
+    {
+      "relation": "occursIn",
+      "object": "deepwater basinal setting",
+      "tier": 1,
+      "verdict": "STRONG_SUPPORT",
+      "evidence": "of mass-transport deposits in deepwater basinal settings."
+    }
+  ],
+  "variant_merges": {
+    "sediment or rock failure": [
+      "combination of load increase and strength decrease",
+      "decrease in the strength of the sediment/rock",
+      "environmental loads"
+    ],
+    "mass movement initiation": [
+      "erosion of canyon heads",
+      "gas hydrates destabilization",
+      "higher sedimentation rates"
+    ],
+    "incising lateral ramps into the basal shear surface": [
+      "erosive power",
+      "slope failures"
+    ],
+    "mass transport deposit": [
+      "growth stratal wedge",
+      "slope failure",
+      "slope failures",
+      "toe"
+    ],
+    "gravitational spreading": [
+      "lack of support from removed sediment",
+      "translational sliding"
+    ],
+    "excess pore pressure": [
+      "methane hydrate dissociation",
+      "volume and pressure buildup"
+    ],
+    "instabilities": [
+      "migration of depocenters",
+      "rise of the hydrostatic pressure"
+    ],
+    "failure": [
+      "decreased strength",
+      "increased driving stresses",
+      "rapid sediment accumulation",
+      "submarine landslides"
+    ],
+    "high amplitude": [
+      "channel",
+      "channel levee",
+      "mass transport deposit",
+      "remnant and rafted blocks",
+      "turbidite"
+    ],
+    "discontinuous": [
+      "channel",
+      "channel levee",
+      "debris flow deposit",
+      "fold",
+      "mass transport deposit",
+      "unit a"
+    ],
+    "chaotic": [
+      "debris flow deposit",
+      "debris-flow deposit",
+      "mass transport deposit",
+      "megaslide",
+      "unit a"
+    ],
+    "low amplitude": [
+      "channel levee",
+      "debris flow deposit",
+      "mass transport deposit"
+    ],
+    "blocky": [
+      "facies 4a",
+      "mass transport deposit",
+      "megaslide"
+    ],
+    "transparent": [
+      "mass transport deposit",
+      "megaslide",
+      "unit a"
+    ],
+    "hummocky": [
+      "debris flow deposit",
+      "debris-flow deposit",
+      "mass transport deposit",
+      "slide"
+    ],
+    "parallel": [
+      "mass transport deposit",
+      "megaslide",
+      "siliciclastic unit",
+      "turbidite"
+    ],
+    "continuous": [
+      "hemipelagite",
+      "mass transport deposit",
+      "turbidite"
+    ],
+    "undeformed": [
+      "mass transport deposit",
+      "slide"
+    ],
+    "layered": [
+      "displaced block",
+      "mass transport deposit",
+      "megaslide",
+      "preserved block",
+      "turbidite"
+    ],
+    "continental margin": [
+      "mass transport deposit",
+      "turbidite system"
+    ],
+    "continental slope": [
+      "debris avalanche",
+      "mass transport deposit",
+      "submarine landslides"
+    ],
+    "non glaciated margin": [
+      "debris flow deposit",
+      "submarine slide"
+    ],
+    "basal shear surface": [
+      "blocky material",
+      "mass transport deposit"
+    ],
+    "slope failure": [
+      "earthquake",
+      "excess pore pressure",
+      "unstable condition"
+    ],
+    "slope failures": [
+      "earthquake",
+      "excess pore pressure"
+    ],
+    "initiation of the slides": [
+      "earthquake",
+      "earthquake loading"
+    ],
+    "build up of overpressure": [
+      "rapid rate of sedimentation",
+      "small permeability"
+    ],
+    "submarine landslides": [
+      "failure of sediment or rock",
+      "pore pressure buildup",
+      "sediment or rock failure"
+    ],
+    "slope destabilization": [
+      "canyon erosion",
+      "gas hydrate disassociation",
+      "seismic trigger"
+    ],
+    "up dip termination of mass transport deposits": [
+      "sediment pinch-out",
+      "slope angle"
+    ]
+  },
+  "expert_validation_source": "Expert validation sheet (Table 2), 3 experts (Elia & Alain + 1)"
+}

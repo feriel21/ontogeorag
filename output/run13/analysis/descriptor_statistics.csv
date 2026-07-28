@@ -1,0 +1,20 @@
+descriptor,n_triples,n_papers,n_objects,objects,n_tier1,n_tier2,discriminance
+undeformed,3,14,3,mass transport deposit;remnant block;slide,0,3,0.333
+continuous,4,13,4,hemipelagite;mass transport deposit;megaslide;turbidite,1,3,0.25
+transparent,4,12,4,mass transport deposit;megaslide;siliciclastic unit;slide,1,3,0.25
+discontinuous,3,12,3,channel;fold;mass transport deposit,1,2,0.333
+chaotic,4,10,4,debris flow;debris-flow deposit;mass transport deposit;megaslide,3,1,0.25
+high-amplitude,4,9,4,channel;mass transport deposit;remnant and rafted blocks;turbidite,4,0,0.25
+hummocky,4,7,4,debris flow;debris-flow deposit;mass transport deposit;slide,2,2,0.25
+blocky,2,6,2,mass transport deposit;slide,1,1,0.5
+parallel,2,6,2,siliciclastic unit;turbidite,0,2,0.5
+low-amplitude,3,4,3,channel levee complex;mass transport deposit;slide,1,2,0.333
+layered,3,3,3,mass transport deposit;preserved block;turbidite,0,3,0.333
+faulted,1,3,1,mass transport deposit,1,0,1.0
+folded,2,2,2,mass transport deposit;slide sheet,1,1,0.5
+stratified,2,2,2,amapá megaslide complex;mass transport deposit,0,2,0.5
+wedge-shaped,1,2,1,mass transport deposit,1,0,1.0
+tabular,1,1,1,siliciclastic unit,1,0,1.0
+thin,1,1,1,channel levee complex,0,1,1.0
+variable-amplitude,1,1,1,mass transport deposit,0,1,1.0
+disrupted,1,1,1,megaslide,0,1,1.0

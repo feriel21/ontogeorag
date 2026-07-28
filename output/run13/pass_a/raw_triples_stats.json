@@ -1,0 +1,10 @@
+{
+  "total_triples": 446,
+  "strategy_descriptor": 293,
+  "strategy_causal": 95,
+  "strategy_context": 51,
+  "strategy_setting": 2,
+  "strategy_spatial": 5,
+  "skipped_low_bm25": 0,
+  "errors": 0
+}

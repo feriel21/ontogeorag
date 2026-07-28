@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd"><key id="d4" for="edge" attr.name="support_count" attr.type="long"/>
+<key id="d3" for="edge" attr.name="tier" attr.type="long"/>
+<key id="d2" for="edge" attr.name="relation" attr.type="string"/>
+<key id="d1" for="node" attr.name="hop" attr.type="long"/>
+<key id="d0" for="node" attr.name="entity_type" attr.type="string"/>
+<graph edgedefault="directed"><node id="thickness of mass transport deposits">
+  <data key="d0">Property</data>
+  <data key="d1">0</data>
+</node>
+<node id="elevation of upper surfaces">
+  <data key="d0">Property</data>
+  <data key="d1">2</data>
+</node>
+<node id="up to 500m in thickness">
+  <data key="d0">Measurement</data>
+  <data key="d1">2</data>
+</node>
+<node id="compressive domain">
+  <data key="d0">Domain</data>
+  <data key="d1">1</data>
+</node>
+<edge source="compressive domain" target="thickness of mass transport deposits">
+  <data key="d2">affects</data>
+  <data key="d3">1</data>
+  <data key="d4">0</data>
+</edge>
+<edge source="compressive domain" target="elevation of upper surfaces">
+  <data key="d2">affects</data>
+  <data key="d3">1</data>
+  <data key="d4">0</data>
+</edge>
+<edge source="compressive domain" target="up to 500m in thickness">
+  <data key="d2">causes</data>
+  <data key="d3">2</data>
+  <data key="d4">0</data>
+</edge>
+</graph></graphml>

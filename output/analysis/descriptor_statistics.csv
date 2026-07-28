@@ -1,0 +1,15 @@
+descriptor,n_triples,n_papers,n_objects,objects,n_tier1,n_tier2,discriminance
+continuous,3,13,3,hemipelagite;mass transport deposit;turbidite,2,1,0.333
+undeformed,2,13,2,mass transport deposit;slide,1,1,0.5
+discontinuous,6,12,6,channel;channel levee;debris flow deposit;fold;mass transport deposit;unit a,4,2,0.167
+chaotic,5,10,5,debris flow deposit;debris-flow deposit;mass transport deposit;megaslide;unit a,3,2,0.2
+high-amplitude,5,9,5,channel;channel levee;mass transport deposit;remnant and rafted blocks;turbidite,5,0,0.2
+parallel,4,9,4,mass transport deposit;megaslide;siliciclastic unit;turbidite,4,0,0.25
+hummocky,4,7,4,debris flow deposit;debris-flow deposit;mass transport deposit;slide,2,2,0.25
+low-amplitude,3,4,3,channel levee;debris flow deposit;mass transport deposit,1,2,0.333
+blocky,3,4,3,facies 4a;mass transport deposit;megaslide,1,2,0.333
+layered,5,3,5,displaced block;mass transport deposit;megaslide;preserved block;turbidite,1,4,0.2
+transparent,3,3,3,mass transport deposit;megaslide;unit a,3,0,0.333
+wedge-shaped,1,2,1,mass transport deposit,1,0,1.0
+erosional,1,2,1,mass transport deposit,0,1,1.0
+thin,1,1,1,channel levee complex,1,0,1.0

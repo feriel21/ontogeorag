@@ -1,0 +1,9 @@
+{
+  "model": "meta-llama/Llama-3.1-8B-Instruct",
+  "input": "/home/talbi/ontogeorag/output/run11_kg/tiered_kg_run11.json",
+  "n_triples": 153,
+  "n_no_passage": 0,
+  "decoding": "greedy (do_sample=False)",
+  "max_evidence_chars": 1500,
+  "runtime_seconds": 818.9
+}

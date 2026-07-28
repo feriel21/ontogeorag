@@ -1,0 +1,28 @@
+{
+  "mtd_node": "thickness of mass transport deposits",
+  "mtd_degree": 1,
+  "hop1_count": 1,
+  "hop2_count": 2,
+  "subgraph_nodes": 4,
+  "subgraph_edges": 3,
+  "edges": [
+    {
+      "subject": "compressive domain",
+      "relation": "affects",
+      "object": "thickness of mass transport deposits",
+      "tier": 1
+    },
+    {
+      "subject": "compressive domain",
+      "relation": "affects",
+      "object": "elevation of upper surfaces",
+      "tier": 1
+    },
+    {
+      "subject": "compressive domain",
+      "relation": "causes",
+      "object": "up to 500m in thickness",
+      "tier": 2
+    }
+  ]
+}

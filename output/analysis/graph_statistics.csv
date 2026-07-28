@@ -1,0 +1,17 @@
+metric,value,report_in_main_text
+n_nodes,156,yes
+n_edges_multi,153,yes
+n_edges_simple,152,yes
+n_relation_types,8,yes
+n_entity_types_observed,27,yes
+n_components,24,yes
+largest_component_size,86,yes
+n_communities,8,annex
+modularity,0.648,annex
+density,0.0126,yes
+avg_degree,1.95,yes
+diameter_largest_cc,9,annex
+avg_path_length_largest_cc,4.26,annex
+avg_clustering,0.0,annex
+degree_assortativity,-0.097,annex
+n_cycles_directed,0,annex

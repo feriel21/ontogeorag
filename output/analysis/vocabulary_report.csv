@@ -1,0 +1,157 @@
+concept,normal_form,n_triples,n_papers,n_relations,n_neighbors,degree_centrality
+mass transport deposit,mass transport deposit,22,16,4,22,0.1419
+submarine landslides,submarine landslide,10,18,4,10,0.0645
+methane hydrate dissociation,methane hydrate dissociation,9,2,1,9,0.0581
+turbidite,turbidite,8,13,2,8,0.0516
+debris flow deposit,debris flow deposit,6,4,2,6,0.0387
+discontinuous,discontinuous,6,12,1,6,0.0387
+chaotic,chaotic,5,10,1,5,0.0323
+high-amplitude,high amplitude,5,9,1,5,0.0323
+layered,layered,5,3,1,5,0.0323
+megaslide,megaslide,5,3,1,5,0.0323
+excess pore pressure,excess pore pressure,4,6,2,4,0.0258
+failure,failure,4,16,2,4,0.0258
+hummocky,hummocky,4,7,1,4,0.0258
+parallel,parallel,4,9,1,4,0.0258
+sediment or rock failure,sediment or rock failure,4,1,1,4,0.0258
+slope failure,slope failure,4,11,2,4,0.0258
+slope failures,slope failure,4,10,2,4,0.0258
+blocky,blocky,3,4,1,3,0.0194
+channel levee,channel levee,3,1,1,3,0.0194
+compressive domain,compressive domain,3,1,2,3,0.0194
+continental slope,continental slope,3,17,1,3,0.0194
+continuous,continuous,3,13,1,3,0.0194
+earthquake,earthquake,3,6,1,3,0.0194
+low-amplitude,low amplitude,3,4,1,3,0.0194
+mass movement initiation,mass movement initiation,3,2,1,3,0.0194
+sea-level lowstands,sea level lowstand,3,1,2,3,0.0194
+sediment approaches a state of liquefaction,sediment approache a state of liquefaction,3,1,1,3,0.0194
+slope destabilization,slope destabilization,3,1,2,3,0.0194
+transparent,transparent,3,3,1,3,0.0194
+unit a,unit a,3,2,1,3,0.0194
+basal shear surface,basal shear surface,2,2,2,2,0.0129
+blocky material,blocky material,2,1,1,2,0.0129
+build-up of overpressure,build up of overpressure,2,1,2,2,0.0129
+channel,channel,2,8,1,2,0.0129
+continental margin,continental margin,2,13,1,2,0.0129
+debris-flow deposit,debris flow deposit,2,3,1,2,0.0129
+disequilibrium conditions,disequilibrium condition,2,1,2,1,0.0065
+effective stress decreases,effective stress decrease,2,1,1,2,0.0129
+environmental loads,environmental load,2,1,1,2,0.0129
+excess pressure and formation stress concentration,excess pressure and formation stress concentration,2,1,1,2,0.0129
+fluid overpressure,fluid overpressure,2,2,2,2,0.0129
+forced regression,forced regression,2,1,2,2,0.0129
+formation stress concentration,formation stress concentration,2,1,1,2,0.0129
+gas hydrate dissipation,gas hydrate dissipation,2,1,1,2,0.0129
+gravitational spreading,gravitational spreading,2,1,1,2,0.0129
+incising lateral ramps into the basal shear surface,incising lateral ramp into the basal shear surface,2,0,2,2,0.0129
+initiation of the slides,initiation of the slide,2,1,1,2,0.0129
+instabilities,instabilitie,2,1,1,2,0.0129
+local overpressure,local overpressure,2,1,2,2,0.0129
+non-glaciated margin,non glaciated margin,2,1,1,2,0.0129
+pore pressure buildup,pore pressure buildup,2,1,2,2,0.0129
+pore-water pressures build up,pore water pressure build up,2,1,2,2,0.0129
+rapid rate of sedimentation,rapid rate of sedimentation,2,1,2,2,0.0129
+sediment accumulation,sediment accumulation,2,1,2,2,0.0129
+sedimentation rates,sedimentation rate,2,1,2,1,0.0065
+slide,slide,2,13,1,2,0.0129
+steepening up-dip,steepening up dip,2,1,2,2,0.0129
+temperature increase at the bhsz,temperature increase at the bhsz,2,1,1,2,0.0129
+undeformed,undeformed,2,13,1,2,0.0129
+unstable condition,unstable condition,2,1,1,2,0.0129
+up-dip termination of mass transport deposits,up dip termination of mass transport deposit,2,0,1,2,0.0129
+wave action,wave action,2,1,2,2,0.0129
+basin floor,basin floor,1,2,1,1,0.0065
+bore-hole stability during drilling,bore hole stability during drilling,1,1,1,1,0.0065
+canyon erosion,canyon erosion,1,1,1,1,0.0065
+canyon mouth,canyon mouth,1,2,1,1,0.0065
+channel levee complex,channel levee complex,1,1,1,1,0.0065
+chaotic-to-transparent facies,chaotic to transparent facie,1,1,1,1,0.0065
+combination of load increase and strength decrease,combination of load increase and strength decrease,1,1,1,1,0.0065
+critical length,critical length,1,1,1,1,0.0065
+current velocity necessary to initiate sediment transport decreases,current velocity necessary to initiate sediment transport decrease,1,1,1,1,0.0065
+curved ramp,curved ramp,1,1,1,1,0.0065
+debris avalanche,debris avalanche,1,1,1,1,0.0065
+decrease in current velocity necessary to initiate sediment transport,decrease in current velocity necessary to initiate sediment transport,1,1,1,1,0.0065
+decrease in the strength of the sediment/rock,decrease in the strength of the sediment rock,1,1,1,1,0.0065
+decreased strength,decreased strength,1,1,1,1,0.0065
+deep basin,deep basin,1,2,1,1,0.0065
+deepwater basinal setting,deepwater basinal setting,1,1,1,1,0.0065
+deltaic wedge,deltaic wedge,1,1,1,1,0.0065
+depo-centers shifting towards the outer shelf,depo center shifting toward the outer shelf,1,1,1,1,0.0065
+developing mtds,developing mtd,1,1,1,1,0.0065
+development of mtds in the stress concentrating area,development of mtd in the stress concentrating area,1,1,1,1,0.0065
+dip of the basal detachment,dip of the basal detachment,1,1,1,1,0.0065
+disintegration and transformation of the debris flows into a turbidity current,disintegration and transformation of the debris flow into a turbidity current,1,1,1,1,0.0065
+displaced block,displaced block,1,1,1,1,0.0065
+dissociation of gas hydrates,dissociation of gas hydrate,1,1,1,1,0.0065
+earthquake loading,earthquake loading,1,1,1,1,0.0065
+effect of the surface slope,effect of the surface slope,1,1,1,1,0.0065
+elevation of upper surfaces,elevation of upper surface,1,1,1,1,0.0065
+equilibrium conditions,equilibrium condition,1,1,1,1,0.0065
+erosion of canyon heads,erosion of canyon head,1,1,1,1,0.0065
+erosional,erosional,1,2,1,1,0.0065
+erosive power,erosive power,1,0,1,1,0.0065
+facies 4a,facie 4a,1,1,1,1,0.0065
+failure of sediment or rock,failure of sediment or rock,1,1,1,1,0.0065
+fluid_overpressure,fluid overpressure,1,1,1,1,0.0065
+fold,fold,1,6,1,1,0.0065
+formation of layer of weakness between sedimentary formations,formation of layer of weakness between sedimentary formation,1,1,1,1,0.0065
+free gas,free gas,1,1,1,1,0.0065
+gas hydrate disassociation,gas hydrate disassociation,1,1,1,1,0.0065
+gas hydrates destabilization,gas hydrate destabilization,1,2,1,1,0.0065
+gravitational collapse,gravitational collapse,1,1,1,1,0.0065
+greatest rates of sedimentation at the outer shelf and upper slope,greatest rate of sedimentation at the outer shelf and upper slope,1,1,1,1,0.0065
+growth stratal wedge,growth stratal wedge,1,1,1,1,0.0065
+hemipelagite,hemipelagite,1,3,1,1,0.0065
+high excess pore pressure,high excess pore pressure,1,1,1,1,0.0065
+higher sedimentation rates,higher sedimentation rate,1,2,1,1,0.0065
+increase in excess pore water pressure,increase in excess pore water pressure,1,1,1,1,0.0065
+increase of excess pore water pressure,increase of excess pore water pressure,1,1,1,1,0.0065
+increase of volume and pressure buildup,increase of volume and pressure buildup,1,1,1,1,0.0065
+increased driving stresses,increased driving stresse,1,1,1,1,0.0065
+increased shear stress,increased shear stress,1,1,1,1,0.0065
+lack of support from removed sediment,lack of support from removed sediment,1,1,1,1,0.0065
+length of the sliding sheet,length of the sliding sheet,1,1,1,1,0.0065
+location and style of up-dip termination of the mass transport deposits,location and style of up dip termination of the mass transport deposit,1,0,1,1,0.0065
+mediterranean continental margin,mediterranean continental margin,1,1,1,1,0.0065
+mediterranean continental margins,mediterranean continental margin,1,1,1,1,0.0065
+migration of depocenters,migration of depocenter,1,1,1,1,0.0065
+passive margin,passive margin,1,1,1,1,0.0065
+potential for mass-transport events,potential for mass transport event,1,1,1,1,0.0065
+preserved block,preserved block,1,2,1,1,0.0065
+rapid sediment accumulation,rapid sediment accumulation,1,2,1,1,0.0065
+reduction of shear strength of sediment,reduction of shear strength of sediment,1,1,1,1,0.0065
+remnant and rafted blocks,remnant and rafted block,1,2,1,1,0.0065
+rise of the hydrostatic pressure,rise of the hydrostatic pressure,1,1,1,1,0.0065
+rough topography,rough topography,1,1,1,1,0.0065
+rugged upper surface,rugged upper surface,1,1,1,1,0.0065
+sea floor slope,sea floor slope,1,1,1,1,0.0065
+sea level fall,sea level fall,1,1,1,1,0.0065
+sediment or rock to fail,sediment or rock to fail,1,1,1,1,0.0065
+sediment pinch-out,sediment pinch out,1,0,1,1,0.0065
+sediment vulnerability to damage,sediment vulnerability to damage,1,1,1,1,0.0065
+seismic trigger,seismic trigger,1,1,1,1,0.0065
+shift of depocenters towards the outer shelf,shift of depocenter toward the outer shelf,1,1,1,1,0.0065
+siliciclastic unit,siliciclastic unit,1,1,1,1,0.0065
+slope angle,slope angle,1,0,1,1,0.0065
+slope instability,slope instability,1,2,1,1,0.0065
+small permeability,small permeability,1,1,1,1,0.0065
+stability criterion,stability criterion,1,1,1,1,0.0065
+stable paleo-lakebed,stable paleo lakebed,1,1,1,1,0.0065
+storm waves,storm wave,1,1,1,1,0.0065
+strength development,strength development,1,1,1,1,0.0065
+strongly deformed allochthonous masses,strongly deformed allochthonous masse,1,1,1,1,0.0065
+submarine slide,submarine slide,1,1,1,1,0.0065
+subsequent flows,subsequent flow,1,1,1,1,0.0065
+tectonically active margin,tectonically active margin,1,4,1,1,0.0065
+thickness of mass transport deposits,thickness of mass transport deposit,1,1,1,1,0.0065
+thin,thin,1,1,1,1,0.0065
+toe,toe,1,2,1,1,0.0065
+translational sliding,translational sliding,1,1,1,1,0.0065
+turbidite system,turbidite system,1,7,1,1,0.0065
+up to 500m in thickness,up to 500m in thickness,1,1,1,1,0.0065
+upper slope,upper slope,1,5,1,1,0.0065
+upper surface,upper surface,1,2,1,1,0.0065
+volume and pressure buildup,volume and pressure buildup,1,1,1,1,0.0065
+wedge-shaped,wedge shaped,1,2,1,1,0.0065

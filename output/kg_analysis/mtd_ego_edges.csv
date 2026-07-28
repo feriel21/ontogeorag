@@ -1,0 +1,4 @@
+subject,relation,object,tier,support_count,hop_from_mtd
+"compressive domain","affects","thickness of mass transport deposits",1,0,1
+"compressive domain","affects","elevation of upper surfaces",1,0,2
+"compressive domain","causes","up to 500m in thickness",2,0,2
