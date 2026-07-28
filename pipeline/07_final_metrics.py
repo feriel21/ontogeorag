@@ -412,6 +412,8 @@ def main():
     cov12 = coverage(tier12)
     rec1  = recall(tier1)
     rec12 = recall(tier12)
+    rec1_orig26  = recall(tier1,  ref_path="configs/lb_reference_edges_original26.json")
+    rec12_orig26 = recall(tier12, ref_path="configs/lb_reference_edges_original26.json")
     hall  = hallucination(deduped)
 
     entities = set()
@@ -434,15 +436,21 @@ def main():
     print("{:<38} {:>7} {:>8}".format("Unique entities", e1, e12))
     print("{:<38} {:>7} {:>8}".format("Descriptor coverage (n/13)", cov1["n_found"], cov12["n_found"]))
     print("{:<38} {:>6.1f}% {:>7.1f}%".format("Descriptor coverage (%)", cov1["coverage"]*100, cov12["coverage"]*100))
-    print("{:<38} {:>7} {:>8}".format("Recall vs LB2019 (n/26)", rec1["hits"], rec12["hits"]))
+    print("{:<38} {:>7} {:>8}".format(
+        "Recall vs LB2019 (n/{})".format(rec12["total_reference"]), rec1["hits"], rec12["hits"]))
     print("{:<38} {:>6.1f}% {:>7.1f}%".format("Recall vs LB2019 (%)", rec1["recall"]*100, rec12["recall"]*100))
+    print("{:<38} {:>7} {:>8}".format(
+        "Recall vs LB2019-orig26 (n/{})".format(rec12_orig26["total_reference"]),
+        rec1_orig26["hits"], rec12_orig26["hits"]))
+    print("{:<38} {:>6.1f}% {:>7.1f}%".format(
+        "Recall vs LB2019-orig26 (%)", rec1_orig26["recall"]*100, rec12_orig26["recall"]*100))
     print("{:<38} {:>6.1f}% {:>7.1f}%".format("Hallucination rate", 0.0, hall["hallucination_rate"]*100))
 
     print("\nDescriptors found (Tier1+2): {}".format(", ".join(cov12["found"])))
     if cov12["missing"]:
         print("Missing:                     {}".format(", ".join(cov12["missing"])))
 
-    print("\nMatched LB2019 edges (Tier1+2, {}/26):".format(rec12["hits"]))
+    print("\nMatched LB2019 edges (Tier1+2, {}/{}):".format(rec12["hits"], rec12["total_reference"]))
     for s, r, o in rec12["matched_edges"]:
         print("  {} --[{}]--> {}".format(s, r, o))
 
@@ -478,6 +486,7 @@ def main():
         },
         "descriptor_coverage": {"tier1": cov1, "tier12": cov12},
         "recall_vs_lb2019":    {"tier1": rec1, "tier12": rec12},
+        "recall_vs_lb2019_orig26": {"tier1": rec1_orig26, "tier12": rec12_orig26},
         "hallucination":       hall,
         "relation_distribution_by_tier": {str(k): dict(v) for k, v in rel_by_tier.items()},
         "triples_final": deduped,
