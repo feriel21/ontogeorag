@@ -1,0 +1,28 @@
+{
+  "total_edges_tested": 174,
+  "counts": {
+    "C_absent": 144,
+    "B_distributed": 7,
+    "A_direct": 11,
+    "B_weak_cross_doc": 11,
+    "A_or_B_same_chunk": 1
+  },
+  "A_direct_pct": 6.3,
+  "present_in_literature_pct": 10.9,
+  "C_absent_pct": 82.8,
+  "by_target_role": {
+    "process_or_control": {
+      "C_absent": 66,
+      "B_distributed": 2,
+      "B_weak_cross_doc": 4,
+      "A_or_B_same_chunk": 1,
+      "A_direct": 5
+    },
+    "descriptor": {
+      "C_absent": 78,
+      "A_direct": 6,
+      "B_weak_cross_doc": 7,
+      "B_distributed": 5
+    }
+  }
+}

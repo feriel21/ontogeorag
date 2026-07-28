@@ -1,0 +1,13 @@
+concept_a,concept_b,action,reason
+continuous,discontinuous,EXPERT,single-detector candidate
+debris flow deposit,debris-flow deposit,AUTO_MERGE,identical after deterministic normalization
+disequilibrium conditions,equilibrium conditions,EXPERT,single-detector candidate
+excess pore pressure,high excess pore pressure,EXPERT,single-detector candidate
+fluid overpressure,fluid_overpressure,AUTO_MERGE,identical after deterministic normalization
+gas hydrate disassociation,gas hydrate dissipation,EXPERT,single-detector candidate
+increase in excess pore water pressure,increase of excess pore water pressure,EXPERT,single-detector candidate
+mediterranean continental margin,mediterranean continental margins,AUTO_MERGE,identical after deterministic normalization
+rapid sediment accumulation,sediment accumulation,EXPERT,single-detector candidate
+sediment or rock failure,sediment or rock to fail,EXPERT,single-detector candidate
+slope failure,slope failures,AUTO_MERGE,identical after deterministic normalization
+submarine landslides,submarine slide,EXPERT,single-detector candidate

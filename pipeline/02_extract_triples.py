@@ -396,6 +396,27 @@ def main():
     else:
         retrieve = load_bm25(args.index_dir, reranker_model=args.reranker)
 
+
+    outpath = Path(args.output)
+    outpath.parent.mkdir(parents=True, exist_ok=True)
+
+    stats = defaultdict(int)
+    t0 = time.time()
+
+    with open(outpath, "w", encoding="utf-8") as fout:
+        for qi, q in enumerate(queries):
+            query_text = (q.get("query", q.get("text", "")) or "").strip()
+            if not query_text:
+                continue
+
+            strategy = q.get("strategy", "descriptor")
+            focus    = q.get("focus", "")
+
+            candidates = retrieve(query_text, top_n=args.bm25_topn)
+            if not candidates:
+                stats["skipped_no_chunks"] += 1
+                continue
+
             best_score = candidates[0]["score"]
             thr = thresholds.get(strategy) or thresholds["default"]
             if thr > 0 and best_score < thr:

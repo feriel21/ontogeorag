@@ -1,0 +1,15 @@
+{
+  "near_threshold": 0.85,
+  "check_A_pipeline_quotes": {
+    "EMPTY_QUOTE": {
+      "n": 1,
+      "rate": 0.0065
+    },
+    "EXACT": {
+      "n": 152,
+      "rate": 0.9935
+    }
+  },
+  "check_B_judge_quotes": null,
+  "note": "Check A audits extraction-time grounding; Check B audits the verifier's own quoting. Both are deterministic and model-free."
+}

@@ -1,0 +1,12 @@
+concept_a,concept_b,action,reason
+bore-hole instability,bore-hole stability,EXPERT,single-detector candidate
+continuous,discontinuous,EXPERT,single-detector candidate
+disequilibrium conditions,equilibrium conditions,EXPERT,single-detector candidate
+excess pore pressure,excess pore-water pressures,EXPERT,single-detector candidate
+excess pore pressure,excess pressure,EXPERT,single-detector candidate
+excess pore pressure,high excess pore pressure,EXPERT,single-detector candidate
+fluid overpressure,pore-fluid overpressure,EXPERT,single-detector candidate
+gas hydrate disassociation,gas hydrate dissolution,EXPERT,single-detector candidate
+gas hydrate disassociation,gas-hydrate dissociation,EXPERT,single-detector candidate
+gas hydrate dissolution,gas-hydrate dissociation,EXPERT,single-detector candidate
+slope instability,slope stability,EXPERT,single-detector candidate

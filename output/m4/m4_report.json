@@ -1,0 +1,80 @@
+{
+  "n_triples": 153,
+  "blind_distribution": {
+    "PLAUSIBLE": 136,
+    "IMPLAUSIBLE": 10,
+    "UNCERTAIN": 7
+  },
+  "evidence_distribution": {
+    "PARTIALLY_SUPPORTED": 82,
+    "SUPPORTED": 40,
+    "NOT_SUPPORTED": 31
+  },
+  "decision_distribution": {
+    "ACCEPT": 108,
+    "UNCERTAIN": 44,
+    "REJECT": 1
+  },
+  "decisions_by_tier": {
+    "1": {
+      "ACCEPT": 81,
+      "UNCERTAIN": 20
+    },
+    "2": {
+      "UNCERTAIN": 24,
+      "ACCEPT": 27,
+      "REJECT": 1
+    }
+  },
+  "decisions_by_relation": {
+    "affects": {
+      "ACCEPT": 9,
+      "UNCERTAIN": 3
+    },
+    "causes": {
+      "ACCEPT": 42,
+      "UNCERTAIN": 8,
+      "REJECT": 1
+    },
+    "controls": {
+      "ACCEPT": 4,
+      "UNCERTAIN": 2
+    },
+    "hasDescriptor": {
+      "ACCEPT": 27,
+      "UNCERTAIN": 19
+    },
+    "occursIn": {
+      "ACCEPT": 11,
+      "UNCERTAIN": 6
+    },
+    "overlies": {
+      "ACCEPT": 3
+    },
+    "partOf": {
+      "ACCEPT": 1,
+      "UNCERTAIN": 2
+    },
+    "triggers": {
+      "ACCEPT": 11,
+      "UNCERTAIN": 4
+    }
+  },
+  "blind_vs_evidence": {
+    "n_comparable": 153,
+    "binary_agreement": 0.6993,
+    "over_interpretation_index": {
+      "definition": "P(blind=PLAUSIBLE | evidence=NOT_SUPPORTED)",
+      "n_not_supported": 31,
+      "n_plausible_among_them": 30,
+      "rate": 0.9677
+    }
+  },
+  "m4_vs_qwen": {
+    "n_comparable": 153,
+    "binary_agreement": 0.7974,
+    "exact_agreement_3class": 0.3922,
+    "kappa_unweighted": 0.0554,
+    "kappa_linear": 0.1492
+  }
+}

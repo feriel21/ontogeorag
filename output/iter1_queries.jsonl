@@ -1,0 +1,58 @@
+{"query": "In what geological or depositional setting does compressive domain occur?", "strategy": "context", "focus": "compressive domain", "focus_type": "Domain", "source": "kg_augmented"}
+{"query": "What is the spatial or stratigraphic position of compressive domain relative to other deposits?", "strategy": "spatial", "focus": "compressive domain", "focus_type": "Domain", "source": "kg_augmented"}
+{"query": "In what geological or depositional setting does wave action occur?", "strategy": "context", "focus": "wave action", "focus_type": "Process", "source": "kg_augmented"}
+{"query": "In what geological or depositional setting does sediment or rock failure occur?", "strategy": "context", "focus": "sediment or rock failure", "focus_type": "Process", "source": "kg_augmented"}
+{"query": "In what geological or depositional setting does environmental loads occur?", "strategy": "context", "focus": "environmental loads", "focus_type": "Process", "source": "kg_augmented"}
+{"query": "In what geological or depositional setting does mass movement initiation occur?", "strategy": "context", "focus": "mass movement initiation", "focus_type": "Process", "source": "kg_augmented"}
+{"query": "In what geological or depositional setting does incising lateral ramps into the basal shear surface occur?", "strategy": "context", "focus": "incising lateral ramps into the basal shear surface", "focus_type": "Process", "source": "kg_augmented"}
+{"query": "In what geological or depositional setting does excess pressure and formation stress concentration occur?", "strategy": "context", "focus": "excess pressure and formation stress concentration", "focus_type": "Process", "source": "kg_augmented"}
+{"query": "In what geological or depositional setting does forced regression occur?", "strategy": "context", "focus": "forced regression", "focus_type": "Process", "source": "kg_augmented"}
+{"query": "In what geological or depositional setting does gas hydrate dissipation occur?", "strategy": "context", "focus": "gas hydrate dissipation", "focus_type": "Process", "source": "kg_augmented"}
+{"query": "What is the spatial or stratigraphic position of mass transport deposit relative to other deposits?", "strategy": "spatial", "focus": "mass transport deposit", "focus_type": "GeologicalObject", "source": "kg_augmented"}
+{"query": "In what geological or depositional setting does gravitational spreading occur?", "strategy": "context", "focus": "gravitational spreading", "focus_type": "Process", "source": "kg_augmented"}
+{"query": "In what geological or depositional setting does methane hydrate dissociation occur?", "strategy": "context", "focus": "methane hydrate dissociation", "focus_type": "Process", "source": "kg_augmented"}
+{"query": "In what geological or depositional setting does pore pressure buildup occur?", "strategy": "context", "focus": "pore pressure buildup", "focus_type": "Process", "source": "kg_augmented"}
+{"query": "In what geological or depositional setting does instabilities occur?", "strategy": "context", "focus": "instabilities", "focus_type": "Process", "source": "kg_augmented"}
+{"query": "In what geological or depositional setting does pore-water pressures build up occur?", "strategy": "context", "focus": "pore-water pressures build up", "focus_type": "Process", "source": "kg_augmented"}
+{"query": "In what geological or depositional setting does rapid rate of sedimentation occur?", "strategy": "context", "focus": "rapid rate of sedimentation", "focus_type": "Process", "source": "kg_augmented"}
+{"query": "In what geological or depositional setting does fluid overpressure occur?", "strategy": "context", "focus": "fluid overpressure", "focus_type": "Process", "source": "kg_augmented"}
+{"query": "In what geological or depositional setting does failure occur?", "strategy": "context", "focus": "failure", "focus_type": "Process", "source": "kg_augmented"}
+{"query": "In what geological or depositional setting does sediment accumulation occur?", "strategy": "context", "focus": "sediment accumulation", "focus_type": "Process", "source": "kg_augmented"}
+{"query": "In what geological or depositional setting does slope failure occur?", "strategy": "context", "focus": "slope failure", "focus_type": "Process", "source": "kg_augmented"}
+{"query": "In what geological or depositional setting does slope failures occur?", "strategy": "context", "focus": "slope failures", "focus_type": "Process", "source": "kg_augmented"}
+{"query": "What processes cause or trigger channel? What does channel cause?", "strategy": "causal", "focus": "channel", "focus_type": "SeismicObject", "source": "kg_augmented"}
+{"query": "In what geological or depositional setting does channel occur?", "strategy": "context", "focus": "channel", "focus_type": "SeismicObject", "source": "kg_augmented"}
+{"query": "What is the spatial or stratigraphic position of channel relative to other deposits?", "strategy": "spatial", "focus": "channel", "focus_type": "SeismicObject", "source": "kg_augmented"}
+{"query": "What processes cause or trigger channel levee? What does channel levee cause?", "strategy": "causal", "focus": "channel levee", "focus_type": "SeismicObject", "source": "kg_augmented"}
+{"query": "In what geological or depositional setting does channel levee occur?", "strategy": "context", "focus": "channel levee", "focus_type": "SeismicObject", "source": "kg_augmented"}
+{"query": "What is the spatial or stratigraphic position of channel levee relative to other deposits?", "strategy": "spatial", "focus": "channel levee", "focus_type": "SeismicObject", "source": "kg_augmented"}
+{"query": "What processes cause or trigger debris-flow deposit? What does debris-flow deposit cause?", "strategy": "causal", "focus": "debris-flow deposit", "focus_type": "SeismicObject", "source": "kg_augmented"}
+{"query": "In what geological or depositional setting does debris-flow deposit occur?", "strategy": "context", "focus": "debris-flow deposit", "focus_type": "SeismicObject", "source": "kg_augmented"}
+{"query": "What is the spatial or stratigraphic position of debris-flow deposit relative to other deposits?", "strategy": "spatial", "focus": "debris-flow deposit", "focus_type": "SeismicObject", "source": "kg_augmented"}
+{"query": "What processes cause or trigger megaslide? What does megaslide cause?", "strategy": "causal", "focus": "megaslide", "focus_type": "SeismicObject", "source": "kg_augmented"}
+{"query": "In what geological or depositional setting does megaslide occur?", "strategy": "context", "focus": "megaslide", "focus_type": "SeismicObject", "source": "kg_augmented"}
+{"query": "What is the spatial or stratigraphic position of megaslide relative to other deposits?", "strategy": "spatial", "focus": "megaslide", "focus_type": "SeismicObject", "source": "kg_augmented"}
+{"query": "What processes cause or trigger slide? What does slide cause?", "strategy": "causal", "focus": "slide", "focus_type": "SeismicObject", "source": "kg_augmented"}
+{"query": "In what geological or depositional setting does slide occur?", "strategy": "context", "focus": "slide", "focus_type": "SeismicObject", "source": "kg_augmented"}
+{"query": "What is the spatial or stratigraphic position of slide relative to other deposits?", "strategy": "spatial", "focus": "slide", "focus_type": "SeismicObject", "source": "kg_augmented"}
+{"query": "What processes cause or trigger turbidite? What does turbidite cause?", "strategy": "causal", "focus": "turbidite", "focus_type": "SeismicObject", "source": "kg_augmented"}
+{"query": "What is the spatial or stratigraphic position of turbidite relative to other deposits?", "strategy": "spatial", "focus": "turbidite", "focus_type": "SeismicObject", "source": "kg_augmented"}
+{"query": "What processes cause or trigger unit a? What does unit a cause?", "strategy": "causal", "focus": "unit a", "focus_type": "SeismicObject", "source": "kg_augmented"}
+{"query": "In what geological or depositional setting does unit a occur?", "strategy": "context", "focus": "unit a", "focus_type": "SeismicObject", "source": "kg_augmented"}
+{"query": "What is the spatial or stratigraphic position of unit a relative to other deposits?", "strategy": "spatial", "focus": "unit a", "focus_type": "SeismicObject", "source": "kg_augmented"}
+{"query": "What is the spatial or stratigraphic position of continental margin relative to other deposits?", "strategy": "spatial", "focus": "continental margin", "focus_type": "GeologicalSetting", "source": "kg_augmented"}
+{"query": "What are the seismic facies and descriptors of submarine landslides?", "strategy": "descriptor", "focus": "submarine landslides", "focus_type": "GeologicalObject", "source": "kg_augmented"}
+{"query": "What is the spatial or stratigraphic position of submarine landslides relative to other deposits?", "strategy": "spatial", "focus": "submarine landslides", "focus_type": "GeologicalObject", "source": "kg_augmented"}
+{"query": "What is the spatial or stratigraphic position of continental slope relative to other deposits?", "strategy": "spatial", "focus": "continental slope", "focus_type": "GeologicalSetting", "source": "kg_augmented"}
+{"query": "What is the spatial or stratigraphic position of non-glaciated margin relative to other deposits?", "strategy": "spatial", "focus": "non-glaciated margin", "focus_type": "GeologicalSetting", "source": "kg_augmented"}
+{"query": "What are the seismic facies and descriptors of blocky material?", "strategy": "descriptor", "focus": "blocky material", "focus_type": "GeologicalObject", "source": "kg_augmented"}
+{"query": "What processes cause or trigger blocky material? What does blocky material cause?", "strategy": "causal", "focus": "blocky material", "focus_type": "GeologicalObject", "source": "kg_augmented"}
+{"query": "In what geological or depositional setting does blocky material occur?", "strategy": "context", "focus": "blocky material", "focus_type": "GeologicalObject", "source": "kg_augmented"}
+{"query": "In what geological or depositional setting does earthquake occur?", "strategy": "context", "focus": "earthquake", "focus_type": "Process", "source": "kg_augmented"}
+{"query": "In what geological or depositional setting does initiation of the slides occur?", "strategy": "context", "focus": "initiation of the slides", "focus_type": "Process", "source": "kg_augmented"}
+{"query": "In what geological or depositional setting does local overpressure occur?", "strategy": "context", "focus": "local overpressure", "focus_type": "Process", "source": "kg_augmented"}
+{"query": "In what geological or depositional setting does build-up of overpressure occur?", "strategy": "context", "focus": "build-up of overpressure", "focus_type": "Process", "source": "kg_augmented"}
+{"query": "In what geological or depositional setting does slope destabilization occur?", "strategy": "context", "focus": "slope destabilization", "focus_type": "Process", "source": "kg_augmented"}
+{"query": "In what geological or depositional setting does steepening up-dip occur?", "strategy": "context", "focus": "steepening up-dip", "focus_type": "Process", "source": "kg_augmented"}
+{"query": "What processes cause or trigger debris flow deposit? What does debris flow deposit cause?", "strategy": "causal", "focus": "debris flow deposit", "focus_type": "SeismicObject", "source": "kg_augmented"}
+{"query": "What is the spatial or stratigraphic position of debris flow deposit relative to other deposits?", "strategy": "spatial", "focus": "debris flow deposit", "focus_type": "SeismicObject", "source": "kg_augmented"}

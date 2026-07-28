@@ -1,0 +1,8 @@
+{
+  "built_from": "output/step1/chunks.jsonl",
+  "method": "run11 chunks deduplicated (checkpoint removal + per-paper text-hash dedup); chunking bit-identical to run11 by construction",
+  "n_source_records": 3386,
+  "n_output_records": 1955,
+  "n_papers": 37,
+  "n_checkpoint_only_papers_renamed": 0
+}

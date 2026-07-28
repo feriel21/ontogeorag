@@ -1,0 +1,12 @@
+concept_a,concept_b,rule,string_sim,scibert_dist,n_detectors
+bore-hole instability,bore-hole stability,0,0.95,,1
+continuous,discontinuous,0,0.87,,1
+disequilibrium conditions,equilibrium conditions,0,0.936,,1
+excess pore pressure,excess pore-water pressures,0,0.851,,1
+excess pore pressure,excess pressure,0,0.857,,1
+excess pore pressure,high excess pore pressure,0,0.889,,1
+fluid overpressure,pore-fluid overpressure,0,0.878,,1
+gas hydrate disassociation,gas hydrate dissolution,0,0.857,,1
+gas hydrate disassociation,gas-hydrate dissociation,0,0.92,,1
+gas hydrate dissolution,gas-hydrate dissociation,0,0.851,,1
+slope instability,slope stability,0,0.938,,1

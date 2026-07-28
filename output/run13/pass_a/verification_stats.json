@@ -1,0 +1,17 @@
+{
+  "model": "/home/talbi/.cache/huggingface/hub/models--Qwen--Qwen2.5-7B-Instruct/snapshots/a09a35458c702b33eeacc393d103063234e8bc28",
+  "backend": "hf",
+  "total_triples": 446,
+  "counts": {
+    "STRONG_SUPPORT": 198,
+    "WEAK_SUPPORT": 109,
+    "NOT_SUPPORTED": 139,
+    "NO_CHUNK": 0,
+    "UNPARSEABLE": 0,
+    "BACKEND_ERROR": 0,
+    "SKIPPED_RELATION": 0
+  },
+  "decided_total": 446,
+  "hallucination_rate_decided": 0.3116591928251121,
+  "elapsed_seconds": 1037.4
+}

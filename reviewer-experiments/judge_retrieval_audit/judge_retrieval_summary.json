@@ -1,0 +1,12 @@
+{
+  "model": "Qwen/Qwen2.5-7B-Instruct",
+  "top_n": 5,
+  "total": 174,
+  "counts": {
+    "STRONG_SUPPORT": 25,
+    "NOT_SUPPORTED": 113,
+    "WEAK_SUPPORT": 36
+  },
+  "supported_pct": 35.1,
+  "strong_pct": 14.4
+}

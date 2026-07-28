@@ -1,0 +1,160 @@
+concept,normal_form,n_triples,n_papers,n_relations,n_neighbors,degree_centrality
+mass transport deposit,mass transport deposit,33,17,5,33,0.2089
+slope failure,slope failure,9,12,2,9,0.057
+submarine landslide,submarine landslide,8,21,2,7,0.0443
+turbidite,turbidite,6,13,2,6,0.038
+basal shear surface,basal shear surface,5,6,3,5,0.0316
+particle segregation,particle segregation,5,1,3,4,0.0253
+slide,slide,5,20,1,5,0.0316
+chaotic,chaotic,4,10,1,4,0.0253
+continuous,continuous,4,13,1,4,0.0253
+fluid overpressure,fluid overpressure,4,2,2,4,0.0253
+high-amplitude,high amplitude,4,9,1,4,0.0253
+hummocky,hummocky,4,7,1,4,0.0253
+megaslide,megaslide,4,2,1,4,0.0253
+transparent,transparent,4,12,1,4,0.0253
+debris flow,debris flow,3,4,2,3,0.019
+discontinuous,discontinuous,3,12,1,3,0.019
+erosion,erosion,3,13,1,3,0.019
+excess pressure,excess pressure,3,2,1,3,0.019
+high excess pore pressure,high excess pore pressure,3,1,2,3,0.019
+layered,layered,3,3,1,3,0.019
+low-amplitude,low amplitude,3,4,1,3,0.019
+mass movement initiation,mass movement initiation,3,2,1,3,0.019
+migration of depocenters,migration of depocenter,3,2,1,3,0.019
+rise of hydrostatic pressure,rise of hydrostatic pressure,3,3,1,3,0.019
+siliciclastic unit,siliciclastic unit,3,1,1,3,0.019
+slope destabilization,slope destabilization,3,1,2,3,0.019
+undeformed,undeformed,3,14,1,3,0.019
+blocky,blocky,2,6,1,2,0.0127
+catastrophic mass-transport processes,catastrophic mass transport processe,2,1,1,2,0.0127
+channel,channel,2,8,1,2,0.0127
+channel levee complex,channel levee complex,2,1,1,2,0.0127
+coarse-grained turbidites,coarse grained turbidite,2,1,2,2,0.0127
+compressive domain,compressive domain,2,1,2,2,0.0127
+continental slope,continental slope,2,18,1,2,0.0127
+critical length,critical length,2,1,2,2,0.0127
+debris-flow deposit,debris flow deposit,2,3,1,2,0.0127
+decrease in effective stress,decrease in effective stress,2,1,1,2,0.0127
+erosion of canyon heads,erosion of canyon head,2,1,1,2,0.0127
+failure,failure,2,3,1,2,0.0127
+flow becoming less cohesive,flow becoming less cohesive,2,1,1,2,0.0127
+folded,folded,2,2,1,2,0.0127
+formation stress gathering,formation stress gathering,2,1,1,2,0.0127
+gas hydrate dissolution,gas hydrate dissolution,2,1,1,2,0.0127
+gas hydrates destabilization,gas hydrate destabilization,2,2,1,2,0.0127
+gravitational collapse,gravitational collapse,2,1,1,2,0.0127
+growth stratal wedge,growth stratal wedge,2,1,1,2,0.0127
+higher sedimentation rates,higher sedimentation rate,2,2,1,2,0.0127
+instabilities,instabilitie,2,3,1,2,0.0127
+mediterranean continental margin,mediterranean continental margin,2,1,1,1,0.0063
+methane hydrate dissociation,methane hydrate dissociation,2,1,2,2,0.0127
+overpressure,overpressure,2,1,2,2,0.0127
+parallel,parallel,2,6,1,2,0.0127
+passive margin,passive margin,2,3,1,2,0.0127
+pushing the slope toward failure,pushing the slope toward failure,2,1,1,2,0.0127
+rapid sediment accumulation,rapid sediment accumulation,2,3,2,2,0.0127
+slope gravitational instabilities,slope gravitational instabilitie,2,1,1,2,0.0127
+stratified,stratified,2,2,1,2,0.0127
+unstable condition,unstable condition,2,1,1,2,0.0127
+water intrusion and fluidisation,water intrusion and fluidisation,2,1,2,1,0.0063
+50–60 ka failure event,50 60 ka failure event,1,1,1,1,0.0063
+amapá megaslide complex,amapá megaslide complex,1,1,1,1,0.0063
+amazon fan,amazon fan,1,5,1,1,0.0063
+area where no scarp exists,area where no scarp exist,1,1,1,1,0.0063
+basal erosion surface,basal erosion surface,1,1,1,1,0.0063
+basin floor,basin floor,1,2,1,1,0.0063
+bipartite flow,bipartite flow,1,1,1,1,0.0063
+blocky material,blocky material,1,1,1,1,0.0063
+bore-hole instability,bore hole instability,1,1,1,1,0.0063
+bore-hole stability,bore hole stability,1,1,1,1,0.0063
+canyon erosion,canyon erosion,1,1,1,1,0.0063
+cohesion of the basal detachment,cohesion of the basal detachment,1,1,1,1,0.0063
+continental margin,continental margin,1,20,1,1,0.0063
+deep-water basinal settings,deep water basinal setting,1,1,1,1,0.0063
+degradation in shear strength,degradation in shear strength,1,1,1,1,0.0063
+deltaic wedge,deltaic wedge,1,1,1,1,0.0063
+developing mtds,developing mtd,1,1,1,1,0.0063
+development of excess pore-water pressures,development of excess pore water pressure,1,1,1,1,0.0063
+discontinuous erosion surfaces,discontinuous erosion surface,1,1,1,1,0.0063
+disequilibrium conditions,disequilibrium condition,1,1,1,1,0.0063
+disrupted,disrupted,1,1,1,1,0.0063
+earthquake,earthquake,1,6,1,1,0.0063
+ebro margin,ebro margin,1,1,1,1,0.0063
+enhanced sediment supply,enhanced sediment supply,1,1,1,1,0.0063
+equilibrium conditions,equilibrium condition,1,1,1,1,0.0063
+erosion grooves,erosion groove,1,1,1,1,0.0063
+erosional scour,erosional scour,1,0,1,1,0.0063
+erosive capability of the flow,erosive capability of the flow,1,1,1,1,0.0063
+espírito santo basin,espírito santo basin,1,1,1,1,0.0063
+excess pore pressure,excess pore pressure,1,5,1,1,0.0063
+excess pore-water pressures,excess pore water pressure,1,1,1,1,0.0063
+extensional domain,extensional domain,1,3,1,1,0.0063
+external perturbations,external perturbation,1,1,1,1,0.0063
+faulted,faulted,1,3,1,1,0.0063
+flow,flow,1,1,1,1,0.0063
+fold,fold,1,6,1,1,0.0063
+formation of bipartite flow,formation of bipartite flow,1,1,1,1,0.0063
+formation of layer of weakness,formation of layer of weakness,1,1,1,1,0.0063
+formation of upper low-density layer,formation of upper low density layer,1,1,1,1,0.0063
+free gas,free gas,1,2,1,1,0.0063
+gas hydrate disassociation,gas hydrate disassociation,1,1,1,1,0.0063
+gas-hydrate dissociation,gas hydrate dissociation,1,1,1,1,0.0063
+gravitational spreading,gravitational spreading,1,1,1,1,0.0063
+hemipelagite,hemipelagite,1,3,1,1,0.0063
+higher shear stresses,higher shear stresse,1,1,1,1,0.0063
+incision of lateral ramps,incision of lateral ramp,1,0,1,1,0.0063
+increased development of shear stress,increased development of shear stress,1,1,1,1,0.0063
+increased sand content,increased sand content,1,1,1,1,0.0063
+instability,instability,1,1,1,1,0.0063
+late period erosion,late period erosion,1,1,1,1,0.0063
+length of the sliding sheet,length of the sliding sheet,1,1,1,1,0.0063
+"liquefaction of coarse-grained, cohesionless soils",liquefaction of coarse grained cohesionless soil,1,1,1,1,0.0063
+lower headwall formation,lower headwall formation,1,1,1,1,0.0063
+overpressure development,overpressure development,1,1,1,1,0.0063
+pore-fluid overpressure,pore fluid overpressure,1,1,1,1,0.0063
+potential for mass-transport events,potential for mass transport event,1,1,1,1,0.0063
+preserved block,preserved block,1,2,1,1,0.0063
+ramps and promontories,ramp and promontorie,1,1,1,1,0.0063
+rapid rate of sedimentation,rapid rate of sedimentation,1,1,1,1,0.0063
+rapid sedimentation,rapid sedimentation,1,1,1,1,0.0063
+remnant and rafted blocks,remnant and rafted block,1,2,1,1,0.0063
+remnant block,remnant block,1,2,1,1,0.0063
+retarded strength development,retarded strength development,1,1,1,1,0.0063
+rugged upper surface,rugged upper surface,1,1,1,1,0.0063
+sand content increase,sand content increase,1,1,1,1,0.0063
+sea floor slope,sea floor slope,1,1,1,1,0.0063
+sea level fall,sea level fall,1,1,1,1,0.0063
+seabed instability,seabed instability,1,1,1,1,0.0063
+seaﬂoor,seaﬂoor,1,10,1,1,0.0063
+sediment approaching liquefaction,sediment approaching liquefaction,1,1,1,1,0.0063
+seismic activity,seismic activity,1,1,1,1,0.0063
+seismic loading,seismic loading,1,3,1,1,0.0063
+seismic trigger,seismic trigger,1,1,1,1,0.0063
+slide sheet,slide sheet,1,1,1,1,0.0063
+slope instability,slope instability,1,2,1,1,0.0063
+slope stability,slope stability,1,2,1,1,0.0063
+slumping,slumping,1,1,1,1,0.0063
+stability criterion,stability criterion,1,1,1,1,0.0063
+stable paleo-lakebed,stable paleo lakebed,1,1,1,1,0.0063
+steepening up-dip,steepening up dip,1,1,1,1,0.0063
+steepest portion of the slope,steepest portion of the slope,1,1,1,1,0.0063
+storm waves,storm wave,1,1,1,1,0.0063
+subaqueous slope failure,subaqueous slope failure,1,2,1,1,0.0063
+tabular,tabular,1,1,1,1,0.0063
+tectonically active margin,tectonically active margin,1,4,1,1,0.0063
+thin,thin,1,1,1,1,0.0063
+three structural domains,three structural domain,1,1,1,1,0.0063
+translational domain,translational domain,1,1,1,1,0.0063
+translational sliding,translational sliding,1,1,1,1,0.0063
+turbidite system,turbidite system,1,5,1,1,0.0063
+up to 500m in thickness,up to 500m in thickness,1,1,1,1,0.0063
+upper slope,upper slope,1,5,1,1,0.0063
+upper surface,upper surface,1,2,1,1,0.0063
+variable-amplitude,variable amplitude,1,1,1,1,0.0063
+volume and pressure buildup,volume and pressure buildup,1,1,1,1,0.0063
+wave action,wave action,1,1,1,1,0.0063
+wave loading,wave loading,1,1,1,1,0.0063
+wave-loading effects,wave loading effect,1,1,1,1,0.0063
+wedge-shaped,wedge shaped,1,2,1,1,0.0063
+whole wedge failures,whole wedge failure,1,1,1,1,0.0063

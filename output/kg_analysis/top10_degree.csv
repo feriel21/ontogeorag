@@ -1,0 +1,11 @@
+entity,entity_type,in_degree,out_degree,total_degree
+"mass transport deposit","GeologicalObject",4,17,21
+"submarine landslides","GeologicalObject",3,7,10
+"methane hydrate dissociation","Process",0,9,9
+"turbidite","SeismicObject",0,8,8
+"discontinuous","Descriptor",6,0,6
+"megaslide","SeismicObject",0,5,5
+"layered","Descriptor",5,0,5
+"chaotic","Descriptor",5,0,5
+"high-amplitude","Descriptor",5,0,5
+"failure","Process",4,0,4

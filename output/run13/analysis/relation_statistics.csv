@@ -1,0 +1,9 @@
+relation,n_triples,n_papers,n_unique_pairs,n_unique_objects,object_entropy_norm
+causes,49,19,49,32,0.937
+hasDescriptor,46,27,46,19,0.957
+affects,15,17,15,12,0.964
+occursIn,15,23,14,12,0.978
+triggers,14,12,14,10,0.958
+partOf,6,4,6,4,0.896
+overlies,3,2,3,3,1.0
+controls,3,2,3,3,1.0

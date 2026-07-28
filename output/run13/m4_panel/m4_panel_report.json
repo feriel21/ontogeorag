@@ -1,0 +1,82 @@
+{
+  "judges": [
+    "llama",
+    "mistral"
+  ],
+  "n_common_triples": 157,
+  "note_two_judges": "with two judges, majority vote reduces to consensus; on disagreement the more cautious decision is taken",
+  "evidence_distributions": {
+    "llama": {
+      "NOT_SUPPORTED": 42,
+      "PARTIALLY_SUPPORTED": 74,
+      "SUPPORTED": 41
+    },
+    "mistral": {
+      "PARTIALLY_SUPPORTED": 77,
+      "SUPPORTED": 73,
+      "NOT_SUPPORTED": 7
+    }
+  },
+  "blind_distributions": {
+    "llama": {
+      "PLAUSIBLE": 140,
+      "IMPLAUSIBLE": 10,
+      "UNCERTAIN": 7
+    },
+    "mistral": {
+      "PLAUSIBLE": 100,
+      "UNCERTAIN": 36,
+      "IMPLAUSIBLE": 21
+    }
+  },
+  "inter_judge": {
+    "llama_x_mistral": {
+      "evidence": {
+        "n": 157,
+        "exact_agreement_3class": 0.4904,
+        "binary_agreement": 0.7643,
+        "kappa_unweighted": 0.1982,
+        "kappa_linear": 0.2983
+      },
+      "blind": {
+        "n": 157,
+        "exact_agreement": 0.6624,
+        "kappa_unweighted": 0.1832,
+        "kappa_linear": 0.2332
+      },
+      "decisions": {
+        "exact_agreement": 0.6242,
+        "kappa_unweighted": 0.1429,
+        "kappa_linear": 0.1895
+      }
+    }
+  },
+  "human_reference": {
+    "inter_expert_kappa_section_4_4": [
+      0.3,
+      0.37
+    ],
+    "note": "Machine inter-judge kappa above vs human inter-expert kappa: comparable levels indicate the task itself has an agreement ceiling; higher machine agreement indicates the judges are more consistent than human annotators on this taxonomy."
+  },
+  "panel_decisions": {
+    "UNCERTAIN": 67,
+    "ACCEPT": 84,
+    "REJECT": 6
+  },
+  "panel_decision_rates": {
+    "UNCERTAIN": 0.4268,
+    "ACCEPT": 0.535,
+    "REJECT": 0.0382
+  },
+  "disagreement_patterns": {
+    "ACCEPT_UNCERTAIN": 53,
+    "REJECT_UNCERTAIN": 6
+  },
+  "consensus_parametric_risk": {
+    "n": 1,
+    "indices": [
+      148
+    ],
+    "note": "flagged parametric_risk by ALL judges \u2014 highest-priority residual set"
+  }
+}

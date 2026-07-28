@@ -123,15 +123,80 @@ def coverage(triples):
             "coverage": len(found) / 13}
 
 
-def recall(triples):
-    kg = set()
-    for t in triples:
-        kg.add((norm(t["subject"]), norm(t["relation"]), norm(t["object"])))
-    ref = [(norm(s), norm(r), norm(o)) for s, r, o in REFERENCE_EDGES]
-    hits = [k for k in ref if k in kg]
-    return {"recall": len(hits)/len(ref), "hits": len(hits),
-            "total_reference": len(ref), "matched_edges": hits}
+# === unified recall block (patched) ===
+def _load_reference_edges_from_json(ref_path="configs/lb_reference_edges.json"):
+    import json
+    from pathlib import Path as _P
+    obj = json.load(open(_P(ref_path)))
+    edges = obj.get("edges", obj) if isinstance(obj, dict) else obj
+    out = []
+    for e in edges:
+        if isinstance(e, dict):
+            out.append((e.get("subject",""), e.get("relation",""), e.get("object","")))
+        else:
+            out.append(tuple(e))
+    return out
 
+def recall(triples, ref_path="configs/lb_reference_edges.json"):
+    """Recall vs LB2019 benchmark, unified with the SLURM inline / paper headline matcher.
+
+    Matching rule (per paper §3): a benchmark edge (rs, rr, ro) is recovered iff
+    there exists an extracted triple (ts, tr, to) such that
+        rs is a substring of ts (after lowercasing/whitespace/entity normalization),
+        ro is a substring of to,
+        normalize_relation(rr) == normalize_relation(tr).
+
+    Returns the headline (substring) recall plus an exact-match 'lower_bound'.
+    """
+    try:
+        from pipeline.rag.constants import normalize_relation
+    except Exception:
+        def normalize_relation(r):
+            return (r or "").strip().lower().replace(" ", "").replace("_", "").replace("-", "")
+
+    ref_edges = _load_reference_edges_from_json(ref_path)
+    n = len(ref_edges)
+
+    # Build extracted set once
+    extracted = [(norm(t["subject"]), normalize_relation(t.get("relation","")), norm(t["object"]))
+                 for t in triples]
+
+    def match_substring(rs, rr, ro):
+        rrn = normalize_relation(rr)
+        rs_n, ro_n = norm(rs), norm(ro)
+        for ts, tr, to in extracted:
+            if tr == rrn and rs_n in ts and ro_n in to:
+                return (rs, rr, ro)
+        return None
+
+    def match_exact(rs, rr, ro):
+        rrn = normalize_relation(rr)
+        rs_n, ro_n = norm(rs), norm(ro)
+        for ts, tr, to in extracted:
+            if tr == rrn and ts == rs_n and to == ro_n:
+                return (rs, rr, ro)
+        return None
+
+    sub_hits   = [match_substring(s, r, o) for s, r, o in ref_edges]
+    sub_hits   = [h for h in sub_hits if h is not None]
+    exact_hits = [match_exact(s, r, o)     for s, r, o in ref_edges]
+    exact_hits = [h for h in exact_hits if h is not None]
+
+    return {
+        "recall":          len(sub_hits) / n if n else 0.0,
+        "hits":            len(sub_hits),
+        "total_reference": n,
+        "matched_edges":   sub_hits,
+        "matcher":         "substring_normRel (paper headline)",
+        "lower_bound": {
+            "recall":          len(exact_hits) / n if n else 0.0,
+            "hits":            len(exact_hits),
+            "total_reference": n,
+            "matched_edges":   exact_hits,
+            "matcher":         "exact_normRel (strict tuple equality + relation normalization)",
+        },
+        "ref_path":        ref_path,
+    }
 
 def hallucination(triples):
     counts = defaultdict(int)

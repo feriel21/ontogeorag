@@ -1,0 +1,14 @@
+{
+  "total": 174,
+  "counts": {
+    "A_direct": 98,
+    "A_or_B_same_chunk": 59,
+    "B_distributed": 9,
+    "C_absent": 6,
+    "B_weak_cross_doc": 2
+  },
+  "A_direct_pct": 56.3,
+  "present_pct": 96.6,
+  "C_absent_pct": 3.4,
+  "MIN_TOKEN_COVER": 0.6
+}

@@ -1,0 +1,30 @@
+{
+  "n_triples": 153,
+  "decisions": {
+    "ACCEPT": 108,
+    "UNCERTAIN": 44,
+    "REJECT": 1
+  },
+  "decision_rates": {
+    "ACCEPT": 0.7059,
+    "UNCERTAIN": 0.2876,
+    "REJECT": 0.0065
+  },
+  "flags": {
+    "partial_support": 68,
+    "parametric_risk": 30,
+    "contested_plausibility": 1
+  },
+  "matrix_vs_score_agreement": {
+    "disagree": 98,
+    "agree": 55
+  },
+  "weights": {
+    "evidence": 0.7,
+    "blind": 0.3
+  },
+  "thresholds": {
+    "accept": 0.7,
+    "reject": 0.3
+  }
+}

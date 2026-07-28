@@ -1,0 +1,9 @@
+relation,tier1,tier2,other
+"affects",4,8,0
+"causes",32,18,0
+"controls",0,5,0
+"hasDescriptor",17,27,0
+"occursIn",9,7,0
+"overlies",2,1,0
+"partOf",1,2,0
+"triggers",9,6,0

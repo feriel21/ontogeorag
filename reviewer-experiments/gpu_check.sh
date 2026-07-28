@@ -1,0 +1,7 @@
+echo "=== GPU CHECK ==="
+echo "CUDA_VISIBLE_DEVICES=$CUDA_VISIBLE_DEVICES"
+echo "SLURM_JOB_GPUS=$SLURM_JOB_GPUS"
+echo "SLURM_STEP_GPUS=$SLURM_STEP_GPUS"
+nvidia-smi -L 2>&1 || echo "nvidia-smi -L echoue"
+python -c "import torch; print('torch CUDA:', torch.cuda.is_available(), torch.cuda.device_count())"
+echo "================="
