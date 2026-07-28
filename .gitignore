@@ -47,3 +47,9 @@ output/.ipynb_checkpoints/
 !output/retrieval_ablation_table.json
 !output/expert_annotation_protocol.json
 !output/generalization_annotation_protocol.json
+.ipynb_checkpoints/
+*-checkpoint.*
+validation_logs/
+output/_archive/
+output/validation_smoke/
+*.bak.*
