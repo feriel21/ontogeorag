@@ -11,9 +11,10 @@ Usage:
 
 import json
 from pathlib import Path
+
 import numpy as np
 from rank_bm25 import BM25Okapi
-from sentence_transformers import SentenceTransformer, CrossEncoder
+from sentence_transformers import CrossEncoder, SentenceTransformer
 
 
 def load_hybrid_retriever(
@@ -98,14 +99,19 @@ def load_hybrid_retriever(
 
         fused = {}
         for cid in candidate_ids:
-            bm25_rank = bm25_ranked.index(cid) + 1 \
-                if cid in bm25_map else bm25_topk + 1
-            dense_rank = dense_ranked.index(cid) + 1 \
-                if cid in dense_map else dense_topk + 1
-            fused[cid] = (
-                (1 - fusion_alpha) * (1 / (60 + bm25_rank)) +
-                      fusion_alpha  * (1 / (60 + dense_rank))
+            bm25_rank = (
+                bm25_ranked.index(cid) + 1
+                if cid in bm25_map
+                else bm25_topk + 1
             )
+            dense_rank = (
+                dense_ranked.index(cid) + 1
+                if cid in dense_map
+                else dense_topk + 1
+            )
+            fused[cid] = (1 - fusion_alpha) * (
+                1 / (60 + bm25_rank)
+            ) + fusion_alpha * (1 / (60 + dense_rank))
 
         # Top-100 by fused score → CrossEncoder rerank
         top_fused = sorted(fused, key=fused.get, reverse=True)[:100]
@@ -118,15 +124,19 @@ def load_hybrid_retriever(
         results = []
         for idx, cid in enumerate(top_fused):
             c = chunks[cid]
-            results.append({
-                "chunk_id":    c.get("chunk_id", f"chunk_{cid}"),
-                "text":        c.get("text", ""),
-                "score":       fused[cid],           # fused score (for gating)
-                "rerank_score": float(rerank_scores[idx]),
-                "bm25_score":  bm25_map.get(cid, 0.0),
-                "dense_score": dense_map.get(cid, 0.0),
-                "source_file": c.get("source_file", c.get("doc_id", "unknown")),
-            })
+            results.append(
+                {
+                    "chunk_id": c.get("chunk_id", f"chunk_{cid}"),
+                    "text": c.get("text", ""),
+                    "score": fused[cid],  # fused score (for gating)
+                    "rerank_score": float(rerank_scores[idx]),
+                    "bm25_score": bm25_map.get(cid, 0.0),
+                    "dense_score": dense_map.get(cid, 0.0),
+                    "source_file": c.get(
+                        "source_file", c.get("doc_id", "unknown")
+                    ),
+                }
+            )
 
         results.sort(key=lambda x: x["rerank_score"], reverse=True)
         return results[:top_n]

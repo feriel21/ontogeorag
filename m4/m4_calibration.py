@@ -44,22 +44,34 @@ from collections import defaultdict
 from pathlib import Path
 
 import matplotlib
+
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
-
 from m4_aggregate import confidence
 
-OI = {"blue": "#0072B2", "orange": "#E69F00", "green": "#009E73",
-      "red": "#D55E00", "grey": "#999999"}
+OI = {
+    "blue": "#0072B2",
+    "orange": "#E69F00",
+    "green": "#009E73",
+    "red": "#D55E00",
+    "grey": "#999999",
+}
 MM = 1 / 25.4
 
-plt.rcParams.update({
-    "font.size": 9, "axes.titlesize": 9, "axes.labelsize": 9,
-    "xtick.labelsize": 8, "ytick.labelsize": 8, "legend.fontsize": 8,
-    "savefig.bbox": "tight",
-    "axes.spines.top": False, "axes.spines.right": False,
-})
+plt.rcParams.update(
+    {
+        "font.size": 9,
+        "axes.titlesize": 9,
+        "axes.labelsize": 9,
+        "xtick.labelsize": 8,
+        "ytick.labelsize": 8,
+        "legend.fontsize": 8,
+        "savefig.bbox": "tight",
+        "axes.spines.top": False,
+        "axes.spines.right": False,
+    }
+)
 
 
 def load_jsonl(path):
@@ -82,8 +94,13 @@ def compute_bins(scores, labels, edges=None):
         bins = []
         for s in sorted(groups):
             ys = groups[s]
-            bins.append({"conf": s, "n": len(ys),
-                         "accuracy": round(sum(ys) / len(ys), 4)})
+            bins.append(
+                {
+                    "conf": s,
+                    "n": len(ys),
+                    "accuracy": round(sum(ys) / len(ys), 4),
+                }
+            )
         return bins
     idx = np.clip(np.digitize(scores, edges) - 1, 0, len(edges) - 2)
     for i, y, s in zip(idx, labels, scores):
@@ -93,24 +110,41 @@ def compute_bins(scores, labels, edges=None):
         pairs = groups[i]
         ss = [p[0] for p in pairs]
         ys = [p[1] for p in pairs]
-        bins.append({"conf": round(float(np.mean(ss)), 4), "n": len(ys),
-                     "accuracy": round(sum(ys) / len(ys), 4),
-                     "bin_range": [round(float(edges[i]), 3),
-                                   round(float(edges[i + 1]), 3)]})
+        bins.append(
+            {
+                "conf": round(float(np.mean(ss)), 4),
+                "n": len(ys),
+                "accuracy": round(sum(ys) / len(ys), 4),
+                "bin_range": [
+                    round(float(edges[i]), 3),
+                    round(float(edges[i + 1]), 3),
+                ],
+            }
+        )
     return bins
 
 
 def main():
     """CLI entry point: joins --controls with --verdicts, computes M4 confidence scores, bins them against the original/corrupted label to get ECE/MCE/Brier, and writes calibration_report.json plus the reliability-diagram figure to --output."""
     ap = argparse.ArgumentParser()
-    ap.add_argument("--controls", required=True,
-                    help="controls.jsonl from m4_negatives.py generate")
-    ap.add_argument("--verdicts", required=True,
-                    help="m4_verdicts.jsonl from the V2 verification run")
+    ap.add_argument(
+        "--controls",
+        required=True,
+        help="controls.jsonl from m4_negatives.py generate",
+    )
+    ap.add_argument(
+        "--verdicts",
+        required=True,
+        help="m4_verdicts.jsonl from the V2 verification run",
+    )
     ap.add_argument("--output", required=True)
-    ap.add_argument("--bins", type=int, default=0,
-                    help="0 = one bin per unique score value (default); "
-                         "N>0 = N equal-width bins")
+    ap.add_argument(
+        "--bins",
+        type=int,
+        default=0,
+        help="0 = one bin per unique score value (default); "
+        "N>0 = N equal-width bins",
+    )
     args = ap.parse_args()
 
     out_dir = Path(args.output).expanduser()
@@ -135,7 +169,7 @@ def main():
     labels = np.array(labels)
     n = len(scores)
 
-    edges = (np.linspace(0, 1, args.bins + 1) if args.bins > 0 else None)
+    edges = np.linspace(0, 1, args.bins + 1) if args.bins > 0 else None
     bins = compute_bins(scores, labels, edges)
 
     ece = sum(b["n"] / n * abs(b["accuracy"] - b["conf"]) for b in bins)
@@ -146,66 +180,104 @@ def main():
         "n_items": n,
         "n_original": int(labels.sum()),
         "n_corrupted": int(n - labels.sum()),
-        "binning": ("unique score values" if edges is None
-                    else f"{args.bins} equal-width bins"),
+        "binning": (
+            "unique score values"
+            if edges is None
+            else f"{args.bins} equal-width bins"
+        ),
         "ECE": round(float(ece), 4),
         "MCE": round(float(mce), 4),
         "brier_score": round(brier, 4),
         "bins": bins,
-        "caveat": ("Labels are known by construction for corrupted items "
-                   "only; 'original' items are pipeline outputs, not "
-                   "certified correct (the main run finds ~20% of them "
-                   "ungrounded). Accuracy among originals is therefore a "
-                   "lower bound and the reported ECE is a conservative "
-                   "(pessimistic) estimate of calibration."),
+        "caveat": (
+            "Labels are known by construction for corrupted items "
+            "only; 'original' items are pipeline outputs, not "
+            "certified correct (the main run finds ~20% of them "
+            "ungrounded). Accuracy among originals is therefore a "
+            "lower bound and the reported ECE is a conservative "
+            "(pessimistic) estimate of calibration."
+        ),
     }
     (out_dir / "calibration_report.json").write_text(
-        json.dumps(report, indent=2), encoding="utf-8")
+        json.dumps(report, indent=2), encoding="utf-8"
+    )
 
     # ── figure: reliability diagram + confidence histogram ─────────────
     fig, (ax, axh) = plt.subplots(
-        2, 1, figsize=(90 * MM, 85 * MM), sharex=True,
-        gridspec_kw={"height_ratios": [3, 1], "hspace": 0.12})
+        2,
+        1,
+        figsize=(90 * MM, 85 * MM),
+        sharex=True,
+        gridspec_kw={"height_ratios": [3, 1], "hspace": 0.12},
+    )
 
-    ax.plot([0, 1], [0, 1], "--", color=OI["grey"], lw=1,
-            label="Perfect calibration")
+    ax.plot(
+        [0, 1],
+        [0, 1],
+        "--",
+        color=OI["grey"],
+        lw=1,
+        label="Perfect calibration",
+    )
     confs = [b["conf"] for b in bins]
     accs = [b["accuracy"] for b in bins]
     ns = [b["n"] for b in bins]
     sizes = [20 + 180 * (x / max(ns)) for x in ns]
-    ax.scatter(confs, accs, s=sizes, color=OI["blue"], zorder=3,
-               edgecolor="white", lw=0.8,
-               label="Observed (size ∝ n)")
+    ax.scatter(
+        confs,
+        accs,
+        s=sizes,
+        color=OI["blue"],
+        zorder=3,
+        edgecolor="white",
+        lw=0.8,
+        label="Observed (size ∝ n)",
+    )
     for b in bins:
-        ax.plot([b["conf"], b["conf"]], [b["conf"], b["accuracy"]],
-                color=OI["red"], lw=1, alpha=0.6, zorder=2)
+        ax.plot(
+            [b["conf"], b["conf"]],
+            [b["conf"], b["accuracy"]],
+            color=OI["red"],
+            lw=1,
+            alpha=0.6,
+            zorder=2,
+        )
     ax.set_ylabel("Fraction genuine (non-corrupted)")
     ax.set_xlim(-0.03, 1.03)
     ax.set_ylim(-0.03, 1.03)
     ax.legend(frameon=False, loc="upper left")
-    ax.text(0.97, 0.05,
-            f"ECE = {report['ECE']:.3f}\nBrier = {report['brier_score']:.3f}",
-            ha="right", va="bottom", transform=ax.transAxes, fontsize=8,
-            bbox=dict(boxstyle="round,pad=0.3", fc="white",
-                      ec=OI["grey"], lw=0.5))
+    ax.text(
+        0.97,
+        0.05,
+        f"ECE = {report['ECE']:.3f}\nBrier = {report['brier_score']:.3f}",
+        ha="right",
+        va="bottom",
+        transform=ax.transAxes,
+        fontsize=8,
+        bbox=dict(boxstyle="round,pad=0.3", fc="white", ec=OI["grey"], lw=0.5),
+    )
 
     axh.bar(confs, ns, width=0.04, color=OI["grey"], alpha=0.8)
     axh.set_xlabel("M4 confidence score")
     axh.set_ylabel("n")
 
     for ext in ("pdf", "png"):
-        fig.savefig(out_dir / f"fig_m4_reliability.{ext}",
-                    dpi=300 if ext == "png" else None)
+        fig.savefig(
+            out_dir / f"fig_m4_reliability.{ext}",
+            dpi=300 if ext == "png" else None,
+        )
     plt.close(fig)
 
-    print(json.dumps({k: v for k, v in report.items() if k != "bins"},
-                     indent=2))
+    print(
+        json.dumps({k: v for k, v in report.items() if k != "bins"}, indent=2)
+    )
     print("\nPer-bin table:")
     for b in bins:
-        print(f"  conf={b['conf']:.3f}  n={b['n']:>3d}  "
-              f"acc={b['accuracy']:.3f}")
-    print(f"\nReport: {out_dir/'calibration_report.json'}")
-    print(f"Figure: {out_dir/'fig_m4_reliability.pdf'} (+ .png)")
+        print(
+            f"  conf={b['conf']:.3f}  n={b['n']:>3d}  acc={b['accuracy']:.3f}"
+        )
+    print(f"\nReport: {out_dir / 'calibration_report.json'}")
+    print(f"Figure: {out_dir / 'fig_m4_reliability.pdf'} (+ .png)")
 
 
 if __name__ == "__main__":

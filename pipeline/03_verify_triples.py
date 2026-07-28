@@ -31,8 +31,11 @@ import sys
 import time
 from pathlib import Path
 
-from pipeline.rag.constants import ALLOWED_RELATIONS, RELATION_GLOSSES, normalize_relation
-
+from pipeline.rag.constants import (
+    ALLOWED_RELATIONS,
+    RELATION_GLOSSES,
+    normalize_relation,
+)
 
 # ── Prompts ────────────────────────────────────────────────────────────
 
@@ -86,17 +89,32 @@ SYSTEM = (
 
 def parse_cot(response: str) -> dict:
     """Extract EVIDENCE/REASONING/VERDICT fields from the LLM's CoT `response`; returns a dict with verdict defaulting to UNPARSEABLE, no side effects."""
-    result = {"evidence": "", "reasoning": "", "verdict": "UNPARSEABLE", "raw": response}
+    result = {
+        "evidence": "",
+        "reasoning": "",
+        "verdict": "UNPARSEABLE",
+        "raw": response,
+    }
 
-    m = re.search(r"EVIDENCE:\s*(.+?)(?=\nREASONING:|\nVERDICT:|\Z)", response, re.DOTALL | re.I)
+    m = re.search(
+        r"EVIDENCE:\s*(.+?)(?=\nREASONING:|\nVERDICT:|\Z)",
+        response,
+        re.DOTALL | re.I,
+    )
     if m:
         result["evidence"] = m.group(1).strip()
 
-    m = re.search(r"REASONING:\s*(.+?)(?=\nVERDICT:|\Z)", response, re.DOTALL | re.I)
+    m = re.search(
+        r"REASONING:\s*(.+?)(?=\nVERDICT:|\Z)", response, re.DOTALL | re.I
+    )
     if m:
         result["reasoning"] = m.group(1).strip()
 
-    m = re.search(r"VERDICT:\s*(STRONG_SUPPORT|WEAK_SUPPORT|NOT_SUPPORTED)", response, re.I)
+    m = re.search(
+        r"VERDICT:\s*(STRONG_SUPPORT|WEAK_SUPPORT|NOT_SUPPORTED)",
+        response,
+        re.I,
+    )
     if m:
         result["verdict"] = m.group(1).upper()
         return result
@@ -124,7 +142,12 @@ def get_chunks(triple: dict, max_chunks: int = 3) -> list[str]:
         return texts
 
     # Format: best_chunk_text + second_chunk_text (old)
-    for key in ["best_chunk_text", "second_chunk_text", "chunk_text_2", "chunk_text_3"]:
+    for key in [
+        "best_chunk_text",
+        "second_chunk_text",
+        "chunk_text_2",
+        "chunk_text_3",
+    ]:
         t = prov.get(key, "") or ""
         if t and t not in texts:
             texts.append(t)
@@ -140,8 +163,8 @@ def get_chunks(triple: dict, max_chunks: int = 3) -> list[str]:
 
 def verify_triple(triple: dict, generate_fn, chunk_chars: int = 1500) -> dict:
     """Run CoT verification on one triple. Returns verification dict."""
-    rel_raw  = triple.get("relation_norm", triple.get("relation", ""))
-    rel      = normalize_relation(str(rel_raw))
+    rel_raw = triple.get("relation_norm", triple.get("relation", ""))
+    rel = normalize_relation(str(rel_raw))
 
     if rel not in ALLOWED_RELATIONS:
         return {
@@ -162,30 +185,45 @@ def verify_triple(triple: dict, generate_fn, chunk_chars: int = 1500) -> dict:
 
     source = triple.get("source_norm", triple.get("source", ""))
     target = triple.get("target_norm", triple.get("target", ""))
-    gloss  = RELATION_GLOSSES.get(rel, f"Subject {rel} Object")
+    gloss = RELATION_GLOSSES.get(rel, f"Subject {rel} Object")
 
-    verdict_rank = {"STRONG_SUPPORT": 3, "WEAK_SUPPORT": 2, "NOT_SUPPORTED": 1, "UNPARSEABLE": 0}
+    verdict_rank = {
+        "STRONG_SUPPORT": 3,
+        "WEAK_SUPPORT": 2,
+        "NOT_SUPPORTED": 1,
+        "UNPARSEABLE": 0,
+    }
     best, best_score = None, -1
 
     for chunk_text in chunk_texts:
         user = COT_PROMPT.format(
             chunk_text=chunk_text[:chunk_chars],
-            source=source, relation=rel, gloss=gloss, target=target,
+            source=source,
+            relation=rel,
+            gloss=gloss,
+            target=target,
         )
         try:
-            resp   = generate_fn(SYSTEM, user)
+            resp = generate_fn(SYSTEM, user)
             parsed = parse_cot(resp)
         except Exception as e:
-            return {"verdict": "BACKEND_ERROR", "evidence": "", "reasoning": str(e), "chunks_checked": 0}
+            return {
+                "verdict": "BACKEND_ERROR",
+                "evidence": "",
+                "reasoning": str(e),
+                "chunks_checked": 0,
+            }
 
         # One retry with simpler prompt if unparseable
         if parsed["verdict"] == "UNPARSEABLE":
             user2 = FALLBACK_PROMPT.format(
                 chunk_text=chunk_text[:1200],
-                source=source, gloss=gloss.lower(), target=target,
+                source=source,
+                gloss=gloss.lower(),
+                target=target,
             )
             try:
-                resp2   = generate_fn(SYSTEM, user2)
+                resp2 = generate_fn(SYSTEM, user2)
                 parsed2 = parse_cot(resp2)
                 if parsed2["verdict"] != "UNPARSEABLE":
                     parsed = parsed2
@@ -197,7 +235,12 @@ def verify_triple(triple: dict, generate_fn, chunk_chars: int = 1500) -> dict:
             best_score, best = score, parsed
 
     if best is None:
-        return {"verdict": "UNPARSEABLE", "evidence": "", "reasoning": "", "chunks_checked": len(chunk_texts)}
+        return {
+            "verdict": "UNPARSEABLE",
+            "evidence": "",
+            "reasoning": "",
+            "chunks_checked": len(chunk_texts),
+        }
 
     best["chunks_checked"] = len(chunk_texts)
     return best
@@ -206,13 +249,13 @@ def verify_triple(triple: dict, generate_fn, chunk_chars: int = 1500) -> dict:
 def main():
     """CLI entry point: loads --input triples, runs verify_triple over each with the configured LLM backend, and writes verified triples (--output), a per-triple audit log, and verification_stats.json."""
     parser = argparse.ArgumentParser(description="CoT triple verification")
-    parser.add_argument("--input",   required=True)
-    parser.add_argument("--output",  required=True)
-    parser.add_argument("--model",   default="Qwen/Qwen2.5-7B-Instruct")
+    parser.add_argument("--input", required=True)
+    parser.add_argument("--output", required=True)
+    parser.add_argument("--model", default="Qwen/Qwen2.5-7B-Instruct")
     parser.add_argument("--backend", default="hf", choices=["hf", "ollama"])
     parser.add_argument("--ollama-url", default="http://localhost:11434")
     parser.add_argument("--chunk-chars", type=int, default=1500)
-    parser.add_argument("--limit",   type=int, default=0)
+    parser.add_argument("--limit", type=int, default=0)
     args = parser.parse_args()
 
     triples = []
@@ -223,90 +266,136 @@ def main():
                 triples.append(json.loads(line))
     print(f"  Loaded {len(triples)} triples")
     if args.limit > 0:
-        triples = triples[:args.limit]
+        triples = triples[: args.limit]
 
     # Load LLM
     if args.backend == "hf":
         from pipeline.rag.llm_hf import make_hf_fn
+
         _gen = make_hf_fn(args.model)
         generate_fn = lambda sys, usr: _gen(sys, usr)
     else:
         import requests
+
         def generate_fn(sys_msg: str, user_msg: str) -> str:
             r = requests.post(
                 f"{args.ollama_url}/api/chat",
-                json={"model": args.model,
-                      "messages": [{"role":"system","content":sys_msg},
-                                   {"role":"user","content":user_msg}],
-                      "stream": False, "options": {"temperature": 0.0}},
+                json={
+                    "model": args.model,
+                    "messages": [
+                        {"role": "system", "content": sys_msg},
+                        {"role": "user", "content": user_msg},
+                    ],
+                    "stream": False,
+                    "options": {"temperature": 0.0},
+                },
                 timeout=180,
             )
             return r.json().get("message", {}).get("content", "")
 
-    outpath  = Path(args.output)
+    outpath = Path(args.output)
     outpath.parent.mkdir(parents=True, exist_ok=True)
     audit_path = outpath.parent / "verification_audit.jsonl"
     stats_path = outpath.parent / "verification_stats.json"
 
-    counts = {v: 0 for v in ["STRONG_SUPPORT","WEAK_SUPPORT","NOT_SUPPORTED",
-                               "NO_CHUNK","UNPARSEABLE","BACKEND_ERROR","SKIPPED_RELATION"]}
+    counts = {
+        v: 0
+        for v in [
+            "STRONG_SUPPORT",
+            "WEAK_SUPPORT",
+            "NOT_SUPPORTED",
+            "NO_CHUNK",
+            "UNPARSEABLE",
+            "BACKEND_ERROR",
+            "SKIPPED_RELATION",
+        ]
+    }
     start = time.time()
 
-    with open(outpath, "w", encoding="utf-8") as fout, \
-         open(audit_path, "w", encoding="utf-8") as faudit:
-
+    with (
+        open(outpath, "w", encoding="utf-8") as fout,
+        open(audit_path, "w", encoding="utf-8") as faudit,
+    ):
         for i, triple in enumerate(triples):
-            verif   = verify_triple(triple, generate_fn, chunk_chars=args.chunk_chars)
+            verif = verify_triple(
+                triple, generate_fn, chunk_chars=args.chunk_chars
+            )
             verdict = verif.get("verdict", "UNPARSEABLE")
             counts[verdict] = counts.get(verdict, 0) + 1
 
-            rel_norm = normalize_relation(triple.get("relation_norm", triple.get("relation", "")))
+            rel_norm = normalize_relation(
+                triple.get("relation_norm", triple.get("relation", ""))
+            )
             triple["_verification"] = {
-                "verdict":        verdict,
-                "evidence":       verif.get("evidence", ""),
-                "reasoning":      verif.get("reasoning", ""),
+                "verdict": verdict,
+                "evidence": verif.get("evidence", ""),
+                "reasoning": verif.get("reasoning", ""),
                 "chunks_checked": verif.get("chunks_checked", 0),
-                "model":          args.model,
-                "backend":        args.backend,
-                "relation_norm":  rel_norm,
+                "model": args.model,
+                "backend": args.backend,
+                "relation_norm": rel_norm,
             }
 
             fout.write(json.dumps(triple, ensure_ascii=False) + "\n")
-            faudit.write(json.dumps({
-                "index":    i,
-                "subject":  triple.get("source_norm", triple.get("source", "")),
-                "relation": rel_norm,
-                "object":   triple.get("target_norm", triple.get("target", "")),
-                **verif,
-            }, ensure_ascii=False) + "\n")
+            faudit.write(
+                json.dumps(
+                    {
+                        "index": i,
+                        "subject": triple.get(
+                            "source_norm", triple.get("source", "")
+                        ),
+                        "relation": rel_norm,
+                        "object": triple.get(
+                            "target_norm", triple.get("target", "")
+                        ),
+                        **verif,
+                    },
+                    ensure_ascii=False,
+                )
+                + "\n"
+            )
 
             if (i + 1) % 25 == 0 or (i + 1) == len(triples):
                 elapsed = time.time() - start
-                decided = counts["STRONG_SUPPORT"] + counts["WEAK_SUPPORT"] + counts["NOT_SUPPORTED"]
-                print(f"  [{i+1}/{len(triples)}] "
-                      f"S={counts['STRONG_SUPPORT']} W={counts['WEAK_SUPPORT']} "
-                      f"NS={counts['NOT_SUPPORTED']} NC={counts['NO_CHUNK']} "
-                      f"({(i+1)/elapsed:.1f}/s)")
+                decided = (
+                    counts["STRONG_SUPPORT"]
+                    + counts["WEAK_SUPPORT"]
+                    + counts["NOT_SUPPORTED"]
+                )
+                print(
+                    f"  [{i + 1}/{len(triples)}] "
+                    f"S={counts['STRONG_SUPPORT']} W={counts['WEAK_SUPPORT']} "
+                    f"NS={counts['NOT_SUPPORTED']} NC={counts['NO_CHUNK']} "
+                    f"({(i + 1) / elapsed:.1f}/s)"
+                )
 
-    elapsed  = time.time() - start
-    decided  = counts["STRONG_SUPPORT"] + counts["WEAK_SUPPORT"] + counts["NOT_SUPPORTED"]
-    halluc   = counts["NOT_SUPPORTED"] / decided if decided > 0 else None
+    elapsed = time.time() - start
+    decided = (
+        counts["STRONG_SUPPORT"]
+        + counts["WEAK_SUPPORT"]
+        + counts["NOT_SUPPORTED"]
+    )
+    halluc = counts["NOT_SUPPORTED"] / decided if decided > 0 else None
 
     stats = {
-        "model": args.model, "backend": args.backend,
-        "total_triples": len(triples), "counts": counts,
+        "model": args.model,
+        "backend": args.backend,
+        "total_triples": len(triples),
+        "counts": counts,
         "decided_total": decided,
         "hallucination_rate_decided": halluc,
         "elapsed_seconds": round(elapsed, 1),
     }
     Path(stats_path).write_text(json.dumps(stats, indent=2))
 
-    print(f"\n{'='*55}")
+    print(f"\n{'=' * 55}")
     print("  VERIFICATION SUMMARY")
-    print(f"{'='*55}")
+    print(f"{'=' * 55}")
     print(f"  Total: {len(triples)}  |  Decided: {decided}")
-    print(f"  STRONG: {counts['STRONG_SUPPORT']}  WEAK: {counts['WEAK_SUPPORT']}  "
-          f"NOT_SUPPORTED: {counts['NOT_SUPPORTED']}")
+    print(
+        f"  STRONG: {counts['STRONG_SUPPORT']}  WEAK: {counts['WEAK_SUPPORT']}  "
+        f"NOT_SUPPORTED: {counts['NOT_SUPPORTED']}"
+    )
     if halluc is not None:
         print(f"  Hallucination rate (decided): {halluc:.1%}")
     print(f"  Model: {args.model}")

@@ -41,18 +41,34 @@ import time
 from collections import Counter
 from pathlib import Path
 
-from m4_config import MAX_EVIDENCE_CHARS, get_glosses, DEFAULT_MODEL
-from m4_verify import (load_triples, triple_fields,
-                       evidence_from_provenance, load_model, generate,
-                       parse_pass)
+from m4_config import DEFAULT_MODEL, MAX_EVIDENCE_CHARS, get_glosses
+from m4_verify import (
+    evidence_from_provenance,
+    generate,
+    load_model,
+    load_triples,
+    parse_pass,
+    triple_fields,
+)
 
-logging.basicConfig(level=logging.INFO,
-                    format="%(asctime)s  %(levelname)s  %(message)s",
-                    datefmt="%H:%M:%S")
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s  %(levelname)s  %(message)s",
+    datefmt="%H:%M:%S",
+)
 log = logging.getLogger("m4dir")
 
-DIRECTIONAL = {"causes", "triggers", "controls", "affects", "overlies",
-               "underlies", "evolvesTo", "indicates", "formedBy"}
+DIRECTIONAL = {
+    "causes",
+    "triggers",
+    "controls",
+    "affects",
+    "overlies",
+    "underlies",
+    "evolvesTo",
+    "indicates",
+    "formedBy",
+}
 
 DIR_SYSTEM = (
     "You are a strict scientific fact-checker. You will determine the "
@@ -126,8 +142,11 @@ def main():
     for d in decisions:
         if d["m4_decision"] == "ACCEPT" and d["relation"] in DIRECTIONAL:
             idx = d["m4_index"]
-            passage = evidence_from_provenance(triples[idx]) \
-                if idx < len(triples) else ""
+            passage = (
+                evidence_from_provenance(triples[idx])
+                if idx < len(triples)
+                else ""
+            )
             if passage:
                 targets.append((d, passage))
     if args.limit:
@@ -142,10 +161,18 @@ def main():
     with open(out_path, "w", encoding="utf-8") as fout:
         for i, (d, passage) in enumerate(targets):
             gloss = glosses.get(d["relation"], d["relation"])
-            raw = generate(tok, mdl, DIR_SYSTEM, DIR_PROMPT.format(
-                subject=d["subject"], relation=d["relation"],
-                object=d["object"], gloss=gloss,
-                evidence=passage[:MAX_EVIDENCE_CHARS]))
+            raw = generate(
+                tok,
+                mdl,
+                DIR_SYSTEM,
+                DIR_PROMPT.format(
+                    subject=d["subject"],
+                    relation=d["relation"],
+                    object=d["object"],
+                    gloss=gloss,
+                    evidence=passage[:MAX_EVIDENCE_CHARS],
+                ),
+            )
             parsed = parse_pass(raw, DIR_VERDICTS, ("QUOTE", "REASONING"))
             v = parsed["verdict"]
             counts[v] += 1
@@ -158,20 +185,30 @@ def main():
             elif v == "ABSENT":
                 flags.append("direction_check_absent")
 
-            fout.write(json.dumps({
-                "m4_index": d["m4_index"],
-                "subject": d["subject"], "relation": d["relation"],
-                "object": d["object"], "tier": d.get("tier"),
-                "evidence_verdict": d["evidence_verdict"],
-                "direction_verdict": v,
-                "quote": parsed.get("quote", ""),
-                "reasoning": parsed.get("reasoning", ""),
-                "flags": flags,
-            }, ensure_ascii=False) + "\n")
+            fout.write(
+                json.dumps(
+                    {
+                        "m4_index": d["m4_index"],
+                        "subject": d["subject"],
+                        "relation": d["relation"],
+                        "object": d["object"],
+                        "tier": d.get("tier"),
+                        "evidence_verdict": d["evidence_verdict"],
+                        "direction_verdict": v,
+                        "quote": parsed.get("quote", ""),
+                        "reasoning": parsed.get("reasoning", ""),
+                        "flags": flags,
+                    },
+                    ensure_ascii=False,
+                )
+                + "\n"
+            )
 
             if (i + 1) % 10 == 0 or (i + 1) == len(targets):
-                log.info(f"[{i+1}/{len(targets)}] {v:<11s} "
-                         f"({(time.time()-t0)/(i+1):.1f}s/triple)")
+                log.info(
+                    f"[{i + 1}/{len(targets)}] {v:<11s} "
+                    f"({(time.time() - t0) / (i + 1):.1f}s/triple)"
+                )
 
     n = len(targets)
     summary = {
@@ -183,12 +220,13 @@ def main():
             "FORWARD": "direction confirmed as extracted",
             "REVERSE": "direction error — candidate demotion",
             "UNDIRECTED": "association without stated direction — "
-                          "residual risk, documented",
+            "residual risk, documented",
             "ABSENT": "inconsistent with prior ACCEPT — inspect",
         },
     }
     (out_dir / "m4_direction_summary.json").write_text(
-        json.dumps(summary, indent=2), encoding="utf-8")
+        json.dumps(summary, indent=2), encoding="utf-8"
+    )
     print(json.dumps(summary, indent=2))
     print(f"Verdicts: {out_path}")
 

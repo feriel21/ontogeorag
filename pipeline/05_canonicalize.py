@@ -119,9 +119,19 @@ LEXICON = {
 
 # LB2019 descriptor terms that must NEVER be merged with each other
 LB_DESCRIPTORS = {
-    "chaotic", "transparent", "blocky", "massive", "hummocky",
-    "discontinuous", "high-amplitude", "low-amplitude",
-    "undeformed", "layered", "stratified", "continuous", "parallel",
+    "chaotic",
+    "transparent",
+    "blocky",
+    "massive",
+    "hummocky",
+    "discontinuous",
+    "high-amplitude",
+    "low-amplitude",
+    "undeformed",
+    "layered",
+    "stratified",
+    "continuous",
+    "parallel",
 }
 
 
@@ -134,8 +144,10 @@ def get_embed_model():
     """Lazily load and cache the SciBERT SentenceTransformer used for entity embeddings; returns the shared model instance."""
     global _embed_model
     if _embed_model is None:
-        from sentence_transformers import SentenceTransformer
         import logging
+
+        from sentence_transformers import SentenceTransformer
+
         logging.getLogger("sentence_transformers").setLevel(logging.WARNING)
         print("  Loading SciBERT for entity embeddings...")
         _embed_model = SentenceTransformer("allenai/scibert_scivocab_uncased")
@@ -143,6 +155,7 @@ def get_embed_model():
 
 
 # ── Clustering ────────────────────────────────────────────────────────────
+
 
 def build_canonical_map(entities, embeddings, distance_threshold=0.06):
     """
@@ -174,11 +187,14 @@ def build_canonical_map(entities, embeddings, distance_threshold=0.06):
             continue
 
         # Priority: in LEXICON > longer > alphabetical first
-        best = sorted(members, key=lambda e: (
-            e not in LEXICON,
-            -len(e),
-            e,
-        ))[0]
+        best = sorted(
+            members,
+            key=lambda e: (
+                e not in LEXICON,
+                -len(e),
+                e,
+            ),
+        )[0]
 
         for m in members:
             if m != best:
@@ -202,9 +218,14 @@ def validate_canonical_map(canonical_map):
         new_type = LEXICON.get(new, "Unknown")
 
         # Rule 1: Never merge entities of different ontology types
-        if (old_type != "Unknown" and new_type != "Unknown"
-                and old_type != new_type):
-            bad_merges.append((old, new, f"cross-type: {old_type}->{new_type}"))
+        if (
+            old_type != "Unknown"
+            and new_type != "Unknown"
+            and old_type != new_type
+        ):
+            bad_merges.append(
+                (old, new, f"cross-type: {old_type}->{new_type}")
+            )
             del canonical_map[old]
             continue
 
@@ -224,6 +245,7 @@ def validate_canonical_map(canonical_map):
 
 
 # ── Main ──────────────────────────────────────────────────────────────────
+
 
 def main():
     """CLI entry point: embeds unique entities from --input, clusters them, validates/applies the resulting canonical map, re-dedups and writes --output plus --map."""
@@ -365,7 +387,8 @@ def main():
     # ── Filter self-loops created by merging ──────────────────────────────
     before_loop_filter = len(unique)
     unique = [
-        t for t in unique
+        t
+        for t in unique
         if t.get("source_norm", "") != t.get("target_norm", "")
     ]
     loops_removed = before_loop_filter - len(unique)
@@ -392,9 +415,9 @@ def main():
         if t.get("target_norm"):
             final_entities.add(t["target_norm"])
 
-    print(f"\n{'='*60}")
+    print(f"\n{'=' * 60}")
     print("  CANONICALIZATION SUMMARY")
-    print(f"{'='*60}")
+    print(f"{'=' * 60}")
     print(f"  Input triples:      {len(triples)}")
     print(f"  Output triples:     {len(unique)}")
     print(f"  Entities before:    {len(entity_list)}")

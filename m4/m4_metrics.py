@@ -41,8 +41,8 @@ import json
 from collections import Counter, defaultdict
 from pathlib import Path
 
-
 # ── Cohen's kappa (unweighted + linear-weighted) ───────────────────────
+
 
 def cohens_kappa(labels_a, labels_b, categories=None, weighted=False):
     """Compute Cohen's kappa between paired `labels_a`/`labels_b` (unweighted, or linear-weighted by category distance if `weighted`); returns the rounded kappa, no side effects."""
@@ -68,8 +68,9 @@ def cohens_kappa(labels_a, labels_b, categories=None, weighted=False):
     col = [sum(cm[i][j] for i in range(k)) for j in range(k)]
 
     obs = sum(w(i, j) * cm[i][j] for i in range(k) for j in range(k)) / n
-    exp = sum(w(i, j) * row[i] * col[j] for i in range(k)
-              for j in range(k)) / (n * n)
+    exp = sum(
+        w(i, j) * row[i] * col[j] for i in range(k) for j in range(k)
+    ) / (n * n)
     if exp == 0:
         return 1.0
     return round(1.0 - obs / exp, 4)
@@ -81,17 +82,18 @@ def cohens_kappa(labels_a, labels_b, categories=None, weighted=False):
 EV_POS = {"SUPPORTED", "PARTIALLY_SUPPORTED"}
 QWEN_POS = {"STRONG_SUPPORT", "WEAK_SUPPORT"}
 
-QWEN_TO_M4 = {"STRONG_SUPPORT": "SUPPORTED",
-              "WEAK_SUPPORT": "PARTIALLY_SUPPORTED",
-              "NOT_SUPPORTED": "NOT_SUPPORTED"}
+QWEN_TO_M4 = {
+    "STRONG_SUPPORT": "SUPPORTED",
+    "WEAK_SUPPORT": "PARTIALLY_SUPPORTED",
+    "NOT_SUPPORTED": "NOT_SUPPORTED",
+}
 
 EXPERT_TO_DECISION = {"Y": "ACCEPT", "P": "UNCERTAIN", "N": "REJECT"}
 
 
 def norm_key(subject, relation, obj):
     """Build a lowercase/stripped (subject, relation, object) tuple key for joining against expert-label CSV rows; no side effects."""
-    return (subject.strip().lower(), relation.strip(),
-            obj.strip().lower())
+    return (subject.strip().lower(), relation.strip(), obj.strip().lower())
 
 
 def main():
@@ -99,8 +101,11 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--decisions", required=True)
     ap.add_argument("--output", required=True)
-    ap.add_argument("--experts", default=None,
-                    help="Optional CSV: subject,relation,object,expert_verdict")
+    ap.add_argument(
+        "--experts",
+        default=None,
+        help="Optional CSV: subject,relation,object,expert_verdict",
+    )
     args = ap.parse_args()
 
     out_dir = Path(args.output).expanduser()
@@ -117,12 +122,15 @@ def main():
     report = {"n_triples": n}
 
     # ── 1. distributions ───────────────────────────────────────────────
-    report["blind_distribution"] = dict(Counter(
-        r["blind_verdict"] for r in records))
-    report["evidence_distribution"] = dict(Counter(
-        r["evidence_verdict"] for r in records))
-    report["decision_distribution"] = dict(Counter(
-        r["m4_decision"] for r in records))
+    report["blind_distribution"] = dict(
+        Counter(r["blind_verdict"] for r in records)
+    )
+    report["evidence_distribution"] = dict(
+        Counter(r["evidence_verdict"] for r in records)
+    )
+    report["decision_distribution"] = dict(
+        Counter(r["m4_decision"] for r in records)
+    )
 
     by_tier = defaultdict(Counter)
     for r in records:
@@ -135,15 +143,21 @@ def main():
     report["decisions_by_relation"] = {k: dict(v) for k, v in by_rel.items()}
 
     # ── 2. blind vs evidence ───────────────────────────────────────────
-    valid = [r for r in records
-             if r["blind_verdict"] in ("PLAUSIBLE", "UNCERTAIN", "IMPLAUSIBLE")
-             and r["evidence_verdict"] in ("SUPPORTED",
-                                           "PARTIALLY_SUPPORTED",
-                                           "NOT_SUPPORTED")]
+    valid = [
+        r
+        for r in records
+        if r["blind_verdict"] in ("PLAUSIBLE", "UNCERTAIN", "IMPLAUSIBLE")
+        and r["evidence_verdict"]
+        in ("SUPPORTED", "PARTIALLY_SUPPORTED", "NOT_SUPPORTED")
+    ]
     if valid:
         bin_agree = sum(
-            ((r["blind_verdict"] == "PLAUSIBLE") ==
-             (r["evidence_verdict"] in EV_POS)) for r in valid)
+            (
+                (r["blind_verdict"] == "PLAUSIBLE")
+                == (r["evidence_verdict"] in EV_POS)
+            )
+            for r in valid
+        )
         report["blind_vs_evidence"] = {
             "n_comparable": len(valid),
             "binary_agreement": round(bin_agree / len(valid), 4),
@@ -159,28 +173,35 @@ def main():
             }
 
     # ── 3. M4 vs Qwen (cross-verifier, successor of Exp D) ─────────────
-    both = [r for r in records
-            if r.get("qwen_verdict") in QWEN_TO_M4
-            and r["evidence_verdict"] in ("SUPPORTED",
-                                          "PARTIALLY_SUPPORTED",
-                                          "NOT_SUPPORTED")]
+    both = [
+        r
+        for r in records
+        if r.get("qwen_verdict") in QWEN_TO_M4
+        and r["evidence_verdict"]
+        in ("SUPPORTED", "PARTIALLY_SUPPORTED", "NOT_SUPPORTED")
+    ]
     if both:
-        qwen_bin = [("POS" if r["qwen_verdict"] in QWEN_POS else "NEG")
-                    for r in both]
-        m4_bin = [("POS" if r["evidence_verdict"] in EV_POS else "NEG")
-                  for r in both]
+        qwen_bin = [
+            ("POS" if r["qwen_verdict"] in QWEN_POS else "NEG") for r in both
+        ]
+        m4_bin = [
+            ("POS" if r["evidence_verdict"] in EV_POS else "NEG") for r in both
+        ]
         exact_q = [QWEN_TO_M4[r["qwen_verdict"]] for r in both]
         exact_m = [r["evidence_verdict"] for r in both]
         order = ["SUPPORTED", "PARTIALLY_SUPPORTED", "NOT_SUPPORTED"]
         report["m4_vs_qwen"] = {
             "n_comparable": len(both),
             "binary_agreement": round(
-                sum(a == b for a, b in zip(qwen_bin, m4_bin)) / len(both), 4),
+                sum(a == b for a, b in zip(qwen_bin, m4_bin)) / len(both), 4
+            ),
             "exact_agreement_3class": round(
-                sum(a == b for a, b in zip(exact_q, exact_m)) / len(both), 4),
+                sum(a == b for a, b in zip(exact_q, exact_m)) / len(both), 4
+            ),
             "kappa_unweighted": cohens_kappa(exact_q, exact_m, order),
-            "kappa_linear": cohens_kappa(exact_q, exact_m, order,
-                                         weighted=True),
+            "kappa_linear": cohens_kappa(
+                exact_q, exact_m, order, weighted=True
+            ),
         }
 
     # ── 4. M4 vs experts (meta-evaluation, optional) ───────────────────
@@ -190,8 +211,11 @@ def main():
             for row in csv.DictReader(f):
                 v = row.get("expert_verdict", "").strip().upper()
                 if v in EXPERT_TO_DECISION:
-                    expert[norm_key(row["subject"], row["relation"],
-                                    row["object"])] = EXPERT_TO_DECISION[v]
+                    expert[
+                        norm_key(
+                            row["subject"], row["relation"], row["object"]
+                        )
+                    ] = EXPERT_TO_DECISION[v]
         paired_m4, paired_ex = [], []
         for r in records:
             key = norm_key(r["subject"], r["relation"], r["object"])
@@ -204,19 +228,25 @@ def main():
                 "n_paired": len(paired_m4),
                 "exact_agreement": round(
                     sum(a == b for a, b in zip(paired_m4, paired_ex))
-                    / len(paired_m4), 4),
+                    / len(paired_m4),
+                    4,
+                ),
                 "kappa_unweighted": cohens_kappa(paired_m4, paired_ex, order),
-                "kappa_linear": cohens_kappa(paired_m4, paired_ex, order,
-                                             weighted=True),
-                "note": ("Compare with inter-expert kappa (Section 4.4) "
-                         "to position the LLM judge relative to human "
-                         "agreement levels."),
+                "kappa_linear": cohens_kappa(
+                    paired_m4, paired_ex, order, weighted=True
+                ),
+                "note": (
+                    "Compare with inter-expert kappa (Section 4.4) "
+                    "to position the LLM judge relative to human "
+                    "agreement levels."
+                ),
             }
         else:
             report["m4_vs_experts"] = {
                 "n_paired": 0,
                 "warning": "No triples matched expert CSV keys "
-                           "(check entity normalization)."}
+                "(check entity normalization).",
+            }
 
     out_path = out_dir / "m4_report.json"
     out_path.write_text(json.dumps(report, indent=2), encoding="utf-8")

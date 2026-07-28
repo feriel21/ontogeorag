@@ -52,8 +52,15 @@ import math
 import re
 from pathlib import Path
 
-from kg_io import (load_kg, dump_kg, load_chunk_records, get_subject,
-                   get_object, get_relation, get_m4_verdict)
+from kg_io import (
+    dump_kg,
+    get_m4_verdict,
+    get_object,
+    get_relation,
+    get_subject,
+    load_chunk_records,
+    load_kg,
+)
 
 P_REF = 4
 W_TIER = {1: 1.00, 2: 0.60, 0: 0.20}
@@ -67,7 +74,9 @@ def norm_text(s: str) -> str:
 
 def shingles(s: str, k: int = 5) -> set:
     toks = norm_text(s).split()
-    return {" ".join(toks[i:i + k]) for i in range(max(len(toks) - k + 1, 1))}
+    return {
+        " ".join(toks[i : i + k]) for i in range(max(len(toks) - k + 1, 1))
+    }
 
 
 def m4_weight(verdict: str) -> float:
@@ -89,8 +98,12 @@ def main():
     ap.add_argument("--kg", required=True)
     ap.add_argument("--chunks", required=True)
     ap.add_argument("--outdir", default="output/analysis")
-    ap.add_argument("--fuzzy-thr", type=float, default=0.5,
-                    help="min shingle containment for fuzzy anchor")
+    ap.add_argument(
+        "--fuzzy-thr",
+        type=float,
+        default=0.5,
+        help="min shingle containment for fuzzy anchor",
+    )
     args = ap.parse_args()
     outdir = Path(args.outdir)
     outdir.mkdir(parents=True, exist_ok=True)
@@ -112,12 +125,15 @@ def main():
         if len(ev) >= 30:
             # exact: mid-slice survives truncated/quoted edges
             probe = ev[8:158] if len(ev) > 60 else ev
-            hit = next((i for i, ct in enumerate(chunk_norm)
-                        if probe in ct), None)
+            hit = next(
+                (i for i, ct in enumerate(chunk_norm) if probe in ct), None
+            )
             if hit is not None:
-                ev_chunk, ev_paper, ev_match = (chunks[hit]["chunk_id"],
-                                                chunks[hit]["paper"],
-                                                "exact")
+                ev_chunk, ev_paper, ev_match = (
+                    chunks[hit]["chunk_id"],
+                    chunks[hit]["paper"],
+                    "exact",
+                )
                 n_exact += 1
             else:
                 if chunk_shingles is None:
@@ -132,19 +148,32 @@ def main():
                     if j > best_j:
                         best_i, best_j = i, j
                 if best_i is not None and best_j >= args.fuzzy_thr:
-                    ev_chunk, ev_paper = (chunks[best_i]["chunk_id"],
-                                          chunks[best_i]["paper"])
+                    ev_chunk, ev_paper = (
+                        chunks[best_i]["chunk_id"],
+                        chunks[best_i]["paper"],
+                    )
                     ev_match = f"fuzzy({best_j:.2f})"
                     n_fuzzy += 1
                 else:
                     n_unmatched += 1
-                    unmatched.append({"subject": s, "relation": r,
-                                      "object": o,
-                                      "evidence_head": ev[:120]})
+                    unmatched.append(
+                        {
+                            "subject": s,
+                            "relation": r,
+                            "object": o,
+                            "evidence_head": ev[:120],
+                        }
+                    )
         else:
             n_unmatched += 1
-            unmatched.append({"subject": s, "relation": r, "object": o,
-                              "evidence_head": ev[:120]})
+            unmatched.append(
+                {
+                    "subject": s,
+                    "relation": r,
+                    "object": o,
+                    "evidence_head": ev[:120],
+                }
+            )
 
         # ── channel 2: co-occurrence support ──────────────────────────
         sn, on = norm_text(s), norm_text(o)
@@ -173,29 +202,44 @@ def main():
         t["support_papers"] = len(cooc_papers)
         t["paper_ids"] = cooc_papers
         t["confidence"] = conf
-        t["conf_components"] = {"w_tier": w_t, "w_m4": w_m,
-                                "w_consensus": round(w_c, 4)}
+        t["conf_components"] = {
+            "w_tier": w_t,
+            "w_m4": w_m,
+            "w_consensus": round(w_c, 4),
+        }
 
-        rows.append({"subject": s, "relation": r, "object": o,
-                     "tier": t["_tier"], "status": t["_status"],
-                     "verdict": verdict or "NA",
-                     "evidence_paper": ev_paper,
-                     "evidence_match": ev_match,
-                     "support_chunks": len(cooc_ids),
-                     "support_papers": len(cooc_papers),
-                     "confidence": conf,
-                     "paper_ids": ";".join(cooc_papers)})
+        rows.append(
+            {
+                "subject": s,
+                "relation": r,
+                "object": o,
+                "tier": t["_tier"],
+                "status": t["_status"],
+                "verdict": verdict or "NA",
+                "evidence_paper": ev_paper,
+                "evidence_match": ev_match,
+                "support_chunks": len(cooc_ids),
+                "support_papers": len(cooc_papers),
+                "confidence": conf,
+                "paper_ids": ";".join(cooc_papers),
+            }
+        )
 
     dump_kg(kg, outdir / "kg_with_provenance.json")
     rows.sort(key=lambda r: -r["confidence"])
-    with open(outdir / "provenance_report.csv", "w", newline="",
-              encoding="utf-8") as f:
+    with open(
+        outdir / "provenance_report.csv", "w", newline="", encoding="utf-8"
+    ) as f:
         w = csv.DictWriter(f, fieldnames=list(rows[0].keys()))
         w.writeheader()
         w.writerows(rows)
     if unmatched:
-        with open(outdir / "provenance_unmatched.csv", "w", newline="",
-                  encoding="utf-8") as f:
+        with open(
+            outdir / "provenance_unmatched.csv",
+            "w",
+            newline="",
+            encoding="utf-8",
+        ) as f:
             w = csv.DictWriter(f, fieldnames=list(unmatched[0].keys()))
             w.writeheader()
             w.writerows(unmatched)
@@ -208,10 +252,14 @@ def main():
     print(f"triples processed          : {n}")
     print(f"evidence anchored exact    : {n_exact}")
     print(f"evidence anchored fuzzy    : {n_fuzzy}")
-    print(f"evidence unmatched         : {n_unmatched}"
-          + ("  -> see provenance_unmatched.csv" if n_unmatched else ""))
-    print(f"triples with >=2 papers    : {multi} ({100*multi/max(n,1):.1f}%)"
-          "  (co-occurrence consensus, upper bound)")
+    print(
+        f"evidence unmatched         : {n_unmatched}"
+        + ("  -> see provenance_unmatched.csv" if n_unmatched else "")
+    )
+    print(
+        f"triples with >=2 papers    : {multi} ({100 * multi / max(n, 1):.1f}%)"
+        "  (co-occurrence consensus, upper bound)"
+    )
     print(f"outputs in: {outdir}")
 
 

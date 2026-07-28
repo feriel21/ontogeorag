@@ -39,8 +39,10 @@ def load_canonical_map(run_dir: Path) -> dict:
     """Load `run_dir`/canonical_map_v5.json (lowercased key/value) if present; returns {} otherwise, no side effects."""
     p = run_dir / "canonical_map_v5.json"
     if p.exists():
-        return {k.strip().lower(): v.strip().lower()
-                for k, v in json.loads(p.read_text(encoding="utf-8")).items()}
+        return {
+            k.strip().lower(): v.strip().lower()
+            for k, v in json.loads(p.read_text(encoding="utf-8")).items()
+        }
     return {}
 
 
@@ -60,16 +62,22 @@ def load_audit(run_dir: Path, cmap: dict, tag: str) -> dict:
             if not line:
                 continue
             a = json.loads(line)
-            key = (canon(a.get("subject", ""), cmap),
-                   a.get("relation", "").strip(),
-                   canon(a.get("object", ""), cmap))
-            rec = {"quote": a.get("evidence", ""),
-                   "reasoning": a.get("reasoning", ""),
-                   "verdict": a.get("verdict", ""),
-                   "pass": tag}
+            key = (
+                canon(a.get("subject", ""), cmap),
+                a.get("relation", "").strip(),
+                canon(a.get("object", ""), cmap),
+            )
+            rec = {
+                "quote": a.get("evidence", ""),
+                "reasoning": a.get("reasoning", ""),
+                "verdict": a.get("verdict", ""),
+                "pass": tag,
+            }
             # keep the strongest verdict if duplicated within a pass
-            if key not in out or (rec["verdict"] == "STRONG_SUPPORT"
-                                  and out[key]["verdict"] != "STRONG_SUPPORT"):
+            if key not in out or (
+                rec["verdict"] == "STRONG_SUPPORT"
+                and out[key]["verdict"] != "STRONG_SUPPORT"
+            ):
                 out[key] = rec
     return out
 
@@ -114,21 +122,29 @@ def main():
     # preserve tier structure in output
     tier1 = [t for t in triples if t.get("tier") == 1]
     tier2 = [t for t in triples if t.get("tier") != 1]
-    out = {"meta": {"source_kg": str(kg_path),
-                    "enrichment": "verifier evidence quotes from "
-                                  "run11_a/run11_b verification audits",
-                    "join_stats": dict(stats)},
-           "tier1": tier1, "tier2": tier2}
+    out = {
+        "meta": {
+            "source_kg": str(kg_path),
+            "enrichment": "verifier evidence quotes from "
+            "run11_a/run11_b verification audits",
+            "join_stats": dict(stats),
+        },
+        "tier1": tier1,
+        "tier2": tier2,
+    }
 
     out_path = Path(args.output).expanduser()
     out_path.parent.mkdir(parents=True, exist_ok=True)
-    out_path.write_text(json.dumps(out, indent=2, ensure_ascii=False),
-                        encoding="utf-8")
+    out_path.write_text(
+        json.dumps(out, indent=2, ensure_ascii=False), encoding="utf-8"
+    )
     print(json.dumps(dict(stats), indent=2))
     print(f"Enriched KG: {out_path}")
     if stats["no_audit_match"]:
-        print(f"WARNING: {stats['no_audit_match']} triples without audit "
-              f"match — inspect entity normalization if this is high.")
+        print(
+            f"WARNING: {stats['no_audit_match']} triples without audit "
+            f"match — inspect entity normalization if this is high."
+        )
 
 
 if __name__ == "__main__":

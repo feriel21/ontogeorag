@@ -40,6 +40,8 @@ import numpy as np
 
 from pipeline.rag.constants import (
     KNOWN_DESCRIPTORS,
+)
+from pipeline.rag.constants import (
     LB2019_BENCHMARK_DESCRIPTORS as LB_DESCRIPTORS,
 )
 
@@ -77,34 +79,87 @@ LB_REFERENCE_EDGES = [
 ]
 
 VALID_RELATIONS = {
-    "hasDescriptor", "occursIn", "formedBy", "partOf",
-    "triggers", "causes", "controls", "affects",
-    "overlies", "underlies", "associatedWith",
-    "contains", "transports", "erodes", "deposits",
+    "hasDescriptor",
+    "occursIn",
+    "formedBy",
+    "partOf",
+    "triggers",
+    "causes",
+    "controls",
+    "affects",
+    "overlies",
+    "underlies",
+    "associatedWith",
+    "contains",
+    "transports",
+    "erodes",
+    "deposits",
 }
 
 TYPE_CONSTRAINTS = {
     "hasDescriptor": {"object_type": "Descriptor"},
-    "occursIn":      {"object_type": "Setting"},
-    "overlies":      {"subject_type": "Geological_Object", "object_type": "Geological_Object"},
-    "underlies":     {"subject_type": "Geological_Object", "object_type": "Geological_Object"},
+    "occursIn": {"object_type": "Setting"},
+    "overlies": {
+        "subject_type": "Geological_Object",
+        "object_type": "Geological_Object",
+    },
+    "underlies": {
+        "subject_type": "Geological_Object",
+        "object_type": "Geological_Object",
+    },
 }
 
 KNOWN_SETTINGS = {
-    "continental slope", "continental shelf", "continental margin",
-    "abyssal plain", "basin floor", "submarine canyon", "channel",
-    "deep-water environment", "deep-water environments", "deep water",
-    "passive margin", "active margin", "accretionary prism",
-    "trench", "mid-ocean ridge", "seamount", "delta", "fan",
-    "submarine fan", "levee", "overbank",
+    "continental slope",
+    "continental shelf",
+    "continental margin",
+    "abyssal plain",
+    "basin floor",
+    "submarine canyon",
+    "channel",
+    "deep-water environment",
+    "deep-water environments",
+    "deep water",
+    "passive margin",
+    "active margin",
+    "accretionary prism",
+    "trench",
+    "mid-ocean ridge",
+    "seamount",
+    "delta",
+    "fan",
+    "submarine fan",
+    "levee",
+    "overbank",
 }
 
 VAGUE_TERMS = {
-    "it", "they", "this", "that", "these", "those",
-    "something", "thing", "stuff", "area", "region",
-    "feature", "process", "event", "result", "effect",
-    "study", "analysis", "data", "figure", "table",
-    "example", "case", "type", "kind", "form",
+    "it",
+    "they",
+    "this",
+    "that",
+    "these",
+    "those",
+    "something",
+    "thing",
+    "stuff",
+    "area",
+    "region",
+    "feature",
+    "process",
+    "event",
+    "result",
+    "effect",
+    "study",
+    "analysis",
+    "data",
+    "figure",
+    "table",
+    "example",
+    "case",
+    "type",
+    "kind",
+    "form",
 }
 
 BLACKLIST_PATTERNS = [
@@ -134,15 +189,12 @@ RELATION_MAP = {
     "ischaracterizedby": "hasDescriptor",
     "characterizedby": "hasDescriptor",
     "describedby": "hasDescriptor",
-
     "locatedin": "occursIn",
     "occursinenvironment": "occursIn",
     "foundin": "occursIn",
-
     "composedof": "partOf",
     "madeof": "partOf",
     "consistsof": "partOf",
-
     "haspart": "contains",
     "include": "contains",
     "includes": "contains",
@@ -150,15 +202,17 @@ RELATION_MAP = {
     "contains": "contains",
 }
 
+
 def normalize_relation(rel: str) -> str:
     """Collapse camelCase/spaces/hyphens/underscores in `rel` into a lowercase lookup key for RELATION_MAP; returns the key, no side effects."""
     rel = (rel or "").strip()
     if not rel:
         return ""
-    rel = re.sub(r"([a-z])([A-Z])", r"\1 \2", rel)   # camelCase -> words
+    rel = re.sub(r"([a-z])([A-Z])", r"\1 \2", rel)  # camelCase -> words
     rel = rel.lower()
-    rel = re.sub(r"[\s\-_]+", "", rel)              # remove separators
+    rel = re.sub(r"[\s\-_]+", "", rel)  # remove separators
     return rel
+
 
 def apply_relation_mapping(triple: dict) -> None:
     """If `triple`'s relation is a known non-canonical alias (RELATION_MAP), rewrite its relation/relation_norm fields in place; returns None."""
@@ -173,6 +227,7 @@ def apply_relation_mapping(triple: dict) -> None:
 # ═══════════════════════════════════════════════════════════════════════
 # VERIFICATION FILTER
 # ═══════════════════════════════════════════════════════════════════════
+
 
 def check_verification(triple: dict, policy: str) -> tuple[bool, str]:
     """Decide whether `triple` survives its stage-3 `_verification` verdict under the given `policy` (strict/normal/relaxed/off); returns (passes, reason_code), no side effects."""
@@ -196,7 +251,11 @@ def check_verification(triple: dict, policy: str) -> tuple[bool, str]:
     if policy == "strict":
         # Tier-1 gate: only an explicit STRONG_SUPPORT counts. This is
         # what makes Tier 1 "verified" in the tiered-fusion sense (06).
-        return (verdict == "STRONG_SUPPORT"), ("ok" if verdict == "STRONG_SUPPORT" else f"verif_rejected_{verdict.lower()}")
+        return (verdict == "STRONG_SUPPORT"), (
+            "ok"
+            if verdict == "STRONG_SUPPORT"
+            else f"verif_rejected_{verdict.lower()}"
+        )
 
     if policy == "normal":
         if verdict in ("STRONG_SUPPORT", "WEAK_SUPPORT"):
@@ -224,12 +283,14 @@ def check_verification(triple: dict, policy: str) -> tuple[bool, str]:
 # VALIDATION CHECKS
 # ═══════════════════════════════════════════════════════════════════════
 
+
 def normalize_entity(text: str) -> str:
     """Lowercase, collapse whitespace, and strip trailing punctuation from `text`; returns the normalized string, no side effects."""
     text = (text or "").lower().strip()
     text = re.sub(r"\s+", " ", text)
     text = text.rstrip(".,;:")
     return text
+
 
 def check_basic(triple: dict) -> tuple[bool, str]:
     """Reject `triple` on empty/too-short/too-long fields, self-loops, blacklist patterns, or vague-term entities; returns (passes, reason_code), no side effects."""
@@ -266,10 +327,14 @@ def check_basic(triple: dict) -> tuple[bool, str]:
 
     return True, "ok"
 
+
 def check_relation(triple: dict) -> tuple[bool, str]:
     """Reject `triple` if its relation is outside VALID_RELATIONS; returns (passes, reason_code), no side effects."""
     r = triple.get("relation_norm", triple.get("relation", ""))
-    return (r in VALID_RELATIONS), ("ok" if r in VALID_RELATIONS else "invalid_relation")
+    return (r in VALID_RELATIONS), (
+        "ok" if r in VALID_RELATIONS else "invalid_relation"
+    )
+
 
 def check_type_constraint(triple: dict) -> tuple[bool, str]:
     """Enforce TYPE_CONSTRAINTS for hasDescriptor/occursIn objects, normalizing near-miss descriptor variants onto a KNOWN_DESCRIPTORS entry in place when possible; returns (passes, reason_code)."""
@@ -292,7 +357,22 @@ def check_type_constraint(triple: dict) -> tuple[bool, str]:
 
     if r == "occursIn":
         if t not in KNOWN_SETTINGS:
-            setting_kw = {"slope","basin","shelf","margin","canyon","fan","plain","deep","environment","channel","trench","delta","levee","ridge"}
+            setting_kw = {
+                "slope",
+                "basin",
+                "shelf",
+                "margin",
+                "canyon",
+                "fan",
+                "plain",
+                "deep",
+                "environment",
+                "channel",
+                "trench",
+                "delta",
+                "levee",
+                "ridge",
+            }
             if not any(kw in t for kw in setting_kw):
                 return False, "type_constraint"
 
@@ -303,7 +383,10 @@ def check_type_constraint(triple: dict) -> tuple[bool, str]:
 # FIX #2 — SOFT LEXICON
 # ═══════════════════════════════════════════════════════════════════════
 
-def check_lexicon_coverage_soft(triple: dict, lexicon: set) -> tuple[bool, str]:
+
+def check_lexicon_coverage_soft(
+    triple: dict, lexicon: set
+) -> tuple[bool, str]:
     """
     If both entities are outside lexicon:
       - keep if verified STRONG/WEAK (tag novel_term=True)
@@ -324,6 +407,7 @@ def check_lexicon_coverage_soft(triple: dict, lexicon: set) -> tuple[bool, str]:
 
     return True, "ok"
 
+
 def triple_key(triple: dict) -> str:
     """Build the `subject||relation||object` dedup key for `triple` from its normalized entities; returns the key string, no side effects."""
     s = normalize_entity(triple.get("source_norm", triple.get("source", "")))
@@ -335,6 +419,7 @@ def triple_key(triple: dict) -> str:
 # ═══════════════════════════════════════════════════════════════════════
 # CANONICALIZATION
 # ═══════════════════════════════════════════════════════════════════════
+
 
 def build_canonical_map(
     entities: list[str],
@@ -352,7 +437,9 @@ def build_canonical_map(
         from sentence_transformers import SentenceTransformer
         from sklearn.cluster import AgglomerativeClustering
     except ImportError:
-        print("  WARNING: sentence-transformers or sklearn not available, skipping canonicalization.")
+        print(
+            "  WARNING: sentence-transformers or sklearn not available, skipping canonicalization."
+        )
         return {}
 
     print(f"  Computing SciBERT embeddings for {len(entities)} entities...")
@@ -391,19 +478,27 @@ def build_canonical_map(
         lb_members = [m for m in members if m in lb_descriptors]
         if len(lb_members) >= 2:
             for m in members:
-                blocked.append(f"BLOCKED: '{m}' (cluster with {members}, both LB descriptors)")
+                blocked.append(
+                    f"BLOCKED: '{m}' (cluster with {members}, both LB descriptors)"
+                )
             continue
         # Same protection for LB2019 setting terms — a setting merged into
         # a co-clustered non-setting entity would silently break occursIn
         # recall against the benchmark edges. (P9 = project ticket ref.)
         lb_settings = {
-            "continental slope", "abyssal plain", "basin floor",
-            "hemipelagite", "passive margins", "continental shelf",
+            "continental slope",
+            "abyssal plain",
+            "basin floor",
+            "hemipelagite",
+            "passive margins",
+            "continental shelf",
         }
         lb_setting_members = [m for m in members if m in lb_settings]
         if lb_setting_members:
             for m in members:
-                blocked.append(f"BLOCKED: '{m}' (cluster with {members}, contains LB2019 setting)")
+                blocked.append(
+                    f"BLOCKED: '{m}' (cluster with {members}, contains LB2019 setting)"
+                )
             continue
 
         # Prefer: in lexicon > shorter > alphabetical
@@ -412,6 +507,7 @@ def build_canonical_map(
             in_lex = 1 if x in _lex else 0
             short = -len(x.split())  # fewer words = better
             return (in_lex, short)
+
         canonical = max(members, key=canonical_score)
         for m in members:
             if m != canonical:
@@ -429,6 +525,7 @@ def build_canonical_map(
 
     return canonical_map
 
+
 def apply_canonical_map(triples: list[dict], canonical_map: dict) -> int:
     """Rewrite source/target fields of `triples` in place wherever their normalized form is a key in `canonical_map`; returns the number of field occurrences merged."""
     merged = 0
@@ -445,6 +542,7 @@ def apply_canonical_map(triples: list[dict], canonical_map: dict) -> int:
 # ═══════════════════════════════════════════════════════════════════════
 # LB RECALL & COVERAGE
 # ═══════════════════════════════════════════════════════════════════════
+
 
 def compute_lb_recall(triples: list[dict]) -> tuple[int, int, list]:
     """Count how many of the 26 LB_REFERENCE_EDGES appear (exact normalized-tuple match) in `triples`; returns (hits, total_reference_edges, missing_edges), no side effects."""
@@ -465,6 +563,7 @@ def compute_lb_recall(triples: list[dict]) -> tuple[int, int, list]:
 
     return hits, len(LB_REFERENCE_EDGES), missing
 
+
 def compute_descriptor_coverage(triples: list[dict]) -> tuple[set, set]:
     """Find which of the 13 LB_DESCRIPTORS appear as hasDescriptor objects in `triples`; returns (found, missing) sets, no side effects."""
     found = set()
@@ -482,14 +581,34 @@ def compute_descriptor_coverage(triples: list[dict]) -> tuple[set, set]:
 # MAIN
 # ═══════════════════════════════════════════════════════════════════════
 
+
 def main():
     """CLI entry point: runs the verification filter, structural/ontology validation, SciBERT canonicalization and re-dedup over --input, writing canonical_triples_v5.jsonl, canonical_map_v5.json, rejected_triples_v5.jsonl and cleaning_stats_v5.json under --outdir."""
-    parser = argparse.ArgumentParser(description="Validate, clean & canonicalize KG triples (v5)")
-    parser.add_argument("--input", default=None, help="Input JSONL (default: $KG_INPUT)")
-    parser.add_argument("--outdir", default=None, help="Output directory (default: $KG_OUTPUT_DIR)")
-    parser.add_argument("--verif-policy", default="normal", choices=["strict", "normal", "relaxed", "off"])
-    parser.add_argument("--lexicon", default=None, help="Path to lexicon.json (optional)")
-    parser.add_argument("--cluster-threshold", type=float, default=0.06, help="Cosine distance threshold for clustering")
+    parser = argparse.ArgumentParser(
+        description="Validate, clean & canonicalize KG triples (v5)"
+    )
+    parser.add_argument(
+        "--input", default=None, help="Input JSONL (default: $KG_INPUT)"
+    )
+    parser.add_argument(
+        "--outdir",
+        default=None,
+        help="Output directory (default: $KG_OUTPUT_DIR)",
+    )
+    parser.add_argument(
+        "--verif-policy",
+        default="normal",
+        choices=["strict", "normal", "relaxed", "off"],
+    )
+    parser.add_argument(
+        "--lexicon", default=None, help="Path to lexicon.json (optional)"
+    )
+    parser.add_argument(
+        "--cluster-threshold",
+        type=float,
+        default=0.06,
+        help="Cosine distance threshold for clustering",
+    )
     args = parser.parse_args()
 
     input_path = args.input or os.environ.get("KG_INPUT", "")
@@ -528,15 +647,29 @@ def main():
         print(f"  Loaded lexicon: {len(lexicon)} terms")
     else:
         lexicon = (
-            {normalize_entity(d) for d in KNOWN_DESCRIPTORS} |
-            {normalize_entity(s) for s in KNOWN_SETTINGS} |
-            {
-                "mass transport deposit", "mtd", "turbidite", "debris flow",
-                "slide", "slump", "hemipelagite", "pelagite",
-                "turbidity current", "slope failure", "submarine landslide",
-                "earthquake", "pore pressure", "sedimentation",
-                "erosion", "deposition", "seafloor", "sediment",
-                "continental slope", "continental shelf",
+            {normalize_entity(d) for d in KNOWN_DESCRIPTORS}
+            | {normalize_entity(s) for s in KNOWN_SETTINGS}
+            | {
+                "mass transport deposit",
+                "mtd",
+                "turbidite",
+                "debris flow",
+                "slide",
+                "slump",
+                "hemipelagite",
+                "pelagite",
+                "turbidity current",
+                "slope failure",
+                "submarine landslide",
+                "earthquake",
+                "pore pressure",
+                "sedimentation",
+                "erosion",
+                "deposition",
+                "seafloor",
+                "sediment",
+                "continental slope",
+                "continental shelf",
             }
         )
         print(f"  Using built-in lexicon: {len(lexicon)} terms")
@@ -556,7 +689,9 @@ def main():
             rejected.append(t)
             verif_reasons[reason] += 1
 
-    print(f"  After verification filter: {len(passed_verif)} kept, {len(rejected)} rejected")
+    print(
+        f"  After verification filter: {len(passed_verif)} kept, {len(rejected)} rejected"
+    )
     if verif_reasons:
         for reason, count in verif_reasons.most_common():
             print(f"    {reason:35s}: {count}")
@@ -606,10 +741,12 @@ def main():
         seen_keys.add(key)
         cleaned.append(t)
 
-    print(f"\n{'='*60}")
+    print(f"\n{'=' * 60}")
     print("  VALIDATION REPORT")
-    print(f"{'='*60}")
-    print(f"  After verif: {len(passed_verif)} | Cleaned: {len(cleaned)} | Dupes: {n_dupes}")
+    print(f"{'=' * 60}")
+    print(
+        f"  After verif: {len(passed_verif)} | Cleaned: {len(cleaned)} | Dupes: {n_dupes}"
+    )
     if validation_reasons:
         for reason, count in validation_reasons.most_common():
             print(f"    {reason:35s}: {count}")
@@ -623,10 +760,12 @@ def main():
 
     hits, total, _missing = compute_lb_recall(cleaned)
     if total > 0:
-        print(f"  LB Recall: {hits}/{total} = {hits/total:.1%}")
+        print(f"  LB Recall: {hits}/{total} = {hits / total:.1%}")
 
     found_desc, missing_desc = compute_descriptor_coverage(cleaned)
-    print(f"  Desc Coverage: {len(found_desc)}/{len(LB_DESCRIPTORS)} found={sorted(found_desc)}")
+    print(
+        f"  Desc Coverage: {len(found_desc)}/{len(LB_DESCRIPTORS)} found={sorted(found_desc)}"
+    )
     print(f"  Missing: {sorted(missing_desc)}")
 
     # STEP 3: canonicalization
@@ -706,7 +845,9 @@ def main():
             if v == "STRONG_SUPPORT":
                 verif_strong += 1
 
-    final_halluc_rate = (1 - (verif_supported / verif_decided)) if verif_decided > 0 else 0.0
+    final_halluc_rate = (
+        (1 - (verif_supported / verif_decided)) if verif_decided > 0 else 0.0
+    )
 
     stats = {
         "input_triples": len(triples),
@@ -737,15 +878,17 @@ def main():
     with open(out_stats, "w", encoding="utf-8") as f:
         json.dump(stats, f, indent=2, ensure_ascii=False)
 
-    print(f"\n{'='*60}")
+    print(f"\n{'=' * 60}")
     print("  CANONICALIZATION SUMMARY (v5)")
-    print(f"{'='*60}")
+    print(f"{'=' * 60}")
     print(f"  Output triples:      {len(final)}")
     if total > 0:
-        print(f"  LB Recall:           {hits}/{total} = {hits/total:.1%}")
+        print(f"  LB Recall:           {hits}/{total} = {hits / total:.1%}")
     print(f"  Desc Coverage:       {len(found_desc)}/{len(LB_DESCRIPTORS)}")
-    print(f"  Final halluc rate:   {final_halluc_rate:.1%} (S={verif_strong} W={verif_supported - verif_strong} decided={verif_decided})")
-    print(f"{'='*60}")
+    print(
+        f"  Final halluc rate:   {final_halluc_rate:.1%} (S={verif_strong} W={verif_supported - verif_strong} decided={verif_decided})"
+    )
+    print(f"{'=' * 60}")
     print(f"  Triples:   {out_triples}")
     print(f"  Rejected:  {out_rejected}")
     print(f"  Stats:     {out_stats}")

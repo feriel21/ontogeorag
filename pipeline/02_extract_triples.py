@@ -48,7 +48,6 @@ from typing import Any
 
 from pipeline.rag.constants import ALLOWED_RELATIONS, normalize_relation
 
-
 # ── Prompt templates ──────────────────────────────────────────────────
 # IMPORTANT: literal JSON braces in .format() templates must be {{ }}
 
@@ -210,9 +209,9 @@ If no descriptors are found, respond with: {{"object": "{focus_object}", "descri
 
 PROMPTS = {
     "descriptor": DESCRIPTOR_PROMPT,
-    "causal":     CAUSAL_PROMPT,
-    "context":    CONTEXT_PROMPT,
-    "profile":    PROFILE_PROMPT,
+    "causal": CAUSAL_PROMPT,
+    "context": CONTEXT_PROMPT,
+    "profile": PROFILE_PROMPT,
 }
 
 
@@ -242,16 +241,20 @@ def parse_response(response: str, strategy: str) -> list[dict]:
         if m:
             try:
                 obj = json.loads(m.group())
-                if isinstance(obj, dict) and isinstance(obj.get("descriptors"), list):
+                if isinstance(obj, dict) and isinstance(
+                    obj.get("descriptors"), list
+                ):
                     return [
                         {
-                            "source":       obj.get("object", ""),
-                            "source_type":  obj.get("object_type", "SeismicObject"),
-                            "relation":     "hasDescriptor",
-                            "target":       d.get("descriptor", ""),
-                            "target_type":  "Descriptor",
-                            "salience":     d.get("salience", "common"),
-                            "_evidence":    d.get("evidence", ""),
+                            "source": obj.get("object", ""),
+                            "source_type": obj.get(
+                                "object_type", "SeismicObject"
+                            ),
+                            "relation": "hasDescriptor",
+                            "target": d.get("descriptor", ""),
+                            "target_type": "Descriptor",
+                            "salience": d.get("salience", "common"),
+                            "_evidence": d.get("evidence", ""),
                         }
                         for d in obj["descriptors"]
                         if isinstance(d, dict)
@@ -267,9 +270,11 @@ def load_bm25(index_dir: str, reranker_model: str = None):
     P10: if reranker_model is set, rerank BM25 top-N with CrossEncoder before returning top_k.
     """
     from rank_bm25 import BM25Okapi
+
     reranker = None
     if reranker_model:
         from sentence_transformers import CrossEncoder
+
         print(f"  Loading CrossEncoder reranker: {reranker_model}")
         reranker = CrossEncoder(reranker_model)
         print(f"  Reranker loaded.")
@@ -296,9 +301,9 @@ def load_bm25(index_dir: str, reranker_model: str = None):
         top_idx = scores.argsort()[-top_n:][::-1]
         candidates = [
             {
-                "chunk_id":    chunks[i].get("chunk_id", f"chunk_{i}"),
-                "text":        chunks[i].get("text", ""),
-                "score":       float(scores[i]),
+                "chunk_id": chunks[i].get("chunk_id", f"chunk_{i}"),
+                "text": chunks[i].get("text", ""),
+                "score": float(scores[i]),
                 "source_file": chunks[i].get("source_file", "unknown"),
             }
             for i in top_idx
@@ -308,8 +313,11 @@ def load_bm25(index_dir: str, reranker_model: str = None):
             rerank_scores = reranker.predict(pairs)
             for c, s in zip(candidates, rerank_scores):
                 c["rerank_score"] = float(s)
-            candidates = sorted(candidates, key=lambda x: x["rerank_score"], reverse=True)
+            candidates = sorted(
+                candidates, key=lambda x: x["rerank_score"], reverse=True
+            )
         return candidates
+
     return retrieve
 
 
@@ -319,55 +327,78 @@ def concat_chunks(chunks: list[dict], max_chars: int = 2800) -> str:
     for i, c in enumerate(chunks, 1):
         txt = (c.get("text", "")).strip()
         if txt:
-            parts.append(f"[CHUNK {i} | {c.get('source_file','?')}]\n{txt}\n")
+            parts.append(f"[CHUNK {i} | {c.get('source_file', '?')}]\n{txt}\n")
     return "\n---\n".join(parts)[:max_chars]
 
 
 def main():
     """CLI entry point: retrieves candidate chunks per query, prompts the configured LLM, filters/normalizes relations, and writes triples + provenance to --output plus a stats JSON alongside it."""
     parser = argparse.ArgumentParser(description="RAG triple extraction")
-    parser.add_argument("--index-dir",  required=True)
-    parser.add_argument("--schema",     required=True)
-    parser.add_argument("--queries",    required=True)
-    parser.add_argument("--output",     required=True)
-    parser.add_argument("--model",      default="Qwen/Qwen2.5-7B-Instruct")
-    parser.add_argument("--backend",    default="hf", choices=["hf", "ollama"])
-    parser.add_argument("--top-k",      type=int,   default=3)
-    parser.add_argument("--bm25-topn",  type=int,   default=25)
-    parser.add_argument("--max-chars",  type=int,   default=2800)
-    parser.add_argument("--reranker",   type=str,   default=None,
-                        help="CrossEncoder model for reranking (e.g. cross-encoder/ms-marco-MiniLM-L-6-v2)")
-    parser.add_argument("--hybrid", action="store_true",
-                    help="Use hybrid BM25+dense retrieval instead of BM25 only")
-    parser.add_argument("--hybrid-model", type=str,
-                    default="BAAI/bge-small-en-v1.5",
-                    help="Dense encoder model for hybrid retrieval")
-    parser.add_argument("--fusion-alpha", type=float, default=0.5,
-                    help="RRF fusion weight: 0=BM25 only, 1=dense only")
+    parser.add_argument("--index-dir", required=True)
+    parser.add_argument("--schema", required=True)
+    parser.add_argument("--queries", required=True)
+    parser.add_argument("--output", required=True)
+    parser.add_argument("--model", default="Qwen/Qwen2.5-7B-Instruct")
+    parser.add_argument("--backend", default="hf", choices=["hf", "ollama"])
+    parser.add_argument("--top-k", type=int, default=3)
+    parser.add_argument("--bm25-topn", type=int, default=25)
+    parser.add_argument("--max-chars", type=int, default=2800)
+    parser.add_argument(
+        "--reranker",
+        type=str,
+        default=None,
+        help="CrossEncoder model for reranking (e.g. cross-encoder/ms-marco-MiniLM-L-6-v2)",
+    )
+    parser.add_argument(
+        "--hybrid",
+        action="store_true",
+        help="Use hybrid BM25+dense retrieval instead of BM25 only",
+    )
+    parser.add_argument(
+        "--hybrid-model",
+        type=str,
+        default="BAAI/bge-small-en-v1.5",
+        help="Dense encoder model for hybrid retrieval",
+    )
+    parser.add_argument(
+        "--fusion-alpha",
+        type=float,
+        default=0.5,
+        help="RRF fusion weight: 0=BM25 only, 1=dense only",
+    )
 
-
-    parser.add_argument("--min-bm25",   type=float, default=0.0,
-                        help="Default BM25 gating threshold")
-    parser.add_argument("--min-bm25-desc",    type=float, default=None)
-    parser.add_argument("--min-bm25-causal",  type=float, default=None)
+    parser.add_argument(
+        "--min-bm25",
+        type=float,
+        default=0.0,
+        help="Default BM25 gating threshold",
+    )
+    parser.add_argument("--min-bm25-desc", type=float, default=None)
+    parser.add_argument("--min-bm25-causal", type=float, default=None)
     parser.add_argument("--min-bm25-context", type=float, default=None)
     parser.add_argument("--min-bm25-profile", type=float, default=None)
     parser.add_argument("--temperature", type=float, default=0.1)
-    parser.add_argument("--max-tokens",  type=int,   default=1024)
-    parser.add_argument("--max-queries", type=int,   default=None)
+    parser.add_argument("--max-tokens", type=int, default=1024)
+    parser.add_argument("--max-queries", type=int, default=None)
     args = parser.parse_args()
 
     thresholds = {
-        "default":    args.min_bm25,
+        "default": args.min_bm25,
         "descriptor": args.min_bm25_desc,
-        "causal":     args.min_bm25_causal,
-        "context":    args.min_bm25_context,
-        "profile":    args.min_bm25_profile,
+        "causal": args.min_bm25_causal,
+        "context": args.min_bm25_context,
+        "profile": args.min_bm25_profile,
     }
 
     schema = json.loads(Path(args.schema).read_text())
-    relations = [r["name"] if isinstance(r, dict) else r for r in schema.get("relations", [])]
-    types     = [t["name"] if isinstance(t, dict) else t for t in schema.get("types", [])]
+    relations = [
+        r["name"] if isinstance(r, dict) else r
+        for r in schema.get("relations", [])
+    ]
+    types = [
+        t["name"] if isinstance(t, dict) else t
+        for t in schema.get("types", [])
+    ]
 
     queries = []
     with open(args.queries, encoding="utf-8") as f:
@@ -376,37 +407,46 @@ def main():
             if line:
                 queries.append(json.loads(line))
     if args.max_queries:
-        queries = queries[:args.max_queries]
+        queries = queries[: args.max_queries]
     print(f"  Loaded {len(queries)} queries")
 
     # Load LLM
     if args.backend == "hf":
         from pipeline.rag.llm_hf import make_hf_fn
+
         _gen = make_hf_fn(args.model, max_new_tokens=args.max_tokens)
-        generate = lambda prompt: _gen("", prompt, temperature=args.temperature)
+        generate = lambda prompt: _gen(
+            "", prompt, temperature=args.temperature
+        )
     else:
         import requests
+
         def generate(prompt: str) -> str:
             r = requests.post(
                 "http://localhost:11434/api/generate",
-                json={"model": args.model, "prompt": prompt,
-                      "options": {"temperature": args.temperature}, "stream": False},
+                json={
+                    "model": args.model,
+                    "prompt": prompt,
+                    "options": {"temperature": args.temperature},
+                    "stream": False,
+                },
                 timeout=600,
             )
             return r.json().get("response", "")
 
     if args.hybrid:
         from pipeline.rag.hybrid_retriever import load_hybrid_retriever
+
         retrieve = load_hybrid_retriever(
             index_dir=args.index_dir,
             dense_model_name=args.hybrid_model,
-            reranker_model=args.reranker or "cross-encoder/ms-marco-MiniLM-L-6-v2",
+            reranker_model=args.reranker
+            or "cross-encoder/ms-marco-MiniLM-L-6-v2",
             fusion_alpha=args.fusion_alpha,
             device="cuda",
         )
     else:
         retrieve = load_bm25(args.index_dir, reranker_model=args.reranker)
-
 
     outpath = Path(args.output)
     outpath.parent.mkdir(parents=True, exist_ok=True)
@@ -421,7 +461,7 @@ def main():
                 continue
 
             strategy = q.get("strategy", "descriptor")
-            focus    = q.get("focus", "")
+            focus = q.get("focus", "")
 
             candidates = retrieve(query_text, top_n=args.bm25_topn)
             if not candidates:
@@ -434,8 +474,8 @@ def main():
                 stats["skipped_low_bm25"] += 1
                 continue
 
-            selected = candidates[:args.top_k]
-            context  = concat_chunks(selected, max_chars=args.max_chars)
+            selected = candidates[: args.top_k]
+            context = concat_chunks(selected, max_chars=args.max_chars)
 
             prompt_kwargs = dict(
                 chunk_text=context,
@@ -444,15 +484,21 @@ def main():
                 types=", ".join(types),
             )
             if strategy == "profile":
-                focus_obj = focus.split("→")[0].strip() if "→" in focus else focus.strip()
-                prompt_kwargs["focus_object"] = focus_obj or "mass transport deposit"
+                focus_obj = (
+                    focus.split("→")[0].strip()
+                    if "→" in focus
+                    else focus.strip()
+                )
+                prompt_kwargs["focus_object"] = (
+                    focus_obj or "mass transport deposit"
+                )
 
             try:
-                prompt   = get_prompt(strategy, **prompt_kwargs)
+                prompt = get_prompt(strategy, **prompt_kwargs)
                 response = generate(prompt)
-                triples  = parse_response(response, strategy)
+                triples = parse_response(response, strategy)
             except Exception as e:
-                print(f"  ERROR at query {qi+1}: {e}")
+                print(f"  ERROR at query {qi + 1}: {e}")
                 stats["errors"] += 1
                 continue
 
@@ -460,7 +506,7 @@ def main():
                 if not isinstance(t, dict):
                     continue
                 # Normalize relation
-                raw_rel  = t.get("relation", "")
+                raw_rel = t.get("relation", "")
                 norm_rel = normalize_relation(raw_rel)
                 if norm_rel not in ALLOWED_RELATIONS:
                     continue
@@ -469,13 +515,13 @@ def main():
                     t["salience"] = "common"
 
                 t["_provenance"] = {
-                    "query":           query_text,
-                    "strategy":        strategy,
-                    "focus":           focus,
-                    "model":           args.model,
-                    "source_files":    [c["source_file"] for c in selected],
-                    "best_bm25":       best_score,
-                    "bm25_threshold":  thr,
+                    "query": query_text,
+                    "strategy": strategy,
+                    "focus": focus,
+                    "model": args.model,
+                    "source_files": [c["source_file"] for c in selected],
+                    "best_bm25": best_score,
+                    "bm25_threshold": thr,
                     "context_preview": context[:1500],
                     "selected_chunks": [c["chunk_id"] for c in selected],
                 }
@@ -486,8 +532,10 @@ def main():
 
             if (qi + 1) % 25 == 0:
                 elapsed = time.time() - t0
-                print(f"  [{qi+1}/{len(queries)}] triples={stats['total_triples']} "
-                      f"({(qi+1)/elapsed:.2f} q/s)")
+                print(
+                    f"  [{qi + 1}/{len(queries)}] triples={stats['total_triples']} "
+                    f"({(qi + 1) / elapsed:.2f} q/s)"
+                )
 
     elapsed = time.time() - t0
     print(f"\n  Done: {stats['total_triples']} triples in {elapsed:.0f}s")

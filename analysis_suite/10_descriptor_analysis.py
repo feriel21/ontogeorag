@@ -42,9 +42,15 @@ from collections import defaultdict
 from pathlib import Path
 
 import numpy as np
-
-from kg_io import (load_kg, get_subject, get_object, get_relation,
-                   apply_style, BLUE, TERRACOTTA)
+from kg_io import (
+    BLUE,
+    TERRACOTTA,
+    apply_style,
+    get_object,
+    get_relation,
+    get_subject,
+    load_kg,
+)
 
 
 def main():
@@ -57,12 +63,17 @@ def main():
     plt = apply_style()
 
     kg = load_kg(args.kg)
-    hd = [t for t in kg["triples"]
-          if t["_status"] == "active"
-          and get_relation(t).lower() == "hasdescriptor"]
+    hd = [
+        t
+        for t in kg["triples"]
+        if t["_status"] == "active"
+        and get_relation(t).lower() == "hasdescriptor"
+    ]
     if not hd:
-        raise SystemExit("No hasDescriptor triples found — check relation "
-                         "field detection in kg_io.py")
+        raise SystemExit(
+            "No hasDescriptor triples found — check relation "
+            "field detection in kg_io.py"
+        )
 
     d_triples = defaultdict(int)
     d_papers = defaultdict(set)
@@ -79,29 +90,57 @@ def main():
         best = obj_desc_tier.get((o, d), 99)
         obj_desc_tier[(o, d)] = min(best, t["_tier"] if t["_tier"] else 3)
 
-    descs = sorted(d_triples, key=lambda d: (-len(d_papers[d]),
-                                             -d_triples[d]))
+    descs = sorted(d_triples, key=lambda d: (-len(d_papers[d]), -d_triples[d]))
     objects = sorted({o for (o, _) in obj_desc_tier})
 
     # ── CSV ───────────────────────────────────────────────────────────
-    with open(outdir / "descriptor_statistics.csv", "w", newline="",
-              encoding="utf-8") as f:
+    with open(
+        outdir / "descriptor_statistics.csv", "w", newline="", encoding="utf-8"
+    ) as f:
         w = csv.writer(f)
-        w.writerow(["descriptor", "n_triples", "n_papers", "n_objects",
-                    "objects", "n_tier1", "n_tier2", "discriminance"])
+        w.writerow(
+            [
+                "descriptor",
+                "n_triples",
+                "n_papers",
+                "n_objects",
+                "objects",
+                "n_tier1",
+                "n_tier2",
+                "discriminance",
+            ]
+        )
         for d in descs:
-            w.writerow([d, d_triples[d], len(d_papers[d]),
-                        len(d_objects[d]), ";".join(sorted(d_objects[d])),
-                        d_tiers[d][1], d_tiers[d][2],
-                        round(1.0 / max(len(d_objects[d]), 1), 3)])
+            w.writerow(
+                [
+                    d,
+                    d_triples[d],
+                    len(d_papers[d]),
+                    len(d_objects[d]),
+                    ";".join(sorted(d_objects[d])),
+                    d_tiers[d][1],
+                    d_tiers[d][2],
+                    round(1.0 / max(len(d_objects[d]), 1), 3),
+                ]
+            )
 
     # ── fig 1: support bar chart ──────────────────────────────────────
     fig, ax = plt.subplots(figsize=(10, 5))
     x = np.arange(len(descs))
-    ax.bar(x - 0.2, [len(d_papers[d]) for d in descs], 0.4,
-           color=BLUE, label="papers (consensus)")
-    ax.bar(x + 0.2, [d_triples[d] for d in descs], 0.4,
-           color=TERRACOTTA, label="triples")
+    ax.bar(
+        x - 0.2,
+        [len(d_papers[d]) for d in descs],
+        0.4,
+        color=BLUE,
+        label="papers (consensus)",
+    )
+    ax.bar(
+        x + 0.2,
+        [d_triples[d] for d in descs],
+        0.4,
+        color=TERRACOTTA,
+        label="triples",
+    )
     ax.set_xticks(x)
     ax.set_xticklabels(descs, rotation=45, ha="right")
     ax.set_ylabel("count")
@@ -113,9 +152,10 @@ def main():
     # ── fig 2: object x descriptor heatmap (by tier) ──────────────────
     mat = np.zeros((len(objects), len(descs)))
     for (o, d), tier in obj_desc_tier.items():
-        mat[objects.index(o), descs.index(d)] = {1: 2.0, 2: 1.0}.get(tier, .5)
+        mat[objects.index(o), descs.index(d)] = {1: 2.0, 2: 1.0}.get(tier, 0.5)
     fig, ax = plt.subplots(
-        figsize=(max(8, 0.7 * len(descs)), max(4, 0.45 * len(objects))))
+        figsize=(max(8, 0.7 * len(descs)), max(4, 0.45 * len(objects)))
+    )
     im = ax.imshow(mat, cmap="Blues", aspect="auto", vmin=0, vmax=2)
     ax.set_xticks(range(len(descs)))
     ax.set_xticklabels(descs, rotation=45, ha="right")
@@ -148,49 +188,77 @@ def main():
     lines.append(
         f"- **Most supported descriptor**: `{top}` "
         f"({len(d_papers[top])} papers, {d_triples[top]} triples, "
-        f"objects: {', '.join(sorted(d_objects[top]))}).")
-    mtd_like = [o for o in objects if "mass transport" in o.lower()
-                or o.lower() == "mtd"]
+        f"objects: {', '.join(sorted(d_objects[top]))})."
+    )
+    mtd_like = [
+        o
+        for o in objects
+        if "mass transport" in o.lower() or o.lower() == "mtd"
+    ]
     if mtd_like:
         mo = mtd_like[0]
-        mtd_desc = sorted([d for d in descs if mo in d_objects[d]],
-                          key=lambda d: -len(d_papers[d]))
+        mtd_desc = sorted(
+            [d for d in descs if mo in d_objects[d]],
+            key=lambda d: -len(d_papers[d]),
+        )
+
         def best_tier(d):
             ks = [k for k, v in d_tiers[d].items() if v > 0 and k > 0]
             return f"T{min(ks)}" if ks else "T?"
+
         lines.append(
             f"- **Descriptors of `{mo}`** (by paper support): "
-            + ", ".join(f"`{d}` ({len(d_papers[d])}p, {best_tier(d)})"
-                        for d in mtd_desc) + ".")
+            + ", ".join(
+                f"`{d}` ({len(d_papers[d])}p, {best_tier(d)})"
+                for d in mtd_desc
+            )
+            + "."
+        )
         t1 = [d for d in mtd_desc if d_tiers[d][1] > 0]
         t2only = [d for d in mtd_desc if d_tiers[d][1] == 0]
         if t1:
-            lines.append(f"- Tier-1 MTD descriptors: "
-                         + ", ".join(f"`{d}`" for d in t1) + ".")
+            lines.append(
+                f"- Tier-1 MTD descriptors: "
+                + ", ".join(f"`{d}`" for d in t1)
+                + "."
+            )
         if t2only:
-            lines.append(f"- Tier-2-only MTD descriptors: "
-                         + ", ".join(f"`{d}`" for d in t2only)
-                         + " — extracted textual salience does not always "
-                           "match interpreter-perceived salience; report as "
-                           "a finding, not an error.")
+            lines.append(
+                f"- Tier-2-only MTD descriptors: "
+                + ", ".join(f"`{d}`" for d in t2only)
+                + " — extracted textual salience does not always "
+                "match interpreter-perceived salience; report as "
+                "a finding, not an error."
+            )
     discr = [d for d in descs if len(d_objects[d]) == 1]
     ambig = [d for d in descs if len(d_objects[d]) >= 3]
     if discr:
-        lines.append(f"- **Discriminant descriptors** (single object): "
-                     + ", ".join(f"`{d}`→{next(iter(d_objects[d]))}"
-                                 for d in discr) + ".")
+        lines.append(
+            f"- **Discriminant descriptors** (single object): "
+            + ", ".join(f"`{d}`→{next(iter(d_objects[d]))}" for d in discr)
+            + "."
+        )
     if ambig:
-        lines.append(f"- **Ambiguous descriptors** (≥3 objects — poor class "
-                     f"separators for Part II): "
-                     + ", ".join(f"`{d}`" for d in ambig) + ".")
+        lines.append(
+            f"- **Ambiguous descriptors** (≥3 objects — poor class "
+            f"separators for Part II): "
+            + ", ".join(f"`{d}`" for d in ambig)
+            + "."
+        )
     weak = [d for d in descs if len(d_papers[d]) <= 1]
     if weak:
-        lines.append(f"- **Weakly documented** (≤1 paper): "
-                     + ", ".join(f"`{d}`" for d in weak) + ".")
-    (outdir / "descriptor_findings.md").write_text("\n".join(lines),
-                                                   encoding="utf-8")
-    print(f"[10] {len(descs)} descriptors, {len(objects)} objects — "
-          f"outputs in {outdir}")
+        lines.append(
+            f"- **Weakly documented** (≤1 paper): "
+            + ", ".join(f"`{d}`" for d in weak)
+            + "."
+        )
+    (outdir / "descriptor_findings.md").write_text(
+        "\n".join(lines), encoding="utf-8"
+    )
+    print(
+        f"[10] {len(descs)} descriptors, {len(objects)} objects — "
+        f"outputs in {outdir}"
+    )
 
 
 if __name__ == "__main__":

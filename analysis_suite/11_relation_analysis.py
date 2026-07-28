@@ -36,9 +36,15 @@ from collections import defaultdict
 from pathlib import Path
 
 import numpy as np
-
-from kg_io import (load_kg, get_subject, get_object, get_relation,
-                   apply_style, BLUE, TERRACOTTA)
+from kg_io import (
+    BLUE,
+    TERRACOTTA,
+    apply_style,
+    get_object,
+    get_relation,
+    get_subject,
+    load_kg,
+)
 
 
 def norm_entropy(counts):
@@ -79,45 +85,80 @@ def main():
 
     rels = sorted(r_triples, key=lambda r: -r_triples[r])
 
-    with open(outdir / "relation_statistics.csv", "w", newline="",
-              encoding="utf-8") as f:
+    with open(
+        outdir / "relation_statistics.csv", "w", newline="", encoding="utf-8"
+    ) as f:
         w = csv.writer(f)
-        w.writerow(["relation", "n_triples", "n_papers", "n_unique_pairs",
-                    "n_unique_objects", "object_entropy_norm"])
+        w.writerow(
+            [
+                "relation",
+                "n_triples",
+                "n_papers",
+                "n_unique_pairs",
+                "n_unique_objects",
+                "object_entropy_norm",
+            ]
+        )
         for r in rels:
-            w.writerow([r, r_triples[r], len(r_papers[r]),
-                        len(r_pairs[r]), len(r_objects[r]),
-                        norm_entropy(list(r_objects[r].values()))])
+            w.writerow(
+                [
+                    r,
+                    r_triples[r],
+                    len(r_papers[r]),
+                    len(r_pairs[r]),
+                    len(r_objects[r]),
+                    norm_entropy(list(r_objects[r].values())),
+                ]
+            )
 
     # relation x object matrix
     all_objects = sorted({o for r in rels for o in r_objects[r]})
-    with open(outdir / "relation_object_matrix.csv", "w", newline="",
-              encoding="utf-8") as f:
+    with open(
+        outdir / "relation_object_matrix.csv",
+        "w",
+        newline="",
+        encoding="utf-8",
+    ) as f:
         w = csv.writer(f)
         w.writerow(["relation"] + all_objects)
         for r in rels:
             w.writerow([r] + [r_objects[r].get(o, 0) for o in all_objects])
 
     # redundancy: same pair, several relations
-    red_rows = [(s, o, ";".join(sorted(rs)))
-                for (s, o), rs in sorted(pair_rels.items()) if len(rs) >= 2]
-    with open(outdir / "relation_redundancy.csv", "w", newline="",
-              encoding="utf-8") as f:
+    red_rows = [
+        (s, o, ";".join(sorted(rs)))
+        for (s, o), rs in sorted(pair_rels.items())
+        if len(rs) >= 2
+    ]
+    with open(
+        outdir / "relation_redundancy.csv", "w", newline="", encoding="utf-8"
+    ) as f:
         w = csv.writer(f)
         w.writerow(["subject", "object", "relations"])
         w.writerows(red_rows)
 
     # direction inconsistencies
-    bidir = sorted({(min(s, o), r, max(s, o))
-                    for (s, r, o) in directed if (o, r, s) in directed})
+    bidir = sorted(
+        {
+            (min(s, o), r, max(s, o))
+            for (s, r, o) in directed
+            if (o, r, s) in directed
+        }
+    )
 
     # figure
     fig, ax = plt.subplots(figsize=(9, 5))
     x = np.arange(len(rels))
-    ax.bar(x - 0.2, [r_triples[r] for r in rels], 0.4, color=BLUE,
-           label="triples")
-    ax.bar(x + 0.2, [len(r_papers[r]) for r in rels], 0.4, color=TERRACOTTA,
-           label="papers")
+    ax.bar(
+        x - 0.2, [r_triples[r] for r in rels], 0.4, color=BLUE, label="triples"
+    )
+    ax.bar(
+        x + 0.2,
+        [len(r_papers[r]) for r in rels],
+        0.4,
+        color=TERRACOTTA,
+        label="papers",
+    )
     ax.set_xticks(x)
     ax.set_xticklabels(rels, rotation=45, ha="right")
     ax.set_title("Relation distribution", fontsize=18)
@@ -127,41 +168,61 @@ def main():
 
     # findings (data-conditioned)
     lines = ["# Relation findings (auto-generated)", ""]
-    lines.append(f"- **Most used**: `{rels[0]}` ({r_triples[rels[0]]} "
-                 f"triples, {len(r_papers[rels[0]])} papers).")
+    lines.append(
+        f"- **Most used**: `{rels[0]}` ({r_triples[rels[0]]} "
+        f"triples, {len(r_papers[rels[0]])} papers)."
+    )
     informative = sorted(
         [r for r in rels if len(r_pairs[r]) >= 3],
-        key=lambda r: -norm_entropy(list(r_objects[r].values())))
+        key=lambda r: -norm_entropy(list(r_objects[r].values())),
+    )
     if informative:
-        lines.append(f"- **Most informative** (highest normalized object "
-                     f"entropy among relations with ≥3 pairs): "
-                     f"`{informative[0]}`.")
+        lines.append(
+            f"- **Most informative** (highest normalized object "
+            f"entropy among relations with ≥3 pairs): "
+            f"`{informative[0]}`."
+        )
     if "relatedTo" in r_triples:
-        lines.append(f"- `relatedTo`: {r_triples['relatedTo']} triples — "
-                     "candidate for purge/requalification (no semantic "
-                     "content).")
-    causal = [r for r in rels if r.lower() in
-              ("causes", "triggers", "controls")]
-    overlap = [row for row in red_rows
-               if set(row[2].split(";")) & {"causes", "triggers", "controls"}
-               and len(set(row[2].split(";")) &
-                       {"causes", "triggers", "controls"}) >= 2]
+        lines.append(
+            f"- `relatedTo`: {r_triples['relatedTo']} triples — "
+            "candidate for purge/requalification (no semantic "
+            "content)."
+        )
+    causal = [
+        r for r in rels if r.lower() in ("causes", "triggers", "controls")
+    ]
+    overlap = [
+        row
+        for row in red_rows
+        if set(row[2].split(";")) & {"causes", "triggers", "controls"}
+        and len(set(row[2].split(";")) & {"causes", "triggers", "controls"})
+        >= 2
+    ]
     if causal:
-        lines.append(f"- **causal family overlap**: {len(overlap)} "
-                     "(subject, object) pairs asserted under ≥2 of "
-                     "{causes, triggers, controls}. "
-                     + ("If >0, the causal distinction is partly a mapping "
-                        "artifact — run the merge test before defending it."
-                        if overlap else
-                        "No overlapping pair: the distinction is at least "
-                        "internally consistent."))
-    lines.append(f"- **Bidirectional pairs** (direction inconsistency "
-                 f"candidates): {len(bidir)}"
-                 + (" — " + "; ".join(f"{a}↔{b} [{r}]"
-                                      for a, r, b in bidir[:10]) if bidir
-                    else "."))
-    (outdir / "relation_findings.md").write_text("\n".join(lines),
-                                                 encoding="utf-8")
+        lines.append(
+            f"- **causal family overlap**: {len(overlap)} "
+            "(subject, object) pairs asserted under ≥2 of "
+            "{causes, triggers, controls}. "
+            + (
+                "If >0, the causal distinction is partly a mapping "
+                "artifact — run the merge test before defending it."
+                if overlap
+                else "No overlapping pair: the distinction is at least "
+                "internally consistent."
+            )
+        )
+    lines.append(
+        f"- **Bidirectional pairs** (direction inconsistency "
+        f"candidates): {len(bidir)}"
+        + (
+            " — " + "; ".join(f"{a}↔{b} [{r}]" for a, r, b in bidir[:10])
+            if bidir
+            else "."
+        )
+    )
+    (outdir / "relation_findings.md").write_text(
+        "\n".join(lines), encoding="utf-8"
+    )
     print(f"[11] {len(rels)} relations analyzed — outputs in {outdir}")
 
 

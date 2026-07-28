@@ -35,9 +35,11 @@ import re
 from collections import Counter, defaultdict
 from pathlib import Path
 
-ABBREV = {"mtd": "mass transport deposit",
-          "mtds": "mass transport deposit",
-          "mtc": "mass transport complex"}
+ABBREV = {
+    "mtd": "mass transport deposit",
+    "mtds": "mass transport deposit",
+    "mtc": "mass transport complex",
+}
 
 
 def norm_form(e: str) -> str:
@@ -49,8 +51,11 @@ def norm_form(e: str) -> str:
         x = ABBREV[x]
     toks = []
     for tok in x.split():
-        if (len(tok) > 3 and tok.endswith("s")
-                and not tok.endswith(("ss", "is", "us"))):
+        if (
+            len(tok) > 3
+            and tok.endswith("s")
+            and not tok.endswith(("ss", "is", "us"))
+        ):
             tok = tok[:-1]
         toks.append(tok)
     return " ".join(toks)
@@ -61,8 +66,7 @@ def main():
     ap.add_argument("--input", required=True)
     args = ap.parse_args()
     inp = Path(args.input)
-    triples = [json.loads(l) for l in open(inp, encoding="utf-8")
-               if l.strip()]
+    triples = [json.loads(l) for l in open(inp, encoding="utf-8") if l.strip()]
 
     # collect surface forms per normal form
     surface_count = Counter()
@@ -110,8 +114,10 @@ def main():
     print(f"triples            : {len(triples)}")
     print(f"unique surfaces    : {len(surface_count)}")
     print(f"variant groups     : {merged_groups}")
-    print(f"substitutions made : {sum(subs.values())} "
-          f"({len(subs)} distinct mappings)")
+    print(
+        f"substitutions made : {sum(subs.values())} "
+        f"({len(subs)} distinct mappings)"
+    )
     for (a, b), c in sorted(subs.items(), key=lambda x: -x[1])[:15]:
         print(f"   {a!r} -> {b!r}  (x{c})")
     print(f"written: {out}")

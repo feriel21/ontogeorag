@@ -46,10 +46,17 @@ from pathlib import Path
 
 REL_FAMILY = {
     "hasdescriptor": "descriptor",
-    "causes": "causal", "triggers": "causal", "controls": "causal",
-    "affects": "causal", "formedby": "causal",
-    "occursin": "context", "overlies": "context", "underlies": "context",
-    "partof": "context", "indicates": "context", "evidences": "context",
+    "causes": "causal",
+    "triggers": "causal",
+    "controls": "causal",
+    "affects": "causal",
+    "formedby": "causal",
+    "occursin": "context",
+    "overlies": "context",
+    "underlies": "context",
+    "partof": "context",
+    "indicates": "context",
+    "evidences": "context",
     "relatedto": "context",
 }
 
@@ -63,8 +70,11 @@ def main():
     ap.add_argument("--benchmark", required=True)
     ap.add_argument("--outdir", default="configs")
     ap.add_argument("--seed", type=int, default=20260727)
-    ap.add_argument("--marker-key", default=None,
-                    help="per-edge key marking original vs extended, if any")
+    ap.add_argument(
+        "--marker-key",
+        default=None,
+        help="per-edge key marking original vs extended, if any",
+    )
     args = ap.parse_args()
     outdir = Path(args.outdir)
     outdir.mkdir(parents=True, exist_ok=True)
@@ -95,22 +105,26 @@ def main():
         extra = len(group) % 2
         # alternate the odd element deterministically by stratum order
         if extra and (len(dev) <= len(test)):
-            dev.extend(group[:half + 1])
-            test.extend(group[half + 1:])
+            dev.extend(group[: half + 1])
+            test.extend(group[half + 1 :])
         else:
             dev.extend(group[:half])
             test.extend(group[half:])
 
     def dump(split, name):
         payload = {
-            "description": (f"run13 frozen {name} split of the 34-edge "
-                            f"benchmark (seed {args.seed}, stratified by "
-                            "source x relation-family). Query set frozen "
-                            "as of run11; split drawn before run13 launch."),
+            "description": (
+                f"run13 frozen {name} split of the 34-edge "
+                f"benchmark (seed {args.seed}, stratified by "
+                "source x relation-family). Query set frozen "
+                "as of run11; split drawn before run13 launch."
+            ),
             "seed": args.seed,
             "n_edges": len(split),
-            "edges": [{k: v for k, v in e.items()
-                       if not k.startswith("_")} for e in split],
+            "edges": [
+                {k: v for k, v in e.items() if not k.startswith("_")}
+                for e in split
+            ],
             "strata": sorted({e["_stratum"] for e in split}),
         }
         p = outdir / f"lb_{name}.json"
@@ -131,12 +145,15 @@ def main():
             "reported on the test split; dev recall and the dev-test gap "
             "will be reported alongside as a measure of residual "
             "query-design adaptation. Original-26 vs extended-8 recall "
-            "will also be reported separately."),
+            "will also be reported separately."
+        ),
         "seed": args.seed,
         "benchmark_sha256": sha256(Path(args.benchmark)),
-        "dev_file": str(p_dev), "dev_sha256": sha256(p_dev),
+        "dev_file": str(p_dev),
+        "dev_sha256": sha256(p_dev),
         "dev_n": len(dev),
-        "test_file": str(p_test), "test_sha256": sha256(p_test),
+        "test_file": str(p_test),
+        "test_sha256": sha256(p_test),
         "test_n": len(test),
         "dev_strata": sorted({e["_stratum"] for e in dev}),
         "test_strata": sorted({e["_stratum"] for e in test}),
@@ -152,8 +169,10 @@ def main():
     print(f"test: {len(test)} edges -> {p_test}")
     print(f"declaration: {p_decl}")
     print("Commit these three files BEFORE launching run13:")
-    print(f"  git add {p_dev} {p_test} {p_decl} && "
-          f"git commit -m 'run13: freeze eval protocol (dev/test split)'")
+    print(
+        f"  git add {p_dev} {p_test} {p_decl} && "
+        f"git commit -m 'run13: freeze eval protocol (dev/test split)'"
+    )
 
 
 if __name__ == "__main__":

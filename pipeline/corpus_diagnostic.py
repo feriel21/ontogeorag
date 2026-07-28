@@ -16,9 +16,10 @@ WHAT
       - outcome: RECOVERED | CORPUS_GAP | PIPELINE_FAILURE
 """
 
-import json
 import argparse
+import json
 from pathlib import Path
+
 from rank_bm25 import BM25Okapi
 
 
@@ -55,9 +56,11 @@ def edge_recovered(kg, subj, rel, obj):
     obj_n = normalize(obj)
     rel_n = normalize(rel)
     for triple in kg.get("triples", []):
-        if (normalize(triple.get("subject", "")) == subj_n and
-                normalize(triple.get("relation", "")) == rel_n and
-                normalize(triple.get("object", "")) == obj_n):
+        if (
+            normalize(triple.get("subject", "")) == subj_n
+            and normalize(triple.get("relation", "")) == rel_n
+            and normalize(triple.get("object", "")) == obj_n
+        ):
             return True
     return False
 
@@ -79,7 +82,11 @@ def main():
 
     # Load reference edges
     reference = load_json(args.reference)
-    edges = reference if isinstance(reference, list) else reference.get("edges", [])
+    edges = (
+        reference
+        if isinstance(reference, list)
+        else reference.get("edges", [])
+    )
     print(f"Loaded {len(edges)} reference edges")
 
     # Load KGs
@@ -108,20 +115,24 @@ def main():
         else:
             outcome = "PIPELINE_FAILURE"
 
-        results.append({
-            "subject": subj,
-            "relation": rel,
-            "object": obj,
-            "corpus_chunks": corpus_count,
-            "recovered_c9": recovered_c9,
-            "recovered_c10": recovered_c10,
-            "outcome": outcome
-        })
+        results.append(
+            {
+                "subject": subj,
+                "relation": rel,
+                "object": obj,
+                "corpus_chunks": corpus_count,
+                "recovered_c9": recovered_c9,
+                "recovered_c10": recovered_c10,
+                "outcome": outcome,
+            }
+        )
 
-        print(f"{outcome:20s} | chunks={corpus_count:4d} | "
-              f"C9={'Y' if recovered_c9 else 'N'} "
-              f"C10={'Y' if recovered_c10 else 'N'} | "
-              f"{subj[:20]:20s} --{rel}--> {obj[:20]}")
+        print(
+            f"{outcome:20s} | chunks={corpus_count:4d} | "
+            f"C9={'Y' if recovered_c9 else 'N'} "
+            f"C10={'Y' if recovered_c10 else 'N'} | "
+            f"{subj[:20]:20s} --{rel}--> {obj[:20]}"
+        )
 
     # Save
     Path(args.output).parent.mkdir(parents=True, exist_ok=True)
@@ -133,8 +144,10 @@ def main():
     gaps = sum(1 for r in results if r["outcome"] == "CORPUS_GAP")
     recovered = sum(1 for r in results if r["outcome"] == "RECOVERED")
     failures = sum(1 for r in results if r["outcome"] == "PIPELINE_FAILURE")
-    print(f"\nSummary: {recovered} recovered | "
-          f"{gaps} corpus gaps | {failures} pipeline failures")
+    print(
+        f"\nSummary: {recovered} recovered | "
+        f"{gaps} corpus gaps | {failures} pipeline failures"
+    )
 
 
 if __name__ == "__main__":

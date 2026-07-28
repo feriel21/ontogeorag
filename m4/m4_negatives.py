@@ -62,18 +62,30 @@ import random
 from collections import Counter, defaultdict
 from pathlib import Path
 
-from m4_verify import load_triples, triple_fields, evidence_from_provenance
+from m4_verify import evidence_from_provenance, load_triples, triple_fields
 
-DIRECTIONAL = {"causes", "triggers", "controls", "affects", "overlies",
-               "underlies", "evolvesTo", "indicates", "formedBy"}
-ALL_RELATIONS = sorted(DIRECTIONAL | {"hasDescriptor", "occursIn",
-                                      "partOf"})
+DIRECTIONAL = {
+    "causes",
+    "triggers",
+    "controls",
+    "affects",
+    "overlies",
+    "underlies",
+    "evolvesTo",
+    "indicates",
+    "formedBy",
+}
+ALL_RELATIONS = sorted(DIRECTIONAL | {"hasDescriptor", "occursIn", "partOf"})
 
-EV_SCORE_AS_DETECTOR = {"SUPPORTED": 0.0, "PARTIALLY_SUPPORTED": 0.5,
-                        "NOT_SUPPORTED": 1.0}
+EV_SCORE_AS_DETECTOR = {
+    "SUPPORTED": 0.0,
+    "PARTIALLY_SUPPORTED": 0.5,
+    "NOT_SUPPORTED": 1.0,
+}
 
 
 # ── generate ───────────────────────────────────────────────────────────
+
 
 def cmd_generate(args):
     """`generate` subcommand: build the balanced positive/negative control set from --kg (4 corruption classes, seeded by --seed) and write controls.jsonl + controls_meta.json to --output."""
@@ -87,8 +99,15 @@ def cmd_generate(args):
         s, r, o = triple_fields(t)
         p = evidence_from_provenance(t)
         if s and r and o and p:
-            base.append({"orig_index": i, "subject": s, "relation": r,
-                         "object": o, "passage": p})
+            base.append(
+                {
+                    "orig_index": i,
+                    "subject": s,
+                    "relation": r,
+                    "object": o,
+                    "passage": p,
+                }
+            )
     print(f"Usable base triples (with passage): {len(base)}/{len(triples)}")
 
     objects_by_rel = defaultdict(list)
@@ -99,18 +118,21 @@ def cmd_generate(args):
 
     def emit(b, corruption, s, r, o, passage):
         """Append one control record (original or corrupted variant of base triple `b`) to the outer `controls` list."""
-        controls.append({
-            "subject": s, "relation": r, "object": o,
-            "supporting_passage": passage,
-            "label": "corrupted" if corruption else "original",
-            "corruption_class": corruption or "none",
-            "orig_index": b["orig_index"],
-        })
+        controls.append(
+            {
+                "subject": s,
+                "relation": r,
+                "object": o,
+                "supporting_passage": passage,
+                "label": "corrupted" if corruption else "original",
+                "corruption_class": corruption or "none",
+                "orig_index": b["orig_index"],
+            }
+        )
 
     # positives: all originals
     for b in base:
-        emit(b, None, b["subject"], b["relation"], b["object"],
-             b["passage"])
+        emit(b, None, b["subject"], b["relation"], b["object"], b["passage"])
 
     # negatives: one corruption per base triple, class round-robin for
     # balance, with per-class applicability checks
@@ -121,37 +143,71 @@ def cmd_generate(args):
         for attempt in range(len(classes)):
             cls = classes[(ci + attempt) % len(classes)]
             if cls == "inversion":
-                if b["relation"] in DIRECTIONAL \
-                        and b["subject"] != b["object"]:
-                    emit(b, cls, b["object"], b["relation"], b["subject"],
-                         b["passage"])
+                if (
+                    b["relation"] in DIRECTIONAL
+                    and b["subject"] != b["object"]
+                ):
+                    emit(
+                        b,
+                        cls,
+                        b["object"],
+                        b["relation"],
+                        b["subject"],
+                        b["passage"],
+                    )
                     made = True
             elif cls == "entity_sub":
-                pool = [o for o in objects_by_rel[b["relation"]]
-                        if o != b["object"]]
+                pool = [
+                    o
+                    for o in objects_by_rel[b["relation"]]
+                    if o != b["object"]
+                ]
                 if pool:
-                    emit(b, cls, b["subject"], b["relation"],
-                         rng.choice(pool), b["passage"])
+                    emit(
+                        b,
+                        cls,
+                        b["subject"],
+                        b["relation"],
+                        rng.choice(pool),
+                        b["passage"],
+                    )
                     made = True
             elif cls == "relation_sub":
                 pool = [r for r in ALL_RELATIONS if r != b["relation"]]
-                emit(b, cls, b["subject"], rng.choice(pool), b["object"],
-                     b["passage"])
+                emit(
+                    b,
+                    cls,
+                    b["subject"],
+                    rng.choice(pool),
+                    b["object"],
+                    b["passage"],
+                )
                 made = True
             elif cls == "passage_perm":
-                pool = [x for x in base
-                        if x["orig_index"] != b["orig_index"]
-                        and x["passage"] != b["passage"]]
+                pool = [
+                    x
+                    for x in base
+                    if x["orig_index"] != b["orig_index"]
+                    and x["passage"] != b["passage"]
+                ]
                 if pool:
-                    emit(b, cls, b["subject"], b["relation"], b["object"],
-                         rng.choice(pool)["passage"])
+                    emit(
+                        b,
+                        cls,
+                        b["subject"],
+                        b["relation"],
+                        b["object"],
+                        rng.choice(pool)["passage"],
+                    )
                     made = True
             if made:
                 ci += 1
                 break
         if not made:
-            print(f"  WARN: no corruption applicable for triple "
-                  f"{b['orig_index']}")
+            print(
+                f"  WARN: no corruption applicable for triple "
+                f"{b['orig_index']}"
+            )
 
     rng.shuffle(controls)
     out_path = out_dir / "controls.jsonl"
@@ -160,16 +216,21 @@ def cmd_generate(args):
             f.write(json.dumps(c, ensure_ascii=False) + "\n")
 
     dist = Counter(c["corruption_class"] for c in controls)
-    meta = {"seed": args.seed, "n_controls": len(controls),
-            "class_distribution": dict(dist)}
+    meta = {
+        "seed": args.seed,
+        "n_controls": len(controls),
+        "class_distribution": dict(dist),
+    }
     (out_dir / "controls_meta.json").write_text(
-        json.dumps(meta, indent=2), encoding="utf-8")
+        json.dumps(meta, indent=2), encoding="utf-8"
+    )
     print(json.dumps(meta, indent=2))
     print(f"Controls: {out_path}")
     print("Next: run m4_verify.py on this file (see module docstring).")
 
 
 # ── report ─────────────────────────────────────────────────────────────
+
 
 def auc_mann_whitney(scores_pos, scores_neg):
     """AUC with tie correction: P(score_pos > score_neg) + 0.5*P(equal).
@@ -183,24 +244,32 @@ def auc_mann_whitney(scores_pos, scores_neg):
                 wins += 1
             elif sp == sn:
                 ties += 1
-    return round((wins + 0.5 * ties) /
-                 (len(scores_pos) * len(scores_neg)), 4)
+    return round((wins + 0.5 * ties) / (len(scores_pos) * len(scores_neg)), 4)
 
 
 def prf(tp, fp, tn, fn):
     """Compute sensitivity/specificity/precision/F1/balanced-accuracy from a 2x2 confusion count; returns a dict with rounded metrics (None where undefined) plus the raw counts, no side effects."""
-    sens = tp / (tp + fn) if tp + fn else None      # recall on corrupted
-    spec = tn / (tn + fp) if tn + fp else None      # on originals
+    sens = tp / (tp + fn) if tp + fn else None  # recall on corrupted
+    spec = tn / (tn + fp) if tn + fp else None  # on originals
     prec = tp / (tp + fp) if tp + fp else None
-    f1 = (2 * prec * sens / (prec + sens)
-          if prec and sens and (prec + sens) else None)
-    bal = ((sens + spec) / 2 if sens is not None and spec is not None
-           else None)
+    f1 = (
+        2 * prec * sens / (prec + sens)
+        if prec and sens and (prec + sens)
+        else None
+    )
+    bal = (sens + spec) / 2 if sens is not None and spec is not None else None
     r4 = lambda x: round(x, 4) if x is not None else None
-    return {"sensitivity": r4(sens), "specificity": r4(spec),
-            "precision": r4(prec), "f1": r4(f1),
-            "balanced_accuracy": r4(bal),
-            "tp": tp, "fp": fp, "tn": tn, "fn": fn}
+    return {
+        "sensitivity": r4(sens),
+        "specificity": r4(spec),
+        "precision": r4(prec),
+        "f1": r4(f1),
+        "balanced_accuracy": r4(bal),
+        "tp": tp,
+        "fp": fp,
+        "tn": tn,
+        "fn": fn,
+    }
 
 
 def cmd_report(args):
@@ -231,27 +300,45 @@ def cmd_report(args):
         ev = v["evidence"]["verdict"]
         if ev not in EV_SCORE_AS_DETECTOR:
             continue
-        rows.append({"label": c["label"],
-                     "cls": c["corruption_class"],
-                     "verdict": ev,
-                     "score": EV_SCORE_AS_DETECTOR[ev]})
+        rows.append(
+            {
+                "label": c["label"],
+                "cls": c["corruption_class"],
+                "verdict": ev,
+                "score": EV_SCORE_AS_DETECTOR[ev],
+            }
+        )
 
     # decision rule: corrupted detected iff NOT_SUPPORTED
     def counts(subset):
-        tp = sum(1 for r in subset if r["label"] == "corrupted"
-                 and r["verdict"] == "NOT_SUPPORTED")
-        fn = sum(1 for r in subset if r["label"] == "corrupted"
-                 and r["verdict"] != "NOT_SUPPORTED")
-        fp = sum(1 for r in subset if r["label"] == "original"
-                 and r["verdict"] == "NOT_SUPPORTED")
-        tn = sum(1 for r in subset if r["label"] == "original"
-                 and r["verdict"] != "NOT_SUPPORTED")
+        tp = sum(
+            1
+            for r in subset
+            if r["label"] == "corrupted" and r["verdict"] == "NOT_SUPPORTED"
+        )
+        fn = sum(
+            1
+            for r in subset
+            if r["label"] == "corrupted" and r["verdict"] != "NOT_SUPPORTED"
+        )
+        fp = sum(
+            1
+            for r in subset
+            if r["label"] == "original" and r["verdict"] == "NOT_SUPPORTED"
+        )
+        tn = sum(
+            1
+            for r in subset
+            if r["label"] == "original" and r["verdict"] != "NOT_SUPPORTED"
+        )
         return tp, fp, tn, fn
 
-    report = {"n_scored": len(rows),
-              "decision_rule": "corrupted detected iff evidence verdict "
-                               "== NOT_SUPPORTED",
-              "overall": prf(*counts(rows))}
+    report = {
+        "n_scored": len(rows),
+        "decision_rule": "corrupted detected iff evidence verdict "
+        "== NOT_SUPPORTED",
+        "overall": prf(*counts(rows)),
+    }
 
     pos = [r["score"] for r in rows if r["label"] == "corrupted"]
     neg = [r["score"] for r in rows if r["label"] == "original"]
@@ -264,12 +351,14 @@ def cmd_report(args):
         cls_pos = [r["score"] for r in rows if r["cls"] == cls]
         m = prf(*counts(subset))
         m["roc_auc"] = auc_mann_whitney(cls_pos, neg)
-        m["verdict_distribution"] = dict(Counter(
-            r["verdict"] for r in rows if r["cls"] == cls))
+        m["verdict_distribution"] = dict(
+            Counter(r["verdict"] for r in rows if r["cls"] == cls)
+        )
         per_class[cls] = m
     report["per_corruption_class"] = per_class
-    report["original_verdict_distribution"] = dict(Counter(
-        r["verdict"] for r in originals))
+    report["original_verdict_distribution"] = dict(
+        Counter(r["verdict"] for r in originals)
+    )
 
     out_path = out_dir / "negatives_report.json"
     out_path.write_text(json.dumps(report, indent=2), encoding="utf-8")

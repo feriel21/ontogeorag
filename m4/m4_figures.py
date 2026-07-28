@@ -41,35 +41,58 @@ from collections import Counter, defaultdict
 from pathlib import Path
 
 import matplotlib
+
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
 
 # Okabe-Ito colorblind-safe palette
-OI = {"blue": "#0072B2", "orange": "#E69F00", "green": "#009E73",
-      "red": "#D55E00", "sky": "#56B4E9", "yellow": "#F0E442",
-      "purple": "#CC79A7", "grey": "#999999"}
+OI = {
+    "blue": "#0072B2",
+    "orange": "#E69F00",
+    "green": "#009E73",
+    "red": "#D55E00",
+    "sky": "#56B4E9",
+    "yellow": "#F0E442",
+    "purple": "#CC79A7",
+    "grey": "#999999",
+}
 
-DEC_COLORS = {"ACCEPT": OI["green"], "UNCERTAIN": OI["orange"],
-              "REJECT": OI["red"]}
-EV_COLORS = {"SUPPORTED": OI["green"],
-             "PARTIALLY_SUPPORTED": OI["sky"],
-             "NOT_SUPPORTED": OI["red"],
-             "NO_PASSAGE": OI["grey"]}
+DEC_COLORS = {
+    "ACCEPT": OI["green"],
+    "UNCERTAIN": OI["orange"],
+    "REJECT": OI["red"],
+}
+EV_COLORS = {
+    "SUPPORTED": OI["green"],
+    "PARTIALLY_SUPPORTED": OI["sky"],
+    "NOT_SUPPORTED": OI["red"],
+    "NO_PASSAGE": OI["grey"],
+}
 
 EV_ORDER = ["SUPPORTED", "PARTIALLY_SUPPORTED", "NOT_SUPPORTED"]
 BLIND_ORDER = ["PLAUSIBLE", "UNCERTAIN", "IMPLAUSIBLE"]
 DEC_ORDER = ["ACCEPT", "UNCERTAIN", "REJECT"]
-QWEN_TO_M4 = {"STRONG_SUPPORT": "SUPPORTED",
-              "WEAK_SUPPORT": "PARTIALLY_SUPPORTED",
-              "NOT_SUPPORTED": "NOT_SUPPORTED"}
+QWEN_TO_M4 = {
+    "STRONG_SUPPORT": "SUPPORTED",
+    "WEAK_SUPPORT": "PARTIALLY_SUPPORTED",
+    "NOT_SUPPORTED": "NOT_SUPPORTED",
+}
 
-plt.rcParams.update({
-    "font.size": 9, "axes.titlesize": 9, "axes.labelsize": 9,
-    "xtick.labelsize": 8, "ytick.labelsize": 8, "legend.fontsize": 8,
-    "figure.dpi": 120, "savefig.bbox": "tight",
-    "axes.spines.top": False, "axes.spines.right": False,
-})
+plt.rcParams.update(
+    {
+        "font.size": 9,
+        "axes.titlesize": 9,
+        "axes.labelsize": 9,
+        "xtick.labelsize": 8,
+        "ytick.labelsize": 8,
+        "legend.fontsize": 8,
+        "figure.dpi": 120,
+        "savefig.bbox": "tight",
+        "axes.spines.top": False,
+        "axes.spines.right": False,
+    }
+)
 
 MM = 1 / 25.4  # mm -> inch
 
@@ -95,14 +118,22 @@ def save(fig, out_dir, name):
 
 def short(label):
     """Map a verdict/decision `label` to its compact figure-axis form; returns `label` unchanged if not in the lookup, no side effects."""
-    return {"PARTIALLY_SUPPORTED": "PARTIAL", "NOT_SUPPORTED": "NOT SUPP.",
-            "STRONG_SUPPORT": "STRONG", "WEAK_SUPPORT": "WEAK",
-            "IMPLAUSIBLE": "IMPLAUS.", "UNCERTAIN": "UNCERT.",
-            "SUPPORTED": "SUPPORTED", "PLAUSIBLE": "PLAUSIBLE",
-            "ACCEPT": "Accept", "REJECT": "Reject"}.get(label, label)
+    return {
+        "PARTIALLY_SUPPORTED": "PARTIAL",
+        "NOT_SUPPORTED": "NOT SUPP.",
+        "STRONG_SUPPORT": "STRONG",
+        "WEAK_SUPPORT": "WEAK",
+        "IMPLAUSIBLE": "IMPLAUS.",
+        "UNCERTAIN": "UNCERT.",
+        "SUPPORTED": "SUPPORTED",
+        "PLAUSIBLE": "PLAUSIBLE",
+        "ACCEPT": "Accept",
+        "REJECT": "Reject",
+    }.get(label, label)
 
 
 # ── Fig 1: evidence verdicts by tier ───────────────────────────────────
+
 
 def fig_verdicts_by_tier(decisions, out_dir):
     """Render the evidence-verdict-distribution-by-tier stacked bar chart from `decisions` and save it as fig_m4_verdicts under `out_dir`."""
@@ -118,45 +149,77 @@ def fig_verdicts_by_tier(decisions, out_dir):
         vals = np.array([counts[t].get(ev, 0) for t in tiers], dtype=float)
         if vals.sum() == 0:
             continue
-        ax.barh(y, vals, left=left, color=EV_COLORS[ev],
-                label=short(ev), height=0.55, edgecolor="white", lw=0.5)
+        ax.barh(
+            y,
+            vals,
+            left=left,
+            color=EV_COLORS[ev],
+            label=short(ev),
+            height=0.55,
+            edgecolor="white",
+            lw=0.5,
+        )
         for yi, (v, l) in enumerate(zip(vals, left)):
             if v > 0:
-                ax.text(l + v / 2, yi, f"{int(v)}", ha="center",
-                        va="center", fontsize=8,
-                        color="white" if ev != "PARTIALLY_SUPPORTED"
-                        else "black")
+                ax.text(
+                    l + v / 2,
+                    yi,
+                    f"{int(v)}",
+                    ha="center",
+                    va="center",
+                    fontsize=8,
+                    color="white" if ev != "PARTIALLY_SUPPORTED" else "black",
+                )
         left += vals
     ax.set_yticks(y)
-    ax.set_yticklabels([f"Tier {t}\n(n={sum(counts[t].values())})"
-                        for t in tiers])
+    ax.set_yticklabels(
+        [f"Tier {t}\n(n={sum(counts[t].values())})" for t in tiers]
+    )
     ax.set_xlabel("Triples")
-    ax.legend(ncol=3, frameon=False, loc="upper center",
-              bbox_to_anchor=(0.5, 1.28))
+    ax.legend(
+        ncol=3, frameon=False, loc="upper center", bbox_to_anchor=(0.5, 1.28)
+    )
     ax.invert_yaxis()
     save(fig, out_dir, "fig_m4_verdicts")
 
 
 # ── Fig 2 & 3: heatmaps ────────────────────────────────────────────────
 
-def heatmap(matrix, rows, cols, xlabel, ylabel, out_dir, name,
-            highlight=None):
+
+def heatmap(matrix, rows, cols, xlabel, ylabel, out_dir, name, highlight=None):
     """Render `matrix` as an annotated Blues heatmap with `rows`/`cols` labels (optionally outlining cell `highlight`) and save it as `name` under `out_dir`."""
     fig, ax = plt.subplots(figsize=(80 * MM, 62 * MM))
     m = np.array(matrix, dtype=float)
-    im = ax.imshow(m, cmap="Blues", aspect="auto",
-                   vmin=0, vmax=max(1, m.max()))
+    im = ax.imshow(
+        m, cmap="Blues", aspect="auto", vmin=0, vmax=max(1, m.max())
+    )
     for i in range(len(rows)):
         for j in range(len(cols)):
             v = int(m[i, j])
             color = "white" if m[i, j] > 0.6 * m.max() else "black"
             weight = "bold" if highlight == (i, j) else "normal"
-            ax.text(j, i, str(v), ha="center", va="center",
-                    color=color, fontsize=9, fontweight=weight)
+            ax.text(
+                j,
+                i,
+                str(v),
+                ha="center",
+                va="center",
+                color=color,
+                fontsize=9,
+                fontweight=weight,
+            )
     if highlight is not None:
         i, j = highlight
-        ax.add_patch(plt.Rectangle((j - 0.5, i - 0.5), 1, 1, fill=False,
-                                   edgecolor=OI["red"], lw=1.8))
+        ax.add_patch(
+            plt.Rectangle(
+                (j - 0.5, i - 0.5),
+                1,
+                1,
+                fill=False,
+                edgecolor=OI["red"],
+                lw=1.8,
+            )
+        )
     ax.set_xticks(range(len(cols)))
     ax.set_xticklabels([short(c) for c in cols], rotation=20, ha="right")
     ax.set_yticks(range(len(rows)))
@@ -174,12 +237,19 @@ def fig_blind_vs_evidence(decisions, out_dir):
         b, e = d["blind_verdict"], d["evidence_verdict"]
         if b in BLIND_ORDER and e in EV_ORDER:
             m[BLIND_ORDER.index(b)][EV_ORDER.index(e)] += 1
-    heatmap(m, BLIND_ORDER, EV_ORDER,
-            "Evidence judge (with source passage)",
-            "Blind judge (no text)",
-            out_dir, "fig_m4_blind_vs_evidence",
-            highlight=(BLIND_ORDER.index("PLAUSIBLE"),
-                       EV_ORDER.index("NOT_SUPPORTED")))
+    heatmap(
+        m,
+        BLIND_ORDER,
+        EV_ORDER,
+        "Evidence judge (with source passage)",
+        "Blind judge (no text)",
+        out_dir,
+        "fig_m4_blind_vs_evidence",
+        highlight=(
+            BLIND_ORDER.index("PLAUSIBLE"),
+            EV_ORDER.index("NOT_SUPPORTED"),
+        ),
+    )
 
 
 def fig_m4_vs_qwen(decisions, out_dir):
@@ -190,13 +260,19 @@ def fig_m4_vs_qwen(decisions, out_dir):
         e = d["evidence_verdict"]
         if q in EV_ORDER and e in EV_ORDER:
             m[EV_ORDER.index(q)][EV_ORDER.index(e)] += 1
-    heatmap(m, EV_ORDER, EV_ORDER,
-            "M4 independent verifier (Llama-3.1-8B)",
-            "Pipeline self-verifier (Qwen-7B, mapped)",
-            out_dir, "fig_m4_vs_qwen")
+    heatmap(
+        m,
+        EV_ORDER,
+        EV_ORDER,
+        "M4 independent verifier (Llama-3.1-8B)",
+        "Pipeline self-verifier (Qwen-7B, mapped)",
+        out_dir,
+        "fig_m4_vs_qwen",
+    )
 
 
 # ── Fig 4: decisions by relation ───────────────────────────────────────
+
 
 def fig_by_relation(decisions, out_dir):
     """Render the ACCEPT/UNCERTAIN/REJECT-by-relation stacked bar chart (relations sorted by triple count) from `decisions` and save it as fig_m4_by_relation under `out_dir`."""
@@ -210,23 +286,40 @@ def fig_by_relation(decisions, out_dir):
     left = np.zeros(len(rels))
     for dec in DEC_ORDER:
         vals = np.array([by_rel[r].get(dec, 0) for r in rels], dtype=float)
-        ax.barh(y, vals, left=left, color=DEC_COLORS[dec],
-                label=short(dec), height=0.6, edgecolor="white", lw=0.5)
+        ax.barh(
+            y,
+            vals,
+            left=left,
+            color=DEC_COLORS[dec],
+            label=short(dec),
+            height=0.6,
+            edgecolor="white",
+            lw=0.5,
+        )
         for yi, (v, l) in enumerate(zip(vals, left)):
             if v > 1:
-                ax.text(l + v / 2, yi, f"{int(v)}", ha="center",
-                        va="center", fontsize=7, color="white")
+                ax.text(
+                    l + v / 2,
+                    yi,
+                    f"{int(v)}",
+                    ha="center",
+                    va="center",
+                    fontsize=7,
+                    color="white",
+                )
         left += vals
     ax.set_yticks(y)
     ax.set_yticklabels(rels)
     ax.set_xlabel("Triples")
-    ax.legend(ncol=3, frameon=False, loc="upper center",
-              bbox_to_anchor=(0.5, 1.18))
+    ax.legend(
+        ncol=3, frameon=False, loc="upper center", bbox_to_anchor=(0.5, 1.18)
+    )
     ax.invert_yaxis()
     save(fig, out_dir, "fig_m4_by_relation")
 
 
 # ── Fig 5: tier flow (two-column alluvial) ─────────────────────────────
+
 
 def fig_tier_flow(decisions, out_dir):
     """Render the original-tier -> new-tier/quarantine two-column alluvial flow diagram from `decisions` and save it as fig_m4_tier_flow under `out_dir`."""
@@ -243,13 +336,18 @@ def fig_tier_flow(decisions, out_dir):
         flows[(orig, new)] += 1
 
     left_nodes = sorted({k[0] for k in flows})
-    right_nodes = [n for n in ["Tier 1", "Tier 2", "Quarantine"]
-                   if any(k[1] == n for k in flows)]
+    right_nodes = [
+        n
+        for n in ["Tier 1", "Tier 2", "Quarantine"]
+        if any(k[1] == n for k in flows)
+    ]
 
-    left_tot = {n: sum(v for k, v in flows.items() if k[0] == n)
-                for n in left_nodes}
-    right_tot = {n: sum(v for k, v in flows.items() if k[1] == n)
-                 for n in right_nodes}
+    left_tot = {
+        n: sum(v for k, v in flows.items() if k[0] == n) for n in left_nodes
+    }
+    right_tot = {
+        n: sum(v for k, v in flows.items() if k[1] == n) for n in right_nodes
+    }
     total = sum(flows.values())
     gap = 0.04 * total
 
@@ -260,22 +358,46 @@ def fig_tier_flow(decisions, out_dir):
             y += tots[n] + gap
         return pos
 
-    lp, rp = positions(left_nodes, left_tot), positions(right_nodes,
-                                                        right_tot)
-    node_color = {"Tier 1": OI["green"], "Tier 2": OI["sky"],
-                  "Quarantine": OI["red"]}
+    lp, rp = positions(left_nodes, left_tot), positions(right_nodes, right_tot)
+    node_color = {
+        "Tier 1": OI["green"],
+        "Tier 2": OI["sky"],
+        "Quarantine": OI["red"],
+    }
 
     fig, ax = plt.subplots(figsize=(90 * MM, 60 * MM))
     for n, (y0, y1) in lp.items():
-        ax.fill_betweenx([y0, y1], 0.00, 0.06, color=node_color.get(
-            n, OI["grey"]), alpha=0.9)
-        ax.text(-0.02, (y0 + y1) / 2, f"{n}\n({int(y1-y0)})",
-                ha="right", va="center", fontsize=8)
+        ax.fill_betweenx(
+            [y0, y1],
+            0.00,
+            0.06,
+            color=node_color.get(n, OI["grey"]),
+            alpha=0.9,
+        )
+        ax.text(
+            -0.02,
+            (y0 + y1) / 2,
+            f"{n}\n({int(y1 - y0)})",
+            ha="right",
+            va="center",
+            fontsize=8,
+        )
     for n, (y0, y1) in rp.items():
-        ax.fill_betweenx([y0, y1], 0.94, 1.00, color=node_color.get(
-            n, OI["grey"]), alpha=0.9)
-        ax.text(1.02, (y0 + y1) / 2, f"{n}\n({int(y1-y0)})",
-                ha="left", va="center", fontsize=8)
+        ax.fill_betweenx(
+            [y0, y1],
+            0.94,
+            1.00,
+            color=node_color.get(n, OI["grey"]),
+            alpha=0.9,
+        )
+        ax.text(
+            1.02,
+            (y0 + y1) / 2,
+            f"{n}\n({int(y1 - y0)})",
+            ha="left",
+            va="center",
+            fontsize=8,
+        )
 
     lcur = {n: lp[n][0] for n in left_nodes}
     rcur = {n: rp[n][0] for n in right_nodes}
@@ -284,17 +406,23 @@ def fig_tier_flow(decisions, out_dir):
     for (a, b), v in sorted(flows.items()):
         y0a, y0b = lcur[a], rcur[b]
         top = y0a + (y0b - y0a) * ease
-        ax.fill_between(xs, top, top + v,
-                        color=node_color.get(b, OI["grey"]), alpha=0.35,
-                        lw=0)
+        ax.fill_between(
+            xs,
+            top,
+            top + v,
+            color=node_color.get(b, OI["grey"]),
+            alpha=0.35,
+            lw=0,
+        )
         lcur[a] += v
         rcur[b] += v
 
     ax.set_xlim(-0.18, 1.22)
     ax.invert_yaxis()
     ax.axis("off")
-    ax.set_title("Tier reassignment after independent verification",
-                 fontsize=9)
+    ax.set_title(
+        "Tier reassignment after independent verification", fontsize=9
+    )
     save(fig, out_dir, "fig_m4_tier_flow")
 
 
@@ -313,13 +441,16 @@ def main():
 
     # Panel files carry concatenated per-judge verdicts ("A|B"); the
     # verdict-based figures are only meaningful on single-judge files.
-    is_panel = any("|" in str(d.get("evidence_verdict", ""))
-                   for d in decisions)
+    is_panel = any(
+        "|" in str(d.get("evidence_verdict", "")) for d in decisions
+    )
     if is_panel:
-        print("  [panel file detected: verdict-based figures "
-              "(fig_m4_verdicts, fig_m4_blind_vs_evidence, "
-              "fig_m4_vs_qwen) are skipped — generate them from a "
-              "single-judge m4_decisions.jsonl]")
+        print(
+            "  [panel file detected: verdict-based figures "
+            "(fig_m4_verdicts, fig_m4_blind_vs_evidence, "
+            "fig_m4_vs_qwen) are skipped — generate them from a "
+            "single-judge m4_decisions.jsonl]"
+        )
     else:
         fig_verdicts_by_tier(decisions, out_dir)
         fig_blind_vs_evidence(decisions, out_dir)
