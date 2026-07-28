@@ -27,15 +27,14 @@ from pathlib import Path
 
 import numpy as np
 
+from pipeline.rag.constants import (
+    KNOWN_DESCRIPTORS,
+    LB2019_BENCHMARK_DESCRIPTORS as LB_DESCRIPTORS,
+)
+
 # ═══════════════════════════════════════════════════════════════════════
 # CONFIGURATION
 # ═══════════════════════════════════════════════════════════════════════
-
-LB_DESCRIPTORS = {
-    "blocky", "chaotic", "continuous", "discontinuous",
-    "high-amplitude", "hummocky", "layered", "low-amplitude",
-    "massive", "parallel", "stratified", "transparent", "undeformed",
-}
 
 LB_REFERENCE_EDGES = [
     ("mass transport deposit", "hasDescriptor", "chaotic"),
@@ -78,15 +77,6 @@ TYPE_CONSTRAINTS = {
     "occursIn":      {"object_type": "Setting"},
     "overlies":      {"subject_type": "Geological_Object", "object_type": "Geological_Object"},
     "underlies":     {"subject_type": "Geological_Object", "object_type": "Geological_Object"},
-}
-
-KNOWN_DESCRIPTORS = LB_DESCRIPTORS | {
-    "mounded", "divergent", "convergent", "wavy", "contorted",
-    "folded", "faulted", "deformed", "disrupted", "draping",
-    "onlapping", "erosional", "aggradational", "progradational",
-    "retrogradational", "tabular", "lenticular", "wedge-shaped",
-    "sheet-like", "channelised", "irregular", "smooth", "rough",
-    "thick", "thin", "variable-amplitude", "moderate-amplitude",
 }
 
 KNOWN_SETTINGS = {

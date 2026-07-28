@@ -132,11 +132,17 @@ RELATION_GLOSSES: dict[str, str] = {
 
 # ── LB2019 ground truth ───────────────────────────────────────────────
 
-LB2019_DESCRIPTORS: set[str] = {
+# The true 13-term LB2019 descriptor benchmark (single source of truth —
+# do not redefine locally; import this everywhere, including 04 and 07).
+LB2019_BENCHMARK_DESCRIPTORS: set[str] = {
     "blocky", "chaotic", "continuous", "discontinuous",
     "high-amplitude", "hummocky", "layered", "low-amplitude",
     "massive", "parallel", "stratified", "transparent", "undeformed",
 }
+
+# Back-compat alias for callers outside pipeline/ (e.g. experiments/) that
+# still import the old name.
+LB2019_DESCRIPTORS = LB2019_BENCHMARK_DESCRIPTORS
 
 DESCRIPTOR_SYNONYMS: dict[str, str] = {
     "stratified":                "layered",

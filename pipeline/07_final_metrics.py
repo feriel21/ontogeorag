@@ -15,11 +15,7 @@ import argparse
 from pathlib import Path
 from collections import defaultdict
 
-LB2019_DESCRIPTORS = {
-    "chaotic", "transparent", "blocky", "layered", "stratified",
-    "parallel", "continuous", "discontinuous", "massive",
-    "low-amplitude", "high-amplitude", "undeformed", "deformed"
-}
+from pipeline.rag.constants import LB2019_BENCHMARK_DESCRIPTORS as LB2019_DESCRIPTORS
 
 DESCRIPTOR_SYNONYMS = {
     "stratified":               "layered",
