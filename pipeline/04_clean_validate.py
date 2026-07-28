@@ -121,6 +121,12 @@ BLACKLIST_RE = [re.compile(p, re.IGNORECASE) for p in BLACKLIST_PATTERNS]
 # ═══════════════════════════════════════════════════════════════════════
 # FIX #1 — RELATION MAPPING
 # ═══════════════════════════════════════════════════════════════════════
+# Stage 2's LLM occasionally emits a close-but-nonstandard relation name
+# (e.g. "hasFeature" instead of "hasDescriptor") that isn't in
+# VALID_RELATIONS. Without this map, check_relation() would reject those
+# triples outright as "invalid_relation" even though they carry a
+# legitimate signal — this is why apply_relation_mapping() runs BEFORE
+# check_relation() in main()'s validation loop, not after.
 
 RELATION_MAP = {
     "hasfeature": "hasDescriptor",
@@ -171,27 +177,42 @@ def apply_relation_mapping(triple: dict) -> None:
 def check_verification(triple: dict, policy: str) -> tuple[bool, str]:
     """Decide whether `triple` survives its stage-3 `_verification` verdict under the given `policy` (strict/normal/relaxed/off); returns (passes, reason_code), no side effects."""
     if policy == "off":
+        # No stage-3 gate at all — used to inspect raw extraction output
+        # (e.g. debugging stage 2) without verification noise.
         return True, "ok"
 
     verif = triple.get("_verification", {})
     verdict = verif.get("verdict", "MISSING")
 
     if verdict == "MISSING":
+        # Only "strict" treats an unverified triple as untrustworthy by
+        # default; the other policies assume it would likely have passed
+        # (avoids silently losing triples just because stage 3 was
+        # skipped for a given run, e.g. --verif-policy off upstream).
         if policy == "strict":
             return False, "verif_missing"
         return True, "ok_unverified"
 
     if policy == "strict":
+        # Tier-1 gate: only an explicit STRONG_SUPPORT counts. This is
+        # what makes Tier 1 "verified" in the tiered-fusion sense (06).
         return (verdict == "STRONG_SUPPORT"), ("ok" if verdict == "STRONG_SUPPORT" else f"verif_rejected_{verdict.lower()}")
 
     if policy == "normal":
         if verdict in ("STRONG_SUPPORT", "WEAK_SUPPORT"):
             return True, "ok"
+        # NO_CHUNK/UNPARSEABLE are verifier INFRASTRUCTURE failures (no
+        # source chunk found, or the LLM response didn't match the
+        # expected format) — not evidence against the triple itself, so
+        # they are kept rather than penalized.
         if verdict in ("NO_CHUNK", "UNPARSEABLE"):
             return True, f"ok_{verdict.lower()}"
         return False, "verif_not_supported"
 
     if policy == "relaxed":
+        # Maximally permissive: only an explicit NOT_SUPPORTED rejects.
+        # Used for recall-oriented runs where false negatives are costlier
+        # than false positives (e.g. corpus-gap diagnostics).
         if verdict == "NOT_SUPPORTED":
             return False, "verif_not_supported"
         return True, "ok"
@@ -359,12 +380,22 @@ def build_canonical_map(
         if len(members) < 2:
             continue
 
+        # SciBERT embeds domain jargon densely: distinct LB2019 descriptor
+        # terms (e.g. "hummocky" and "chaotic") can land inside the same
+        # 0.06-distance cluster because they co-occur in similar seismic-
+        # facies contexts, not because they mean the same thing. Silently
+        # merging two ground-truth descriptor categories would corrupt
+        # the descriptor-coverage metric the paper reports on, so any
+        # cluster containing 2+ LB descriptors is entirely skipped
+        # (no merge applied to ANY member) rather than guessing a winner.
         lb_members = [m for m in members if m in lb_descriptors]
         if len(lb_members) >= 2:
             for m in members:
                 blocked.append(f"BLOCKED: '{m}' (cluster with {members}, both LB descriptors)")
             continue
-        # P9: also protect LB2019 settings from being merged away
+        # Same protection for LB2019 setting terms — a setting merged into
+        # a co-clustered non-setting entity would silently break occursIn
+        # recall against the benchmark edges. (P9 = project ticket ref.)
         lb_settings = {
             "continental slope", "abyssal plain", "basin floor",
             "hemipelagite", "passive margins", "continental shelf",

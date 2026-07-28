@@ -189,6 +189,12 @@ def build_canonical_map(entities, embeddings, distance_threshold=0.06):
 
 def validate_canonical_map(canonical_map):
     """Remove merges that would corrupt the KG."""
+    # SciBERT clusters by surface/contextual similarity, not ontology
+    # type — "chaotic" (Descriptor) and "erosion" (Process) can land in
+    # the same cluster if they co-occur in similar sentences. These
+    # rules are a post-hoc safety net that runs AFTER build_canonical_map
+    # (which only knows embeddings), catching what distance-threshold
+    # tuning alone can't guarantee.
     bad_merges = []
 
     for old, new in list(canonical_map.items()):

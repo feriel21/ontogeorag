@@ -179,6 +179,9 @@ def build_index(triples: list[dict]) -> dict:
     for t in triples:
         k    = triple_key(t)
         tier = verdict_to_tier(get_verdict(t))
+        # Lower tier number = higher confidence (1=STRONG, 2=WEAK, 3=NOT
+        # SUPPORTED/other), so "<" here means "replace with the more
+        # trustworthy of any duplicate raw triples within this one run".
         if k not in index or tier < index[k]["tier"]:
             index[k] = {"tier": tier, "raw": t}
     return index
@@ -219,6 +222,11 @@ def main():
     for k, entry in idx_a.items():
         tier = entry["tier"]
         if k in keys_b:
+            # A triple found by both runs takes the BETTER (lower) tier
+            # of the two — if either run's verifier gave STRONG_SUPPORT,
+            # that confidence carries even if the other run only reached
+            # WEAK_SUPPORT. This is what makes cross-run consistency an
+            # upgrade path rather than a downgrade risk.
             tier   = min(tier, idx_b[k]["tier"])
             origin = "both"
         else:
