@@ -20,7 +20,8 @@ OUT="${3:-output/analysis}"
 unset SLURM_PROCID SLURM_NTASKS RANK WORLD_SIZE MASTER_ADDR MASTER_PORT
 
 echo "== 08 provenance =="
-python 08_rebuild_provenance.py --kg "$KG" --chunks "$CHUNKS" --outdir "$OUT"
+python 08_rebuild_provenance.py --kg "$KG" --chunks "$CHUNKS" \
+    --outdir "$OUT" ${M4_DECISIONS:+--decisions "$M4_DECISIONS"}
 
 KGP="$OUT/kg_with_provenance.json"
 

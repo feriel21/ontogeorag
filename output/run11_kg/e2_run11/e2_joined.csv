@@ -1,0 +1,30 @@
+annotator,comment,confidence,expert_ord,expert_verdict,expert_verdict_raw,m4_confidence,m4_decision,m4_ord,object,relation,statement_id,subject,support_chunks,support_papers,tier
+P,,1.0,1,P,P,0.5,UNCERTAIN,1,discontinuous,hasDescriptor,1,fold,9,6,1
+P,,0.4307,1,P,P,0.925,ACCEPT,2,equilibrium conditions,affects,2,wave action,2,1,1
+Y,,1.0,2,Y,Y,1.0,ACCEPT,2,continental margin,occursIn,3,mass transport deposit,15,8,1
+Y,,0.8614,2,Y,Y,0.925,ACCEPT,2,low-amplitude,hasDescriptor,4,mass transport deposit,3,3,1
+Y,,0.6826,2,Y,Y,0.75,ACCEPT,2,layered,hasDescriptor,5,megaslide,10,2,1
+P,,0.6826,1,P,P,0.825,ACCEPT,2,basal shear surface,partOf,6,mass transport deposit,32,2,1
+P,,0.4307,1,P,P,1.0,ACCEPT,2,greatest rates of sedimentation at the outer shelf and upper slope,causes,7,sea-level lowstands,0,1,1
+Y,,0.4307,2,Y,Y,0.475,UNCERTAIN,1,fluid overpressure,causes,8,rapid rate of sedimentation,0,1,1
+P,,0.4307,1,P,P,0.925,ACCEPT,2,equilibrium conditions,affects,9,wave action,2,1,1
+P,,0.6826,1,P,P,1.0,ACCEPT,2,high-amplitude,hasDescriptor,10,mass transport deposit,2,2,1
+Y,,0.4307,2,Y,Y,0.575,UNCERTAIN,1,mass transport deposit,causes,11,growth stratal wedge,2,1,1
+Y,,0.1809,2,Y,Y,0.475,UNCERTAIN,1,effect of the surface slope,affects,12,sea floor slope,0,1,2
+Y,,0.4307,2,Y,Y,0.5,UNCERTAIN,1,thin,hasDescriptor,13,channel levee complex,2,1,1
+Y,,0.42,2,Y,Y,0.475,UNCERTAIN,1,continental slope,occursIn,14,mass transport deposit,19,9,2
+Y,,1.0,2,Y,Y,1.0,ACCEPT,2,continental margin,occursIn,15,mass transport deposit,15,8,1
+Y,,0.7,2,Y,Y,0.425,UNCERTAIN,1,continuous,hasDescriptor,16,mass transport deposit,17,5,1
+Y,,0.1809,2,Y,Y,0.475,UNCERTAIN,1,effect of the surface slope,affects,17,sea floor slope,0,1,2
+P,,0.4307,1,P,P,0.825,ACCEPT,2,mediterranean continental margin,occursIn,18,submarine landslides,3,1,1
+Y,,1.0,2,Y,Y,1.0,ACCEPT,2,continental margin,occursIn,19,mass transport deposit,15,8,1
+Y,,0.1809,2,Y,Y,0.475,UNCERTAIN,1,effect of the surface slope,affects,20,sea floor slope,0,1,2
+Y,,0.1809,2,Y,Y,0.475,UNCERTAIN,1,effect of the surface slope,affects,21,sea floor slope,0,1,2
+P,,0.1809,1,P,P,0.475,UNCERTAIN,1,effect of the surface slope,affects,22,sea floor slope,0,1,2
+Y,,0.8614,2,Y,Y,0.65,ACCEPT,2,chaotic,hasDescriptor,23,debris-flow deposit,3,3,1
+P,,0.4307,1,P,P,0.575,UNCERTAIN,1,disintegration and transformation of the debris flows into a turbidity current,controls,24,rough topography,2,1,1
+Y,,0.42,2,Y,Y,0.825,ACCEPT,2,slope failure,causes,25,excess pore pressure,31,5,2
+Y,,0.4307,2,Y,Y,0.5,UNCERTAIN,1,thin,hasDescriptor,26,channel levee complex,2,1,1
+Y,,0.42,2,Y,Y,0.825,ACCEPT,2,slope failure,causes,27,excess pore pressure,31,5,2
+P,,0.6826,1,P,P,0.825,ACCEPT,2,basal shear surface,partOf,28,mass transport deposit,32,2,1
+Y,,0.7,2,Y,Y,0.425,UNCERTAIN,1,continuous,hasDescriptor,29,mass transport deposit,17,5,1

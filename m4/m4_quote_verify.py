@@ -42,22 +42,28 @@ import re
 from collections import Counter
 from pathlib import Path
 
-from m4_verify import (load_triples, triple_fields,
-                       evidence_from_provenance, load_chunk_index)
+from m4_verify import (
+    evidence_from_provenance,
+    load_chunk_index,
+    load_triples,
+    triple_fields,
+)
 
 
 def normalize(text: str) -> str:
+    """Lowercase `text`, fix known OCR ligature artefacts, strip bracketed ellipses/quotation marks, and collapse to alphanumeric tokens; no side effects."""
     t = text.lower()
     # OCR ligature artefacts present in the corpus PDFs
     t = t.replace("¢", "fi").replace("£", "fl")
     t = t.replace("ﬁ", "fi").replace("ﬂ", "fl")
-    t = re.sub(r"\[\s*(\.\.\.|…)\s*\]", " ", t)      # bracketed ellipses
-    t = re.sub(r"[\"'“”‘’«»]", "", t)                 # quotation marks
-    t = re.sub(r"[^a-z0-9]+", " ", t).strip()         # punct/hyphen variance
+    t = re.sub(r"\[\s*(\.\.\.|…)\s*\]", " ", t)  # bracketed ellipses
+    t = re.sub(r"[\"'“”‘’«»]", "", t)  # quotation marks
+    t = re.sub(r"[^a-z0-9]+", " ", t).strip()  # punct/hyphen variance
     return t
 
 
 def pipeline_quote(t: dict) -> str:
+    """Extract the extraction-time evidence quote string from triple `t`'s `evidence` field, if present; no side effects."""
     ev = t.get("evidence", {})
     if isinstance(ev, dict):
         return str(ev.get("quote", "") or "")
@@ -74,7 +80,7 @@ def best_similarity(quote: str, target: str) -> float:
     best = 0.0
     step = max(1, lq // 4)
     for start in range(0, len(target) - lq + 1, step):
-        window = target[start:start + lq + step]
+        window = target[start : start + lq + step]
         r = difflib.SequenceMatcher(None, quote, window).ratio()
         if r > best:
             best = r
@@ -84,6 +90,7 @@ def best_similarity(quote: str, target: str) -> float:
 
 
 def classify(quote: str, target: str, near: float) -> tuple:
+    """Classify `quote` against `target` as EXACT/EXACT_FRAGMENTED/NEAR (>= `near` similarity)/NOT_FOUND/EMPTY_QUOTE/NO_TARGET; returns (status, similarity_score), no side effects."""
     nq, nt = normalize(quote), normalize(target)
     if not nq:
         return "EMPTY_QUOTE", 0.0
@@ -102,6 +109,7 @@ def classify(quote: str, target: str, near: float) -> tuple:
 
 
 def load_jsonl(path):
+    """Read `path` as one JSON object per line; no side effects."""
     out = []
     with open(Path(path).expanduser(), encoding="utf-8") as f:
         for line in f:
@@ -112,12 +120,17 @@ def load_jsonl(path):
 
 
 def main():
+    """CLI entry point: audits --kg pipeline quotes against their provenance passage (Check A) and, if --verdicts given, M4 judge quotes against their shown passage (Check B); writes quote_verification.jsonl + quote_verification_summary.json to --output."""
     ap = argparse.ArgumentParser()
     ap.add_argument("--kg", required=True)
-    ap.add_argument("--verdicts", default=None,
-                    help="m4_verdicts.jsonl (enables Check B)")
-    ap.add_argument("--index", default=None,
-                    help="Chunk index dir (corpus-wide fallback for Check A)")
+    ap.add_argument(
+        "--verdicts", default=None, help="m4_verdicts.jsonl (enables Check B)"
+    )
+    ap.add_argument(
+        "--index",
+        default=None,
+        help="Chunk index dir (corpus-wide fallback for Check A)",
+    )
     ap.add_argument("--near-threshold", type=float, default=0.85)
     ap.add_argument("--output", required=True)
     args = ap.parse_args()
@@ -126,10 +139,13 @@ def main():
     out_dir.mkdir(parents=True, exist_ok=True)
 
     triples = load_triples(Path(args.kg).expanduser())
-    chunks = load_chunk_index(Path(args.index).expanduser()) \
-        if args.index else []
-    chunk_norm = [normalize(c.get("text", "") if isinstance(c, dict)
-                            else str(c)) for c in chunks]
+    chunks = (
+        load_chunk_index(Path(args.index).expanduser()) if args.index else []
+    )
+    chunk_norm = [
+        normalize(c.get("text", "") if isinstance(c, dict) else str(c))
+        for c in chunks
+    ]
 
     results = []
     counts_a = Counter()
@@ -145,19 +161,29 @@ def main():
         corpus_status = None
         if status == "NOT_FOUND" and chunks:
             nq = normalize(quote)
-            frags = [f.strip() for f in re.split(r"\.\.\.|…", nq)
-                     if f.strip()] or [nq]
+            frags = [
+                f.strip() for f in re.split(r"\.\.\.|…", nq) if f.strip()
+            ] or [nq]
             found = any(all(f in cn for f in frags) for cn in chunk_norm)
-            corpus_status = "FOUND_ELSEWHERE_IN_CORPUS" if found \
-                else "NOT_IN_CORPUS"
+            corpus_status = (
+                "FOUND_ELSEWHERE_IN_CORPUS" if found else "NOT_IN_CORPUS"
+            )
 
         counts_a[status] += 1
         if corpus_status:
             counts_a[corpus_status] += 1
-        results.append({"check": "A_pipeline_quote", "index": i,
-                        "subject": subj, "relation": rel, "object": obj,
-                        "status": status, "similarity": score,
-                        "corpus_fallback": corpus_status})
+        results.append(
+            {
+                "check": "A_pipeline_quote",
+                "index": i,
+                "subject": subj,
+                "relation": rel,
+                "object": obj,
+                "status": status,
+                "similarity": score,
+                "corpus_fallback": corpus_status,
+            }
+        )
 
     # ── Check B: M4 judge quotes vs the passage it was shown
     if args.verdicts:
@@ -171,16 +197,25 @@ def main():
                 counts_b["NO_EVIDENCE_DECLARED"] += 1
                 continue
             idx = v["m4_index"]
-            passage = evidence_from_provenance(triples[idx]) \
-                if idx < len(triples) else ""
+            passage = (
+                evidence_from_provenance(triples[idx])
+                if idx < len(triples)
+                else ""
+            )
             status, score = classify(quote, passage, args.near_threshold)
             counts_b[status] += 1
-            results.append({"check": "B_judge_quote", "index": idx,
-                            "subject": v["subject"],
-                            "relation": v["relation"],
-                            "object": v["object"],
-                            "evidence_verdict": ev.get("verdict"),
-                            "status": status, "similarity": score})
+            results.append(
+                {
+                    "check": "B_judge_quote",
+                    "index": idx,
+                    "subject": v["subject"],
+                    "relation": v["relation"],
+                    "object": v["object"],
+                    "evidence_verdict": ev.get("verdict"),
+                    "status": status,
+                    "similarity": score,
+                }
+            )
 
     out_path = out_dir / "quote_verification.jsonl"
     with open(out_path, "w", encoding="utf-8") as f:
@@ -188,22 +223,37 @@ def main():
             f.write(json.dumps(r, ensure_ascii=False) + "\n")
 
     def rates(c):
-        tot = sum(v for k, v in c.items()
-                  if k in ("EXACT", "EXACT_FRAGMENTED", "NEAR",
-                           "NOT_FOUND", "EMPTY_QUOTE", "NO_TARGET"))
-        return {k: {"n": v, "rate": round(v / tot, 4) if tot else None}
-                for k, v in sorted(c.items())}
+        tot = sum(
+            v
+            for k, v in c.items()
+            if k
+            in (
+                "EXACT",
+                "EXACT_FRAGMENTED",
+                "NEAR",
+                "NOT_FOUND",
+                "EMPTY_QUOTE",
+                "NO_TARGET",
+            )
+        )
+        return {
+            k: {"n": v, "rate": round(v / tot, 4) if tot else None}
+            for k, v in sorted(c.items())
+        }
 
     summary = {
         "near_threshold": args.near_threshold,
         "check_A_pipeline_quotes": rates(counts_a),
         "check_B_judge_quotes": rates(counts_b) if args.verdicts else None,
-        "note": ("Check A audits extraction-time grounding; Check B audits "
-                 "the verifier's own quoting. Both are deterministic and "
-                 "model-free."),
+        "note": (
+            "Check A audits extraction-time grounding; Check B audits "
+            "the verifier's own quoting. Both are deterministic and "
+            "model-free."
+        ),
     }
     (out_dir / "quote_verification_summary.json").write_text(
-        json.dumps(summary, indent=2), encoding="utf-8")
+        json.dumps(summary, indent=2), encoding="utf-8"
+    )
     print(json.dumps(summary, indent=2))
     print(f"\nDetails: {out_path}")
 

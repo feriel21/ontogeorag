@@ -53,8 +53,12 @@ def main():
         entries = os.listdir(DST)
         print(f"[2] current corpus_run13: {len(entries)} entries (os.listdir)")
         for e in entries:
-            if ("\n" in e or "\r" in e or e != e.strip()
-                    or not e.lower().endswith(".pdf")):
+            if (
+                "\n" in e
+                or "\r" in e
+                or e != e.strip()
+                or not e.lower().endswith(".pdf")
+            ):
                 print(f"    PATHOLOGICAL NAME: {e!r}")
 
     # 3. index source PDFs by stem
@@ -94,8 +98,10 @@ def main():
         sys.exit(1)
     bad = [e for e in final if "\n" in e or e != e.strip()]
     assert not bad, f"pathological names remain: {bad!r}"
-    print("[OK] corpus_run13 == run11 paper set, sanitized names. "
-          f"Ready: N_PAPERS_EXPECTED={len(final)}")
+    print(
+        "[OK] corpus_run13 == run11 paper set, sanitized names. "
+        f"Ready: N_PAPERS_EXPECTED={len(final)}"
+    )
 
 
 if __name__ == "__main__":

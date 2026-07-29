@@ -1,14 +1,23 @@
 #!/usr/bin/env python3
 """
-03b_canonicalize.py — Entity Canonicalization (EDC-inspired).
+pipeline/05_canonicalize.py — Entity Canonicalization (Stage 5, EDC-inspired)
+================================================================================
+WHY
+    Different chunks/queries surface the same real-world entity under
+    slightly different strings ("mtd" vs "mass transport deposit"); left
+    unmerged these fragment degree/coverage counts in stage 7. This is a
+    standalone v4-era canonicalization pass (04_clean_validate.py's v5
+    pipeline now has its own built-in canonicalization — check which one
+    a given run actually invokes before assuming this stage runs).
 
-Groups semantically similar entities via embedding clustering,
-then selects a canonical form for each group.
+WHAT
+    Groups semantically similar entities via SciBERT embedding clustering,
+    then selects a canonical form for each group.
 
-FIXED:
-- Threshold lowered to 0.06 (was 0.15 — caused wrong merges)
-- Added same-type constraint (never merge Process with Descriptor)
-- Protected LB2019 descriptor terms from being merged
+    FIXED:
+    - Threshold lowered to 0.06 (was 0.15 — caused wrong merges)
+    - Added same-type constraint (never merge Process with Descriptor)
+    - Protected LB2019 descriptor terms from being merged
 
 Input:  cleaned_triples_v4.jsonl (from step 03)
 Output: canonical_triples_v4.jsonl (with merged entities)
@@ -110,9 +119,19 @@ LEXICON = {
 
 # LB2019 descriptor terms that must NEVER be merged with each other
 LB_DESCRIPTORS = {
-    "chaotic", "transparent", "blocky", "massive", "hummocky",
-    "discontinuous", "high-amplitude", "low-amplitude",
-    "undeformed", "layered", "stratified", "continuous", "parallel",
+    "chaotic",
+    "transparent",
+    "blocky",
+    "massive",
+    "hummocky",
+    "discontinuous",
+    "high-amplitude",
+    "low-amplitude",
+    "undeformed",
+    "layered",
+    "stratified",
+    "continuous",
+    "parallel",
 }
 
 
@@ -122,10 +141,13 @@ _embed_model = None
 
 
 def get_embed_model():
+    """Lazily load and cache the SciBERT SentenceTransformer used for entity embeddings; returns the shared model instance."""
     global _embed_model
     if _embed_model is None:
-        from sentence_transformers import SentenceTransformer
         import logging
+
+        from sentence_transformers import SentenceTransformer
+
         logging.getLogger("sentence_transformers").setLevel(logging.WARNING)
         print("  Loading SciBERT for entity embeddings...")
         _embed_model = SentenceTransformer("allenai/scibert_scivocab_uncased")
@@ -133,6 +155,7 @@ def get_embed_model():
 
 
 # ── Clustering ────────────────────────────────────────────────────────────
+
 
 def build_canonical_map(entities, embeddings, distance_threshold=0.06):
     """
@@ -164,11 +187,14 @@ def build_canonical_map(entities, embeddings, distance_threshold=0.06):
             continue
 
         # Priority: in LEXICON > longer > alphabetical first
-        best = sorted(members, key=lambda e: (
-            e not in LEXICON,
-            -len(e),
-            e,
-        ))[0]
+        best = sorted(
+            members,
+            key=lambda e: (
+                e not in LEXICON,
+                -len(e),
+                e,
+            ),
+        )[0]
 
         for m in members:
             if m != best:
@@ -179,6 +205,12 @@ def build_canonical_map(entities, embeddings, distance_threshold=0.06):
 
 def validate_canonical_map(canonical_map):
     """Remove merges that would corrupt the KG."""
+    # SciBERT clusters by surface/contextual similarity, not ontology
+    # type — "chaotic" (Descriptor) and "erosion" (Process) can land in
+    # the same cluster if they co-occur in similar sentences. These
+    # rules are a post-hoc safety net that runs AFTER build_canonical_map
+    # (which only knows embeddings), catching what distance-threshold
+    # tuning alone can't guarantee.
     bad_merges = []
 
     for old, new in list(canonical_map.items()):
@@ -186,9 +218,14 @@ def validate_canonical_map(canonical_map):
         new_type = LEXICON.get(new, "Unknown")
 
         # Rule 1: Never merge entities of different ontology types
-        if (old_type != "Unknown" and new_type != "Unknown"
-                and old_type != new_type):
-            bad_merges.append((old, new, f"cross-type: {old_type}->{new_type}"))
+        if (
+            old_type != "Unknown"
+            and new_type != "Unknown"
+            and old_type != new_type
+        ):
+            bad_merges.append(
+                (old, new, f"cross-type: {old_type}->{new_type}")
+            )
             del canonical_map[old]
             continue
 
@@ -209,7 +246,9 @@ def validate_canonical_map(canonical_map):
 
 # ── Main ──────────────────────────────────────────────────────────────────
 
+
 def main():
+    """CLI entry point: embeds unique entities from --input, clusters them, validates/applies the resulting canonical map, re-dedups and writes --output plus --map."""
     parser = argparse.ArgumentParser(
         description="03b — Entity canonicalization (EDC-inspired)"
     )
@@ -348,7 +387,8 @@ def main():
     # ── Filter self-loops created by merging ──────────────────────────────
     before_loop_filter = len(unique)
     unique = [
-        t for t in unique
+        t
+        for t in unique
         if t.get("source_norm", "") != t.get("target_norm", "")
     ]
     loops_removed = before_loop_filter - len(unique)
@@ -375,9 +415,9 @@ def main():
         if t.get("target_norm"):
             final_entities.add(t["target_norm"])
 
-    print(f"\n{'='*60}")
+    print(f"\n{'=' * 60}")
     print("  CANONICALIZATION SUMMARY")
-    print(f"{'='*60}")
+    print(f"{'=' * 60}")
     print(f"  Input triples:      {len(triples)}")
     print(f"  Output triples:     {len(unique)}")
     print(f"  Entities before:    {len(entity_list)}")

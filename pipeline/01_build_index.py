@@ -1,12 +1,19 @@
 #!/usr/bin/env python3
 """
-pipeline/01_build_index.py — Corpus Indexing
+pipeline/01_build_index.py — Corpus Indexing (Stage 1)
+========================================================
+WHY
+    Every downstream stage (retrieval, extraction, verification) needs the
+    corpus split into retrievable units. This stage is the single place
+    PDFs are parsed and chunked, so all later stages see the same chunk
+    boundaries and IDs.
 
-Converts PDF corpus to normalized text, chunks it,
-builds BM25 index, and (optionally) builds a dense
-embedding index for hybrid retrieval.
+WHAT
+    Converts the PDF corpus to normalized text, splits it into overlapping
+    character-level chunks, writes the BM25 source file (chunks.jsonl),
+    and optionally builds a dense embedding index for hybrid retrieval.
 
-Usage:
+USAGE
     python pipeline/01_build_index.py \
         --pdf-dir data/corpus/ \
         --outdir  output/step1/
@@ -27,27 +34,29 @@ from pathlib import Path
 
 import numpy as np
 
-
 # ── Text normalization ────────────────────────────────────────────────
 
 SYNONYM_MAP = {
-    "mtd":                      "mass transport deposit",
-    "mtds":                     "mass transport deposits",
-    "mass wasting":             "mass transport deposit",
-    "mass movement":            "mass transport deposit",
-    "submarine landslide":      "mass transport deposit",
-    "slope failure":            "slope failure",
+    "mtd": "mass transport deposit",
+    "mtds": "mass transport deposits",
+    "mass wasting": "mass transport deposit",
+    "mass movement": "mass transport deposit",
+    "submarine landslide": "mass transport deposit",
+    "slope failure": "slope failure",
 }
 
+
 def normalize_text(text: str) -> str:
+    """Lowercase `text` and expand corpus-specific abbreviations via SYNONYM_MAP; returns the normalized string, no side effects."""
     text = text.lower()
     for abbr, full in SYNONYM_MAP.items():
-        text = re.sub(r'\b' + re.escape(abbr) + r'\b', full, text)
-    text = re.sub(r'\s+', ' ', text).strip()
+        text = re.sub(r"\b" + re.escape(abbr) + r"\b", full, text)
+    text = re.sub(r"\s+", " ", text).strip()
     return text
 
 
 # ── PDF conversion ────────────────────────────────────────────────────
+
 
 def pdf_to_text(pdf_path: Path) -> str:
     """
@@ -56,6 +65,7 @@ def pdf_to_text(pdf_path: Path) -> str:
     """
     try:
         import pdfplumber
+
         with pdfplumber.open(pdf_path) as pdf:
             pages = [p.extract_text() or "" for p in pdf.pages]
         return "\n".join(pages)
@@ -64,6 +74,7 @@ def pdf_to_text(pdf_path: Path) -> str:
 
     try:
         import fitz  # pymupdf
+
         doc = fitz.open(str(pdf_path))
         pages = [page.get_text() for page in doc]
         return "\n".join(pages)
@@ -76,6 +87,7 @@ def pdf_to_text(pdf_path: Path) -> str:
 
 
 # ── Chunking ──────────────────────────────────────────────────────────
+
 
 def chunk_text(
     text: str,
@@ -96,19 +108,21 @@ def chunk_text(
 
         # Try to break at sentence boundary within last 100 chars
         if end < len(text):
-            boundary = text.rfind('. ', end - 100, end)
+            boundary = text.rfind(". ", end - 100, end)
             if boundary != -1:
                 end = boundary + 1
 
         chunk_text_str = text[start:end].strip()
         if len(chunk_text_str) > 50:  # skip near-empty chunks
-            chunks.append({
-                "chunk_id":    f"{doc_id}::{chunk_idx}",
-                "doc_id":      doc_id,
-                "text":        chunk_text_str,
-                "char_start":  start,
-                "char_end":    end,
-            })
+            chunks.append(
+                {
+                    "chunk_id": f"{doc_id}::{chunk_idx}",
+                    "doc_id": doc_id,
+                    "text": chunk_text_str,
+                    "char_start": start,
+                    "char_end": end,
+                }
+            )
             chunk_idx += 1
 
         start = end - overlap
@@ -119,6 +133,7 @@ def chunk_text(
 
 
 # ── BM25 index ────────────────────────────────────────────────────────
+
 
 def build_and_save_bm25(
     chunks: list[dict],
@@ -137,6 +152,7 @@ def build_and_save_bm25(
 
 
 # ── Dense index (optional) ────────────────────────────────────────────
+
 
 def build_and_save_dense_index(
     chunks: list[dict],
@@ -159,7 +175,9 @@ def build_and_save_dense_index(
     try:
         from sentence_transformers import SentenceTransformer
     except ImportError:
-        print("  WARNING: sentence-transformers not installed. Skipping dense index.")
+        print(
+            "  WARNING: sentence-transformers not installed. Skipping dense index."
+        )
         print("  Install with: pip install sentence-transformers")
         return
 
@@ -172,7 +190,7 @@ def build_and_save_dense_index(
     embeddings = model.encode(
         texts,
         batch_size=batch_size,
-        normalize_embeddings=True,   # cosine similarity = dot product
+        normalize_embeddings=True,  # cosine similarity = dot product
         show_progress_bar=True,
         convert_to_numpy=True,
     ).astype(np.float32)
@@ -189,23 +207,30 @@ def build_and_save_dense_index(
 
 # ── Main ──────────────────────────────────────────────────────────────
 
+
 def main() -> None:
+    """CLI entry point: parses --pdf-dir/--outdir/etc., runs PDF→text→chunks→BM25(+dense) and writes chunks.jsonl, index_meta.json (and failed_pdfs.json on parse errors) under --outdir."""
     parser = argparse.ArgumentParser(
         description="Build BM25 + optional dense index from PDF corpus"
     )
-    parser.add_argument("--pdf-dir",      required=True,
-                        help="Directory containing PDF files")
-    parser.add_argument("--outdir",       required=True,
-                        help="Output directory (will be created)")
-    parser.add_argument("--chunk-size",   type=int, default=800)
-    parser.add_argument("--overlap",      type=int, default=200)
-    parser.add_argument("--dense",        action="store_true",
-                        help="Also build dense embedding index")
-    parser.add_argument("--dense-model",  default="allenai/specter2_base",
-                        help="HuggingFace model name for dense encoding")
-    parser.add_argument("--dense-batch",  type=int, default=64)
-    parser.add_argument("--device",       default="cuda",
-                        choices=["cuda", "cpu"])
+    parser.add_argument(
+        "--pdf-dir", required=True, help="Directory containing PDF files"
+    )
+    parser.add_argument(
+        "--outdir", required=True, help="Output directory (will be created)"
+    )
+    parser.add_argument("--chunk-size", type=int, default=800)
+    parser.add_argument("--overlap", type=int, default=200)
+    parser.add_argument(
+        "--dense", action="store_true", help="Also build dense embedding index"
+    )
+    parser.add_argument(
+        "--dense-model",
+        default="allenai/specter2_base",
+        help="HuggingFace model name for dense encoding",
+    )
+    parser.add_argument("--dense-batch", type=int, default=64)
+    parser.add_argument("--device", default="cuda", choices=["cuda", "cpu"])
     args = parser.parse_args()
 
     pdf_dir = Path(args.pdf_dir)
@@ -229,7 +254,8 @@ def main() -> None:
             raw_text = pdf_to_text(pdf_path)
             norm_text = normalize_text(raw_text)
             chunks = chunk_text(
-                norm_text, doc_id,
+                norm_text,
+                doc_id,
                 chunk_size=args.chunk_size,
                 overlap=args.overlap,
             )
@@ -239,7 +265,9 @@ def main() -> None:
             print(f"    ERROR: {e}")
             failed.append({"doc_id": doc_id, "error": str(e)})
 
-    print(f"\nTotal chunks: {len(all_chunks)} from {len(pdf_files) - len(failed)} papers")
+    print(
+        f"\nTotal chunks: {len(all_chunks)} from {len(pdf_files) - len(failed)} papers"
+    )
     if failed:
         print(f"Failed: {len(failed)} papers")
         fail_path = output_dir / "failed_pdfs.json"
@@ -252,7 +280,8 @@ def main() -> None:
     # ── Step 3: Dense index (optional) ───────────────────────────────
     if args.dense:
         build_and_save_dense_index(
-            all_chunks, output_dir,
+            all_chunks,
+            output_dir,
             model_name=args.dense_model,
             batch_size=args.dense_batch,
             device=args.device,
@@ -262,11 +291,11 @@ def main() -> None:
 
     # ── Step 4: Write index metadata ─────────────────────────────────
     meta = {
-        "n_papers":    len(pdf_files),
-        "n_failed":    len(failed),
-        "n_chunks":    len(all_chunks),
-        "chunk_size":  args.chunk_size,
-        "overlap":     args.overlap,
+        "n_papers": len(pdf_files),
+        "n_failed": len(failed),
+        "n_chunks": len(all_chunks),
+        "chunk_size": args.chunk_size,
+        "overlap": args.overlap,
         "dense_built": args.dense,
         "dense_model": args.dense_model if args.dense else None,
     }

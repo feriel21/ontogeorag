@@ -1,14 +1,27 @@
 #!/usr/bin/env python3
 """
-pipeline/06_tiered_fusion.py — Tiered KG Fusion
+pipeline/06_tiered_fusion.py — Tiered KG Fusion (Stage 6)
+=============================================================
+WHY
+    A single run under-samples the corpus; running the pipeline twice
+    (e.g. iter_a + iter_b) and fusing by best-verdict-per-triple recovers
+    triples either run missed, while the tier label preserves each
+    triple's verification confidence for downstream reporting (07) and
+    consumers that only want Tier 1 or Tier 1+2.
 
-Merges two pipeline runs (e.g. iter4 + iter7) into a tiered KG:
-  Tier 1 — STRONG_SUPPORT (0% hallucination, verified)
-  Tier 2 — WEAK_SUPPORT   (literature-implied, ~2.9% hallucination)
+WHAT
+    Merges two pipeline runs (e.g. iter4 + iter7) into a tiered KG:
+      Tier 1 — STRONG_SUPPORT (0% hallucination, verified)
+      Tier 2 — WEAK_SUPPORT   (literature-implied, ~2.9% hallucination)
+      Tier 3 — NOT_SUPPORTED  (parametric-flagged; included only with --include-tier3)
 
-Handles both verdict field formats:
-  - Old format: _verdict (root level)
-  - New format: _verification.verdict (nested)
+    A triple present in both runs takes the better (lower-numbered) tier
+    of the two ("origin": "both"); supporting-paper evidence is aggregated
+    across both runs regardless of which run's tier won.
+
+    Handles both verdict field formats:
+      - Old format: _verdict (root level)
+      - New format: _verification.verdict (nested)
 
 Usage:
     python pipeline/06_tiered_fusion.py \\
@@ -24,11 +37,11 @@ from pathlib import Path
 
 from pipeline.rag.constants import normalize_entity, normalize_relation
 
-
 TIER_LABELS = {1: "verified", 2: "literature-implied", 3: "parametric-flagged"}
 
 
 def get_verdict(t: dict) -> str:
+    """Read the verification verdict from `t`, preferring nested `_verification.verdict` over the legacy root-level `_verdict`; returns the verdict string ("" if none), no side effects."""
     ver = t.get("_verification")
     if isinstance(ver, dict):
         v = ver.get("verdict", "")
@@ -38,6 +51,7 @@ def get_verdict(t: dict) -> str:
 
 
 def get_evidence(t: dict) -> str:
+    """Return `t`'s supporting evidence text, preferring the verification evidence (truncated to 400 chars) and falling back to the stage-2 provenance chunk preview (300 chars); no side effects."""
     ver = t.get("_verification")
     if isinstance(ver, dict):
         ev = ver.get("evidence", "")
@@ -48,6 +62,7 @@ def get_evidence(t: dict) -> str:
 
 
 def verdict_to_tier(verdict: str) -> int:
+    """Map a verification verdict string to its tier number (1=STRONG, 2=WEAK/UNCERTAIN, 3=everything else); no side effects."""
     v = str(verdict).upper()
     if "STRONG" in v:
         return 1
@@ -57,6 +72,7 @@ def verdict_to_tier(verdict: str) -> int:
 
 
 def triple_key(t: dict) -> tuple:
+    """Build the (subject, relation, object) dedup/fusion key for `t` using shared entity/relation normalization; no side effects."""
     return (
         normalize_entity(t.get("source", t.get("subject", ""))),
         normalize_relation(t.get("relation", "")),
@@ -65,6 +81,7 @@ def triple_key(t: dict) -> tuple:
 
 
 def load_jsonl(path: str) -> list[dict]:
+    """Read `path` as one JSON object per line, skipping (and warning on, up to 3 shown) malformed lines; returns the list of parsed dicts."""
     triples, errors = [], 0
     with open(path, encoding="utf-8") as f:
         for i, line in enumerate(f):
@@ -76,11 +93,10 @@ def load_jsonl(path: str) -> list[dict]:
             except json.JSONDecodeError as e:
                 errors += 1
                 if errors <= 3:
-                    print(f"  Warning line {i+1}: {e}")
+                    print(f"  Warning line {i + 1}: {e}")
     if errors:
         print(f"  Total malformed lines skipped: {errors}")
     return triples
-
 
 
 def load_triples(path: str) -> list[dict]:
@@ -92,8 +108,9 @@ def load_triples(path: str) -> list[dict]:
         content = f.read().strip()
     # Only treat as single JSON if it's a JSON array OR a .json file
     import os
+
     ext = os.path.splitext(path)[1].lower()
-    if ext == '.json' or content.startswith('['):
+    if ext == ".json" or content.startswith("["):
         data = json.loads(content)
         if isinstance(data, list):
             return data
@@ -110,17 +127,18 @@ def load_triples(path: str) -> list[dict]:
         except json.JSONDecodeError as e:
             errors += 1
             if errors <= 3:
-                print(f"  Warning line {i+1}: {e}")
+                print(f"  Warning line {i + 1}: {e}")
     if errors:
         print(f"  Total malformed lines skipped: {errors}")
     return triples
+
 
 def extract_doc_ids(t: dict) -> list[str]:
     """Extract unique paper doc_ids from provenance chunk ids."""
     prov = t.get("_provenance", {}) or {}
     doc_ids = set()
     # From selected_chunk_ids (list of "doc_id::chunkN")
-    for cid in (prov.get("selected_chunk_ids") or []):
+    for cid in prov.get("selected_chunk_ids") or []:
         if "::" in str(cid):
             doc_ids.add(str(cid).split("::")[0].strip())
     # From best_chunk_id
@@ -131,46 +149,63 @@ def extract_doc_ids(t: dict) -> list[str]:
 
 
 def to_standard(t: dict, tier: int, origin: str) -> dict:
+    """Convert one raw pipeline triple `t` into the standardized fused-KG record shape (normalized subject/relation/object plus tier/origin/evidence/provenance fields); no side effects."""
     prov = t.get("_provenance", {}) or {}
-    ver  = t.get("_verification", {}) if isinstance(t.get("_verification"), dict) else {}
+    ver = (
+        t.get("_verification", {})
+        if isinstance(t.get("_verification"), dict)
+        else {}
+    )
     doc_ids = extract_doc_ids(t)
     return {
-        "subject":           normalize_entity(t.get("source", t.get("subject", ""))),
-        "relation":          normalize_relation(t.get("relation", "")),
-        "object":            normalize_entity(t.get("target", t.get("object", ""))),
-        "subject_type":      t.get("source_type", ""),
-        "object_type":       t.get("target_type", ""),
-        "tier":              tier,
-        "tier_label":        TIER_LABELS[tier],
-        "verdict":           get_verdict(t),
-        "origin":            origin,
-        "evidence":          get_evidence(t),
-        "query":             prov.get("query", ""),
-        "strategy":          prov.get("strategy", ""),
-        "model":             ver.get("model", prov.get("model", "")),
-        "reasoning":         (ver.get("reasoning") or "")[:200],
-        "support_count":     len(doc_ids),
+        "subject": normalize_entity(t.get("source", t.get("subject", ""))),
+        "relation": normalize_relation(t.get("relation", "")),
+        "object": normalize_entity(t.get("target", t.get("object", ""))),
+        "subject_type": t.get("source_type", ""),
+        "object_type": t.get("target_type", ""),
+        "tier": tier,
+        "tier_label": TIER_LABELS[tier],
+        "verdict": get_verdict(t),
+        "origin": origin,
+        "evidence": get_evidence(t),
+        "query": prov.get("query", ""),
+        "strategy": prov.get("strategy", ""),
+        "model": ver.get("model", prov.get("model", "")),
+        "reasoning": (ver.get("reasoning") or "")[:200],
+        "support_count": len(doc_ids),
         "supporting_papers": doc_ids,
     }
 
 
 def build_index(triples: list[dict]) -> dict:
+    """Deduplicate `triples` by triple_key, keeping the best (lowest-numbered) tier seen per key; returns {key: {"tier": int, "raw": triple}}, no side effects."""
     index = {}
     for t in triples:
-        k    = triple_key(t)
+        k = triple_key(t)
         tier = verdict_to_tier(get_verdict(t))
+        # Lower tier number = higher confidence (1=STRONG, 2=WEAK, 3=NOT
+        # SUPPORTED/other), so "<" here means "replace with the more
+        # trustworthy of any duplicate raw triples within this one run".
         if k not in index or tier < index[k]["tier"]:
             index[k] = {"tier": tier, "raw": t}
     return index
 
 
 def main():
+    """CLI entry point: loads --iter-a/--iter-b, fuses them by best-tier-per-triple with aggregated cross-run paper evidence, and writes the tiered KG (with metadata) to --output."""
     parser = argparse.ArgumentParser(description="Tiered KG fusion")
-    parser.add_argument("--iter-a",  required=True, help="First run canonical triples JSONL")
-    parser.add_argument("--iter-b",  required=True, help="Second run canonical triples JSONL")
-    parser.add_argument("--output",  default="output/kg/tiered_kg.json")
-    parser.add_argument("--include-tier3", action="store_true",
-                        help="Include NOT_SUPPORTED triples (Tier 3) in output")
+    parser.add_argument(
+        "--iter-a", required=True, help="First run canonical triples JSONL"
+    )
+    parser.add_argument(
+        "--iter-b", required=True, help="Second run canonical triples JSONL"
+    )
+    parser.add_argument("--output", default="output/kg/tiered_kg.json")
+    parser.add_argument(
+        "--include-tier3",
+        action="store_true",
+        help="Include NOT_SUPPORTED triples (Tier 3) in output",
+    )
     args = parser.parse_args()
 
     print("=" * 60)
@@ -182,8 +217,8 @@ def main():
     print(f"\n  Iter-A: {len(iter_a)} triples  ({args.iter_a})")
     print(f"  Iter-B: {len(iter_b)} triples  ({args.iter_b})")
 
-    idx_a  = build_index(iter_a)
-    idx_b  = build_index(iter_b)
+    idx_a = build_index(iter_a)
+    idx_b = build_index(iter_b)
     keys_b = set(idx_b.keys())
 
     tiered = []
@@ -198,7 +233,12 @@ def main():
     for k, entry in idx_a.items():
         tier = entry["tier"]
         if k in keys_b:
-            tier   = min(tier, idx_b[k]["tier"])
+            # A triple found by both runs takes the BETTER (lower) tier
+            # of the two — if either run's verifier gave STRONG_SUPPORT,
+            # that confidence carries even if the other run only reached
+            # WEAK_SUPPORT. This is what makes cross-run consistency an
+            # upgrade path rather than a downgrade risk.
+            tier = min(tier, idx_b[k]["tier"])
             origin = "both"
         else:
             origin = "iter_a"
@@ -207,7 +247,7 @@ def main():
         t_std = to_standard(entry["raw"], tier, origin)
         # Override with aggregated paper evidence
         all_papers = sorted(paper_index.get(k, set()))
-        t_std["support_count"]     = len(all_papers)
+        t_std["support_count"] = len(all_papers)
         t_std["supporting_papers"] = all_papers
         tiered.append(t_std)
 
@@ -218,18 +258,18 @@ def main():
                 continue
             t_std = to_standard(entry["raw"], tier, "iter_b")
             all_papers = sorted(paper_index.get(k, set()))
-            t_std["support_count"]     = len(all_papers)
+            t_std["support_count"] = len(all_papers)
             t_std["supporting_papers"] = all_papers
             tiered.append(t_std)
 
     tiered.sort(key=lambda x: (x["tier"], x["relation"], x["subject"]))
 
-    tier_counts   = defaultdict(int)
-    rel_counts    = defaultdict(int)
+    tier_counts = defaultdict(int)
+    rel_counts = defaultdict(int)
     origin_counts = defaultdict(int)
     for t in tiered:
-        tier_counts[t["tier"]]     += 1
-        rel_counts[t["relation"]]  += 1
+        tier_counts[t["tier"]] += 1
+        rel_counts[t["relation"]] += 1
         origin_counts[t["origin"]] += 1
 
     print(f"\n  Final KG: {len(tiered)} triples")
@@ -246,15 +286,15 @@ def main():
 
     out = {
         "metadata": {
-            "iter_a_file":           str(args.iter_a),
-            "iter_b_file":           str(args.iter_b),
-            "iter_a_count":          len(iter_a),
-            "iter_b_count":          len(iter_b),
-            "total_triples":         len(tiered),
-            "tier_distribution":     dict(tier_counts),
+            "iter_a_file": str(args.iter_a),
+            "iter_b_file": str(args.iter_b),
+            "iter_a_count": len(iter_a),
+            "iter_b_count": len(iter_b),
+            "total_triples": len(tiered),
+            "tier_distribution": dict(tier_counts),
             "relation_distribution": dict(rel_counts),
-            "origin_distribution":   dict(origin_counts),
-            "include_tier3":         args.include_tier3,
+            "origin_distribution": dict(origin_counts),
+            "include_tier3": args.include_tier3,
         },
         "triples": tiered,
     }

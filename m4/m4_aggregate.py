@@ -42,8 +42,14 @@ import json
 from collections import Counter
 from pathlib import Path
 
-from m4_config import (EVIDENCE_SCORE, BLIND_SCORE, W_EVIDENCE, W_BLIND,
-                       ACCEPT_THRESHOLD, REJECT_THRESHOLD)
+from m4_config import (
+    ACCEPT_THRESHOLD,
+    BLIND_SCORE,
+    EVIDENCE_SCORE,
+    REJECT_THRESHOLD,
+    W_BLIND,
+    W_EVIDENCE,
+)
 
 
 def decide(blind_v: str, ev_v: str) -> tuple:
@@ -77,11 +83,12 @@ def decide(blind_v: str, ev_v: str) -> tuple:
 def confidence(blind_v: str, ev_v: str) -> float:
     """Continuous companion score. NO_PASSAGE treated as 0 evidence."""
     ev_s = EVIDENCE_SCORE.get(ev_v, 0.0)
-    bl_s = BLIND_SCORE.get(blind_v, 0.5)   # UNPARSEABLE blind -> neutral
+    bl_s = BLIND_SCORE.get(blind_v, 0.5)  # UNPARSEABLE blind -> neutral
     return round(W_EVIDENCE * ev_s + W_BLIND * bl_s, 3)
 
 
 def main():
+    """CLI entry point: loads --verdicts, applies decide()/confidence() to each record, and writes per-triple decisions (m4_decisions.jsonl) plus a decision-rate summary (m4_decision_summary.json) to --output."""
     ap = argparse.ArgumentParser()
     ap.add_argument("--verdicts", required=True)
     ap.add_argument("--output", required=True)
@@ -99,13 +106,13 @@ def main():
 
     decisions = Counter()
     flag_counts = Counter()
-    score_agree = Counter()   # matrix vs threshold-score agreement check
+    score_agree = Counter()  # matrix vs threshold-score agreement check
 
     out_path = out_dir / "m4_decisions.jsonl"
     with open(out_path, "w", encoding="utf-8") as fout:
         for r in records:
             blind_v = r["blind"]["verdict"]
-            ev_v    = r["evidence"]["verdict"]
+            ev_v = r["evidence"]["verdict"]
 
             decision, flags = decide(blind_v, ev_v)
             conf = confidence(blind_v, ev_v)
@@ -117,41 +124,51 @@ def main():
                 score_decision = "REJECT"
             else:
                 score_decision = "UNCERTAIN"
-            score_agree["agree" if score_decision == decision
-                        else "disagree"] += 1
+            score_agree[
+                "agree" if score_decision == decision else "disagree"
+            ] += 1
 
             decisions[decision] += 1
             for fl in flags:
                 flag_counts[fl] += 1
 
-            fout.write(json.dumps({
-                "m4_index": r["m4_index"],
-                "subject": r["subject"],
-                "relation": r["relation"],
-                "object": r["object"],
-                "tier": r.get("tier"),
-                "qwen_verdict": r.get("qwen_verdict"),
-                "blind_verdict": blind_v,
-                "evidence_verdict": ev_v,
-                "m4_decision": decision,
-                "m4_confidence": conf,
-                "score_decision": score_decision,
-                "flags": flags,
-            }, ensure_ascii=False) + "\n")
+            fout.write(
+                json.dumps(
+                    {
+                        "m4_index": r["m4_index"],
+                        "subject": r["subject"],
+                        "relation": r["relation"],
+                        "object": r["object"],
+                        "tier": r.get("tier"),
+                        "qwen_verdict": r.get("qwen_verdict"),
+                        "blind_verdict": blind_v,
+                        "evidence_verdict": ev_v,
+                        "m4_decision": decision,
+                        "m4_confidence": conf,
+                        "score_decision": score_decision,
+                        "flags": flags,
+                    },
+                    ensure_ascii=False,
+                )
+                + "\n"
+            )
 
     summary = {
         "n_triples": len(records),
         "decisions": dict(decisions),
-        "decision_rates": {k: round(v / len(records), 4)
-                           for k, v in decisions.items()} if records else {},
+        "decision_rates": {
+            k: round(v / len(records), 4) for k, v in decisions.items()
+        }
+        if records
+        else {},
         "flags": dict(flag_counts),
         "matrix_vs_score_agreement": dict(score_agree),
         "weights": {"evidence": W_EVIDENCE, "blind": W_BLIND},
-        "thresholds": {"accept": ACCEPT_THRESHOLD,
-                       "reject": REJECT_THRESHOLD},
+        "thresholds": {"accept": ACCEPT_THRESHOLD, "reject": REJECT_THRESHOLD},
     }
     (out_dir / "m4_decision_summary.json").write_text(
-        json.dumps(summary, indent=2), encoding="utf-8")
+        json.dumps(summary, indent=2), encoding="utf-8"
+    )
 
     print(json.dumps(summary, indent=2))
     print(f"\nDecisions written to {out_path}")

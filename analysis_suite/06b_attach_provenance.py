@@ -39,13 +39,20 @@ USAGE (run11 retrofit, or run13 after fusion)
 import argparse
 import json
 import re
+import sys
 from collections import defaultdict
 from pathlib import Path
-import sys
 
 sys.path.insert(0, str(Path(__file__).parent))
-from kg_io import (load_kg, dump_kg, get_subject, get_object, get_relation,
-                   get_chunk_ids, normalize_paper_id)
+from kg_io import (
+    dump_kg,
+    get_chunk_ids,
+    get_object,
+    get_relation,
+    get_subject,
+    load_kg,
+    normalize_paper_id,
+)
 
 
 def key(s, r, o):
@@ -117,9 +124,14 @@ def main():
     print("NATIVE PROVENANCE ATTACHED")
     print("=" * 60)
     print(f"fused triples matched   : {matched}")
-    print(f"fused triples unmatched : {unmatched}"
-          + ("  <-- inspect (surface drift between fusion in/out?)"
-             if unmatched else ""))
+    print(
+        f"fused triples unmatched : {unmatched}"
+        + (
+            "  <-- inspect (surface drift between fusion in/out?)"
+            if unmatched
+            else ""
+        )
+    )
     print(f"distinct papers touched : {len(total_papers)}")
     print(f"written: {args.out}")
 

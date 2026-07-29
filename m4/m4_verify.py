@@ -56,9 +56,16 @@ import time
 from pathlib import Path
 
 from m4_config import (
-    DEFAULT_MODEL, GEN_KWARGS, MAX_EVIDENCE_CHARS, get_glosses,
-    BLIND_SYSTEM, BLIND_PROMPT, BLIND_VERDICTS,
-    EVIDENCE_SYSTEM, EVIDENCE_PROMPT, EVIDENCE_VERDICTS,
+    BLIND_PROMPT,
+    BLIND_SYSTEM,
+    BLIND_VERDICTS,
+    DEFAULT_MODEL,
+    EVIDENCE_PROMPT,
+    EVIDENCE_SYSTEM,
+    EVIDENCE_VERDICTS,
+    GEN_KWARGS,
+    MAX_EVIDENCE_CHARS,
+    get_glosses,
 )
 
 # NOTE: torch/transformers are imported lazily inside load_model() and
@@ -66,13 +73,16 @@ from m4_config import (
 # m4_integrate_tiers.py) can import the data helpers from this module
 # without requiring GPU dependencies.
 
-logging.basicConfig(level=logging.INFO,
-                    format="%(asctime)s  %(levelname)s  %(message)s",
-                    datefmt="%H:%M:%S")
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s  %(levelname)s  %(message)s",
+    datefmt="%H:%M:%S",
+)
 log = logging.getLogger("m4")
 
 
 # ── Model loading / generation ─────────────────────────────────────────
+
 
 def resolve_local(model_name: str) -> str:
     """Resolve a hub id to its local cache snapshot path (offline-safe).
@@ -86,6 +96,7 @@ def resolve_local(model_name: str) -> str:
         return str(Path(model_name).expanduser())
     try:
         from huggingface_hub import snapshot_download
+
         local = snapshot_download(model_name, local_files_only=True)
         log.info(f"Resolved to local snapshot: {local}")
         return local
@@ -95,8 +106,10 @@ def resolve_local(model_name: str) -> str:
 
 
 def load_model(model_name: str):
+    """Resolve `model_name` to a local snapshot and load its tokenizer + causal LM in bfloat16 (device_map='auto'); returns (tokenizer, model) in eval mode."""
     import torch
-    from transformers import AutoTokenizer, AutoModelForCausalLM
+    from transformers import AutoModelForCausalLM, AutoTokenizer
+
     model_name = resolve_local(model_name)
     log.info(f"Loading model: {model_name}")
     tok = AutoTokenizer.from_pretrained(model_name, trust_remote_code=True)
@@ -114,9 +127,13 @@ def load_model(model_name: str):
 
 
 def generate(tok, mdl, system: str, user: str) -> str:
+    """Render `system`/`user` via the chat template and greedily generate a completion; returns the decoded response text, no side effects."""
     import torch
-    messages = [{"role": "system", "content": system},
-                {"role": "user",   "content": user}]
+
+    messages = [
+        {"role": "system", "content": system},
+        {"role": "user", "content": user},
+    ]
     inputs = tok.apply_chat_template(
         messages, add_generation_prompt=True, return_tensors="pt"
     ).to(mdl.device)
@@ -127,10 +144,11 @@ def generate(tok, mdl, system: str, user: str) -> str:
             do_sample=False,
             pad_token_id=tok.pad_token_id,
         )
-    return tok.decode(out[0][inputs.shape[1]:], skip_special_tokens=True)
+    return tok.decode(out[0][inputs.shape[1] :], skip_special_tokens=True)
 
 
 # ── Parsing ────────────────────────────────────────────────────────────
+
 
 def parse_pass(response: str, allowed: tuple, fields: tuple) -> dict:
     """Parse a formatted response; robust to missing sections."""
@@ -161,7 +179,9 @@ def parse_pass(response: str, allowed: tuple, fields: tuple) -> dict:
 
 # ── Input loading (handles tiered-KG JSON and triples JSONL) ───────────
 
+
 def load_triples(kg_path: Path) -> list:
+    """Load triples from a tiered-KG JSON (list, {"triples"/"all_triples": [...]}, or {"tierN": [...]}) or a .jsonl of triples, inferring a `tier` field from key names where absent; no side effects."""
     text = kg_path.read_text(encoding="utf-8").strip()
     triples = []
     if kg_path.suffix == ".jsonl":
@@ -194,13 +214,15 @@ def load_triples(kg_path: Path) -> list:
 
 
 def triple_fields(t: dict) -> tuple:
+    """Extract (subject, relation, object) strings from `t`, preferring normalized fields over raw ones; no side effects."""
     subj = t.get("subject") or t.get("source_norm") or t.get("source", "")
-    rel  = t.get("relation_norm") or t.get("relation", "")
-    obj  = t.get("object")  or t.get("target_norm") or t.get("target", "")
+    rel = t.get("relation_norm") or t.get("relation", "")
+    obj = t.get("object") or t.get("target_norm") or t.get("target", "")
     return str(subj), str(rel), str(obj)
 
 
 # ── Evidence lookup ────────────────────────────────────────────────────
+
 
 def evidence_from_provenance(t: dict) -> str:
     """Extract embedded passage text (same formats as 03_verify_triples)."""
@@ -214,8 +236,13 @@ def evidence_from_provenance(t: dict) -> str:
         if txt:
             return txt
     # tiered KG variants: supporting passage stored at top level
-    for key in ("supporting_passage", "passage", "evidence_text",
-                "source_passage", "chunk_text"):
+    for key in (
+        "supporting_passage",
+        "passage",
+        "evidence_text",
+        "source_passage",
+        "chunk_text",
+    ):
         txt = t.get(key, "") or ""
         if isinstance(txt, str) and txt:
             return txt
@@ -278,14 +305,22 @@ def evidence_from_index(t: dict, chunks: list) -> str:
 
 # ── Main ───────────────────────────────────────────────────────────────
 
+
 def main():
+    """CLI entry point: loads --kg triples, runs the blind + evidence passes on each with the --model verifier, and writes per-triple verdicts (m4_verdicts.jsonl) plus run metadata (m4_run_meta.json) to --output."""
     ap = argparse.ArgumentParser(description="M4 cross-family verifier")
-    ap.add_argument("--kg", required=True, help="Tiered KG JSON or triples JSONL")
+    ap.add_argument(
+        "--kg", required=True, help="Tiered KG JSON or triples JSONL"
+    )
     ap.add_argument("--index", default=None, help="Chunk index dir (fallback)")
     ap.add_argument("--output", required=True, help="Output directory")
     ap.add_argument("--model", default=DEFAULT_MODEL)
-    ap.add_argument("--limit", type=int, default=0,
-                    help="Verify only the first N triples (0 = all)")
+    ap.add_argument(
+        "--limit",
+        type=int,
+        default=0,
+        help="Verify only the first N triples (0 = all)",
+    )
     args = ap.parse_args()
 
     out_dir = Path(args.output).expanduser()
@@ -296,7 +331,9 @@ def main():
         triples = triples[: args.limit]
     log.info(f"Loaded {len(triples)} triples from {args.kg}")
 
-    chunks = load_chunk_index(Path(args.index).expanduser()) if args.index else []
+    chunks = (
+        load_chunk_index(Path(args.index).expanduser()) if args.index else []
+    )
     glosses = get_glosses()
 
     tok, mdl = load_model(args.model)
@@ -311,8 +348,14 @@ def main():
             gloss = glosses.get(rel, rel)
 
             # ---- Pass 1: BLIND (no passage in prompt, by construction)
-            blind_raw = generate(tok, mdl, BLIND_SYSTEM, BLIND_PROMPT.format(
-                subject=subj, relation=rel, object=obj, gloss=gloss))
+            blind_raw = generate(
+                tok,
+                mdl,
+                BLIND_SYSTEM,
+                BLIND_PROMPT.format(
+                    subject=subj, relation=rel, object=obj, gloss=gloss
+                ),
+            )
             blind = parse_pass(blind_raw, BLIND_VERDICTS, ("REASONING",))
 
             # ---- Pass 2: EVIDENCE
@@ -320,40 +363,67 @@ def main():
             if not passage:
                 passage = evidence_from_index(t, chunks)
             if passage:
-                ev_raw = generate(tok, mdl, EVIDENCE_SYSTEM,
-                                  EVIDENCE_PROMPT.format(
-                                      evidence=passage[:MAX_EVIDENCE_CHARS],
-                                      subject=subj, relation=rel, object=obj,
-                                      gloss=gloss))
-                evid = parse_pass(ev_raw, EVIDENCE_VERDICTS,
-                                  ("QUOTE", "REASONING"))
+                ev_raw = generate(
+                    tok,
+                    mdl,
+                    EVIDENCE_SYSTEM,
+                    EVIDENCE_PROMPT.format(
+                        evidence=passage[:MAX_EVIDENCE_CHARS],
+                        subject=subj,
+                        relation=rel,
+                        object=obj,
+                        gloss=gloss,
+                    ),
+                )
+                evid = parse_pass(
+                    ev_raw, EVIDENCE_VERDICTS, ("QUOTE", "REASONING")
+                )
                 evid["passage_found"] = True
             else:
                 n_no_passage += 1
-                evid = {"verdict": "NO_PASSAGE", "quote": "", "reasoning": "",
-                        "raw": "", "passage_found": False}
+                evid = {
+                    "verdict": "NO_PASSAGE",
+                    "quote": "",
+                    "reasoning": "",
+                    "raw": "",
+                    "passage_found": False,
+                }
 
             record = {
                 "m4_index": i,
-                "subject": subj, "relation": rel, "object": obj,
+                "subject": subj,
+                "relation": rel,
+                "object": obj,
                 "tier": t.get("tier"),
                 "qwen_verdict": (t.get("_verification", {}) or {}).get(
-                    "verdict", t.get("verdict")),
-                "blind": {k: blind.get(k, "") for k in
-                          ("verdict", "reasoning", "raw")},
-                "evidence": {k: evid.get(k, "") for k in
-                             ("verdict", "quote", "reasoning", "raw",
-                              "passage_found")},
+                    "verdict", t.get("verdict")
+                ),
+                "blind": {
+                    k: blind.get(k, "")
+                    for k in ("verdict", "reasoning", "raw")
+                },
+                "evidence": {
+                    k: evid.get(k, "")
+                    for k in (
+                        "verdict",
+                        "quote",
+                        "reasoning",
+                        "raw",
+                        "passage_found",
+                    )
+                },
                 "model": args.model,
             }
             fout.write(json.dumps(record, ensure_ascii=False) + "\n")
 
             if (i + 1) % 10 == 0 or (i + 1) == len(triples):
                 elapsed = time.time() - t_start
-                log.info(f"[{i+1}/{len(triples)}]  "
-                         f"blind={blind['verdict']:<11s} "
-                         f"evidence={evid['verdict']:<19s} "
-                         f"({elapsed/ (i+1):.1f}s/triple)")
+                log.info(
+                    f"[{i + 1}/{len(triples)}]  "
+                    f"blind={blind['verdict']:<11s} "
+                    f"evidence={evid['verdict']:<19s} "
+                    f"({elapsed / (i + 1):.1f}s/triple)"
+                )
 
     meta = {
         "model": args.model,
@@ -365,10 +435,13 @@ def main():
         "runtime_seconds": round(time.time() - t_start, 1),
     }
     (out_dir / "m4_run_meta.json").write_text(
-        json.dumps(meta, indent=2), encoding="utf-8")
+        json.dumps(meta, indent=2), encoding="utf-8"
+    )
     log.info(f"Done. Verdicts: {verdict_path}")
-    log.info(f"Triples without passage: {n_no_passage} "
-             f"(check --index if this is high)")
+    log.info(
+        f"Triples without passage: {n_no_passage} "
+        f"(check --index if this is high)"
+    )
 
 
 if __name__ == "__main__":

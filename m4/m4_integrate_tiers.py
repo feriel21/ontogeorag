@@ -43,19 +43,24 @@ from m4_verify import load_triples, triple_fields
 
 
 def norm_key(subject, relation, obj):
+    """Build a lowercase/stripped (subject, relation, object) tuple key for joining against m4 decisions/direction verdicts; no side effects."""
     return (subject.strip().lower(), relation.strip(), obj.strip().lower())
 
 
 def main():
+    """CLI entry point: reassigns each --kg triple's tier from its --decisions M4 verdict (and optional --direction check), quarantines REJECTed triples, and writes tiered_kg_m4.json + m4_quarantine.jsonl to --output."""
     ap = argparse.ArgumentParser()
     ap.add_argument("--kg", required=True)
     ap.add_argument("--decisions", required=True)
-    ap.add_argument("--direction", default=None,
-                    help="Optional m4_direction_verdicts.jsonl. Applies the "
-                         "conservative directional rule: REVERSE-flagged "
-                         "triples whose evidence verdict was "
-                         "PARTIALLY_SUPPORTED are demoted to Tier 2; "
-                         "UNDIRECTED is recorded as a documented flag.")
+    ap.add_argument(
+        "--direction",
+        default=None,
+        help="Optional m4_direction_verdicts.jsonl. Applies the "
+        "conservative directional rule: REVERSE-flagged "
+        "triples whose evidence verdict was "
+        "PARTIALLY_SUPPORTED are demoted to Tier 2; "
+        "UNDIRECTED is recorded as a documented flag.",
+    )
     ap.add_argument("--output", required=True)
     args = ap.parse_args()
 
@@ -71,20 +76,19 @@ def main():
             if not line:
                 continue
             d = json.loads(line)
-            decisions[norm_key(d["subject"], d["relation"],
-                               d["object"])] = d
+            decisions[norm_key(d["subject"], d["relation"], d["object"])] = d
 
     direction = {}
     if args.direction:
-        with open(Path(args.direction).expanduser(),
-                  encoding="utf-8") as f:
+        with open(Path(args.direction).expanduser(), encoding="utf-8") as f:
             for line in f:
                 line = line.strip()
                 if not line:
                     continue
                 dv = json.loads(line)
-                direction[norm_key(dv["subject"], dv["relation"],
-                                   dv["object"])] = dv
+                direction[
+                    norm_key(dv["subject"], dv["relation"], dv["object"])
+                ] = dv
 
     kept, quarantined = [], []
     moves = Counter()
@@ -134,20 +138,25 @@ def main():
                 "evidence_verdict_at_check": dv.get("evidence_verdict"),
             }
             if dv["direction_verdict"] == "REVERSE":
-                if dv.get("evidence_verdict") == "PARTIALLY_SUPPORTED" \
-                        and t["tier"] == 1:
+                if (
+                    dv.get("evidence_verdict") == "PARTIALLY_SUPPORTED"
+                    and t["tier"] == 1
+                ):
                     t["tier"] = 2
-                    t["m4"]["direction"]["action"] = \
+                    t["m4"]["direction"]["action"] = (
                         "demoted_to_tier2 (REVERSE + PARTIALLY_SUPPORTED)"
+                    )
                     moves["direction_reverse_demoted"] += 1
                 else:
-                    t["m4"]["direction"]["action"] = \
-                        "flagged (REVERSE, kept: SUPPORTED evidence or " \
+                    t["m4"]["direction"]["action"] = (
+                        "flagged (REVERSE, kept: SUPPORTED evidence or "
                         "already Tier 2)"
+                    )
                     moves["direction_reverse_flagged"] += 1
             elif dv["direction_verdict"] == "UNDIRECTED":
-                t["m4"]["direction"]["action"] = \
+                t["m4"]["direction"]["action"] = (
                     "flagged (direction unstated in passage)"
+                )
                 moves["direction_undirected_flagged"] += 1
         kept.append(t)
 
@@ -158,13 +167,19 @@ def main():
         "meta": {
             "source_kg": str(args.kg),
             "m4_decisions": str(args.decisions),
-            "direction_verdicts": str(args.direction) if args.direction
+            "direction_verdicts": str(args.direction)
+            if args.direction
             else None,
-            "tier1_definition": ("cross-pass consistency AND independent "
-                                 "cross-family verifier ACCEPT"
-                                 + (" AND no REVERSE direction flag with "
-                                    "only partial evidence support"
-                                    if args.direction else "")),
+            "tier1_definition": (
+                "cross-pass consistency AND independent "
+                "cross-family verifier ACCEPT"
+                + (
+                    " AND no REVERSE direction flag with "
+                    "only partial evidence support"
+                    if args.direction
+                    else ""
+                )
+            ),
             "n_tier1": len(tier1),
             "n_tier2": len(tier2),
             "n_quarantined": len(quarantined),
@@ -175,8 +190,9 @@ def main():
     }
 
     kg_path = out_dir / "tiered_kg_m4.json"
-    kg_path.write_text(json.dumps(kg_out, indent=2, ensure_ascii=False),
-                       encoding="utf-8")
+    kg_path.write_text(
+        json.dumps(kg_out, indent=2, ensure_ascii=False), encoding="utf-8"
+    )
 
     q_path = out_dir / "m4_quarantine.jsonl"
     with open(q_path, "w", encoding="utf-8") as f:

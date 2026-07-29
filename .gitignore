@@ -53,3 +53,9 @@ validation_logs/
 output/_archive/
 output/validation_smoke/
 *.bak.*
+
+# Generated on every validate_pipeline.py run — not a source artifact
+validation_report.md
+
+# Stray Windows bootstrap script, not part of this repo's codebase
+install.cmd

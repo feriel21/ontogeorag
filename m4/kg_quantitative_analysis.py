@@ -1,9 +1,16 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-KG Quantitative Analysis — OntoGeoRAG
-======================================
-Self-contained script producing three deliverables from the final KG:
+m4/kg_quantitative_analysis.py — KG Quantitative Analysis — OntoGeoRAG
+==========================================================================
+WHY
+    The manuscript's KG-description figures/tables (portrait, MTD
+    vignette subgraph, duplicate-entity audit) need to be regenerated
+    from whichever KG file is the current final artifact, not hand-built
+    once and left to drift out of sync with the data.
+
+WHAT
+    Self-contained script producing three deliverables from the final KG:
 
   1. KG Portrait (for figure C3 and §3 of the manuscript)
      - Node count by entity type
@@ -36,50 +43,65 @@ import sys
 from collections import Counter, defaultdict
 from pathlib import Path
 
+
 # ─── Lazy imports for optional dependencies ───────────────────────────
 def _import_networkx():
+    """Import and return the networkx module, exiting with an install hint if it's missing."""
     try:
         import networkx as nx
+
         return nx
     except ImportError:
-        print("ERROR: networkx not installed. pip install networkx --break-system-packages")
+        print(
+            "ERROR: networkx not installed. pip install networkx --break-system-packages"
+        )
         sys.exit(1)
 
+
 def _import_matplotlib():
+    """Import matplotlib with the non-interactive 'Agg' backend and return pyplot."""
     import matplotlib
+
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
+
     return plt
+
 
 # ═══════════════════════════════════════════════════════════════════════
 # CONFIG
 # ═══════════════════════════════════════════════════════════════════════
 KNOWN_DUPLICATES = [
-    (15, 16), (38, 39), (40, 41), (90, 91), (110, 111), (112, 115),
+    (15, 16),
+    (38, 39),
+    (40, 41),
+    (90, 91),
+    (110, 111),
+    (112, 115),
 ]
 
 MTD_CANONICAL = "mass transport deposit"
 
 # Okabe-Ito palette (colourblind safe)
 OI = {
-    "orange":    "#E69F00",
-    "skyblue":   "#56B4E9",
-    "green":     "#009E73",
-    "yellow":    "#F0E442",
-    "blue":      "#0072B2",
+    "orange": "#E69F00",
+    "skyblue": "#56B4E9",
+    "green": "#009E73",
+    "yellow": "#F0E442",
+    "blue": "#0072B2",
     "vermilion": "#D55E00",
-    "purple":    "#CC79A7",
-    "black":     "#000000",
-    "grey":      "#999999",
+    "purple": "#CC79A7",
+    "black": "#000000",
+    "grey": "#999999",
 }
 
 TYPE_COLORS = {
     "SeismicObject": OI["blue"],
-    "Process":       OI["orange"],
-    "Descriptor":    OI["green"],
-    "Setting":       OI["purple"],
-    "Property":      OI["vermilion"],
-    "":              OI["grey"],
+    "Process": OI["orange"],
+    "Descriptor": OI["green"],
+    "Setting": OI["purple"],
+    "Property": OI["vermilion"],
+    "": OI["grey"],
 }
 
 TIER_COLORS = {
@@ -101,7 +123,11 @@ def load_kg(path: str) -> list[dict]:
         if "triples" in raw:
             return raw["triples"]
         # list-of-pairs: dict(json.load(...)) then access 'triples'
-        return list(raw.values()) if not any(isinstance(v, list) for v in raw.values()) else raw.get("triples", [])
+        return (
+            list(raw.values())
+            if not any(isinstance(v, list) for v in raw.values())
+            else raw.get("triples", [])
+        )
 
     # list-of-pairs format: [[key, value], ...]
     if isinstance(raw, list) and len(raw) > 0 and isinstance(raw[0], list):
@@ -118,6 +144,7 @@ def load_kg(path: str) -> list[dict]:
 def norm(s: str) -> str:
     """Lowercase strip normalisation for entity matching."""
     import re
+
     return re.sub(r"\s+", " ", (s or "").lower().strip()).rstrip(".,;:")
 
 
@@ -181,7 +208,7 @@ def kg_portrait(triples: list[dict], outdir: Path):
 
     print(f"\n  Tier distribution per relation:")
     print(f"    {'Relation':22s}  {'T1':>4s}  {'T2':>4s}  {'Other':>5s}")
-    print(f"    {'-'*22}  {'----':>4s}  {'----':>4s}  {'-----':>5s}")
+    print(f"    {'-' * 22}  {'----':>4s}  {'----':>4s}  {'-----':>5s}")
     rows_tier_rel = []
     for rel in sorted(tier_rel.keys()):
         t1 = tier_rel[rel].get(1, 0)
@@ -206,19 +233,23 @@ def kg_portrait(triples: list[dict], outdir: Path):
         in_deg[o] += 1
 
     all_nodes_set = set(in_deg.keys()) | set(out_deg.keys())
-    total_deg = {n: in_deg.get(n, 0) + out_deg.get(n, 0) for n in all_nodes_set}
+    total_deg = {
+        n: in_deg.get(n, 0) + out_deg.get(n, 0) for n in all_nodes_set
+    }
 
     print(f"\n  Degree statistics:")
     degs = list(total_deg.values())
-    print(f"    Mean:   {sum(degs)/len(degs):.2f}")
+    print(f"    Mean:   {sum(degs) / len(degs):.2f}")
     print(f"    Max:    {max(degs)}")
-    print(f"    Median: {sorted(degs)[len(degs)//2]}")
+    print(f"    Median: {sorted(degs)[len(degs) // 2]}")
 
     # Top-10 by total degree
     top10 = sorted(total_deg.items(), key=lambda x: -x[1])[:10]
     print(f"\n  Top-10 highest-degree nodes:")
-    print(f"    {'Node':40s}  {'Type':18s}  {'In':>3s}  {'Out':>3s}  {'Tot':>3s}")
-    print(f"    {'-'*40}  {'-'*18}  {'---':>3s}  {'---':>3s}  {'---':>3s}")
+    print(
+        f"    {'Node':40s}  {'Type':18s}  {'In':>3s}  {'Out':>3s}  {'Tot':>3s}"
+    )
+    print(f"    {'-' * 40}  {'-' * 18}  {'---':>3s}  {'---':>3s}  {'---':>3s}")
     top10_rows = []
     for name, deg in top10:
         tp = nodes.get(name, "")
@@ -247,16 +278,22 @@ def kg_portrait(triples: list[dict], outdir: Path):
         "active_triples": len(active),
         "quarantined_triples": len(quarantined),
         "unique_nodes": len(nodes),
-        "tier_distribution": {str(k): v for k, v in sorted(tier_counts.items())},
+        "tier_distribution": {
+            str(k): v for k, v in sorted(tier_counts.items())
+        },
         "nodes_by_type": dict(type_counts.most_common()),
         "edges_by_relation": dict(rel_counts.most_common()),
-        "tier_by_relation": {rel: dict(tiers) for rel, tiers in tier_rel.items()},
+        "tier_by_relation": {
+            rel: dict(tiers) for rel, tiers in tier_rel.items()
+        },
         "degree_stats": {
             "mean": round(sum(degs) / len(degs), 2),
             "max": max(degs),
             "median": sorted(degs)[len(degs) // 2],
         },
-        "support_count_distribution": {str(k): v for k, v in sorted(sup_dist.items())},
+        "support_count_distribution": {
+            str(k): v for k, v in sorted(sup_dist.items())
+        },
         "top10_nodes": [
             {"entity": n, "type": tp, "in": ind, "out": outd, "total": deg}
             for n, tp, ind, outd, deg in top10_rows
@@ -267,19 +304,37 @@ def kg_portrait(triples: list[dict], outdir: Path):
     print(f"\n  -> {summary_json}")
 
     # ── Figures ───────────────────────────────────────────────────────
-    _plot_portrait(active, nodes, type_counts, rel_counts, tier_rel,
-                   total_deg, sup_dist, outdir)
+    _plot_portrait(
+        active,
+        nodes,
+        type_counts,
+        rel_counts,
+        tier_rel,
+        total_deg,
+        sup_dist,
+        outdir,
+    )
 
     return active, nodes, total_deg
 
 
-def _plot_portrait(active, nodes, type_counts, rel_counts, tier_rel,
-                   total_deg, sup_dist, outdir):
+def _plot_portrait(
+    active,
+    nodes,
+    type_counts,
+    rel_counts,
+    tier_rel,
+    total_deg,
+    sup_dist,
+    outdir,
+):
     """Generate publication-quality portrait figures."""
     plt = _import_matplotlib()
 
     fig, axes = plt.subplots(2, 2, figsize=(14, 10))
-    fig.suptitle("OntoGeoRAG — Knowledge Graph Portrait", fontsize=14, fontweight="bold")
+    fig.suptitle(
+        "OntoGeoRAG — Knowledge Graph Portrait", fontsize=14, fontweight="bold"
+    )
 
     # (a) Nodes by entity type
     ax = axes[0, 0]
@@ -296,14 +351,29 @@ def _plot_portrait(active, nodes, type_counts, rel_counts, tier_rel,
 
     # (b) Edges by relation (stacked T1/T2)
     ax = axes[0, 1]
-    rels_sorted = sorted(tier_rel.keys(), key=lambda r: sum(tier_rel[r].values()), reverse=True)
+    rels_sorted = sorted(
+        tier_rel.keys(), key=lambda r: sum(tier_rel[r].values()), reverse=True
+    )
     t1_vals = [tier_rel[r].get(1, 0) for r in rels_sorted]
     t2_vals = [tier_rel[r].get(2, 0) for r in rels_sorted]
     y_pos = range(len(rels_sorted))
-    ax.barh(y_pos, t1_vals, color=TIER_COLORS[1], edgecolor="black",
-            linewidth=0.8, label="Tier-1")
-    ax.barh(y_pos, t2_vals, left=t1_vals, color=TIER_COLORS[2],
-            edgecolor="black", linewidth=0.8, label="Tier-2")
+    ax.barh(
+        y_pos,
+        t1_vals,
+        color=TIER_COLORS[1],
+        edgecolor="black",
+        linewidth=0.8,
+        label="Tier-1",
+    )
+    ax.barh(
+        y_pos,
+        t2_vals,
+        left=t1_vals,
+        color=TIER_COLORS[2],
+        edgecolor="black",
+        linewidth=0.8,
+        label="Tier-2",
+    )
     ax.set_yticks(list(y_pos))
     ax.set_yticklabels(rels_sorted, fontsize=8)
     ax.set_xlabel("Count")
@@ -316,8 +386,14 @@ def _plot_portrait(active, nodes, type_counts, rel_counts, tier_rel,
     degs = list(total_deg.values())
     max_deg = max(degs)
     bins = range(1, max_deg + 2)
-    ax.hist(degs, bins=bins, color=OI["skyblue"], edgecolor="black", linewidth=0.8,
-            align="left")
+    ax.hist(
+        degs,
+        bins=bins,
+        color=OI["skyblue"],
+        edgecolor="black",
+        linewidth=0.8,
+        align="left",
+    )
     ax.set_xlabel("Total degree")
     ax.set_ylabel("Number of nodes")
     ax.set_title("(c) Node degree distribution", fontweight="bold")
@@ -327,8 +403,13 @@ def _plot_portrait(active, nodes, type_counts, rel_counts, tier_rel,
     ax = axes[1, 1]
     sc_keys = sorted(sup_dist.keys())
     sc_vals = [sup_dist[k] for k in sc_keys]
-    ax.bar([str(k) for k in sc_keys], sc_vals, color=OI["green"],
-           edgecolor="black", linewidth=0.8)
+    ax.bar(
+        [str(k) for k in sc_keys],
+        sc_vals,
+        color=OI["green"],
+        edgecolor="black",
+        linewidth=0.8,
+    )
     ax.set_xlabel("Support count (# source papers)")
     ax.set_ylabel("Number of triples")
     ax.set_title("(d) Evidence breadth distribution", fontweight="bold")
@@ -361,22 +442,30 @@ def mtd_ego_subgraph(triples: list[dict], outdir: Path):
         s, o = norm(t["subject"]), norm(t["object"])
         G.add_node(s, entity_type=t.get("subject_type", ""))
         G.add_node(o, entity_type=t.get("object_type", ""))
-        G.add_edge(s, o,
-                   relation=t.get("relation", ""),
-                   tier=t.get("tier", "?"),
-                   support_count=t.get("support_count", 0))
+        G.add_edge(
+            s,
+            o,
+            relation=t.get("relation", ""),
+            tier=t.get("tier", "?"),
+            support_count=t.get("support_count", 0),
+        )
 
     # Find MTD node (fuzzy match)
     mtd_node = None
     for n in G.nodes():
-        if "mass transport deposit" in n or n in ("mtd", "mass-transport deposit"):
+        if "mass transport deposit" in n or n in (
+            "mtd",
+            "mass-transport deposit",
+        ):
             mtd_node = n
             break
 
     if mtd_node is None:
         print("  WARNING: 'mass transport deposit' node not found in graph!")
-        print(f"  Available nodes containing 'mass': "
-              f"{[n for n in G.nodes() if 'mass' in n]}")
+        print(
+            f"  Available nodes containing 'mass': "
+            f"{[n for n in G.nodes() if 'mass' in n]}"
+        )
         return
 
     print(f"  MTD node: '{mtd_node}' (degree {G.degree(mtd_node)})")
@@ -393,7 +482,9 @@ def mtd_ego_subgraph(triples: list[dict], outdir: Path):
     sub = G.subgraph(ego_nodes).copy()
     print(f"  Hop-1 neighbors: {len(hop1)}")
     print(f"  Hop-2 neighbors: {len(hop2 - hop1 - {mtd_node})}")
-    print(f"  Subgraph: {sub.number_of_nodes()} nodes, {sub.number_of_edges()} edges")
+    print(
+        f"  Subgraph: {sub.number_of_nodes()} nodes, {sub.number_of_edges()} edges"
+    )
 
     # Export edge list CSV
     edge_csv = outdir / "mtd_ego_edges.csv"
@@ -407,8 +498,10 @@ def mtd_ego_subgraph(triples: list[dict], outdir: Path):
                 hop = 2
             else:
                 hop = 3  # shouldn't happen with 2-hop
-            f.write(f'"{s}","{data.get("relation", "")}","{o}",'
-                    f'{data.get("tier", "?")},{data.get("support_count", 0)},{hop}\n')
+            f.write(
+                f'"{s}","{data.get("relation", "")}","{o}",'
+                f"{data.get('tier', '?')},{data.get('support_count', 0)},{hop}\n"
+            )
     print(f"  -> {edge_csv}")
 
     # Export node list with hop distance
@@ -442,7 +535,9 @@ def mtd_ego_subgraph(triples: list[dict], outdir: Path):
 
     # Print subgraph triples for quick inspection
     print(f"\n  Subgraph triples:")
-    for s, o, data in sorted(sub.edges(data=True), key=lambda x: x[2].get("tier", 99)):
+    for s, o, data in sorted(
+        sub.edges(data=True), key=lambda x: x[2].get("tier", 99)
+    ):
         rel = data.get("relation", "?")
         tier = data.get("tier", "?")
         print(f"    T{tier}  ({s}, {rel}, {o})")
@@ -456,13 +551,18 @@ def mtd_ego_subgraph(triples: list[dict], outdir: Path):
         "subgraph_nodes": sub.number_of_nodes(),
         "subgraph_edges": sub.number_of_edges(),
         "edges": [
-            {"subject": s, "relation": data.get("relation", ""),
-             "object": o, "tier": data.get("tier", "?")}
+            {
+                "subject": s,
+                "relation": data.get("relation", ""),
+                "object": o,
+                "tier": data.get("tier", "?"),
+            }
             for s, o, data in sub.edges(data=True)
         ],
     }
     (outdir / "mtd_ego_summary.json").write_text(
-        json.dumps(ego_summary, indent=2, ensure_ascii=False))
+        json.dumps(ego_summary, indent=2, ensure_ascii=False)
+    )
     print(f"  -> {outdir}/mtd_ego_summary.json")
 
     return sub
@@ -471,10 +571,13 @@ def mtd_ego_subgraph(triples: list[dict], outdir: Path):
 # ═══════════════════════════════════════════════════════════════════════
 # 3. DUPLICATE / NEAR-DUPLICATE ENTITY SCAN
 # ═══════════════════════════════════════════════════════════════════════
-def duplicate_scan(triples: list[dict], outdir: Path,
-                   model_name: str = "sentence-transformers/all-MiniLM-L6-v2",
-                   threshold: float = 0.85,
-                   use_embeddings: bool = True):
+def duplicate_scan(
+    triples: list[dict],
+    outdir: Path,
+    model_name: str = "sentence-transformers/all-MiniLM-L6-v2",
+    threshold: float = 0.85,
+    use_embeddings: bool = True,
+):
     """Scan all entity names for near-duplicates via embedding cosine similarity."""
     print("\n" + "=" * 65)
     print("3. DUPLICATE / NEAR-DUPLICATE ENTITY SCAN")
@@ -488,11 +591,15 @@ def duplicate_scan(triples: list[dict], outdir: Path,
         s, o = norm(t["subject"]), norm(t["object"])
         if s:
             entities.add(s)
-            entity_info.setdefault(s, {"type": t.get("subject_type", ""), "indices": []})
+            entity_info.setdefault(
+                s, {"type": t.get("subject_type", ""), "indices": []}
+            )
             entity_info[s]["indices"].append(i)
         if o:
             entities.add(o)
-            entity_info.setdefault(o, {"type": t.get("object_type", ""), "indices": []})
+            entity_info.setdefault(
+                o, {"type": t.get("object_type", ""), "indices": []}
+            )
             entity_info[o]["indices"].append(i)
 
     entities = sorted(entities)
@@ -513,8 +620,8 @@ def duplicate_scan(triples: list[dict], outdir: Path,
     # ── Embedding-based scan ──────────────────────────────────────────
     print(f"\n  Loading model: {model_name}")
     try:
-        from sentence_transformers import SentenceTransformer
         import numpy as np
+        from sentence_transformers import SentenceTransformer
     except ImportError:
         print("  ERROR: sentence-transformers not installed.")
         print("  Falling back to string heuristic scan.")
@@ -523,8 +630,12 @@ def duplicate_scan(triples: list[dict], outdir: Path,
 
     model = SentenceTransformer(model_name)
     print(f"  Encoding {len(entities)} entity names...")
-    embeddings = model.encode(entities, show_progress_bar=False,
-                              convert_to_numpy=True, normalize_embeddings=True)
+    embeddings = model.encode(
+        entities,
+        show_progress_bar=False,
+        convert_to_numpy=True,
+        normalize_embeddings=True,
+    )
 
     # Pairwise cosine (embeddings are L2-normalized, so dot product = cosine)
     sim_matrix = embeddings @ embeddings.T
@@ -541,8 +652,10 @@ def duplicate_scan(triples: list[dict], outdir: Path,
 
     print(f"\n  Pairs with cosine >= {threshold}: {len(pairs)}")
     if pairs:
-        print(f"    {'Entity A':35s}  {'Entity B':35s}  {'Cosine':>6s}  {'Types':>12s}")
-        print(f"    {'-'*35}  {'-'*35}  {'------':>6s}  {'-'*12}")
+        print(
+            f"    {'Entity A':35s}  {'Entity B':35s}  {'Cosine':>6s}  {'Types':>12s}"
+        )
+        print(f"    {'-' * 35}  {'-' * 35}  {'------':>6s}  {'-' * 12}")
         for a, b, cos in pairs:
             ta = entity_info.get(a, {}).get("type", "")
             tb = entity_info.get(b, {}).get("type", "")
@@ -577,7 +690,8 @@ def duplicate_scan(triples: list[dict], outdir: Path,
         ],
     }
     (outdir / "duplicate_scan.json").write_text(
-        json.dumps(dup_summary, indent=2, ensure_ascii=False))
+        json.dumps(dup_summary, indent=2, ensure_ascii=False)
+    )
     print(f"  -> {outdir}/duplicate_scan.json")
 
     return pairs
@@ -625,21 +739,38 @@ def _string_heuristic_scan(entities, entity_info, outdir, threshold=0.8):
 # MAIN
 # ═══════════════════════════════════════════════════════════════════════
 def main():
+    """CLI entry point: loads --kg and runs kg_portrait, mtd_ego_subgraph and duplicate_scan in sequence, writing all CSV/JSON/figure/GraphML outputs to --outdir."""
     parser = argparse.ArgumentParser(
         description="KG Quantitative Analysis — OntoGeoRAG",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=__doc__,
     )
-    parser.add_argument("--kg", required=True,
-                        help="Path to final KG JSON (e.g. tiered_kg_m4.json)")
-    parser.add_argument("--outdir", default="./kg_analysis",
-                        help="Output directory (default: ./kg_analysis)")
-    parser.add_argument("--model", default="sentence-transformers/all-MiniLM-L6-v2",
-                        help="Sentence-transformer model for duplicate scan")
-    parser.add_argument("--dup-threshold", type=float, default=0.85,
-                        help="Cosine threshold for duplicate flagging (default: 0.85)")
-    parser.add_argument("--no-embeddings", action="store_true",
-                        help="Skip embedding-based duplicate scan (use string heuristic)")
+    parser.add_argument(
+        "--kg",
+        required=True,
+        help="Path to final KG JSON (e.g. tiered_kg_m4.json)",
+    )
+    parser.add_argument(
+        "--outdir",
+        default="./kg_analysis",
+        help="Output directory (default: ./kg_analysis)",
+    )
+    parser.add_argument(
+        "--model",
+        default="sentence-transformers/all-MiniLM-L6-v2",
+        help="Sentence-transformer model for duplicate scan",
+    )
+    parser.add_argument(
+        "--dup-threshold",
+        type=float,
+        default=0.85,
+        help="Cosine threshold for duplicate flagging (default: 0.85)",
+    )
+    parser.add_argument(
+        "--no-embeddings",
+        action="store_true",
+        help="Skip embedding-based duplicate scan (use string heuristic)",
+    )
     args = parser.parse_args()
 
     outdir = Path(args.outdir)
@@ -661,10 +792,13 @@ def main():
     mtd_ego_subgraph(triples, outdir)
 
     # 3. Duplicate scan
-    duplicate_scan(triples, outdir,
-                   model_name=args.model,
-                   threshold=args.dup_threshold,
-                   use_embeddings=not args.no_embeddings)
+    duplicate_scan(
+        triples,
+        outdir,
+        model_name=args.model,
+        threshold=args.dup_threshold,
+        use_embeddings=not args.no_embeddings,
+    )
 
     print("\n" + "=" * 65)
     print("DONE — all outputs in:", outdir)

@@ -6,8 +6,9 @@ Fix: Use Ollama HTTP API with proper chat format instead of subprocess with raw 
 """
 
 import json
-import requests
 from typing import Optional
+
+import requests
 
 
 def ollama_chat(
@@ -15,7 +16,7 @@ def ollama_chat(
     system: str,
     user: str,
     temperature: float = 0.0,
-    base_url: str = "http://localhost:11434"
+    base_url: str = "http://localhost:11434",
 ) -> str:
     """
     Call Ollama LLM via HTTP API with proper chat format.
@@ -34,21 +35,17 @@ def ollama_chat(
         "model": model,
         "messages": [
             {"role": "system", "content": system},
-            {"role": "user", "content": user}
+            {"role": "user", "content": user},
         ],
         "stream": False,
         "options": {
             "temperature": temperature,
             "num_predict": 450,
-        }
+        },
     }
 
     try:
-        resp = requests.post(
-            f"{base_url}/api/chat",
-            json=payload,
-            timeout=120
-        )
+        resp = requests.post(f"{base_url}/api/chat", json=payload, timeout=120)
         resp.raise_for_status()
         data = resp.json()
         return data.get("message", {}).get("content", "").strip()

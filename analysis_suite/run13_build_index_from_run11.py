@@ -63,8 +63,9 @@ def main():
         rec = json.loads(line)
         n_src += 1
         d = rec["doc_id"]
-        by_doc[norm_doc(d)]["checkpoint" if d.endswith("-checkpoint")
-                            else "clean"].append(rec)
+        by_doc[norm_doc(d)][
+            "checkpoint" if d.endswith("-checkpoint") else "clean"
+        ].append(rec)
 
     out, per_paper = [], {}
     n_renamed_docs = 0
@@ -85,14 +86,17 @@ def main():
         seen = set()
         kept = []
         for rec in records:
-            h = hashlib.md5(norm_text(rec.get("text", "")).encode()
-                            ).hexdigest()
+            h = hashlib.md5(
+                norm_text(rec.get("text", "")).encode()
+            ).hexdigest()
             if h in seen:
                 continue
             seen.add(h)
             kept.append(rec)
-        per_paper[doc] = (len(pools["clean"]) + len(pools["checkpoint"]),
-                          len(kept))
+        per_paper[doc] = (
+            len(pools["clean"]) + len(pools["checkpoint"]),
+            len(kept),
+        )
         out.extend(kept)
 
     dst = Path(args.dst)
@@ -101,22 +105,28 @@ def main():
         for rec in out:
             f.write(json.dumps(rec, ensure_ascii=False) + "\n")
 
-    meta = {"built_from": args.src, "method": "run11 chunks deduplicated "
-            "(checkpoint removal + per-paper text-hash dedup); chunking "
-            "bit-identical to run11 by construction",
-            "n_source_records": n_src, "n_output_records": len(out),
-            "n_papers": len(by_doc),
-            "n_checkpoint_only_papers_renamed": n_renamed_docs}
-    with open(dst.parent / "index_meta_run13.json", "w",
-              encoding="utf-8") as f:
+    meta = {
+        "built_from": args.src,
+        "method": "run11 chunks deduplicated "
+        "(checkpoint removal + per-paper text-hash dedup); chunking "
+        "bit-identical to run11 by construction",
+        "n_source_records": n_src,
+        "n_output_records": len(out),
+        "n_papers": len(by_doc),
+        "n_checkpoint_only_papers_renamed": n_renamed_docs,
+    }
+    with open(
+        dst.parent / "index_meta_run13.json", "w", encoding="utf-8"
+    ) as f:
         json.dump(meta, f, indent=2)
 
     # final integrity check (same as pipeline stage-2 check)
     papers, hashes, dup = set(), set(), 0
     for rec in out:
         papers.add(rec["doc_id"])
-        h = hashlib.md5((rec["doc_id"] + rec.get("text", "")).encode()
-                        ).hexdigest()
+        h = hashlib.md5(
+            (rec["doc_id"] + rec.get("text", "")).encode()
+        ).hexdigest()
         dup += h in hashes
         hashes.add(h)
 
@@ -133,8 +143,10 @@ def main():
         print(f"  {a:4d} -> {b:4d}  {doc}")
     assert dup == 0 and len(papers) == args.expect_papers, "INTEGRITY FAIL"
     print(f"[OK] written: {dst}")
-    print("Next: FROM_STAGE=3 N_PAPERS_EXPECTED=37 "
-          "bash analysis_suite/run13_pipeline_v2.sh")
+    print(
+        "Next: FROM_STAGE=3 N_PAPERS_EXPECTED=37 "
+        "bash analysis_suite/run13_pipeline_v2.sh"
+    )
 
 
 if __name__ == "__main__":

@@ -43,9 +43,15 @@ from collections import defaultdict
 from pathlib import Path
 
 import numpy as np
-
-from kg_io import (load_kg, get_subject, get_object, get_relation,
-                   apply_style, BLUE, TERRACOTTA)
+from kg_io import (
+    BLUE,
+    TERRACOTTA,
+    apply_style,
+    get_object,
+    get_relation,
+    get_subject,
+    load_kg,
+)
 
 
 def heaps_fit(ns, vs):
@@ -87,7 +93,8 @@ def main():
         raise SystemExit(
             f"Only {P} papers resolved from provenance "
             f"({n_no_prov} triples without paper_ids). Run "
-            "08_rebuild_provenance.py first and check chunk-id resolution.")
+            "08_rebuild_provenance.py first and check chunk-id resolution."
+        )
 
     def kg_counts(paper_subset):
         nodes, edges, descs, rels = set(), set(), set(), defaultdict(int)
@@ -106,8 +113,12 @@ def main():
                     descs.add(o)
         return nodes, edges, descs, rels
 
-    sizes = sorted({max(2, int(P * f)) for f in
-                    (0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0)})
+    sizes = sorted(
+        {
+            max(2, int(P * f))
+            for f in (0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0)
+        }
+    )
     curves = {"nodes": {}, "edges": {}, "descriptors": {}}
     for n in sizes:
         buf = {k: [] for k in curves}
@@ -119,15 +130,30 @@ def main():
             buf["descriptors"].append(len(descs))
         for k in curves:
             arr = np.array(buf[k])
-            curves[k][n] = (arr.mean(), np.percentile(arr, 2.5),
-                            np.percentile(arr, 97.5))
+            curves[k][n] = (
+                arr.mean(),
+                np.percentile(arr, 2.5),
+                np.percentile(arr, 97.5),
+            )
 
-    with open(outdir / "robustness_curves.csv", "w", newline="",
-              encoding="utf-8") as f:
+    with open(
+        outdir / "robustness_curves.csv", "w", newline="", encoding="utf-8"
+    ) as f:
         w = csv.writer(f)
-        w.writerow(["n_papers", "nodes_mean", "nodes_lo", "nodes_hi",
-                    "edges_mean", "edges_lo", "edges_hi",
-                    "desc_mean", "desc_lo", "desc_hi"])
+        w.writerow(
+            [
+                "n_papers",
+                "nodes_mean",
+                "nodes_lo",
+                "nodes_hi",
+                "edges_mean",
+                "edges_lo",
+                "edges_hi",
+                "desc_mean",
+                "desc_lo",
+                "desc_hi",
+            ]
+        )
         for n in sizes:
             row = [n]
             for k in ("nodes", "edges", "descriptors"):
@@ -141,8 +167,7 @@ def main():
         fits[k] = fit
         if fit:
             K, beta = fit
-            extrap[k] = {P + d: K * (P + d) ** beta
-                         for d in (50, 100, 500)}
+            extrap[k] = {P + d: K * (P + d) ** beta for d in (50, 100, 500)}
 
     # ── hub stability ─────────────────────────────────────────────────
     def top10(paper_subset):
@@ -170,14 +195,21 @@ def main():
         _, _, _, r = kg_counts(sub)
         st = sum(r.values()) or 1
         keys = set(full_rels) | set(r)
-        l1.append(sum(abs(full_rels.get(k, 0) / tot - r.get(k, 0) / st)
-                      for k in keys) / 2)
+        l1.append(
+            sum(
+                abs(full_rels.get(k, 0) / tot - r.get(k, 0) / st) for k in keys
+            )
+            / 2
+        )
     rel_stab = 1.0 - float(np.mean(l1))
 
     # ── figure ────────────────────────────────────────────────────────
     fig, ax = plt.subplots(figsize=(8, 5.5))
-    for k, color in (("nodes", BLUE), ("edges", TERRACOTTA),
-                     ("descriptors", "#6B8F71")):
+    for k, color in (
+        ("nodes", BLUE),
+        ("edges", TERRACOTTA),
+        ("descriptors", "#6B8F71"),
+    ):
         means = [curves[k][n][0] for n in sizes]
         lo = [curves[k][n][1] for n in sizes]
         hi = [curves[k][n][2] for n in sizes]
@@ -186,8 +218,14 @@ def main():
         if fits[k]:
             K, beta = fits[k]
             xs = np.linspace(sizes[0], P, 100)
-            ax.plot(xs, K * xs ** beta, "--", color=color, lw=1,
-                    label=f"{k} fit β={beta:.2f}")
+            ax.plot(
+                xs,
+                K * xs**beta,
+                "--",
+                color=color,
+                lw=1,
+                label=f"{k} fit β={beta:.2f}",
+            )
     ax.set_xlabel("number of papers")
     ax.set_ylabel("count")
     ax.set_title("KG growth under paper subsampling", fontsize=18)
@@ -196,52 +234,74 @@ def main():
     plt.close(fig)
 
     # ── report ────────────────────────────────────────────────────────
-    lines = ["# Robustness report (auto-generated)", "",
-             f"Corpus: {P} papers resolved from provenance "
-             f"({n_no_prov} triples without paper_ids, excluded).",
-             f"Bootstrap draws per size: {args.boot} (seed {args.seed}).",
-             ""]
+    lines = [
+        "# Robustness report (auto-generated)",
+        "",
+        f"Corpus: {P} papers resolved from provenance "
+        f"({n_no_prov} triples without paper_ids, excluded).",
+        f"Bootstrap draws per size: {args.boot} (seed {args.seed}).",
+        "",
+    ]
     for k in ("nodes", "edges", "descriptors"):
         if fits[k]:
             K, beta = fits[k]
-            regime = ("CONVERGING (sub-linear growth — the fixed query set "
-                      "saturates; additional papers densify support rather "
-                      "than expand coverage)" if beta < 0.7 else
-                      "slowly growing" if beta < 0.9 else
-                      "near-linear growth (unexpected under a fixed query "
-                      "set — inspect)")
+            regime = (
+                "CONVERGING (sub-linear growth — the fixed query set "
+                "saturates; additional papers densify support rather "
+                "than expand coverage)"
+                if beta < 0.7
+                else "slowly growing"
+                if beta < 0.9
+                else "near-linear growth (unexpected under a fixed query "
+                "set — inspect)"
+            )
             lines.append(f"## {k}")
-            lines.append(f"- Heaps fit: V(n) ≈ {K:.1f} · n^{beta:.2f} — "
-                         f"{regime}.")
-            lines.append("- Extrapolation (EXTRAPOLATED, not observed): "
-                         + ", ".join(f"n={n}: ≈{v:.0f}"
-                                     for n, v in extrap[k].items()) + ".")
+            lines.append(
+                f"- Heaps fit: V(n) ≈ {K:.1f} · n^{beta:.2f} — {regime}."
+            )
+            lines.append(
+                "- Extrapolation (EXTRAPOLATED, not observed): "
+                + ", ".join(f"n={n}: ≈{v:.0f}" for n, v in extrap[k].items())
+                + "."
+            )
             lines.append("")
     lines.append(f"## Stability")
-    lines.append(f"- Hub stability (Jaccard, top-10 degree, 60% subsample "
-                 f"vs full): **{hub_stab:.2f}** — "
-                 + ("hubs are robust to corpus composition."
-                    if hub_stab >= 0.7 else
-                    "hubs depend on corpus composition; interpret hub-based "
-                    "claims cautiously."))
-    lines.append(f"- Relation-distribution stability (1 − L1/2): "
-                 f"**{rel_stab:.2f}**.")
+    lines.append(
+        f"- Hub stability (Jaccard, top-10 degree, 60% subsample "
+        f"vs full): **{hub_stab:.2f}** — "
+        + (
+            "hubs are robust to corpus composition."
+            if hub_stab >= 0.7
+            else "hubs depend on corpus composition; interpret hub-based "
+            "claims cautiously."
+        )
+    )
+    lines.append(
+        f"- Relation-distribution stability (1 − L1/2): **{rel_stab:.2f}**."
+    )
     lines.append("")
     lines.append("## Stated limitation")
-    lines.append("`hasDescriptor` is a closed-world relation: descriptor "
-                 "growth is upper-bounded by the size of the canonical "
-                 "descriptor vocabulary. Truncate the descriptor "
-                 "extrapolation at that bound in the manuscript; only the "
-                 "node/edge extrapolations are meaningful beyond it.")
-    lines.append("Subsampling measures redundancy inside the current corpus "
-                 "and query design. It cannot anticipate genuinely new "
-                 "terminology from unseen basins; the extrapolations are "
-                 "lower bounds on novelty and must be labeled as such in "
-                 "the manuscript.")
-    (outdir / "robustness_report.md").write_text("\n".join(lines),
-                                                 encoding="utf-8")
-    print(f"[13] robustness done — hub stability {hub_stab:.2f} — "
-          f"outputs in {outdir}")
+    lines.append(
+        "`hasDescriptor` is a closed-world relation: descriptor "
+        "growth is upper-bounded by the size of the canonical "
+        "descriptor vocabulary. Truncate the descriptor "
+        "extrapolation at that bound in the manuscript; only the "
+        "node/edge extrapolations are meaningful beyond it."
+    )
+    lines.append(
+        "Subsampling measures redundancy inside the current corpus "
+        "and query design. It cannot anticipate genuinely new "
+        "terminology from unseen basins; the extrapolations are "
+        "lower bounds on novelty and must be labeled as such in "
+        "the manuscript."
+    )
+    (outdir / "robustness_report.md").write_text(
+        "\n".join(lines), encoding="utf-8"
+    )
+    print(
+        f"[13] robustness done — hub stability {hub_stab:.2f} — "
+        f"outputs in {outdir}"
+    )
 
 
 if __name__ == "__main__":

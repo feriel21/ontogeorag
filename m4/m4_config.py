@@ -29,11 +29,11 @@ DEFAULT_MODEL = "meta-llama/Llama-3.1-8B-Instruct"
 GEN_KWARGS = dict(
     max_new_tokens=300,
     do_sample=False,
-    temperature=None,   # ignored when do_sample=False; set explicitly to
-    top_p=None,         # silence transformers warnings on some versions
+    temperature=None,  # ignored when do_sample=False; set explicitly to
+    top_p=None,  # silence transformers warnings on some versions
 )
 
-MAX_EVIDENCE_CHARS = 1500   # same truncation as 03_verify / expD
+MAX_EVIDENCE_CHARS = 1500  # same truncation as 03_verify / expD
 
 
 # ── Relation glosses ───────────────────────────────────────────────────
@@ -41,22 +41,24 @@ MAX_EVIDENCE_CHARS = 1500   # same truncation as 03_verify / expD
 # If the ontogeorag package is importable, the pipeline version wins.
 M4_GLOSSES = {
     "hasDescriptor": "is characterised in seismic data by the descriptor",
-    "formedBy":      "is formed by the process",
-    "triggers":      "triggers / initiates",
-    "causes":        "causes / produces",
-    "controls":      "controls / influences",
-    "occursIn":      "occurs in the depositional setting",
-    "overlies":      "lies stratigraphically above",
-    "underlies":     "lies stratigraphically below",
-    "partOf":        "is a component / part of",
-    "evolvesTo":     "evolves or transforms into",
-    "indicates":     "is diagnostic evidence of",
+    "formedBy": "is formed by the process",
+    "triggers": "triggers / initiates",
+    "causes": "causes / produces",
+    "controls": "controls / influences",
+    "occursIn": "occurs in the depositional setting",
+    "overlies": "lies stratigraphically above",
+    "underlies": "lies stratigraphically below",
+    "partOf": "is a component / part of",
+    "evolvesTo": "evolves or transforms into",
+    "indicates": "is diagnostic evidence of",
 }
+
 
 def get_glosses() -> dict:
     """Prefer the pipeline's own glosses when available (run from repo root)."""
     try:
         from pipeline.rag.constants import RELATION_GLOSSES  # type: ignore
+
         merged = dict(M4_GLOSSES)
         merged.update(RELATION_GLOSSES)
         return merged
@@ -142,19 +144,22 @@ EVIDENCE_VERDICTS = ("SUPPORTED", "PARTIALLY_SUPPORTED", "NOT_SUPPORTED")
 
 # ── Aggregation (decision matrix + continuous confidence) ─────────────
 # Numeric mapping for the continuous confidence score.
-EVIDENCE_SCORE = {"SUPPORTED": 1.0, "PARTIALLY_SUPPORTED": 0.5,
-                  "NOT_SUPPORTED": 0.0}
-BLIND_SCORE    = {"PLAUSIBLE": 1.0, "UNCERTAIN": 0.5, "IMPLAUSIBLE": 0.0}
+EVIDENCE_SCORE = {
+    "SUPPORTED": 1.0,
+    "PARTIALLY_SUPPORTED": 0.5,
+    "NOT_SUPPORTED": 0.0,
+}
+BLIND_SCORE = {"PLAUSIBLE": 1.0, "UNCERTAIN": 0.5, "IMPLAUSIBLE": 0.0}
 
 # Textual support dominates: the pipeline's central claim is literature
 # grounding, so the evidence verdict carries most of the weight. The blind
 # verdict is mainly DIAGNOSTIC (over-interpretation / parametric-risk
 # detection), which is why its weight is low.
 W_EVIDENCE = 0.7
-W_BLIND    = 0.3
+W_BLIND = 0.3
 
-ACCEPT_THRESHOLD = 0.70   # confidence >= 0.70 -> ACCEPT
-REJECT_THRESHOLD = 0.30   # confidence <= 0.30 -> REJECT
+ACCEPT_THRESHOLD = 0.70  # confidence >= 0.70 -> ACCEPT
+REJECT_THRESHOLD = 0.30  # confidence <= 0.30 -> REJECT
 # in between -> UNCERTAIN
 
 # Special diagnostic flag: blind says PLAUSIBLE but evidence says

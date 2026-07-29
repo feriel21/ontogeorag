@@ -1,0 +1,24 @@
+from_type,to_type,n_occurrences,examples
+SeismicObject,Geological_Object,46,channel; debris flow; debris-flow deposit
+GeologicalObject,Geological_Object,34,mass transport deposit; submarine landslide; growth stratal wedge
+Condition,Environmental_Control,20,bore-hole stability; decrease in effective stress; sediment approaching liquefaction
+GeologicalSetting,Environmental_Control,15,deep-water basinal settings; ebro margin; continental slope
+Surface,Geological_Object,6,discontinuous erosion surfaces; basal erosion surface; seaﬂoor
+Attribute,Descriptor,5,sea floor slope; critical length; cohesion of the basal detachment
+Feature,Geological_Object,4,incision of lateral ramps; erosion grooves; lower headwall formation
+StructuralDomain,Geological_Object,4,compressive domain; extensional domain; three structural domains
+Conditions,Environmental_Control,2,equilibrium conditions; disequilibrium conditions
+GeologicalFeature,Geological_Object,2,rugged upper surface; formation of layer of weakness
+GeologicalSurface,Geological_Object,2,stable paleo-lakebed; basal shear surface
+Location,Environmental_Control,2,steepest portion of the slope; area where no scarp exists
+Event,Process,2,50–60 ka failure event; potential for mass-transport events
+Property,Descriptor,1,erosive capability of the flow
+Facies,Geological_Object,1,formation of upper low-density layer
+GeologicalProcess,Process,1,developing mtds
+StructuralSurface,Geological_Object,1,basal shear surface
+Substance,Geological_Object,1,free gas
+Domain,Geological_Object,1,compressive domain
+Measurement,Descriptor,1,up to 500m in thickness
+SurfaceFeature,Geological_Object,1,upper surface
+Structure,Geological_Object,1,ramps and promontories
+Criterion,Environmental_Control,1,stability criterion

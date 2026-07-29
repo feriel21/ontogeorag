@@ -2,8 +2,9 @@
 pipeline/rag/llm_hf.py — HuggingFace LLM backend (model-agnostic)
 Supports Qwen, Llama, Mistral — any chat-template model.
 """
+
 import torch
-from transformers import AutoTokenizer, AutoModelForCausalLM
+from transformers import AutoModelForCausalLM, AutoTokenizer
 
 _MODEL_CACHE: dict = {}
 
@@ -17,7 +18,9 @@ def make_hf_fn(model_name: str, max_new_tokens: int = 512):
 
     if model_name not in _MODEL_CACHE:
         print(f"[HF] Loading {model_name} ...")
-        tokenizer = AutoTokenizer.from_pretrained(model_name, trust_remote_code=True)
+        tokenizer = AutoTokenizer.from_pretrained(
+            model_name, trust_remote_code=True
+        )
 
         if torch.cuda.is_available():
             try:
@@ -38,11 +41,14 @@ def make_hf_fn(model_name: str, max_new_tokens: int = 512):
         )
         model.eval()
         _MODEL_CACHE[model_name] = (tokenizer, model)
-        print(f"[HF] {model_name} loaded on {'GPU' if torch.cuda.is_available() else 'CPU'}")
+        print(
+            f"[HF] {model_name} loaded on {'GPU' if torch.cuda.is_available() else 'CPU'}"
+        )
 
     tokenizer, model = _MODEL_CACHE[model_name]
 
     def generate(system: str, user: str, temperature: float = 0.0) -> str:
+        """Render `system`/`user` via the model's chat template and generate a completion (greedy if temperature==0.0, sampled otherwise); returns the decoded response text, no side effects on the cached model."""
         messages = []
         if system:
             messages.append({"role": "system", "content": system})
@@ -61,7 +67,9 @@ def make_hf_fn(model_name: str, max_new_tokens: int = 512):
             repetition_penalty=1.1,
         )
         if do_sample:
-            gen_kwargs.update(do_sample=True, temperature=temperature, top_p=0.9)
+            gen_kwargs.update(
+                do_sample=True, temperature=temperature, top_p=0.9
+            )
         else:
             gen_kwargs["do_sample"] = False
 
@@ -69,7 +77,7 @@ def make_hf_fn(model_name: str, max_new_tokens: int = 512):
             outputs = model.generate(**gen_kwargs)
 
         return tokenizer.decode(
-            outputs[0][inputs.input_ids.shape[1]:],
+            outputs[0][inputs.input_ids.shape[1] :],
             skip_special_tokens=True,
         ).strip()
 

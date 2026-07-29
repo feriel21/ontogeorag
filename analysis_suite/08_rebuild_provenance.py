@@ -26,8 +26,16 @@ METHOD — two complementary provenance channels, both text-grounded:
 CONFIDENCE (unchanged structure, consensus now from co-occurrence papers):
     confidence = w_tier * w_m4 * w_consensus, components always exported.
     w_tier: T1=1.0, T2=0.6, quarantine=0.2
-    w_m4  : STRONG=1.0, WEAK=0.7, other=0.5  (uses `verdict` field if no
-            M4 field present — run11 stores the Qwen verdict there)
+    w_m4  : PREFERRED source is the cross-family panel decision, passed
+            with --decisions (ACCEPT=1.0, UNCERTAIN=0.7, REJECT=0.3). This
+            is the channel the score is supposed to encode: the panel is
+            the independent check, whereas the in-KG `verdict` field holds
+            the same-model self-verification that M4 was built to replace.
+            Fallback when --decisions is absent: STRONG=1.0 / WEAK=0.7 /
+            missing=0.5 from the `verdict` field. A constant w_m4 (e.g. all
+            verdicts missing) collapses the score onto w_consensus and is
+            reported as a warning, because it silently makes the composite
+            untestable.
     w_consensus: log2(1+n_papers)/log2(1+4), capped at 1.
 
 OUTPUTS
@@ -48,6 +56,7 @@ USAGE
 
 import argparse
 import csv
+import json
 import math
 import re
 from pathlib import Path
@@ -70,12 +79,30 @@ def shingles(s: str, k: int = 5) -> set:
     return {" ".join(toks[i:i + k]) for i in range(max(len(toks) - k + 1, 1))}
 
 
+PANEL_W = {"ACCEPT": 1.00, "UNCERTAIN": 0.70, "REJECT": 0.30}
+
+
 def m4_weight(verdict: str) -> float:
     if "STRONG" in verdict:
         return 1.00
     if "WEAK" in verdict:
         return 0.70
     return 0.50
+
+
+def load_panel(path):
+    """Return {(subject, relation, object) -> decision} from a panel or M4
+    decisions jsonl."""
+    idx = {}
+    for line in open(path, encoding="utf-8"):
+        if not line.strip():
+            continue
+        d = json.loads(line)
+        k = (norm_text(d.get("subject", "")), str(d.get("relation", "")).strip(),
+             norm_text(d.get("object", "")))
+        idx[k] = str(d.get("m4_decision") or d.get("decision") or "").upper()
+    print(f"[panel] {len(idx)} decisions loaded from {path}")
+    return idx
 
 
 def consensus_weight(n_papers: int) -> float:
@@ -89,6 +116,9 @@ def main():
     ap.add_argument("--kg", required=True)
     ap.add_argument("--chunks", required=True)
     ap.add_argument("--outdir", default="output/analysis")
+    ap.add_argument("--decisions", default=None,
+                    help="m4_panel_decisions.jsonl — cross-family panel "
+                         "decisions used as the w_m4 channel (recommended)")
     ap.add_argument("--fuzzy-thr", type=float, default=0.5,
                     help="min shingle containment for fuzzy anchor")
     args = ap.parse_args()
@@ -97,6 +127,7 @@ def main():
 
     kg = load_kg(args.kg)
     chunks = load_chunk_records(args.chunks)
+    panel = load_panel(args.decisions) if args.decisions else {}
     chunk_norm = [norm_text(c["text"]) for c in chunks]
     chunk_shingles = None  # lazy — only built if fuzzy matching is needed
 
@@ -105,6 +136,7 @@ def main():
 
     for t in kg["triples"]:
         s, r, o = get_subject(t), get_relation(t), get_object(t)
+        sn, on = norm_text(s), norm_text(o)
 
         # ── channel 1: evidence anchoring ─────────────────────────────
         ev = norm_text(str(t.get("evidence", "")))
@@ -147,7 +179,6 @@ def main():
                               "evidence_head": ev[:120]})
 
         # ── channel 2: co-occurrence support ──────────────────────────
-        sn, on = norm_text(s), norm_text(o)
         cooc_ids, cooc_papers = [], []
         if sn and on:
             for i, ct in enumerate(chunk_norm):
@@ -161,7 +192,12 @@ def main():
 
         verdict = get_m4_verdict(t)
         w_t = W_TIER.get(t["_tier"], 0.20)
-        w_m = m4_weight(verdict)
+        pdec = panel.get((sn, r.strip(), on)) if panel else None
+        if pdec in PANEL_W:
+            w_m = PANEL_W[pdec]
+            verdict = verdict or pdec
+        else:
+            w_m = m4_weight(verdict)
         w_c = consensus_weight(len(cooc_papers))
         conf = round(w_t * w_m * w_c, 4)
 
@@ -202,6 +238,9 @@ def main():
 
     n = len(rows)
     multi = sum(1 for r in rows if r["support_papers"] >= 2)
+    from collections import Counter as _C
+    wm_vals = _C(t["conf_components"]["w_m4"] for t in kg["triples"])
+    wt_vals = _C(t["conf_components"]["w_tier"] for t in kg["triples"])
     print("=" * 60)
     print("PROVENANCE REBUILD (v2 — evidence re-anchoring) SUMMARY")
     print("=" * 60)
@@ -212,6 +251,15 @@ def main():
           + ("  -> see provenance_unmatched.csv" if n_unmatched else ""))
     print(f"triples with >=2 papers    : {multi} ({100*multi/max(n,1):.1f}%)"
           "  (co-occurrence consensus, upper bound)")
+    for label, vals in (("w_m4", wm_vals), ("w_tier", wt_vals)):
+        if len(vals) == 1:
+            print(f"!! {label} is CONSTANT ({list(vals)[0]}) across all "
+                  f"triples: the composite confidence collapses onto the "
+                  f"remaining channels and cannot be validated as a whole."
+                  + ("  Pass --decisions <m4_panel_decisions.jsonl> to "
+                     "activate this channel." if label == "w_m4" else ""))
+        else:
+            print(f"{label} distribution: {dict(vals)}")
     print(f"outputs in: {outdir}")
 
 

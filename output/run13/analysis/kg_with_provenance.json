@@ -21,7 +21,7 @@
       "relation": "affects",
       "object": "erosive capability of the flow",
       "subject_type": "Process",
-      "object_type": "Property",
+      "object_type": "Descriptor",
       "tier": 1,
       "tier_label": "verified",
       "verdict": "STRONG_SUPPORT",
@@ -68,10 +68,10 @@
       "paper_ids": [
         "Elverhoi, A., Breien"
       ],
-      "confidence": 0.2153,
+      "confidence": 0.4307,
       "conf_components": {
         "w_tier": 1.0,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 0.4307
       }
     },
@@ -123,10 +123,10 @@
       "paper_ids": [
         "Submarine_Mass_Movements_on_Continental"
       ],
-      "confidence": 0.2153,
+      "confidence": 0.4307,
       "conf_components": {
         "w_tier": 1.0,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 0.4307
       }
     },
@@ -135,7 +135,7 @@
       "relation": "affects",
       "object": "bore-hole stability",
       "subject_type": "Process",
-      "object_type": "Condition",
+      "object_type": "Environmental_Control",
       "tier": 1,
       "tier_label": "verified",
       "verdict": "STRONG_SUPPORT",
@@ -178,10 +178,10 @@
       "paper_ids": [
         "1-s2.0-S0264817216304585-main"
       ],
-      "confidence": 0.2153,
+      "confidence": 0.4307,
       "conf_components": {
         "w_tier": 1.0,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 0.4307
       }
     },
@@ -190,7 +190,7 @@
       "relation": "affects",
       "object": "formation of upper low-density layer",
       "subject_type": "Process",
-      "object_type": "Facies",
+      "object_type": "Geological_Object",
       "tier": 1,
       "tier_label": "verified",
       "verdict": "STRONG_SUPPORT",
@@ -233,10 +233,10 @@
       "paper_ids": [
         "Elverhoi, A., Breien"
       ],
-      "confidence": 0.2153,
+      "confidence": 0.4307,
       "conf_components": {
         "w_tier": 1.0,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 0.4307
       }
     },
@@ -288,10 +288,10 @@
       "paper_ids": [
         "Elverhoi, A., Breien"
       ],
-      "confidence": 0.2153,
+      "confidence": 0.4307,
       "conf_components": {
         "w_tier": 1.0,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 0.4307
       }
     },
@@ -299,8 +299,8 @@
       "subject": "sea floor slope",
       "relation": "affects",
       "object": "critical length",
-      "subject_type": "Attribute",
-      "object_type": "Attribute",
+      "subject_type": "Descriptor",
+      "object_type": "Descriptor",
       "tier": 1,
       "tier_label": "verified",
       "verdict": "STRONG_SUPPORT",
@@ -344,10 +344,10 @@
       "paper_ids": [
         "1-s2.0-S0040195109002819-main"
       ],
-      "confidence": 0.2153,
+      "confidence": 0.4307,
       "conf_components": {
         "w_tier": 1.0,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 0.4307
       }
     },
@@ -356,7 +356,7 @@
       "relation": "affects",
       "object": "equilibrium conditions",
       "subject_type": "Process",
-      "object_type": "Conditions",
+      "object_type": "Environmental_Control",
       "tier": 1,
       "tier_label": "verified",
       "verdict": "STRONG_SUPPORT",
@@ -403,10 +403,10 @@
       "paper_ids": [
         "9781565762879_ch02"
       ],
-      "confidence": 0.2153,
+      "confidence": 0.4307,
       "conf_components": {
         "w_tier": 1.0,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 0.4307
       }
     },
@@ -414,8 +414,8 @@
       "subject": "decrease in effective stress",
       "relation": "causes",
       "object": "sediment approaching liquefaction",
-      "subject_type": "Condition",
-      "object_type": "Condition",
+      "subject_type": "Environmental_Control",
+      "object_type": "Environmental_Control",
       "tier": 1,
       "tier_label": "verified",
       "verdict": "STRONG_SUPPORT",
@@ -458,10 +458,10 @@
       "paper_ids": [
         "Submarine_Mass_Movements_on_Continental"
       ],
-      "confidence": 0.2153,
+      "confidence": 0.4307,
       "conf_components": {
         "w_tier": 1.0,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 0.4307
       }
     },
@@ -517,10 +517,10 @@
       "paper_ids": [
         "Two-scale_gravitational_collapse_in_the_Amazon_Fan"
       ],
-      "confidence": 0.2153,
+      "confidence": 0.4307,
       "conf_components": {
         "w_tier": 1.0,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 0.4307
       }
     },
@@ -575,10 +575,10 @@
       "paper_ids": [
         "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_"
       ],
-      "confidence": 0.2153,
+      "confidence": 0.4307,
       "conf_components": {
         "w_tier": 1.0,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 0.4307
       }
     },
@@ -586,8 +586,8 @@
       "subject": "excess pore-water pressures",
       "relation": "causes",
       "object": "degradation in shear strength",
-      "subject_type": "Condition",
-      "object_type": "Condition",
+      "subject_type": "Environmental_Control",
+      "object_type": "Environmental_Control",
       "tier": 1,
       "tier_label": "verified",
       "verdict": "STRONG_SUPPORT",
@@ -635,10 +635,10 @@
       "paper_ids": [
         "Submarine_Mass_Movements_on_Continental"
       ],
-      "confidence": 0.2153,
+      "confidence": 0.4307,
       "conf_components": {
         "w_tier": 1.0,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 0.4307
       }
     },
@@ -646,8 +646,8 @@
       "subject": "excess pressure",
       "relation": "causes",
       "object": "formation stress gathering",
-      "subject_type": "Condition",
-      "object_type": "Condition",
+      "subject_type": "Environmental_Control",
+      "object_type": "Environmental_Control",
       "tier": 1,
       "tier_label": "verified",
       "verdict": "STRONG_SUPPORT",
@@ -691,10 +691,10 @@
       "paper_ids": [
         "Chinese J of Geophysics - 2013 - WU - Analysis on Seismic Characteristics and Triggering Mechanisms of Mass Transport"
       ],
-      "confidence": 0.2153,
+      "confidence": 0.4307,
       "conf_components": {
         "w_tier": 1.0,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 0.4307
       }
     },
@@ -702,8 +702,8 @@
       "subject": "formation stress gathering",
       "relation": "causes",
       "object": "developing mtds",
-      "subject_type": "Condition",
-      "object_type": "GeologicalProcess",
+      "subject_type": "Environmental_Control",
+      "object_type": "Process",
       "tier": 1,
       "tier_label": "verified",
       "verdict": "STRONG_SUPPORT",
@@ -747,10 +747,10 @@
       "paper_ids": [
         "Chinese J of Geophysics - 2013 - WU - Analysis on Seismic Characteristics and Triggering Mechanisms of Mass Transport"
       ],
-      "confidence": 0.2153,
+      "confidence": 0.4307,
       "conf_components": {
         "w_tier": 1.0,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 0.4307
       }
     },
@@ -759,7 +759,7 @@
       "relation": "causes",
       "object": "excess pressure",
       "subject_type": "Process",
-      "object_type": "Condition",
+      "object_type": "Environmental_Control",
       "tier": 1,
       "tier_label": "verified",
       "verdict": "STRONG_SUPPORT",
@@ -805,10 +805,10 @@
       "paper_ids": [
         "Chinese J of Geophysics - 2013 - WU - Analysis on Seismic Characteristics and Triggering Mechanisms of Mass Transport"
       ],
-      "confidence": 0.2153,
+      "confidence": 0.4307,
       "conf_components": {
         "w_tier": 1.0,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 0.4307
       }
     },
@@ -865,10 +865,10 @@
         "Dos-Reis-et-al-2016-MPG",
         "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_"
       ],
-      "confidence": 0.3413,
+      "confidence": 0.6826,
       "conf_components": {
         "w_tier": 1.0,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 0.6826
       }
     },
@@ -877,7 +877,7 @@
       "relation": "causes",
       "object": "discontinuous erosion surfaces",
       "subject_type": "Process",
-      "object_type": "Surface",
+      "object_type": "Geological_Object",
       "tier": 1,
       "tier_label": "verified",
       "verdict": "STRONG_SUPPORT",
@@ -922,10 +922,10 @@
       "paper_ids": [
         "Basin Research - 2016 - Ortiz‐Karpf - Mass‐transport complexes as markers of deep‐water fold‐and‐thrust belt evolution"
       ],
-      "confidence": 0.2153,
+      "confidence": 0.4307,
       "conf_components": {
         "w_tier": 1.0,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 0.4307
       }
     },
@@ -934,7 +934,7 @@
       "relation": "causes",
       "object": "basal erosion surface",
       "subject_type": "Process",
-      "object_type": "Surface",
+      "object_type": "Geological_Object",
       "tier": 1,
       "tier_label": "verified",
       "verdict": "STRONG_SUPPORT",
@@ -978,10 +978,10 @@
       "paper_ids": [
         "Basin Research - 2016 - Ortiz‐Karpf - Mass‐transport complexes as markers of deep‐water fold‐and‐thrust belt evolution"
       ],
-      "confidence": 0.2153,
+      "confidence": 0.4307,
       "conf_components": {
         "w_tier": 1.0,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 0.4307
       }
     },
@@ -1038,10 +1038,10 @@
         "Dos-Reis-et-al-2016-MPG",
         "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_"
       ],
-      "confidence": 0.3413,
+      "confidence": 0.6826,
       "conf_components": {
         "w_tier": 1.0,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 0.6826
       }
     },
@@ -1049,8 +1049,8 @@
       "subject": "increased sand content",
       "relation": "causes",
       "object": "flow becoming less cohesive",
-      "subject_type": "Condition",
-      "object_type": "Condition",
+      "subject_type": "Environmental_Control",
+      "object_type": "Environmental_Control",
       "tier": 1,
       "tier_label": "verified",
       "verdict": "STRONG_SUPPORT",
@@ -1093,10 +1093,10 @@
       "paper_ids": [
         "Elverhoi, A., Breien"
       ],
-      "confidence": 0.2153,
+      "confidence": 0.4307,
       "conf_components": {
         "w_tier": 1.0,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 0.4307
       }
     },
@@ -1148,10 +1148,10 @@
       "paper_ids": [
         "3-s2.0-B9780128130810007047-main"
       ],
-      "confidence": 0.2153,
+      "confidence": 0.4307,
       "conf_components": {
         "w_tier": 1.0,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 0.4307
       }
     },
@@ -1206,10 +1206,10 @@
       "paper_ids": [
         "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_"
       ],
-      "confidence": 0.2153,
+      "confidence": 0.4307,
       "conf_components": {
         "w_tier": 1.0,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 0.4307
       }
     },
@@ -1263,10 +1263,10 @@
       "paper_ids": [
         "Two-scale_gravitational_collapse_in_the_Amazon_Fan"
       ],
-      "confidence": 0.2153,
+      "confidence": 0.4307,
       "conf_components": {
         "w_tier": 1.0,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 0.4307
       }
     },
@@ -1318,10 +1318,10 @@
       "paper_ids": [
         "1-s2.0-S0264817216304585-main"
       ],
-      "confidence": 0.2153,
+      "confidence": 0.4307,
       "conf_components": {
         "w_tier": 1.0,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 0.4307
       }
     },
@@ -1377,10 +1377,10 @@
       "paper_ids": [
         "Elverhoi, A., Breien"
       ],
-      "confidence": 0.2153,
+      "confidence": 0.4307,
       "conf_components": {
         "w_tier": 1.0,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 0.4307
       }
     },
@@ -1438,10 +1438,10 @@
         "Two-scale_gravitational_collapse_in_the_Amazon_Fan",
         "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_"
       ],
-      "confidence": 0.4307,
+      "confidence": 0.8614,
       "conf_components": {
         "w_tier": 1.0,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 0.8614
       }
     },
@@ -1497,10 +1497,10 @@
       "paper_ids": [
         "Two-scale_gravitational_collapse_in_the_Amazon_Fan"
       ],
-      "confidence": 0.2153,
+      "confidence": 0.4307,
       "conf_components": {
         "w_tier": 1.0,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 0.4307
       }
     },
@@ -1552,10 +1552,10 @@
       "paper_ids": [
         "Elverhoi, A., Breien"
       ],
-      "confidence": 0.2153,
+      "confidence": 0.4307,
       "conf_components": {
         "w_tier": 1.0,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 0.4307
       }
     },
@@ -1564,7 +1564,7 @@
       "relation": "causes",
       "object": "mass transport deposit",
       "subject_type": "Process",
-      "object_type": "GeologicalObject",
+      "object_type": "Geological_Object",
       "tier": 1,
       "tier_label": "verified",
       "verdict": "STRONG_SUPPORT",
@@ -1643,10 +1643,10 @@
         "Giacomo Dalla Valle",
         "RichardsonetalBasinResearch2011-online (1)"
       ],
-      "confidence": 0.5,
+      "confidence": 1.0,
       "conf_components": {
         "w_tier": 1.0,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 1.0
       }
     },
@@ -1700,10 +1700,10 @@
       "paper_ids": [
         "Elverhoi, A., Breien"
       ],
-      "confidence": 0.2153,
+      "confidence": 0.4307,
       "conf_components": {
         "w_tier": 1.0,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 0.4307
       }
     },
@@ -1712,7 +1712,7 @@
       "relation": "causes",
       "object": "development of excess pore-water pressures",
       "subject_type": "Process",
-      "object_type": "Condition",
+      "object_type": "Environmental_Control",
       "tier": 1,
       "tier_label": "verified",
       "verdict": "STRONG_SUPPORT",
@@ -1755,10 +1755,10 @@
       "paper_ids": [
         "Submarine_Mass_Movements_on_Continental"
       ],
-      "confidence": 0.2153,
+      "confidence": 0.4307,
       "conf_components": {
         "w_tier": 1.0,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 0.4307
       }
     },
@@ -1767,7 +1767,7 @@
       "relation": "causes",
       "object": "decrease in effective stress",
       "subject_type": "Process",
-      "object_type": "Condition",
+      "object_type": "Environmental_Control",
       "tier": 1,
       "tier_label": "verified",
       "verdict": "STRONG_SUPPORT",
@@ -1810,10 +1810,10 @@
       "paper_ids": [
         "Submarine_Mass_Movements_on_Continental"
       ],
-      "confidence": 0.2153,
+      "confidence": 0.4307,
       "conf_components": {
         "w_tier": 1.0,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 0.4307
       }
     },
@@ -1821,7 +1821,7 @@
       "subject": "channel",
       "relation": "hasDescriptor",
       "object": "high-amplitude",
-      "subject_type": "SeismicObject",
+      "subject_type": "Geological_Object",
       "object_type": "Descriptor",
       "tier": 1,
       "tier_label": "verified",
@@ -1888,10 +1888,10 @@
         "Giacomo Dalla Valle",
         "Moscardelli_and_Wood_2008"
       ],
-      "confidence": 0.5,
+      "confidence": 1.0,
       "conf_components": {
         "w_tier": 1.0,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 1.0
       }
     },
@@ -1899,7 +1899,7 @@
       "subject": "channel",
       "relation": "hasDescriptor",
       "object": "discontinuous",
-      "subject_type": "SeismicObject",
+      "subject_type": "Geological_Object",
       "object_type": "Descriptor",
       "tier": 1,
       "tier_label": "verified",
@@ -1961,10 +1961,10 @@
         "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_",
         "Moscardelli_and_Wood_2008"
       ],
-      "confidence": 0.5,
+      "confidence": 1.0,
       "conf_components": {
         "w_tier": 1.0,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 1.0
       }
     },
@@ -1972,7 +1972,7 @@
       "subject": "debris flow",
       "relation": "hasDescriptor",
       "object": "chaotic",
-      "subject_type": "SeismicObject",
+      "subject_type": "Geological_Object",
       "object_type": "Descriptor",
       "tier": 1,
       "tier_label": "verified",
@@ -2030,10 +2030,10 @@
         "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_",
         "RichardsonetalBasinResearch2011-online (1)"
       ],
-      "confidence": 0.5,
+      "confidence": 1.0,
       "conf_components": {
         "w_tier": 1.0,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 1.0
       }
     },
@@ -2041,7 +2041,7 @@
       "subject": "debris-flow deposit",
       "relation": "hasDescriptor",
       "object": "chaotic",
-      "subject_type": "SeismicObject",
+      "subject_type": "Geological_Object",
       "object_type": "Descriptor",
       "tier": 1,
       "tier_label": "verified",
@@ -2099,10 +2099,10 @@
         "9781565762879_ch03",
         "Two-scale_gravitational_collapse_in_the_Amazon_Fan"
       ],
-      "confidence": 0.4307,
+      "confidence": 0.8614,
       "conf_components": {
         "w_tier": 1.0,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 0.8614
       }
     },
@@ -2110,7 +2110,7 @@
       "subject": "mass transport deposit",
       "relation": "hasDescriptor",
       "object": "low-amplitude",
-      "subject_type": "SeismicObject",
+      "subject_type": "Geological_Object",
       "object_type": "Descriptor",
       "tier": 1,
       "tier_label": "verified",
@@ -2159,10 +2159,10 @@
         "Alves_AAPG_MTDs_14",
         "RichardsonetalBasinResearch2011-online (1)"
       ],
-      "confidence": 0.4307,
+      "confidence": 0.8614,
       "conf_components": {
         "w_tier": 1.0,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 0.8614
       }
     },
@@ -2170,7 +2170,7 @@
       "subject": "mass transport deposit",
       "relation": "hasDescriptor",
       "object": "high-amplitude",
-      "subject_type": "SeismicObject",
+      "subject_type": "Geological_Object",
       "object_type": "Descriptor",
       "tier": 1,
       "tier_label": "verified",
@@ -2218,10 +2218,10 @@
         "Bourget,j",
         "RichardsonetalBasinResearch2011-online (1)"
       ],
-      "confidence": 0.3413,
+      "confidence": 0.6826,
       "conf_components": {
         "w_tier": 1.0,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 0.6826
       }
     },
@@ -2229,7 +2229,7 @@
       "subject": "mass transport deposit",
       "relation": "hasDescriptor",
       "object": "wedge-shaped",
-      "subject_type": "SeismicObject",
+      "subject_type": "Geological_Object",
       "object_type": "Descriptor",
       "tier": 1,
       "tier_label": "verified",
@@ -2276,10 +2276,10 @@
         "JGR Solid Earth - 2013 - Mourgues - The Coulomb critical taper theory applied to gravitational instabilities",
         "9781565762879_ch03"
       ],
-      "confidence": 0.3413,
+      "confidence": 0.6826,
       "conf_components": {
         "w_tier": 1.0,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 0.6826
       }
     },
@@ -2287,7 +2287,7 @@
       "subject": "mass transport deposit",
       "relation": "hasDescriptor",
       "object": "blocky",
-      "subject_type": "SeismicObject",
+      "subject_type": "Geological_Object",
       "object_type": "Descriptor",
       "tier": 1,
       "tier_label": "verified",
@@ -2346,10 +2346,10 @@
         "Alves_AAPG_MTDs_14",
         "RichardsonetalBasinResearch2011-online (1)"
       ],
-      "confidence": 0.3413,
+      "confidence": 0.6826,
       "conf_components": {
         "w_tier": 1.0,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 0.6826
       }
     },
@@ -2357,7 +2357,7 @@
       "subject": "mass transport deposit",
       "relation": "hasDescriptor",
       "object": "faulted",
-      "subject_type": "SeismicObject",
+      "subject_type": "Geological_Object",
       "object_type": "Descriptor",
       "tier": 1,
       "tier_label": "verified",
@@ -2411,10 +2411,10 @@
         "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_",
         "Two-scale_gravitational_collapse_in_the_Amazon_Fan"
       ],
-      "confidence": 0.4307,
+      "confidence": 0.8614,
       "conf_components": {
         "w_tier": 1.0,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 0.8614
       }
     },
@@ -2422,7 +2422,7 @@
       "subject": "mass transport deposit",
       "relation": "hasDescriptor",
       "object": "hummocky",
-      "subject_type": "SeismicObject",
+      "subject_type": "Geological_Object",
       "object_type": "Descriptor",
       "tier": 1,
       "tier_label": "verified",
@@ -2476,10 +2476,10 @@
         "RichardsonetalBasinResearch2011-online (1)",
         "9781565762879_ch02"
       ],
-      "confidence": 0.5,
+      "confidence": 1.0,
       "conf_components": {
         "w_tier": 1.0,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 1.0
       }
     },
@@ -2487,7 +2487,7 @@
       "subject": "megaslide",
       "relation": "hasDescriptor",
       "object": "chaotic",
-      "subject_type": "SeismicObject",
+      "subject_type": "Geological_Object",
       "object_type": "Descriptor",
       "tier": 1,
       "tier_label": "verified",
@@ -2554,10 +2554,10 @@
         "Dos-Reis-et-al-2016-MPG",
         "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_"
       ],
-      "confidence": 0.3413,
+      "confidence": 0.6826,
       "conf_components": {
         "w_tier": 1.0,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 0.6826
       }
     },
@@ -2565,7 +2565,7 @@
       "subject": "remnant and rafted blocks",
       "relation": "hasDescriptor",
       "object": "high-amplitude",
-      "subject_type": "SeismicObject",
+      "subject_type": "Geological_Object",
       "object_type": "Descriptor",
       "tier": 1,
       "tier_label": "verified",
@@ -2614,10 +2614,10 @@
         "Alves_AAPG_MTDs_14",
         "Ian R. Clark, Joseph A. Cartwright"
       ],
-      "confidence": 0.3413,
+      "confidence": 0.6826,
       "conf_components": {
         "w_tier": 1.0,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 0.6826
       }
     },
@@ -2625,7 +2625,7 @@
       "subject": "siliciclastic unit",
       "relation": "hasDescriptor",
       "object": "tabular",
-      "subject_type": "SeismicObject",
+      "subject_type": "Geological_Object",
       "object_type": "Descriptor",
       "tier": 1,
       "tier_label": "verified",
@@ -2672,10 +2672,10 @@
       "paper_ids": [
         "Dos-Reis-et-al-2016-MPG"
       ],
-      "confidence": 0.2153,
+      "confidence": 0.4307,
       "conf_components": {
         "w_tier": 1.0,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 0.4307
       }
     },
@@ -2683,7 +2683,7 @@
       "subject": "siliciclastic unit",
       "relation": "hasDescriptor",
       "object": "transparent",
-      "subject_type": "SeismicObject",
+      "subject_type": "Geological_Object",
       "object_type": "Descriptor",
       "tier": 1,
       "tier_label": "verified",
@@ -2730,10 +2730,10 @@
       "paper_ids": [
         "Dos-Reis-et-al-2016-MPG"
       ],
-      "confidence": 0.2153,
+      "confidence": 0.4307,
       "conf_components": {
         "w_tier": 1.0,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 0.4307
       }
     },
@@ -2741,7 +2741,7 @@
       "subject": "slide",
       "relation": "hasDescriptor",
       "object": "hummocky",
-      "subject_type": "SeismicObject",
+      "subject_type": "Geological_Object",
       "object_type": "Descriptor",
       "tier": 1,
       "tier_label": "verified",
@@ -2806,10 +2806,10 @@
         "Submarine_Mass_Movements_on_Continental",
         "Wei Li a,⁎, Tiago M. Alves"
       ],
-      "confidence": 0.5,
+      "confidence": 1.0,
       "conf_components": {
         "w_tier": 1.0,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 1.0
       }
     },
@@ -2817,7 +2817,7 @@
       "subject": "slide sheet",
       "relation": "hasDescriptor",
       "object": "folded",
-      "subject_type": "SeismicObject",
+      "subject_type": "Geological_Object",
       "object_type": "Descriptor",
       "tier": 1,
       "tier_label": "verified",
@@ -2865,10 +2865,10 @@
       "paper_ids": [
         "Two-scale_gravitational_collapse_in_the_Amazon_Fan"
       ],
-      "confidence": 0.2153,
+      "confidence": 0.4307,
       "conf_components": {
         "w_tier": 1.0,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 0.4307
       }
     },
@@ -2876,7 +2876,7 @@
       "subject": "turbidite",
       "relation": "hasDescriptor",
       "object": "high-amplitude",
-      "subject_type": "SeismicObject",
+      "subject_type": "Geological_Object",
       "object_type": "Descriptor",
       "tier": 1,
       "tier_label": "verified",
@@ -2942,10 +2942,10 @@
         "Giacomo Dalla Valle",
         "Moscardelli_and_Wood_2008"
       ],
-      "confidence": 0.5,
+      "confidence": 1.0,
       "conf_components": {
         "w_tier": 1.0,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 1.0
       }
     },
@@ -2953,7 +2953,7 @@
       "subject": "turbidite",
       "relation": "hasDescriptor",
       "object": "continuous",
-      "subject_type": "SeismicObject",
+      "subject_type": "Geological_Object",
       "object_type": "Descriptor",
       "tier": 1,
       "tier_label": "verified",
@@ -3026,10 +3026,10 @@
         "Moscardelli_and_Wood_2008",
         "Submarine_Mass_Movements_on_Continental"
       ],
-      "confidence": 0.5,
+      "confidence": 1.0,
       "conf_components": {
         "w_tier": 1.0,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 1.0
       }
     },
@@ -3037,8 +3037,8 @@
       "subject": "mass transport deposit",
       "relation": "occursIn",
       "object": "deep-water basinal settings",
-      "subject_type": "GeologicalObject",
-      "object_type": "GeologicalSetting",
+      "subject_type": "Geological_Object",
+      "object_type": "Environmental_Control",
       "tier": 1,
       "tier_label": "verified",
       "verdict": "STRONG_SUPPORT",
@@ -3080,10 +3080,10 @@
       "paper_ids": [
         "9781565762879_ch02"
       ],
-      "confidence": 0.2153,
+      "confidence": 0.4307,
       "conf_components": {
         "w_tier": 1.0,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 0.4307
       }
     },
@@ -3091,8 +3091,8 @@
       "subject": "mass transport deposit",
       "relation": "occursIn",
       "object": "ebro margin",
-      "subject_type": "GeologicalObject",
-      "object_type": "GeologicalSetting",
+      "subject_type": "Geological_Object",
+      "object_type": "Environmental_Control",
       "tier": 1,
       "tier_label": "verified",
       "verdict": "STRONG_SUPPORT",
@@ -3125,10 +3125,10 @@
       "paper_ids": [
         "9781565762879_ch03"
       ],
-      "confidence": 0.2153,
+      "confidence": 0.4307,
       "conf_components": {
         "w_tier": 1.0,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 0.4307
       }
     },
@@ -3136,8 +3136,8 @@
       "subject": "submarine landslide",
       "relation": "occursIn",
       "object": "continental slope",
-      "subject_type": "GeologicalObject",
-      "object_type": "GeologicalSetting",
+      "subject_type": "Geological_Object",
+      "object_type": "Environmental_Control",
       "tier": 1,
       "tier_label": "verified",
       "verdict": "STRONG_SUPPORT",
@@ -3224,10 +3224,10 @@
         "Submarine_Mass_Movements_on_Continental",
         "Wei Li a,⁎, Tiago M. Alves"
       ],
-      "confidence": 0.5,
+      "confidence": 1.0,
       "conf_components": {
         "w_tier": 1.0,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 1.0
       }
     },
@@ -3235,8 +3235,8 @@
       "subject": "submarine landslide",
       "relation": "occursIn",
       "object": "mediterranean continental margin",
-      "subject_type": "GeologicalObject",
-      "object_type": "GeologicalSetting",
+      "subject_type": "Geological_Object",
+      "object_type": "Environmental_Control",
       "tier": 1,
       "tier_label": "verified",
       "verdict": "STRONG_SUPPORT",
@@ -3283,10 +3283,10 @@
       "paper_ids": [
         "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and"
       ],
-      "confidence": 0.2153,
+      "confidence": 0.4307,
       "conf_components": {
         "w_tier": 1.0,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 0.4307
       }
     },
@@ -3294,8 +3294,8 @@
       "subject": "submarine landslide",
       "relation": "occursIn",
       "object": "continental margin",
-      "subject_type": "GeologicalObject",
-      "object_type": "GeologicalSetting",
+      "subject_type": "Geological_Object",
+      "object_type": "Environmental_Control",
       "tier": 1,
       "tier_label": "verified",
       "verdict": "STRONG_SUPPORT",
@@ -3388,10 +3388,10 @@
         "Two-scale_gravitational_collapse_in_the_Amazon_Fan",
         "Wei Li a,⁎, Tiago M. Alves"
       ],
-      "confidence": 0.5,
+      "confidence": 1.0,
       "conf_components": {
         "w_tier": 1.0,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 1.0
       }
     },
@@ -3399,8 +3399,8 @@
       "subject": "submarine landslide",
       "relation": "occursIn",
       "object": "mediterranean continental margin",
-      "subject_type": "GeologicalObject",
-      "object_type": "GeologicalSetting",
+      "subject_type": "Geological_Object",
+      "object_type": "Environmental_Control",
       "tier": 1,
       "tier_label": "verified",
       "verdict": "STRONG_SUPPORT",
@@ -3447,10 +3447,10 @@
       "paper_ids": [
         "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and"
       ],
-      "confidence": 0.2153,
+      "confidence": 0.4307,
       "conf_components": {
         "w_tier": 1.0,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 0.4307
       }
     },
@@ -3458,8 +3458,8 @@
       "subject": "rugged upper surface",
       "relation": "overlies",
       "object": "stable paleo-lakebed",
-      "subject_type": "GeologicalFeature",
-      "object_type": "GeologicalSurface",
+      "subject_type": "Geological_Object",
+      "object_type": "Geological_Object",
       "tier": 1,
       "tier_label": "verified",
       "verdict": "STRONG_SUPPORT",
@@ -3500,10 +3500,10 @@
       "paper_ids": [
         "RichardsonetalBasinResearch2011-online (1)"
       ],
-      "confidence": 0.2153,
+      "confidence": 0.4307,
       "conf_components": {
         "w_tier": 1.0,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 0.4307
       }
     },
@@ -3511,8 +3511,8 @@
       "subject": "mass transport deposit",
       "relation": "partOf",
       "object": "basal shear surface",
-      "subject_type": "GeologicalObject",
-      "object_type": "StructuralSurface",
+      "subject_type": "Geological_Object",
+      "object_type": "Geological_Object",
       "tier": 1,
       "tier_label": "verified",
       "verdict": "STRONG_SUPPORT",
@@ -3585,10 +3585,10 @@
         "1-s2.0-S0025322713000571-main",
         "RichardsonetalBasinResearch2011-online (1)"
       ],
-      "confidence": 0.3413,
+      "confidence": 0.6826,
       "conf_components": {
         "w_tier": 1.0,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 0.6826
       }
     },
@@ -3677,10 +3677,10 @@
         "Submarine_Mass_Movements_on_Continental",
         "Wei Li a,⁎, Tiago M. Alves"
       ],
-      "confidence": 0.5,
+      "confidence": 1.0,
       "conf_components": {
         "w_tier": 1.0,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 1.0
       }
     },
@@ -3734,10 +3734,10 @@
       "paper_ids": [
         "Giacomo Dalla Valle"
       ],
-      "confidence": 0.2153,
+      "confidence": 0.4307,
       "conf_components": {
         "w_tier": 1.0,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 0.4307
       }
     },
@@ -3798,10 +3798,10 @@
         "Dos-Reis-et-al-2016-MPG",
         "Submarine_Mass_Movements_on_Continental"
       ],
-      "confidence": 0.3413,
+      "confidence": 0.6826,
       "conf_components": {
         "w_tier": 1.0,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 0.6826
       }
     },
@@ -3855,10 +3855,10 @@
       "paper_ids": [
         "D. Leynaud"
       ],
-      "confidence": 0.2153,
+      "confidence": 0.4307,
       "conf_components": {
         "w_tier": 1.0,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 0.4307
       }
     },
@@ -3867,7 +3867,7 @@
       "relation": "triggers",
       "object": "incision of lateral ramps",
       "subject_type": "Process",
-      "object_type": "Feature",
+      "object_type": "Geological_Object",
       "tier": 1,
       "tier_label": "verified",
       "verdict": "STRONG_SUPPORT",
@@ -3967,10 +3967,10 @@
       "paper_ids": [
         "Wei Li a,⁎, Tiago M. Alves"
       ],
-      "confidence": 0.2153,
+      "confidence": 0.4307,
       "conf_components": {
         "w_tier": 1.0,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 0.4307
       }
     },
@@ -4024,10 +4024,10 @@
       "paper_ids": [
         "Elverhoi, A., Breien"
       ],
-      "confidence": 0.2153,
+      "confidence": 0.4307,
       "conf_components": {
         "w_tier": 1.0,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 0.4307
       }
     }
@@ -4038,7 +4038,7 @@
       "relation": "affects",
       "object": "seaﬂoor",
       "subject_type": "Process",
-      "object_type": "Surface",
+      "object_type": "Geological_Object",
       "tier": 2,
       "tier_label": "verified",
       "verdict": "STRONG_SUPPORT",
@@ -4121,10 +4121,10 @@
         "Submarine_Mass_Movements_on_Continental",
         "Wei Li a,⁎, Tiago M. Alves"
       ],
-      "confidence": 0.3,
+      "confidence": 0.42,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 0.7,
         "w_consensus": 1.0
       }
     },
@@ -4132,8 +4132,8 @@
       "subject": "free gas",
       "relation": "affects",
       "object": "slope stability",
-      "subject_type": "Substance",
-      "object_type": "Condition",
+      "subject_type": "Geological_Object",
+      "object_type": "Environmental_Control",
       "tier": 2,
       "tier_label": "verified",
       "verdict": "STRONG_SUPPORT",
@@ -4179,10 +4179,10 @@
         "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and",
         "1-s2.0-S0264817216304585-main"
       ],
-      "confidence": 0.2048,
+      "confidence": 0.2867,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 0.7,
         "w_consensus": 0.6826
       }
     },
@@ -4191,7 +4191,7 @@
       "relation": "affects",
       "object": "basal shear surface",
       "subject_type": "Process",
-      "object_type": "Surface",
+      "object_type": "Geological_Object",
       "tier": 2,
       "tier_label": "verified",
       "verdict": "STRONG_SUPPORT",
@@ -4237,10 +4237,10 @@
       "paper_ids": [
         "Chinese J of Geophysics - 2013 - WU - Analysis on Seismic Characteristics and Triggering Mechanisms of Mass Transport"
       ],
-      "confidence": 0.1292,
+      "confidence": 0.1809,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 0.7,
         "w_consensus": 0.4307
       }
     },
@@ -4292,10 +4292,10 @@
       "paper_ids": [
         "Submarine_Mass_Movements_on_Continental"
       ],
-      "confidence": 0.1292,
+      "confidence": 0.1809,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 0.7,
         "w_consensus": 0.4307
       }
     },
@@ -4303,8 +4303,8 @@
       "subject": "compressive domain",
       "relation": "causes",
       "object": "up to 500m in thickness",
-      "subject_type": "Domain",
-      "object_type": "Measurement",
+      "subject_type": "Geological_Object",
+      "object_type": "Descriptor",
       "tier": 2,
       "tier_label": "verified",
       "verdict": "STRONG_SUPPORT",
@@ -4348,10 +4348,10 @@
       "paper_ids": [
         "RichardsonetalBasinResearch2011-online (1)"
       ],
-      "confidence": 0.1292,
+      "confidence": 0.1809,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 0.7,
         "w_consensus": 0.4307
       }
     },
@@ -4359,8 +4359,8 @@
       "subject": "growth stratal wedge",
       "relation": "causes",
       "object": "mass transport deposit",
-      "subject_type": "GeologicalObject",
-      "object_type": "GeologicalObject",
+      "subject_type": "Geological_Object",
+      "object_type": "Geological_Object",
       "tier": 2,
       "tier_label": "verified",
       "verdict": "STRONG_SUPPORT",
@@ -4404,10 +4404,10 @@
       "paper_ids": [
         "RichardsonetalBasinResearch2011-online (1)"
       ],
-      "confidence": 0.1292,
+      "confidence": 0.1809,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 0.7,
         "w_consensus": 0.4307
       }
     },
@@ -4415,7 +4415,7 @@
       "subject": "growth stratal wedge",
       "relation": "causes",
       "object": "whole wedge failures",
-      "subject_type": "GeologicalObject",
+      "subject_type": "Geological_Object",
       "object_type": "Process",
       "tier": 2,
       "tier_label": "verified",
@@ -4459,10 +4459,10 @@
       "paper_ids": [
         "RichardsonetalBasinResearch2011-online (1)"
       ],
-      "confidence": 0.1292,
+      "confidence": 0.1809,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 0.7,
         "w_consensus": 0.4307
       }
     },
@@ -4515,10 +4515,10 @@
       "paper_ids": [
         "1-s2.0-S0191814106000101-main"
       ],
-      "confidence": 0.1292,
+      "confidence": 0.1809,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 0.7,
         "w_consensus": 0.4307
       }
     },
@@ -4570,10 +4570,10 @@
       "paper_ids": [
         "S. Lafuerza, N. Sultan"
       ],
-      "confidence": 0.1292,
+      "confidence": 0.1809,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 0.7,
         "w_consensus": 0.4307
       }
     },
@@ -4626,10 +4626,10 @@
       "paper_ids": [
         "1-s2.0-S0191814106000101-main"
       ],
-      "confidence": 0.1292,
+      "confidence": 0.1809,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 0.7,
         "w_consensus": 0.4307
       }
     },
@@ -4637,8 +4637,8 @@
       "subject": "steepest portion of the slope",
       "relation": "controls",
       "object": "area where no scarp exists",
-      "subject_type": "Location",
-      "object_type": "Location",
+      "subject_type": "Environmental_Control",
+      "object_type": "Environmental_Control",
       "tier": 2,
       "tier_label": "verified",
       "verdict": "STRONG_SUPPORT",
@@ -4681,10 +4681,10 @@
       "paper_ids": [
         "RichardsonetalBasinResearch2011-online (1)"
       ],
-      "confidence": 0.1292,
+      "confidence": 0.1809,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 0.7,
         "w_consensus": 0.4307
       }
     },
@@ -4692,7 +4692,7 @@
       "subject": "amapá megaslide complex",
       "relation": "hasDescriptor",
       "object": "stratified",
-      "subject_type": "SeismicObject",
+      "subject_type": "Geological_Object",
       "object_type": "Descriptor",
       "tier": 2,
       "tier_label": "verified",
@@ -4738,10 +4738,10 @@
       "paper_ids": [
         "Dos-Reis-et-al-2016-MPG"
       ],
-      "confidence": 0.1292,
+      "confidence": 0.1809,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 0.7,
         "w_consensus": 0.4307
       }
     },
@@ -4749,7 +4749,7 @@
       "subject": "channel levee complex",
       "relation": "hasDescriptor",
       "object": "thin",
-      "subject_type": "SeismicObject",
+      "subject_type": "Geological_Object",
       "object_type": "Descriptor",
       "tier": 2,
       "tier_label": "verified",
@@ -4802,10 +4802,10 @@
       "paper_ids": [
         "Ian R. Clark, Joseph A. Cartwright"
       ],
-      "confidence": 0.1292,
+      "confidence": 0.1809,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 0.7,
         "w_consensus": 0.4307
       }
     },
@@ -4813,7 +4813,7 @@
       "subject": "fold",
       "relation": "hasDescriptor",
       "object": "discontinuous",
-      "subject_type": "SeismicObject",
+      "subject_type": "Geological_Object",
       "object_type": "Descriptor",
       "tier": 2,
       "tier_label": "verified",
@@ -4873,10 +4873,10 @@
         "Ian R. Clark, Joseph A. Cartwright",
         "Two-scale_gravitational_collapse_in_the_Amazon_Fan"
       ],
-      "confidence": 0.3,
+      "confidence": 0.42,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 0.7,
         "w_consensus": 1.0
       }
     },
@@ -4884,7 +4884,7 @@
       "subject": "mass transport deposit",
       "relation": "hasDescriptor",
       "object": "continuous",
-      "subject_type": "SeismicObject",
+      "subject_type": "Geological_Object",
       "object_type": "Descriptor",
       "tier": 2,
       "tier_label": "verified",
@@ -4953,10 +4953,10 @@
         "RichardsonetalBasinResearch2011-online (1)",
         "Moscardelli_and_Wood_2008"
       ],
-      "confidence": 0.3,
+      "confidence": 0.42,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 0.7,
         "w_consensus": 1.0
       }
     },
@@ -4964,7 +4964,7 @@
       "subject": "mass transport deposit",
       "relation": "hasDescriptor",
       "object": "transparent",
-      "subject_type": "SeismicObject",
+      "subject_type": "Geological_Object",
       "object_type": "Descriptor",
       "tier": 2,
       "tier_label": "verified",
@@ -5011,10 +5011,10 @@
       "paper_ids": [
         "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_"
       ],
-      "confidence": 0.1292,
+      "confidence": 0.1809,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 0.7,
         "w_consensus": 0.4307
       }
     },
@@ -5022,7 +5022,7 @@
       "subject": "mass transport deposit",
       "relation": "hasDescriptor",
       "object": "folded",
-      "subject_type": "SeismicObject",
+      "subject_type": "Geological_Object",
       "object_type": "Descriptor",
       "tier": 2,
       "tier_label": "verified",
@@ -5072,10 +5072,10 @@
         "RichardsonetalBasinResearch2011-online (1)",
         "Two-scale_gravitational_collapse_in_the_Amazon_Fan"
       ],
-      "confidence": 0.2048,
+      "confidence": 0.2867,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 0.7,
         "w_consensus": 0.6826
       }
     },
@@ -5083,7 +5083,7 @@
       "subject": "megaslide",
       "relation": "hasDescriptor",
       "object": "transparent",
-      "subject_type": "SeismicObject",
+      "subject_type": "Geological_Object",
       "object_type": "Descriptor",
       "tier": 2,
       "tier_label": "verified",
@@ -5148,10 +5148,10 @@
         "Dos-Reis-et-al-2016-MPG",
         "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_"
       ],
-      "confidence": 0.2048,
+      "confidence": 0.2867,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 0.7,
         "w_consensus": 0.6826
       }
     },
@@ -5159,7 +5159,7 @@
       "subject": "siliciclastic unit",
       "relation": "hasDescriptor",
       "object": "parallel",
-      "subject_type": "SeismicObject",
+      "subject_type": "Geological_Object",
       "object_type": "Descriptor",
       "tier": 2,
       "tier_label": "verified",
@@ -5206,10 +5206,10 @@
       "paper_ids": [
         "Dos-Reis-et-al-2016-MPG"
       ],
-      "confidence": 0.1292,
+      "confidence": 0.1809,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 0.7,
         "w_consensus": 0.4307
       }
     },
@@ -5217,7 +5217,7 @@
       "subject": "slide",
       "relation": "hasDescriptor",
       "object": "transparent",
-      "subject_type": "SeismicObject",
+      "subject_type": "Geological_Object",
       "object_type": "Descriptor",
       "tier": 2,
       "tier_label": "verified",
@@ -5304,10 +5304,10 @@
         "Submarine_Mass_Movements_on_Continental",
         "Two-scale_gravitational_collapse_in_the_Amazon_Fan"
       ],
-      "confidence": 0.3,
+      "confidence": 0.42,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 0.7,
         "w_consensus": 1.0
       }
     },
@@ -5315,7 +5315,7 @@
       "subject": "turbidite",
       "relation": "hasDescriptor",
       "object": "parallel",
-      "subject_type": "SeismicObject",
+      "subject_type": "Geological_Object",
       "object_type": "Descriptor",
       "tier": 2,
       "tier_label": "verified",
@@ -5390,10 +5390,10 @@
         "Submarine_Mass_Movements_on_Continental",
         "Dos-Reis-et-al-2016-MPG"
       ],
-      "confidence": 0.3,
+      "confidence": 0.42,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 0.7,
         "w_consensus": 1.0
       }
     },
@@ -5401,8 +5401,8 @@
       "subject": "submarine landslide",
       "relation": "occursIn",
       "object": "deltaic wedge",
-      "subject_type": "GeologicalObject",
-      "object_type": "GeologicalSetting",
+      "subject_type": "Geological_Object",
+      "object_type": "Environmental_Control",
       "tier": 2,
       "tier_label": "verified",
       "verdict": "STRONG_SUPPORT",
@@ -5447,10 +5447,10 @@
       "paper_ids": [
         "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and"
       ],
-      "confidence": 0.1292,
+      "confidence": 0.1809,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 0.7,
         "w_consensus": 0.4307
       }
     },
@@ -5458,8 +5458,8 @@
       "subject": "compressive domain",
       "relation": "partOf",
       "object": "mass transport deposit",
-      "subject_type": "StructuralDomain",
-      "object_type": "GeologicalObject",
+      "subject_type": "Geological_Object",
+      "object_type": "Geological_Object",
       "tier": 2,
       "tier_label": "verified",
       "verdict": "STRONG_SUPPORT",
@@ -5516,10 +5516,10 @@
       "paper_ids": [
         "RichardsonetalBasinResearch2011-online (1)"
       ],
-      "confidence": 0.1292,
+      "confidence": 0.1809,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 0.7,
         "w_consensus": 0.4307
       }
     },
@@ -5527,8 +5527,8 @@
       "subject": "extensional domain",
       "relation": "partOf",
       "object": "mass transport deposit",
-      "subject_type": "StructuralDomain",
-      "object_type": "GeologicalObject",
+      "subject_type": "Geological_Object",
+      "object_type": "Geological_Object",
       "tier": 2,
       "tier_label": "verified",
       "verdict": "STRONG_SUPPORT",
@@ -5589,10 +5589,10 @@
         "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_",
         "RichardsonetalBasinResearch2011-online (1)"
       ],
-      "confidence": 0.2584,
+      "confidence": 0.3618,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 0.7,
         "w_consensus": 0.8614
       }
     },
@@ -5600,8 +5600,8 @@
       "subject": "mass transport deposit",
       "relation": "partOf",
       "object": "upper surface",
-      "subject_type": "GeologicalObject",
-      "object_type": "SurfaceFeature",
+      "subject_type": "Geological_Object",
+      "object_type": "Geological_Object",
       "tier": 2,
       "tier_label": "verified",
       "verdict": "STRONG_SUPPORT",
@@ -5662,10 +5662,10 @@
         "1-s2.0-S0025322713000571-main",
         "RichardsonetalBasinResearch2011-online (1)"
       ],
-      "confidence": 0.2048,
+      "confidence": 0.2867,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 0.7,
         "w_consensus": 0.6826
       }
     },
@@ -5673,8 +5673,8 @@
       "subject": "mass transport deposit",
       "relation": "partOf",
       "object": "three structural domains",
-      "subject_type": "GeologicalObject",
-      "object_type": "StructuralDomain",
+      "subject_type": "Geological_Object",
+      "object_type": "Geological_Object",
       "tier": 2,
       "tier_label": "verified",
       "verdict": "STRONG_SUPPORT",
@@ -5718,10 +5718,10 @@
       "paper_ids": [
         "RichardsonetalBasinResearch2011-online (1)"
       ],
-      "confidence": 0.1292,
+      "confidence": 0.1809,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 0.7,
         "w_consensus": 0.4307
       }
     },
@@ -5730,7 +5730,7 @@
       "relation": "affects",
       "object": "ramps and promontories",
       "subject_type": "Process",
-      "object_type": "Structure",
+      "object_type": "Geological_Object",
       "tier": 2,
       "tier_label": "literature-implied",
       "verdict": "WEAK_SUPPORT",
@@ -5779,10 +5779,10 @@
       "paper_ids": [
         "1-s2.0-S0025322713000571-main"
       ],
-      "confidence": 0.1292,
+      "confidence": 0.1809,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 0.7,
         "w_consensus": 0.4307
       }
     },
@@ -5791,7 +5791,7 @@
       "relation": "affects",
       "object": "basal shear surface",
       "subject_type": "Process",
-      "object_type": "Surface",
+      "object_type": "Geological_Object",
       "tier": 2,
       "tier_label": "literature-implied",
       "verdict": "WEAK_SUPPORT",
@@ -5868,10 +5868,10 @@
         "Giacomo Dalla Valle",
         "RichardsonetalBasinResearch2011-online (1)"
       ],
-      "confidence": 0.3,
+      "confidence": 0.42,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 0.7,
         "w_consensus": 1.0
       }
     },
@@ -5879,8 +5879,8 @@
       "subject": "erosion grooves",
       "relation": "affects",
       "object": "basal shear surface",
-      "subject_type": "Feature",
-      "object_type": "Surface",
+      "subject_type": "Geological_Object",
+      "object_type": "Geological_Object",
       "tier": 2,
       "tier_label": "literature-implied",
       "verdict": "WEAK_SUPPORT",
@@ -5926,10 +5926,10 @@
       "paper_ids": [
         "Chinese J of Geophysics - 2013 - WU - Analysis on Seismic Characteristics and Triggering Mechanisms of Mass Transport"
       ],
-      "confidence": 0.1292,
+      "confidence": 0.2584,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 0.4307
       }
     },
@@ -5981,10 +5981,10 @@
       "paper_ids": [
         "3-s2.0-B9780128130810007047-main"
       ],
-      "confidence": 0.1292,
+      "confidence": 0.1809,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 0.7,
         "w_consensus": 0.4307
       }
     },
@@ -5992,8 +5992,8 @@
       "subject": "50–60 ka failure event",
       "relation": "causes",
       "object": "lower headwall formation",
-      "subject_type": "Event",
-      "object_type": "Feature",
+      "subject_type": "Process",
+      "object_type": "Geological_Object",
       "tier": 2,
       "tier_label": "literature-implied",
       "verdict": "WEAK_SUPPORT",
@@ -6036,10 +6036,10 @@
       "paper_ids": [
         "Wei Li a,⁎, Tiago M. Alves"
       ],
-      "confidence": 0.1292,
+      "confidence": 0.2584,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 0.4307
       }
     },
@@ -6047,8 +6047,8 @@
       "subject": "disequilibrium conditions",
       "relation": "causes",
       "object": "potential for mass-transport events",
-      "subject_type": "Conditions",
-      "object_type": "Event",
+      "subject_type": "Environmental_Control",
+      "object_type": "Process",
       "tier": 2,
       "tier_label": "literature-implied",
       "verdict": "WEAK_SUPPORT",
@@ -6096,10 +6096,10 @@
       "paper_ids": [
         "9781565762879_ch02"
       ],
-      "confidence": 0.1292,
+      "confidence": 0.2584,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 0.4307
       }
     },
@@ -6108,7 +6108,7 @@
       "relation": "causes",
       "object": "mass transport deposit",
       "subject_type": "Process",
-      "object_type": "GeologicalObject",
+      "object_type": "Geological_Object",
       "tier": 2,
       "tier_label": "literature-implied",
       "verdict": "WEAK_SUPPORT",
@@ -6154,10 +6154,10 @@
       "paper_ids": [
         "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_"
       ],
-      "confidence": 0.1292,
+      "confidence": 0.1809,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 0.7,
         "w_consensus": 0.4307
       }
     },
@@ -6245,10 +6245,10 @@
         "Submarine_Mass_Movements_on_Continental",
         "Wei Li a,⁎, Tiago M. Alves"
       ],
-      "confidence": 0.3,
+      "confidence": 0.6,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 1.0
       }
     },
@@ -6303,10 +6303,10 @@
       "paper_ids": [
         "D. Leynaud"
       ],
-      "confidence": 0.1292,
+      "confidence": 0.2584,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 0.4307
       }
     },
@@ -6360,10 +6360,10 @@
       "paper_ids": [
         "RichardsonetalBasinResearch2011-online (1)"
       ],
-      "confidence": 0.1292,
+      "confidence": 0.1809,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 0.7,
         "w_consensus": 0.4307
       }
     },
@@ -6372,7 +6372,7 @@
       "relation": "causes",
       "object": "formation of layer of weakness",
       "subject_type": "Process",
-      "object_type": "GeologicalFeature",
+      "object_type": "Geological_Object",
       "tier": 2,
       "tier_label": "literature-implied",
       "verdict": "WEAK_SUPPORT",
@@ -6416,10 +6416,10 @@
       "paper_ids": [
         "Chinese J of Geophysics - 2013 - WU - Analysis on Seismic Characteristics and Triggering Mechanisms of Mass Transport"
       ],
-      "confidence": 0.1292,
+      "confidence": 0.1809,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 0.7,
         "w_consensus": 0.4307
       }
     },
@@ -6428,7 +6428,7 @@
       "relation": "causes",
       "object": "mass transport deposit",
       "subject_type": "Process",
-      "object_type": "GeologicalObject",
+      "object_type": "Geological_Object",
       "tier": 2,
       "tier_label": "literature-implied",
       "verdict": "WEAK_SUPPORT",
@@ -6476,10 +6476,10 @@
         "Dos-Reis-et-al-2016-MPG",
         "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_"
       ],
-      "confidence": 0.2048,
+      "confidence": 0.2867,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 0.7,
         "w_consensus": 0.6826
       }
     },
@@ -6535,10 +6535,10 @@
       "paper_ids": [
         "Two-scale_gravitational_collapse_in_the_Amazon_Fan"
       ],
-      "confidence": 0.1292,
+      "confidence": 0.1809,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 0.7,
         "w_consensus": 0.4307
       }
     },
@@ -6547,7 +6547,7 @@
       "relation": "causes",
       "object": "mass transport deposit",
       "subject_type": "Process",
-      "object_type": "GeologicalObject",
+      "object_type": "Geological_Object",
       "tier": 2,
       "tier_label": "literature-implied",
       "verdict": "WEAK_SUPPORT",
@@ -6598,10 +6598,10 @@
         "Dos-Reis-et-al-2016-MPG",
         "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_"
       ],
-      "confidence": 0.2048,
+      "confidence": 0.2867,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 0.7,
         "w_consensus": 0.6826
       }
     },
@@ -6609,8 +6609,8 @@
       "subject": "higher shear stresses",
       "relation": "causes",
       "object": "instability",
-      "subject_type": "Condition",
-      "object_type": "Condition",
+      "subject_type": "Environmental_Control",
+      "object_type": "Environmental_Control",
       "tier": 2,
       "tier_label": "literature-implied",
       "verdict": "WEAK_SUPPORT",
@@ -6651,10 +6651,10 @@
       "paper_ids": [
         "RichardsonetalBasinResearch2011-online (1)"
       ],
-      "confidence": 0.1292,
+      "confidence": 0.1809,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 0.7,
         "w_consensus": 0.4307
       }
     },
@@ -6663,7 +6663,7 @@
       "relation": "causes",
       "object": "mass transport deposit",
       "subject_type": "Process",
-      "object_type": "GeologicalObject",
+      "object_type": "Geological_Object",
       "tier": 2,
       "tier_label": "literature-implied",
       "verdict": "WEAK_SUPPORT",
@@ -6709,10 +6709,10 @@
       "paper_ids": [
         "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_"
       ],
-      "confidence": 0.1292,
+      "confidence": 0.1809,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 0.7,
         "w_consensus": 0.4307
       }
     },
@@ -6721,7 +6721,7 @@
       "relation": "causes",
       "object": "mass transport deposit",
       "subject_type": "Process",
-      "object_type": "GeologicalObject",
+      "object_type": "Geological_Object",
       "tier": 2,
       "tier_label": "literature-implied",
       "verdict": "WEAK_SUPPORT",
@@ -6768,10 +6768,10 @@
         "Dos-Reis-et-al-2016-MPG",
         "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_"
       ],
-      "confidence": 0.2048,
+      "confidence": 0.2867,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 0.7,
         "w_consensus": 0.6826
       }
     },
@@ -6825,10 +6825,10 @@
       "paper_ids": [
         "3-s2.0-B9780128130810007047-main"
       ],
-      "confidence": 0.1292,
+      "confidence": 0.1809,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 0.7,
         "w_consensus": 0.4307
       }
     },
@@ -6837,7 +6837,7 @@
       "relation": "causes",
       "object": "erosional scour",
       "subject_type": "Process",
-      "object_type": "Feature",
+      "object_type": "Geological_Object",
       "tier": 2,
       "tier_label": "literature-implied",
       "verdict": "WEAK_SUPPORT",
@@ -6891,7 +6891,7 @@
       "relation": "causes",
       "object": "unstable condition",
       "subject_type": "Process",
-      "object_type": "Condition",
+      "object_type": "Environmental_Control",
       "tier": 2,
       "tier_label": "literature-implied",
       "verdict": "WEAK_SUPPORT",
@@ -6932,10 +6932,10 @@
       "paper_ids": [
         "RichardsonetalBasinResearch2011-online (1)"
       ],
-      "confidence": 0.1292,
+      "confidence": 0.1809,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 0.7,
         "w_consensus": 0.4307
       }
     },
@@ -6944,7 +6944,7 @@
       "relation": "causes",
       "object": "mass transport deposit",
       "subject_type": "Process",
-      "object_type": "GeologicalObject",
+      "object_type": "Geological_Object",
       "tier": 2,
       "tier_label": "literature-implied",
       "verdict": "WEAK_SUPPORT",
@@ -6992,10 +6992,10 @@
         "1-s2.0-S0025322712000412-main",
         "RichardsonetalBasinResearch2011-online (1)"
       ],
-      "confidence": 0.2048,
+      "confidence": 0.4096,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 0.6826
       }
     },
@@ -7003,7 +7003,7 @@
       "subject": "unstable condition",
       "relation": "causes",
       "object": "slope failure",
-      "subject_type": "Condition",
+      "subject_type": "Environmental_Control",
       "object_type": "Process",
       "tier": 2,
       "tier_label": "literature-implied",
@@ -7045,10 +7045,10 @@
       "paper_ids": [
         "RichardsonetalBasinResearch2011-online (1)"
       ],
-      "confidence": 0.1292,
+      "confidence": 0.1809,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 0.7,
         "w_consensus": 0.4307
       }
     },
@@ -7057,7 +7057,7 @@
       "relation": "causes",
       "object": "pore-fluid overpressure",
       "subject_type": "Process",
-      "object_type": "Condition",
+      "object_type": "Environmental_Control",
       "tier": 2,
       "tier_label": "literature-implied",
       "verdict": "WEAK_SUPPORT",
@@ -7100,10 +7100,10 @@
       "paper_ids": [
         "3-s2.0-B9780128130810007047-main"
       ],
-      "confidence": 0.1292,
+      "confidence": 0.1809,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 0.7,
         "w_consensus": 0.4307
       }
     },
@@ -7111,8 +7111,8 @@
       "subject": "cohesion of the basal detachment",
       "relation": "controls",
       "object": "stability criterion",
-      "subject_type": "Attribute",
-      "object_type": "Criterion",
+      "subject_type": "Descriptor",
+      "object_type": "Environmental_Control",
       "tier": 2,
       "tier_label": "literature-implied",
       "verdict": "WEAK_SUPPORT",
@@ -7156,10 +7156,10 @@
       "paper_ids": [
         "1-s2.0-S0040195109002819-main"
       ],
-      "confidence": 0.1292,
+      "confidence": 0.1809,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 0.7,
         "w_consensus": 0.4307
       }
     },
@@ -7167,8 +7167,8 @@
       "subject": "length of the sliding sheet",
       "relation": "controls",
       "object": "critical length",
-      "subject_type": "Attribute",
-      "object_type": "Attribute",
+      "subject_type": "Descriptor",
+      "object_type": "Descriptor",
       "tier": 2,
       "tier_label": "literature-implied",
       "verdict": "WEAK_SUPPORT",
@@ -7214,10 +7214,10 @@
       "paper_ids": [
         "1-s2.0-S0040195109002819-main"
       ],
-      "confidence": 0.1292,
+      "confidence": 0.1809,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 0.7,
         "w_consensus": 0.4307
       }
     },
@@ -7225,7 +7225,7 @@
       "subject": "channel levee complex",
       "relation": "hasDescriptor",
       "object": "low-amplitude",
-      "subject_type": "SeismicObject",
+      "subject_type": "Geological_Object",
       "object_type": "Descriptor",
       "tier": 2,
       "tier_label": "literature-implied",
@@ -7270,7 +7270,7 @@
       "confidence": 0.0,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 0.7,
         "w_consensus": 0.0
       }
     },
@@ -7278,7 +7278,7 @@
       "subject": "debris flow",
       "relation": "hasDescriptor",
       "object": "hummocky",
-      "subject_type": "SeismicObject",
+      "subject_type": "Geological_Object",
       "object_type": "Descriptor",
       "tier": 2,
       "tier_label": "literature-implied",
@@ -7326,10 +7326,10 @@
         "9781565762879_ch02",
         "9781565762879_ch03"
       ],
-      "confidence": 0.2048,
+      "confidence": 0.2867,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 0.7,
         "w_consensus": 0.6826
       }
     },
@@ -7337,7 +7337,7 @@
       "subject": "debris-flow deposit",
       "relation": "hasDescriptor",
       "object": "hummocky",
-      "subject_type": "SeismicObject",
+      "subject_type": "Geological_Object",
       "object_type": "Descriptor",
       "tier": 2,
       "tier_label": "literature-implied",
@@ -7382,10 +7382,10 @@
       "paper_ids": [
         "9781565762879_ch02"
       ],
-      "confidence": 0.1292,
+      "confidence": 0.1809,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 0.7,
         "w_consensus": 0.4307
       }
     },
@@ -7393,7 +7393,7 @@
       "subject": "hemipelagite",
       "relation": "hasDescriptor",
       "object": "continuous",
-      "subject_type": "SeismicObject",
+      "subject_type": "Geological_Object",
       "object_type": "Descriptor",
       "tier": 2,
       "tier_label": "literature-implied",
@@ -7455,10 +7455,10 @@
         "Bull & Cartwright (2009)",
         "Dos-Reis-et-al-2016-MPG"
       ],
-      "confidence": 0.2584,
+      "confidence": 0.3618,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 0.7,
         "w_consensus": 0.8614
       }
     },
@@ -7466,7 +7466,7 @@
       "subject": "mass transport deposit",
       "relation": "hasDescriptor",
       "object": "discontinuous",
-      "subject_type": "SeismicObject",
+      "subject_type": "Geological_Object",
       "object_type": "Descriptor",
       "tier": 2,
       "tier_label": "literature-implied",
@@ -7525,10 +7525,10 @@
         "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_",
         "RichardsonetalBasinResearch2011-online (1)"
       ],
-      "confidence": 0.3,
+      "confidence": 0.6,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 1.0
       }
     },
@@ -7536,7 +7536,7 @@
       "subject": "mass transport deposit",
       "relation": "hasDescriptor",
       "object": "chaotic",
-      "subject_type": "SeismicObject",
+      "subject_type": "Geological_Object",
       "object_type": "Descriptor",
       "tier": 2,
       "tier_label": "literature-implied",
@@ -7603,10 +7603,10 @@
         "RichardsonetalBasinResearch2011-online (1)",
         "Basin Research - 2016 - Ortiz‐Karpf - Mass‐transport complexes as markers of deep‐water fold‐and‐thrust belt evolution"
       ],
-      "confidence": 0.3,
+      "confidence": 0.6,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 1.0
       }
     },
@@ -7614,7 +7614,7 @@
       "subject": "mass transport deposit",
       "relation": "hasDescriptor",
       "object": "variable-amplitude",
-      "subject_type": "SeismicObject",
+      "subject_type": "Geological_Object",
       "object_type": "Descriptor",
       "tier": 2,
       "tier_label": "literature-implied",
@@ -7658,10 +7658,10 @@
       "paper_ids": [
         "Basin Research - 2016 - Ortiz‐Karpf - Mass‐transport complexes as markers of deep‐water fold‐and‐thrust belt evolution"
       ],
-      "confidence": 0.1292,
+      "confidence": 0.2584,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 0.4307
       }
     },
@@ -7669,7 +7669,7 @@
       "subject": "mass transport deposit",
       "relation": "hasDescriptor",
       "object": "layered",
-      "subject_type": "SeismicObject",
+      "subject_type": "Geological_Object",
       "object_type": "Descriptor",
       "tier": 2,
       "tier_label": "literature-implied",
@@ -7726,10 +7726,10 @@
         "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_",
         "Dos-Reis-et-al-2016-MPG"
       ],
-      "confidence": 0.2048,
+      "confidence": 0.2867,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 0.7,
         "w_consensus": 0.6826
       }
     },
@@ -7737,7 +7737,7 @@
       "subject": "mass transport deposit",
       "relation": "hasDescriptor",
       "object": "undeformed",
-      "subject_type": "SeismicObject",
+      "subject_type": "Geological_Object",
       "object_type": "Descriptor",
       "tier": 2,
       "tier_label": "literature-implied",
@@ -7788,10 +7788,10 @@
         "RichardsonetalBasinResearch2011-online (1)",
         "Alves_AAPG_MTDs_14"
       ],
-      "confidence": 0.2584,
+      "confidence": 0.3618,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 0.7,
         "w_consensus": 0.8614
       }
     },
@@ -7799,7 +7799,7 @@
       "subject": "mass transport deposit",
       "relation": "hasDescriptor",
       "object": "stratified",
-      "subject_type": "SeismicObject",
+      "subject_type": "Geological_Object",
       "object_type": "Descriptor",
       "tier": 2,
       "tier_label": "literature-implied",
@@ -7844,10 +7844,10 @@
       "paper_ids": [
         "9781565762879_ch03"
       ],
-      "confidence": 0.1292,
+      "confidence": 0.1809,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 0.7,
         "w_consensus": 0.4307
       }
     },
@@ -7855,7 +7855,7 @@
       "subject": "megaslide",
       "relation": "hasDescriptor",
       "object": "continuous",
-      "subject_type": "SeismicObject",
+      "subject_type": "Geological_Object",
       "object_type": "Descriptor",
       "tier": 2,
       "tier_label": "literature-implied",
@@ -7918,10 +7918,10 @@
         "Dos-Reis-et-al-2016-MPG",
         "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_"
       ],
-      "confidence": 0.2048,
+      "confidence": 0.2867,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 0.7,
         "w_consensus": 0.6826
       }
     },
@@ -7929,7 +7929,7 @@
       "subject": "megaslide",
       "relation": "hasDescriptor",
       "object": "disrupted",
-      "subject_type": "SeismicObject",
+      "subject_type": "Geological_Object",
       "object_type": "Descriptor",
       "tier": 2,
       "tier_label": "literature-implied",
@@ -7977,10 +7977,10 @@
       "paper_ids": [
         "Dos-Reis-et-al-2016-MPG"
       ],
-      "confidence": 0.1292,
+      "confidence": 0.1809,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 0.7,
         "w_consensus": 0.4307
       }
     },
@@ -7988,7 +7988,7 @@
       "subject": "preserved block",
       "relation": "hasDescriptor",
       "object": "layered",
-      "subject_type": "SeismicObject",
+      "subject_type": "Geological_Object",
       "object_type": "Descriptor",
       "tier": 2,
       "tier_label": "literature-implied",
@@ -8038,10 +8038,10 @@
         "Dos-Reis-et-al-2016-MPG",
         "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_"
       ],
-      "confidence": 0.2048,
+      "confidence": 0.2867,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 0.7,
         "w_consensus": 0.6826
       }
     },
@@ -8049,7 +8049,7 @@
       "subject": "remnant block",
       "relation": "hasDescriptor",
       "object": "undeformed",
-      "subject_type": "SeismicObject",
+      "subject_type": "Geological_Object",
       "object_type": "Descriptor",
       "tier": 2,
       "tier_label": "literature-implied",
@@ -8097,10 +8097,10 @@
         "Alves_AAPG_MTDs_14",
         "Bull & Cartwright (2009)"
       ],
-      "confidence": 0.2048,
+      "confidence": 0.2867,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 0.7,
         "w_consensus": 0.6826
       }
     },
@@ -8108,7 +8108,7 @@
       "subject": "slide",
       "relation": "hasDescriptor",
       "object": "blocky",
-      "subject_type": "SeismicObject",
+      "subject_type": "Geological_Object",
       "object_type": "Descriptor",
       "tier": 2,
       "tier_label": "literature-implied",
@@ -8169,10 +8169,10 @@
         "Wei Li a,⁎, Tiago M. Alves",
         "9781565762879_ch02"
       ],
-      "confidence": 0.3,
+      "confidence": 0.6,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 1.0
       }
     },
@@ -8180,7 +8180,7 @@
       "subject": "slide",
       "relation": "hasDescriptor",
       "object": "undeformed",
-      "subject_type": "SeismicObject",
+      "subject_type": "Geological_Object",
       "object_type": "Descriptor",
       "tier": 2,
       "tier_label": "literature-implied",
@@ -8262,10 +8262,10 @@
         "Submarine_Mass_Movements_on_Continental",
         "Wei Li a,⁎, Tiago M. Alves"
       ],
-      "confidence": 0.3,
+      "confidence": 0.42,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 0.7,
         "w_consensus": 1.0
       }
     },
@@ -8273,7 +8273,7 @@
       "subject": "slide",
       "relation": "hasDescriptor",
       "object": "low-amplitude",
-      "subject_type": "SeismicObject",
+      "subject_type": "Geological_Object",
       "object_type": "Descriptor",
       "tier": 2,
       "tier_label": "literature-implied",
@@ -8320,10 +8320,10 @@
       "paper_ids": [
         "Moscardelli_and_Wood_2008"
       ],
-      "confidence": 0.1292,
+      "confidence": 0.1809,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 0.7,
         "w_consensus": 0.4307
       }
     },
@@ -8331,7 +8331,7 @@
       "subject": "turbidite",
       "relation": "hasDescriptor",
       "object": "layered",
-      "subject_type": "SeismicObject",
+      "subject_type": "Geological_Object",
       "object_type": "Descriptor",
       "tier": 2,
       "tier_label": "literature-implied",
@@ -8376,10 +8376,10 @@
       "paper_ids": [
         "Bourget,j"
       ],
-      "confidence": 0.1292,
+      "confidence": 0.2584,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 0.4307
       }
     },
@@ -8387,8 +8387,8 @@
       "subject": "coarse-grained turbidites",
       "relation": "occursIn",
       "object": "espírito santo basin",
-      "subject_type": "GeologicalObject",
-      "object_type": "GeologicalSetting",
+      "subject_type": "Geological_Object",
+      "object_type": "Environmental_Control",
       "tier": 2,
       "tier_label": "literature-implied",
       "verdict": "WEAK_SUPPORT",
@@ -8431,10 +8431,10 @@
       "paper_ids": [
         "1-s2.0-S0264817216304585-main"
       ],
-      "confidence": 0.1292,
+      "confidence": 0.2584,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 0.4307
       }
     },
@@ -8442,8 +8442,8 @@
       "subject": "debris flow",
       "relation": "occursIn",
       "object": "passive margin",
-      "subject_type": "GeologicalObject",
-      "object_type": "GeologicalSetting",
+      "subject_type": "Geological_Object",
+      "object_type": "Environmental_Control",
       "tier": 2,
       "tier_label": "literature-implied",
       "verdict": "WEAK_SUPPORT",
@@ -8491,10 +8491,10 @@
       "paper_ids": [
         "9781565762879_ch03"
       ],
-      "confidence": 0.1292,
+      "confidence": 0.1809,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 0.7,
         "w_consensus": 0.4307
       }
     },
@@ -8502,8 +8502,8 @@
       "subject": "mass transport deposit",
       "relation": "occursIn",
       "object": "continental slope",
-      "subject_type": "GeologicalObject",
-      "object_type": "GeologicalSetting",
+      "subject_type": "Geological_Object",
+      "object_type": "Environmental_Control",
       "tier": 2,
       "tier_label": "literature-implied",
       "verdict": "WEAK_SUPPORT",
@@ -8573,10 +8573,10 @@
         "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_",
         "RichardsonetalBasinResearch2011-online (1)"
       ],
-      "confidence": 0.3,
+      "confidence": 0.42,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 0.7,
         "w_consensus": 1.0
       }
     },
@@ -8584,8 +8584,8 @@
       "subject": "submarine landslide",
       "relation": "occursIn",
       "object": "tectonically active margin",
-      "subject_type": "GeologicalObject",
-      "object_type": "GeologicalSetting",
+      "subject_type": "Geological_Object",
+      "object_type": "Environmental_Control",
       "tier": 2,
       "tier_label": "literature-implied",
       "verdict": "WEAK_SUPPORT",
@@ -8641,10 +8641,10 @@
         "RichardsonetalBasinResearch2011-online (1)",
         "Wei Li a,⁎, Tiago M. Alves"
       ],
-      "confidence": 0.3,
+      "confidence": 0.42,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 0.7,
         "w_consensus": 1.0
       }
     },
@@ -8652,8 +8652,8 @@
       "subject": "submarine landslide",
       "relation": "occursIn",
       "object": "passive margin",
-      "subject_type": "GeologicalObject",
-      "object_type": "GeologicalSetting",
+      "subject_type": "Geological_Object",
+      "object_type": "Environmental_Control",
       "tier": 2,
       "tier_label": "literature-implied",
       "verdict": "WEAK_SUPPORT",
@@ -8711,10 +8711,10 @@
         "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and",
         "Submarine_Mass_Movements_on_Continental"
       ],
-      "confidence": 0.2048,
+      "confidence": 0.2867,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 0.7,
         "w_consensus": 0.6826
       }
     },
@@ -8722,8 +8722,8 @@
       "subject": "turbidite",
       "relation": "occursIn",
       "object": "basin floor",
-      "subject_type": "GeologicalObject",
-      "object_type": "GeologicalSetting",
+      "subject_type": "Geological_Object",
+      "object_type": "Environmental_Control",
       "tier": 2,
       "tier_label": "literature-implied",
       "verdict": "WEAK_SUPPORT",
@@ -8792,10 +8792,10 @@
         "9781565762879_ch02",
         "9781565762879_ch03"
       ],
-      "confidence": 0.2048,
+      "confidence": 0.4096,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 0.6826
       }
     },
@@ -8803,8 +8803,8 @@
       "subject": "turbidite",
       "relation": "occursIn",
       "object": "upper slope",
-      "subject_type": "GeologicalObject",
-      "object_type": "GeologicalSetting",
+      "subject_type": "Geological_Object",
+      "object_type": "Environmental_Control",
       "tier": 2,
       "tier_label": "literature-implied",
       "verdict": "WEAK_SUPPORT",
@@ -8875,10 +8875,10 @@
         "D. Leynaud",
         "Giacomo Dalla Valle"
       ],
-      "confidence": 0.3,
+      "confidence": 0.42,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 0.7,
         "w_consensus": 1.0
       }
     },
@@ -8886,8 +8886,8 @@
       "subject": "turbidite system",
       "relation": "occursIn",
       "object": "amazon fan",
-      "subject_type": "GeologicalObject",
-      "object_type": "GeologicalSetting",
+      "subject_type": "Geological_Object",
+      "object_type": "Environmental_Control",
       "tier": 2,
       "tier_label": "literature-implied",
       "verdict": "WEAK_SUPPORT",
@@ -8942,10 +8942,10 @@
         "Dos-Reis-et-al-2016-MPG",
         "Two-scale_gravitational_collapse_in_the_Amazon_Fan"
       ],
-      "confidence": 0.3,
+      "confidence": 0.42,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 0.7,
         "w_consensus": 1.0
       }
     },
@@ -8953,8 +8953,8 @@
       "subject": "blocky material",
       "relation": "overlies",
       "object": "basal shear surface",
-      "subject_type": "GeologicalObject",
-      "object_type": "GeologicalSurface",
+      "subject_type": "Geological_Object",
+      "object_type": "Geological_Object",
       "tier": 2,
       "tier_label": "literature-implied",
       "verdict": "WEAK_SUPPORT",
@@ -8998,10 +8998,10 @@
       "paper_ids": [
         "RichardsonetalBasinResearch2011-online (1)"
       ],
-      "confidence": 0.1292,
+      "confidence": 0.2584,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 0.4307
       }
     },
@@ -9009,8 +9009,8 @@
       "subject": "coarse-grained turbidites",
       "relation": "overlies",
       "object": "mass transport deposit",
-      "subject_type": "GeologicalObject",
-      "object_type": "GeologicalObject",
+      "subject_type": "Geological_Object",
+      "object_type": "Geological_Object",
       "tier": 2,
       "tier_label": "literature-implied",
       "verdict": "WEAK_SUPPORT",
@@ -9045,10 +9045,10 @@
       "paper_ids": [
         "1-s2.0-S0264817216304585-main"
       ],
-      "confidence": 0.1292,
+      "confidence": 0.1809,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 0.7,
         "w_consensus": 0.4307
       }
     },
@@ -9056,8 +9056,8 @@
       "subject": "translational domain",
       "relation": "partOf",
       "object": "mass transport deposit",
-      "subject_type": "StructuralDomain",
-      "object_type": "GeologicalObject",
+      "subject_type": "Geological_Object",
+      "object_type": "Geological_Object",
       "tier": 2,
       "tier_label": "literature-implied",
       "verdict": "WEAK_SUPPORT",
@@ -9112,10 +9112,10 @@
       "paper_ids": [
         "RichardsonetalBasinResearch2011-online (1)"
       ],
-      "confidence": 0.1292,
+      "confidence": 0.1809,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 0.7,
         "w_consensus": 0.4307
       }
     },
@@ -9169,10 +9169,10 @@
       "paper_ids": [
         "RichardsonetalBasinResearch2011-online (1)"
       ],
-      "confidence": 0.1292,
+      "confidence": 0.2584,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 0.4307
       }
     },
@@ -9225,10 +9225,10 @@
       "paper_ids": [
         "1-s2.0-S0040195109002819-main"
       ],
-      "confidence": 0.1292,
+      "confidence": 0.2584,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 0.4307
       }
     },
@@ -9284,10 +9284,10 @@
         "1-s2.0-S0191814106000101-main",
         "1-s2.0-S0040195109002819-main"
       ],
-      "confidence": 0.2048,
+      "confidence": 0.4096,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 0.6826
       }
     },
@@ -9341,10 +9341,10 @@
       "paper_ids": [
         "3-s2.0-B9780128130810007047-main"
       ],
-      "confidence": 0.1292,
+      "confidence": 0.1809,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 0.7,
         "w_consensus": 0.4307
       }
     },
@@ -9407,10 +9407,10 @@
         "Submarine_Mass_Movements_on_Continental",
         "3-s2.0-B9780128130810007047-main"
       ],
-      "confidence": 0.2584,
+      "confidence": 0.5168,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 0.8614
       }
     },
@@ -9464,10 +9464,10 @@
       "paper_ids": [
         "RichardsonetalBasinResearch2011-online (1)"
       ],
-      "confidence": 0.1292,
+      "confidence": 0.1809,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 0.7,
         "w_consensus": 0.4307
       }
     },
@@ -9476,7 +9476,7 @@
       "relation": "triggers",
       "object": "seabed instability",
       "subject_type": "Process",
-      "object_type": "Condition",
+      "object_type": "Environmental_Control",
       "tier": 2,
       "tier_label": "literature-implied",
       "verdict": "WEAK_SUPPORT",
@@ -9521,10 +9521,10 @@
       "paper_ids": [
         "Submarine_Mass_Movements_on_Continental"
       ],
-      "confidence": 0.1292,
+      "confidence": 0.2584,
       "conf_components": {
         "w_tier": 0.6,
-        "w_m4": 0.5,
+        "w_m4": 1.0,
         "w_consensus": 0.4307
       }
     }

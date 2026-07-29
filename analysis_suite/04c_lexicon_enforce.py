@@ -46,11 +46,13 @@ def load_lexicon(path_or_none):
     try:
         sys.path.insert(0, ".")
         from pipeline.rag.constants import KNOWN_DESCRIPTORS
+
         return {str(x).strip().lower() for x in KNOWN_DESCRIPTORS}
     except Exception as e:
         raise SystemExit(
             "Could not import KNOWN_DESCRIPTORS from pipeline.rag.constants "
-            f"({e}). Run from the repo root, or pass --lexicon FILE.")
+            f"({e}). Run from the repo root, or pass --lexicon FILE."
+        )
 
 
 def norm(x):
@@ -59,8 +61,11 @@ def norm(x):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--input", required=True,
-                    help="triples .jsonl (one JSON object per line)")
+    ap.add_argument(
+        "--input",
+        required=True,
+        help="triples .jsonl (one JSON object per line)",
+    )
     ap.add_argument("--lexicon", default=None)
     ap.add_argument("--report", action="store_true")
     ap.add_argument("--enforce", action="store_true")
@@ -70,8 +75,7 @@ def main():
 
     lex = load_lexicon(args.lexicon)
     inp = Path(args.input)
-    triples = [json.loads(l) for l in open(inp, encoding="utf-8")
-               if l.strip()]
+    triples = [json.loads(l) for l in open(inp, encoding="utf-8") if l.strip()]
 
     kept, rejected = [], []
     offending_terms = Counter()
@@ -90,8 +94,12 @@ def main():
         else:
             rejected.append(t)
             offending_terms[obj] += 1
-            for k in ("raw_relation", "original_relation", "relation_raw",
-                      "llm_relation"):
+            for k in (
+                "raw_relation",
+                "original_relation",
+                "relation_raw",
+                "llm_relation",
+            ):
                 if t.get(k):
                     origin_relations[norm(t[k])] += 1
                     break
@@ -104,12 +112,16 @@ def main():
     print("CLOSED-WORLD DESCRIPTOR ENFORCEMENT")
     print("=" * 60)
     print(f"input triples              : {len(triples)}")
-    print(f"hasDescriptor triples      : "
-          f"{sum(1 for t in triples if norm(t.get('relation')) == 'hasdescriptor')}")
+    print(
+        f"hasDescriptor triples      : "
+        f"{sum(1 for t in triples if norm(t.get('relation')) == 'hasdescriptor')}"
+    )
     print(f"canonical lexicon size     : {len(lex)}")
     print(f"lexicon: {sorted(lex)}")
-    print(f"OFFENDING (outside lexicon): {len(rejected)} triples, "
-          f"{len(offending_terms)} terms")
+    print(
+        f"OFFENDING (outside lexicon): {len(rejected)} triples, "
+        f"{len(offending_terms)} terms"
+    )
     for term, c in offending_terms.most_common():
         print(f"   {term!r}: {c}")
     print("pre-mapping relations of offenders:")
@@ -117,8 +129,10 @@ def main():
         print(f"   {r!r}: {c}")
     print(f"canonical descriptors ABSENT from KG: {absent}")
     if "massive" in absent:
-        print("   NOTE: 'massive' is a benchmark edge target — cross-check "
-              "against the failure-mode analysis / rejected triples of 03.")
+        print(
+            "   NOTE: 'massive' is a benchmark edge target — cross-check "
+            "against the failure-mode analysis / rejected triples of 03."
+        )
 
     if args.enforce:
         out_ok = inp.with_suffix(".lexicon_enforced.jsonl")

@@ -50,13 +50,15 @@ import re
 from collections import defaultdict
 from pathlib import Path
 
-from kg_io import load_kg, get_subject, get_object, get_relation
+from kg_io import get_object, get_relation, get_subject, load_kg
 
 # Minimal, documented abbreviation expansions used ONLY for analysis
 # (never injected into pipeline construction — no-lexicon rule preserved).
-ABBREV = {"mtd": "mass transport deposit",
-          "mtds": "mass transport deposit",
-          "mtc": "mass transport complex"}
+ABBREV = {
+    "mtd": "mass transport deposit",
+    "mtds": "mass transport deposit",
+    "mtc": "mass transport complex",
+}
 
 
 def norm_form(e: str) -> str:
@@ -72,8 +74,11 @@ def norm_form(e: str) -> str:
         x = ABBREV[x]
     toks = []
     for tok in x.split():
-        if (len(tok) > 3 and tok.endswith("s")
-                and not tok.endswith(("ss", "is", "us"))):
+        if (
+            len(tok) > 3
+            and tok.endswith("s")
+            and not tok.endswith(("ss", "is", "us"))
+        ):
             tok = tok[:-1]  # keeps debris, hiatus, loess intact
         toks.append(tok)
     return " ".join(toks)
@@ -83,9 +88,12 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--kg", required=True)
     ap.add_argument("--outdir", default="output/analysis")
-    ap.add_argument("--scibert", action="store_true",
-                    help="also run SciBERT gray-zone detection (needs GPU/"
-                         "model cache; uses allenai/scibert_scivocab_uncased)")
+    ap.add_argument(
+        "--scibert",
+        action="store_true",
+        help="also run SciBERT gray-zone detection (needs GPU/"
+        "model cache; uses allenai/scibert_scivocab_uncased)",
+    )
     ap.add_argument("--merge-thr", type=float, default=0.06)
     ap.add_argument("--gray-thr", type=float, default=0.20)
     ap.add_argument("--string-thr", type=float, default=0.85)
@@ -113,15 +121,33 @@ def main():
 
     concepts = sorted(occ)
     n_nodes = len(concepts)
-    with open(outdir / "vocabulary_report.csv", "w", newline="",
-              encoding="utf-8") as f:
+    with open(
+        outdir / "vocabulary_report.csv", "w", newline="", encoding="utf-8"
+    ) as f:
         w = csv.writer(f)
-        w.writerow(["concept", "normal_form", "n_triples", "n_papers",
-                    "n_relations", "n_neighbors", "degree_centrality"])
+        w.writerow(
+            [
+                "concept",
+                "normal_form",
+                "n_triples",
+                "n_papers",
+                "n_relations",
+                "n_neighbors",
+                "degree_centrality",
+            ]
+        )
         for c in sorted(concepts, key=lambda c: -occ[c]):
-            w.writerow([c, norm_form(c), occ[c], len(papers[c]),
-                        len(rels[c]), len(neigh[c]),
-                        round(len(neigh[c]) / max(n_nodes - 1, 1), 4)])
+            w.writerow(
+                [
+                    c,
+                    norm_form(c),
+                    occ[c],
+                    len(papers[c]),
+                    len(rels[c]),
+                    len(neigh[c]),
+                    round(len(neigh[c]) / max(n_nodes - 1, 1), 4),
+                ]
+            )
 
     # ── detector 1: deterministic rules ───────────────────────────────
     by_norm = defaultdict(list)
@@ -145,6 +171,7 @@ def main():
         try:
             import numpy as np
             from sentence_transformers import SentenceTransformer
+
             model = SentenceTransformer("allenai/scibert_scivocab_uncased")
             emb = model.encode(concepts, normalize_embeddings=True)
             sims = emb @ emb.T
@@ -157,49 +184,86 @@ def main():
 
     # ── merged reports ────────────────────────────────────────────────
     all_pairs = set(rule_pairs) | set(string_pairs) | set(scibert_pairs)
-    with open(outdir / "synonyms_report.csv", "w", newline="",
-              encoding="utf-8") as f:
+    with open(
+        outdir / "synonyms_report.csv", "w", newline="", encoding="utf-8"
+    ) as f:
         w = csv.writer(f)
-        w.writerow(["concept_a", "concept_b", "rule", "string_sim",
-                    "scibert_dist", "n_detectors"])
+        w.writerow(
+            [
+                "concept_a",
+                "concept_b",
+                "rule",
+                "string_sim",
+                "scibert_dist",
+                "n_detectors",
+            ]
+        )
         for a, b in sorted(all_pairs):
-            nd = int((a, b) in rule_pairs) + int((a, b) in string_pairs) \
-                 + int((a, b) in scibert_pairs)
-            w.writerow([a, b, int((a, b) in rule_pairs),
-                        string_pairs.get((a, b), ""),
-                        scibert_pairs.get((a, b), ""), nd])
+            nd = (
+                int((a, b) in rule_pairs)
+                + int((a, b) in string_pairs)
+                + int((a, b) in scibert_pairs)
+            )
+            w.writerow(
+                [
+                    a,
+                    b,
+                    int((a, b) in rule_pairs),
+                    string_pairs.get((a, b), ""),
+                    scibert_pairs.get((a, b), ""),
+                    nd,
+                ]
+            )
 
     llm_pairs = []
-    with open(outdir / "canonicalization_report.csv", "w", newline="",
-              encoding="utf-8") as f:
+    with open(
+        outdir / "canonicalization_report.csv",
+        "w",
+        newline="",
+        encoding="utf-8",
+    ) as f:
         w = csv.writer(f)
         w.writerow(["concept_a", "concept_b", "action", "reason"])
         for a, b in sorted(all_pairs):
             if (a, b) in rule_pairs:
-                w.writerow([a, b, "AUTO_MERGE",
-                            "identical after deterministic normalization"])
+                w.writerow(
+                    [
+                        a,
+                        b,
+                        "AUTO_MERGE",
+                        "identical after deterministic normalization",
+                    ]
+                )
             elif ((a, b) in string_pairs) and ((a, b) in scibert_pairs):
-                w.writerow([a, b, "LLM_JUDGE",
-                            "gray zone, two detectors agree"])
+                w.writerow(
+                    [a, b, "LLM_JUDGE", "gray zone, two detectors agree"]
+                )
                 llm_pairs.append((a, b))
             else:
-                w.writerow([a, b, "LLM_JUDGE" if (a, b) in scibert_pairs
-                            else "EXPERT",
-                            "single-detector candidate"])
+                w.writerow(
+                    [
+                        a,
+                        b,
+                        "LLM_JUDGE" if (a, b) in scibert_pairs else "EXPERT",
+                        "single-detector candidate",
+                    ]
+                )
                 if (a, b) in scibert_pairs:
                     llm_pairs.append((a, b))
 
-    with open(outdir / "llm_judgment_pairs.jsonl", "w",
-              encoding="utf-8") as f:
+    with open(outdir / "llm_judgment_pairs.jsonl", "w", encoding="utf-8") as f:
         for a, b in llm_pairs:
             prompt = (
                 "You are a geological terminology expert. Answer strictly.\n"
                 f'Do "{a}" and "{b}" denote the SAME geological concept '
                 "(mere lexical variants), or DIFFERENT concepts?\n"
                 "Answer with exactly one line: SAME or DIFFERENT, then a "
-                "one-sentence justification.")
-            f.write(json.dumps({"concept_a": a, "concept_b": b,
-                                "prompt": prompt}) + "\n")
+                "one-sentence justification."
+            )
+            f.write(
+                json.dumps({"concept_a": a, "concept_b": b, "prompt": prompt})
+                + "\n"
+            )
 
     print("=" * 60)
     print("VOCABULARY AUDIT SUMMARY")
@@ -207,10 +271,14 @@ def main():
     print(f"unique concepts          : {len(concepts)}")
     print(f"rule-identical pairs     : {len(rule_pairs)}  (AUTO_MERGE)")
     print(f"string-similar pairs     : {len(string_pairs)}")
-    print(f"scibert gray-zone pairs  : {len(scibert_pairs)}"
-          + ("" if args.scibert else "  (detector disabled, use --scibert)"))
-    print(f"pairs sent to LLM judge  : {len(llm_pairs)} "
-          f"(llm_judgment_pairs.jsonl — run with Llama, NOT Qwen)")
+    print(
+        f"scibert gray-zone pairs  : {len(scibert_pairs)}"
+        + ("" if args.scibert else "  (detector disabled, use --scibert)")
+    )
+    print(
+        f"pairs sent to LLM judge  : {len(llm_pairs)} "
+        f"(llm_judgment_pairs.jsonl — run with Llama, NOT Qwen)"
+    )
     print(f"outputs in: {outdir}")
 
 

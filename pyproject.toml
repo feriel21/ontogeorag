@@ -1,0 +1,12 @@
+[tool.ruff]
+line-length = 79
+target-version = "py310"
+extend-exclude = ["output", "data", "logs", "figures", "manuscript_v2",
+                  "validation_logs", "tools", "reviewer-experiments"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B"]
+ignore = ["E501"]
+
+[tool.ruff.format]
+quote-style = "double"
