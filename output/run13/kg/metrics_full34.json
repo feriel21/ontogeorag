@@ -13,20 +13,20 @@
         "continuous",
         "discontinuous",
         "high-amplitude",
+        "hummocky",
         "layered",
         "low-amplitude",
         "parallel",
         "transparent"
       ],
       "missing": [
-        "deformed",
         "massive",
         "stratified",
         "undeformed"
       ],
-      "n_found": 9,
+      "n_found": 10,
       "n_total": 13,
-      "coverage": 0.6923076923076923
+      "coverage": 0.7692307692307693
     },
     "tier12": {
       "found": [
@@ -35,6 +35,7 @@
         "continuous",
         "discontinuous",
         "high-amplitude",
+        "hummocky",
         "layered",
         "low-amplitude",
         "parallel",
@@ -42,13 +43,12 @@
         "undeformed"
       ],
       "missing": [
-        "deformed",
         "massive",
         "stratified"
       ],
-      "n_found": 10,
+      "n_found": 11,
       "n_total": 13,
-      "coverage": 0.7692307692307693
+      "coverage": 0.8461538461538461
     }
   },
   "recall_vs_lb2019": {
@@ -485,6 +485,322 @@
         "matcher": "exact_normRel (strict tuple equality + relation normalization)"
       },
       "ref_path": "configs/lb_reference_edges.json"
+    }
+  },
+  "recall_vs_lb2019_orig26": {
+    "tier1": {
+      "recall": 0.34615384615384615,
+      "hits": 9,
+      "total_reference": 26,
+      "matched_edges": [
+        [
+          "mass transport deposit",
+          "hasDescriptor",
+          "transparent"
+        ],
+        [
+          "mass transport deposit",
+          "hasDescriptor",
+          "hummocky"
+        ],
+        [
+          "mass transport deposit",
+          "hasDescriptor",
+          "blocky"
+        ],
+        [
+          "turbidite",
+          "hasDescriptor",
+          "parallel"
+        ],
+        [
+          "turbidite",
+          "hasDescriptor",
+          "continuous"
+        ],
+        [
+          "turbidite",
+          "hasDescriptor",
+          "high-amplitude"
+        ],
+        [
+          "debris flow",
+          "hasDescriptor",
+          "chaotic"
+        ],
+        [
+          "slope failure",
+          "causes",
+          "mass transport deposit"
+        ],
+        [
+          "earthquake",
+          "triggers",
+          "slope failure"
+        ]
+      ],
+      "matcher": "substring_normRel (paper headline)",
+      "lower_bound": {
+        "recall": 0.34615384615384615,
+        "hits": 9,
+        "total_reference": 26,
+        "matched_edges": [
+          [
+            "mass transport deposit",
+            "hasDescriptor",
+            "transparent"
+          ],
+          [
+            "mass transport deposit",
+            "hasDescriptor",
+            "hummocky"
+          ],
+          [
+            "mass transport deposit",
+            "hasDescriptor",
+            "blocky"
+          ],
+          [
+            "turbidite",
+            "hasDescriptor",
+            "parallel"
+          ],
+          [
+            "turbidite",
+            "hasDescriptor",
+            "continuous"
+          ],
+          [
+            "turbidite",
+            "hasDescriptor",
+            "high-amplitude"
+          ],
+          [
+            "debris flow",
+            "hasDescriptor",
+            "chaotic"
+          ],
+          [
+            "slope failure",
+            "causes",
+            "mass transport deposit"
+          ],
+          [
+            "earthquake",
+            "triggers",
+            "slope failure"
+          ]
+        ],
+        "matcher": "exact_normRel (strict tuple equality + relation normalization)"
+      },
+      "ref_path": "configs/lb_reference_edges_original26.json"
+    },
+    "tier12": {
+      "recall": 0.7307692307692307,
+      "hits": 19,
+      "total_reference": 26,
+      "matched_edges": [
+        [
+          "mass transport deposit",
+          "hasDescriptor",
+          "chaotic"
+        ],
+        [
+          "mass transport deposit",
+          "hasDescriptor",
+          "transparent"
+        ],
+        [
+          "mass transport deposit",
+          "hasDescriptor",
+          "hummocky"
+        ],
+        [
+          "mass transport deposit",
+          "hasDescriptor",
+          "blocky"
+        ],
+        [
+          "mass transport deposit",
+          "hasDescriptor",
+          "discontinuous"
+        ],
+        [
+          "turbidite",
+          "hasDescriptor",
+          "parallel"
+        ],
+        [
+          "turbidite",
+          "hasDescriptor",
+          "continuous"
+        ],
+        [
+          "turbidite",
+          "hasDescriptor",
+          "layered"
+        ],
+        [
+          "turbidite",
+          "hasDescriptor",
+          "high-amplitude"
+        ],
+        [
+          "debris flow",
+          "hasDescriptor",
+          "chaotic"
+        ],
+        [
+          "debris flow",
+          "hasDescriptor",
+          "hummocky"
+        ],
+        [
+          "slide",
+          "hasDescriptor",
+          "blocky"
+        ],
+        [
+          "slide",
+          "hasDescriptor",
+          "undeformed"
+        ],
+        [
+          "hemipelagite",
+          "hasDescriptor",
+          "parallel"
+        ],
+        [
+          "hemipelagite",
+          "hasDescriptor",
+          "continuous"
+        ],
+        [
+          "slope failure",
+          "causes",
+          "mass transport deposit"
+        ],
+        [
+          "earthquake",
+          "triggers",
+          "slope failure"
+        ],
+        [
+          "mass transport deposit",
+          "occursIn",
+          "continental slope"
+        ],
+        [
+          "turbidite",
+          "occursIn",
+          "basin floor"
+        ]
+      ],
+      "matcher": "substring_normRel (paper headline)",
+      "lower_bound": {
+        "recall": 0.7307692307692307,
+        "hits": 19,
+        "total_reference": 26,
+        "matched_edges": [
+          [
+            "mass transport deposit",
+            "hasDescriptor",
+            "chaotic"
+          ],
+          [
+            "mass transport deposit",
+            "hasDescriptor",
+            "transparent"
+          ],
+          [
+            "mass transport deposit",
+            "hasDescriptor",
+            "hummocky"
+          ],
+          [
+            "mass transport deposit",
+            "hasDescriptor",
+            "blocky"
+          ],
+          [
+            "mass transport deposit",
+            "hasDescriptor",
+            "discontinuous"
+          ],
+          [
+            "turbidite",
+            "hasDescriptor",
+            "parallel"
+          ],
+          [
+            "turbidite",
+            "hasDescriptor",
+            "continuous"
+          ],
+          [
+            "turbidite",
+            "hasDescriptor",
+            "layered"
+          ],
+          [
+            "turbidite",
+            "hasDescriptor",
+            "high-amplitude"
+          ],
+          [
+            "debris flow",
+            "hasDescriptor",
+            "chaotic"
+          ],
+          [
+            "debris flow",
+            "hasDescriptor",
+            "hummocky"
+          ],
+          [
+            "slide",
+            "hasDescriptor",
+            "blocky"
+          ],
+          [
+            "slide",
+            "hasDescriptor",
+            "undeformed"
+          ],
+          [
+            "hemipelagite",
+            "hasDescriptor",
+            "parallel"
+          ],
+          [
+            "hemipelagite",
+            "hasDescriptor",
+            "continuous"
+          ],
+          [
+            "slope failure",
+            "causes",
+            "mass transport deposit"
+          ],
+          [
+            "earthquake",
+            "triggers",
+            "slope failure"
+          ],
+          [
+            "mass transport deposit",
+            "occursIn",
+            "continental slope"
+          ],
+          [
+            "turbidite",
+            "occursIn",
+            "basin floor"
+          ]
+        ],
+        "matcher": "exact_normRel (strict tuple equality + relation normalization)"
+      },
+      "ref_path": "configs/lb_reference_edges_original26.json"
     }
   },
   "hallucination": {

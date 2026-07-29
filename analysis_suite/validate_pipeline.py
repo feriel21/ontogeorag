@@ -191,6 +191,43 @@ def check_schema_types():
         )
 
 
+def check_duplicate_definitions():
+    """Scan the source tree for top-level functions/classes defined twice in
+    the same module. Python silently keeps the last definition, so a merge
+    or a bad patch can duplicate the very function that computes a headline
+    metric without any test failing — observed once, after merging a branch
+    that had been reformatted wholesale."""
+    import ast
+    offenders = []
+    for d in ("pipeline", "m4", "analysis_suite"):
+        base = REPO / d
+        if not base.exists():
+            continue
+        for p in sorted(base.rglob("*.py")):
+            if "checkpoint" in str(p):
+                continue
+            try:
+                tree = ast.parse(p.read_text(encoding="utf-8"))
+            except Exception:
+                continue
+            names = [n.name for n in tree.body
+                     if isinstance(n, (ast.FunctionDef, ast.AsyncFunctionDef,
+                                       ast.ClassDef))]
+            dup = {n: names.count(n) for n in set(names)
+                   if names.count(n) > 1}
+            if dup:
+                offenders.append(f"{p.relative_to(REPO)}: {dup}")
+    if offenders:
+        record("duplicate definitions", "FAIL",
+               f"{len(offenders)} file(s) with shadowed definitions", "",
+               "Python keeps only the LAST definition — verify which one "
+               "produced the published numbers before deleting: "
+               + "; ".join(offenders))
+    else:
+        record("duplicate definitions", "OK",
+               "no shadowed top-level definitions")
+
+
 def check_protocol():
     ok = all(
         (REPO / f"configs/{f}").exists()
@@ -324,6 +361,7 @@ def main():
         args.quick = True
 
     check_protocol()
+    check_duplicate_definitions()
     check_index()
     check_pdf_parser()
     check_kg_artifacts()

@@ -1,5 +1,5 @@
 # Pipeline Validation Report
-*Generated 2026-07-28T12:24:38 on node10*
+*Generated 2026-07-29T15:57:38 on node07*
 
 | Stage | Status | Detail |
 |---|---|---|
@@ -10,7 +10,7 @@
 | 06b provenance KG | **OK** | loads via kg_io, 157 triples |
 | M4 panel KG | **OK** | loads via kg_io, 151 triples |
 | final enforced KG | **OK** | loads via kg_io, 151 triples |
-| 04b schema enforcement | **KNOWN_ISSUE** | 25 entity types present (schema declares 5); 04b script not yet deployed |
+| 04b schema enforcement | **OK** | 4 types |
 | 05a rule-canonicalize (smoke) | **OK** | exit 0 |
 | 04c lexicon guard (smoke) | **OK** | exit 0 |
 | 07 metrics (full34) | **OK** | exit 0 |
@@ -20,7 +20,3 @@
 ### 01 PDF parser — KNOWN_ISSUE
 - Detail: memory leak (~1.7GB/3s) in current env; run13 bypassed via chunk-level dedup of run11 index
 - Recommendation: pin/repair the PDF parsing dependency before any corpus extension; document versions with pip freeze
-
-### 04b schema enforcement — KNOWN_ISSUE
-- Detail: 25 entity types present (schema declares 5); 04b script not yet deployed
-- Recommendation: recreate 04b (TYPE_MAP 25->5, length filter, relation signatures, self-loops) and re-run FROM_STAGE=8

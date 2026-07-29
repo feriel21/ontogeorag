@@ -1,0 +1,31 @@
+n_arcs,path,relations,weakest_tier,min_confidence,all_tier1,n_papers_involved,start,end
+3,gas hydrate dissolution -> excess pressure -> formation stress gathering -> developing mtds,causes | causes | causes,1,0.4307,True,1,gas hydrate dissolution,developing mtds
+3,gas hydrate dissolution -> excess pressure -> slope failure -> mass transport deposit,causes | causes | causes,2,0.2584,False,8,gas hydrate dissolution,mass transport deposit
+3,rapid rate of sedimentation -> fluid overpressure -> slope failure -> mass transport deposit,causes | triggers | causes,2,0.1809,False,8,rapid rate of sedimentation,mass transport deposit
+3,rapid sedimentation -> fluid overpressure -> slope failure -> mass transport deposit,causes | triggers | causes,2,0.1809,False,8,rapid sedimentation,mass transport deposit
+3,steepening up-dip -> unstable condition -> slope failure -> mass transport deposit,causes | causes | causes,2,0.1809,False,6,steepening up-dip,mass transport deposit
+3,gas hydrate dissolution -> excess pressure -> slope failure -> incision of lateral ramps,causes | causes | triggers,2,0.0,False,2,gas hydrate dissolution,incision of lateral ramps
+3,gas hydrate dissolution -> excess pressure -> slope failure -> erosional scour,causes | causes | causes,2,0.0,False,2,gas hydrate dissolution,erosional scour
+3,rapid rate of sedimentation -> fluid overpressure -> slope failure -> incision of lateral ramps,causes | triggers | triggers,2,0.0,False,2,rapid rate of sedimentation,incision of lateral ramps
+3,rapid rate of sedimentation -> fluid overpressure -> slope failure -> erosional scour,causes | triggers | causes,2,0.0,False,2,rapid rate of sedimentation,erosional scour
+3,rapid sedimentation -> fluid overpressure -> slope failure -> incision of lateral ramps,causes | triggers | triggers,2,0.0,False,2,rapid sedimentation,incision of lateral ramps
+3,rapid sedimentation -> fluid overpressure -> slope failure -> erosional scour,causes | triggers | causes,2,0.0,False,2,rapid sedimentation,erosional scour
+3,steepening up-dip -> unstable condition -> slope failure -> incision of lateral ramps,causes | causes | triggers,2,0.0,False,1,steepening up-dip,incision of lateral ramps
+3,steepening up-dip -> unstable condition -> slope failure -> erosional scour,causes | causes | causes,2,0.0,False,1,steepening up-dip,erosional scour
+2,earthquake -> slope failure -> mass transport deposit,triggers | causes,1,1.0,True,11,earthquake,mass transport deposit
+2,water intrusion and fluidisation -> particle segregation -> formation of upper low-density layer,causes | affects,1,0.4307,True,1,water intrusion and fluidisation,formation of upper low-density layer
+2,water intrusion and fluidisation -> particle segregation -> formation of bipartite flow,causes | affects,1,0.4307,True,1,water intrusion and fluidisation,formation of bipartite flow
+2,water intrusion and fluidisation -> particle segregation -> bipartite flow,causes | causes,1,0.4307,True,1,water intrusion and fluidisation,bipartite flow
+2,wave-loading effects -> decrease in effective stress -> sediment approaching liquefaction,causes | causes,1,0.4307,True,1,wave-loading effects,sediment approaching liquefaction
+2,earthquake -> slope failure -> incision of lateral ramps,triggers | triggers,1,0.0,True,6,earthquake,incision of lateral ramps
+2,excess pore pressure -> slope failure -> mass transport deposit,causes | causes,2,0.6,False,11,excess pore pressure,mass transport deposit
+2,seismic loading -> slope failure -> mass transport deposit,triggers | causes,2,0.5168,False,9,seismic loading,mass transport deposit
+2,methane hydrate dissociation -> high excess pore pressure -> slumping,causes | triggers,2,0.1809,False,1,methane hydrate dissociation,slumping
+2,rapid rate of sedimentation -> fluid overpressure -> slope instability,causes | triggers,2,0.1809,False,2,rapid rate of sedimentation,slope instability
+2,rapid sedimentation -> fluid overpressure -> slope instability,causes | triggers,2,0.1809,False,2,rapid sedimentation,slope instability
+2,sea level fall -> high excess pore pressure -> slumping,causes | triggers,2,0.1809,False,1,sea level fall,slumping
+2,earthquake -> slope failure -> erosional scour,triggers | causes,2,0.0,False,6,earthquake,erosional scour
+2,excess pore pressure -> slope failure -> incision of lateral ramps,causes | triggers,2,0.0,False,5,excess pore pressure,incision of lateral ramps
+2,excess pore pressure -> slope failure -> erosional scour,causes | causes,2,0.0,False,5,excess pore pressure,erosional scour
+2,seismic loading -> slope failure -> incision of lateral ramps,triggers | triggers,2,0.0,False,3,seismic loading,incision of lateral ramps
+2,seismic loading -> slope failure -> erosional scour,triggers | causes,2,0.0,False,3,seismic loading,erosional scour
