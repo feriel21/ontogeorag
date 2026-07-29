@@ -1,0 +1,21 @@
+annotator,comment,confidence,expert_ord,expert_verdict,expert_verdict_raw,m4_confidence,m4_decision,m4_ord,object,relation,statement_id,subject,support_chunks,support_papers,tier
+expert1,Only folds are not enough to generate imbricate reflectors.,0.5,1,P,P,0.825,ACCEPT,2,high-amplitude,hasDescriptor,1,channel,17,6,1
+expert2,,0.5,2,Y,Y,0.825,ACCEPT,2,high-amplitude,hasDescriptor,1,channel,17,6,1
+expert1,Sara is the expert.,0.5,1,P,P,0.65,ACCEPT,2,discontinuous,hasDescriptor,2,channel,10,6,1
+expert2,will depend if causal factors are present,0.5,1,P,P,0.65,ACCEPT,2,discontinuous,hasDescriptor,2,channel,10,6,1
+expert1,,0.1292,2,Y,Y,0.5,UNCERTAIN,1,thin,hasDescriptor,5,channel levee complex,2,1,2
+expert2,If contrasts in the seismic impedance are laterally continuous,0.1292,1,P,P,0.5,UNCERTAIN,1,thin,hasDescriptor,5,channel levee complex,2,1,2
+expert1,"The statement is not clear. If there is an upper surface, one has to define a lower surface. Is it the same as the basal shear surface?",0.4307,1,P,P,0.65,ACCEPT,2,chaotic,hasDescriptor,6,debris-flow deposit,3,3,1
+expert2,what is the upper surface of the deposit?,0.4307,0,N,N,0.65,ACCEPT,2,chaotic,hasDescriptor,6,debris-flow deposit,3,3,1
+expert1,This is currently in discussion amongst specialists.,0.3,1,P,P,0.5,UNCERTAIN,1,discontinuous,hasDescriptor,7,fold,9,6,2
+expert2,Depending on the impact of sea level: for gas hydrate bearing margins not the case (1). Footnote (1): discussion required. [verdict cell ambiguous in PDF layout - VERIFY against original],0.3,,VERIFY,VERIFY,0.5,UNCERTAIN,1,discontinuous,hasDescriptor,7,fold,9,6,2
+expert1,"This is true when characterizing the impact of sea level change on coastal formations. The word 'wave' can refer to either surface wave, which impact is limited to coastal areas, or internal wave, which is due to water masses dynamics, and can trigger much deeper MTDs.",0.1292,1,P,P,0.575,UNCERTAIN,1,up to 500m in thickness,causes,9,compressive domain,2,1,2
+expert2,P(2). Footnote (2): define equilibrium conditions,0.1292,1,P,P,0.575,UNCERTAIN,1,up to 500m in thickness,causes,9,compressive domain,2,1,2
+expert1,"Can occur, but we are not sure if they are more common on passive margins.",0.5,1,P,P,0.825,ACCEPT,2,slope failure,triggers,18,earthquake,65,6,1
+expert2,What commonly means? They are not common,0.5,0,N,N,0.825,ACCEPT,2,slope failure,triggers,18,earthquake,65,6,1
+expert1,,0.3413,2,Y,Y,0.825,ACCEPT,2,basal shear surface,partOf,25,mass transport deposit,32,2,1
+expert2,,0.3413,2,Y,Y,0.825,ACCEPT,2,basal shear surface,partOf,25,mass transport deposit,32,2,1
+expert1,,0.2048,2,Y,Y,0.6,UNCERTAIN,1,upper surface,partOf,26,mass transport deposit,18,2,2
+expert2,,0.2048,2,Y,Y,0.6,UNCERTAIN,1,upper surface,partOf,26,mass transport deposit,18,2,2
+expert1,"The statement is true if talking about seismic profile. However, there is always a continuous basal surface in an MTD.",0.2153,1,P,P,0.75,ACCEPT,2,stable paleo-lakebed,overlies,28,rugged upper surface,0,1,1
+expert2,,0.2153,2,Y,Y,0.75,ACCEPT,2,stable paleo-lakebed,overlies,28,rugged upper surface,0,1,1

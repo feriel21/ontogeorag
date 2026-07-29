@@ -7,7 +7,7 @@
 | n_edges_multi | 151 | yes |
 | n_edges_simple | 149 | yes |
 | n_relation_types | 8 | yes |
-| n_entity_types_observed | 25 | yes |
+| n_entity_types_observed | 4 | yes |
 | n_components | 27 | yes |
 | largest_component_size | 93 | yes |
 | n_communities | 9 | annex |

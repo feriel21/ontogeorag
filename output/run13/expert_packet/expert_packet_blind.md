@@ -1,0 +1,456 @@
+# Expert validation — instructions
+
+You are asked to judge a set of statements extracted from the literature on
+mass-transport deposits. Each statement is shown with the passage it was
+extracted from and the source article.
+
+For each statement, please give one verdict:
+
+  Y  the statement is geologically correct as written
+  P  partially correct — correct only under conditions, or imprecise as
+     phrased (please say which condition or which imprecision)
+  N  the statement is incorrect
+
+Please add a short comment whenever you answer P or N — the comment is more
+valuable to us than the verdict itself.
+
+Notes:
+  * Judge the statement as written, not what it could mean if reworded.
+  * Statements are literal renderings of extracted relations; awkward
+    phrasing is expected and is itself useful information.
+  * The statements are presented in random order and carry no indication of
+    how confident the system was — this is deliberate.
+  * There is no expectation that all statements are correct.
+
+Estimated time: about 54 minutes for 36 statements.
+
+---
+
+### S001
+
+**rugged upper surface overlies stable paleo-lakebed.**
+
+> The compressive domain is comparatively thick; the mass transport deposit upper surface is rugose and elevated with respect to the stable palaeo-lakebed.
+
+*Source: RichardsonetalBasinResearch2011-online (1)*
+
+Verdict (Y / P / N): ______   Comment: _________________________________
+
+---
+
+### S002
+
+**excess pore pressure causes slope failure.**
+
+> On glaciated margins, a combination of preconditions to failure exists during the Holocene such as excess pore pressure generation (from rapid deposition) with slow dissipation or gas hydrate dissociation. The final triggering mechanisms are possibly high-magnitude earthquakes between 10 ka and 8 ka due to isostatic rebound during major ice sheet decay.
+
+*Source: D. Leynaud*
+
+Verdict (Y / P / N): ______   Comment: _________________________________
+
+---
+
+### S003
+
+**amapá megaslide complex is described in seismic data as stratified.**
+
+> AM2 to AM6 headscarps cut into well stratiﬁed lower slope siliciclastic layers related to the lateral depositional ﬂank of the Amazon fan, whose gravitational failure constitutes the source area for the related submarine landslides (Figs. 8 and 9B).
+
+*Source: Dos-Reis-et-al-2016-MPG*
+
+Verdict (Y / P / N): ______   Comment: _________________________________
+
+---
+
+### S004
+
+**debris flow is described in seismic data as hummocky.**
+
+> Irregular hummocks to featureless at upper boundary (see Figs. 22 and 26)
+
+*Source: 9781565762879_ch02*
+
+Verdict (Y / P / N): ______   Comment: _________________________________
+
+---
+
+### S005
+
+**compressive domain causes up to 500m in thickness.**
+
+> structures In the compressive domain mass transport deposits reach up to 500m in thickness...
+
+*Source: RichardsonetalBasinResearch2011-online (1)*
+
+Verdict (Y / P / N): ______   Comment: _________________________________
+
+---
+
+### S006
+
+**fluid overpressure triggers slope instability.**
+
+> The fluid pressure required to trigger a slope instability depends on (1) the length of the sliding sheet, (2) the dip of the detachment, (3) the slope of the wedge, and (4) the cohesion of the material used as a décollement layer.
+
+*Source: 1-s2.0-S0040195109002819-main*
+
+Verdict (Y / P / N): ______   Comment: _________________________________
+
+---
+
+### S007
+
+**slide is described in seismic data as low-amplitude.**
+
+> Low- and high-amplitude reflections geometrically arranged as though deformed through compressive stresses.
+
+*Source: Moscardelli_and_Wood_2008*
+
+Verdict (Y / P / N): ______   Comment: _________________________________
+
+---
+
+### S008
+
+**submarine landslide occurs in tectonically active margin.**
+
+> tectonically active margins are characterized by relatively small failures.
+
+*Source: JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and*
+
+Verdict (Y / P / N): ______   Comment: _________________________________
+
+---
+
+### S009
+
+**rapid rate of sedimentation causes fluid overpressure.**
+
+> If the load increases quickly (due, for example, to a rapid rate of sedimentation or to tectonic thickening) and the permeability is small enough, then Tc/Td and diffusion can be neglected, so that Eq. (6) becomes: dP dt Z ab fb Ca � � dst dt (7)
+
+*Source: 1-s2.0-S0191814106000101-main*
+
+Verdict (Y / P / N): ______   Comment: _________________________________
+
+---
+
+### S010
+
+**free gas affects slope stability.**
+
+> Considering that the two MTDs are more consolidated than undeformed slope strata, overpressure will build underneath them. The free gas and consequent overpressure will greatly affect bore-hole stability during drilling in such an hydrocarbon-rich basin as the Pearl River Mouth Basin.
+
+*Source: 1-s2.0-S0264817216304585-main*
+
+Verdict (Y / P / N): ______   Comment: _________________________________
+
+---
+
+### S011
+
+**volume and pressure buildup causes pore-fluid overpressure.**
+
+> In theory, when methane hydrate dissociates this results in an increase of volume and pressure buildup, because 1 m3 of methane hydrate dissociation develops into 164 m3 of methane gas at standard temperature and pressure conditions.
+
+*Source: 3-s2.0-B9780128130810007047-main*
+
+Verdict (Y / P / N): ______   Comment: _________________________________
+
+---
+
+### S012
+
+**fluid overpressure triggers slope failure.**
+
+> The fluid pressure required to trigger a slope instability depends on (1) the length of the sliding sheet, (2) the dip of the detachment, (3) the slope of the wedge, and (4) the cohesion of the material used as a décollement layer.
+
+*Source: 1-s2.0-S0040195109002819-main*
+
+Verdict (Y / P / N): ______   Comment: _________________________________
+
+---
+
+### S013
+
+**submarine landslide occurs in deltaic wedge.**
+
+> The distribution of submarine landslides in the Mediterranean reveals that major deltaic wedges have a higher density of large submarine landslides.
+
+*Source: JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and*
+
+Verdict (Y / P / N): ______   Comment: _________________________________
+
+---
+
+### S014
+
+**migration of depocenters causes instabilities.**
+
+> During relative sea-level rise and high stands the rise of the hydrostatic pressure and the migration of depocenters would generate instabilities.
+
+*Source: Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_*
+
+Verdict (Y / P / N): ______   Comment: _________________________________
+
+---
+
+### S015
+
+**mass transport deposit is described in seismic data as transparent.**
+
+> some channels having a high amplitude fill of discontinuous reflections and others having a low amplitude, transparent fill.
+
+Verdict (Y / P / N): ______   Comment: _________________________________
+
+---
+
+### S016
+
+**blocky material overlies basal shear surface.**
+
+> High ampli- tude, blocky material near the base of the deposit (de- scribed in the section above) remains semi-continuous above the curved ramp, forming a lobe of blocky material that drapes and follows the topography of the basal shear surface (Fig. 3a and b).
+
+*Source: RichardsonetalBasinResearch2011-online (1)*
+
+Verdict (Y / P / N): ______   Comment: _________________________________
+
+---
+
+### S017
+
+**siliciclastic unit is described in seismic data as transparent.**
+
+> Its internal seismic character is dominated by transparent facies, with the presence of local parallel-layered facies interpreted as preserved internal blocks...
+
+*Source: Dos-Reis-et-al-2016-MPG*
+
+Verdict (Y / P / N): ______   Comment: _________________________________
+
+---
+
+### S018
+
+**mass transport deposit is described in seismic data as faulted.**
+
+> In all cases, slide and faulted blocks are replaced 2–5 km downslope by mass-transport deposits exhibiting a set of acoustic features that can be grouped into two main types of seismic facies (considering the seismic resolution of available data), units a and b, which exhibit distinct signs of sediment displacement (Fig. 5a and b).
+
+*Source: Two-scale_gravitational_collapse_in_the_Amazon_Fan*
+
+Verdict (Y / P / N): ______   Comment: _________________________________
+
+---
+
+### S019
+
+**mass transport deposit is described in seismic data as discontinuous.**
+
+> On seismic proflies a mass transport deposit is identified by its characteristic facies: a rugose upper bounding surface located above discontinuous and low amplitude reflections (e.g. Posamentier & Kolla, 2003).
+
+Verdict (Y / P / N): ______   Comment: _________________________________
+
+---
+
+### S020
+
+**mass transport deposit is described in seismic data as high-amplitude.**
+
+> In this study area, a mass transport deposit upper surface is commonly a high amplitude, positive reflection.
+
+*Source: RichardsonetalBasinResearch2011-online (1)*
+
+Verdict (Y / P / N): ______   Comment: _________________________________
+
+---
+
+### S021
+
+**subaqueous slope failure causes mass transport deposit.**
+
+> This paper uses the terms ‘mass transport deposit’ for the sediment package emplaced during a slope failure and ‘mass transport complex’ where multiple slope failures have coalesced into a larger unit (e.g. Gamberi etal., 2011).
+
+*Source: RichardsonetalBasinResearch2011-online (1)*
+
+Verdict (Y / P / N): ______   Comment: _________________________________
+
+---
+
+### S022
+
+**mass transport deposit occurs in deep-water basinal settings.**
+
+> of mass-transport deposits in deepwater basinal settings.
+
+*Source: 9781565762879_ch02*
+
+Verdict (Y / P / N): ______   Comment: _________________________________
+
+---
+
+### S023
+
+**seismic loading triggers slope failure.**
+
+> It is speculated that earthquake loading is the final trigger for the initiation of the slides at the end of each glaciation.
+
+*Source: 3-s2.0-B9780128130810007047-main*
+
+Verdict (Y / P / N): ______   Comment: _________________________________
+
+---
+
+### S024
+
+**decrease in effective stress causes sediment approaching liquefaction.**
+
+> As the storm-wave-induced pore-water pressures build up, the effective stress decreases and the sediment approaches a state of liquefaction.
+
+*Source: Submarine_Mass_Movements_on_Continental*
+
+Verdict (Y / P / N): ______   Comment: _________________________________
+
+---
+
+### S025
+
+**mass transport deposit is described in seismic data as chaotic.**
+
+> Variable amplitude, semi-continuous to chaotic reflections in packages that have an erosional base and irregular top (b & c).
+
+*Source: Basin Research - 2016 - Ortiz‐Karpf - Mass‐transport complexes as markers of deep‐water fold‐and‐thrust belt evolution*
+
+Verdict (Y / P / N): ______   Comment: _________________________________
+
+---
+
+### S026
+
+**preserved block is described in seismic data as layered.**
+
+> An upper unit (150 to 200 m) of parallel discontinuous reflectors still preserves the original layers; however, irregularities of the seafloor suggest a continuous activity of the mass transport processes and associated deformation (Fig. 3).
+
+*Source: Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_*
+
+Verdict (Y / P / N): ______   Comment: _________________________________
+
+---
+
+### S027
+
+**mass transport deposit is described in seismic data as hummocky.**
+
+> On seismic data, mass-transport deposits can be recognized by certain geomorphologic as well as stratigraphic distinguishing characteristics: basal linear grooved and scoured surfaces, hummocky relief at the top, and internal chaotic to transparent seismic facies, with internal thrust faulting common.
+
+*Source: 9781565762879_ch02*
+
+Verdict (Y / P / N): ______   Comment: _________________________________
+
+---
+
+### S028
+
+**megaslide is described in seismic data as disrupted.**
+
+> AM3, the smallest megaslide in area (Table 1 and Fig. 9B), is dominated by chaotic facies and is substantially thicker close to its upslope limit, where traces of previous stratiﬁcation were preserved (Fig. 10B)."
+"Both AM3 and AM4 bulge up above the regional undeformed slope datum at some point of their downslope spread (Fig. 8)."
+"AM4, the largest siliciclastic megaslide of the AMC (Table 1), .
+
+*Source: Dos-Reis-et-al-2016-MPG*
+
+Verdict (Y / P / N): ______   Comment: _________________________________
+
+---
+
+### S029
+
+**erosion of canyon heads causes mass transport deposit.**
+
+> Piper et al. (1997) and Maslin and Mikkelsen (1997) consider that during low seal-level stands, gas hydrates destabilization, higher sedimentation rates and erosion of canyon heads are the principal causes of mass movement initiation.
+
+*Source: Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_*
+
+Verdict (Y / P / N): ______   Comment: _________________________________
+
+---
+
+### S030
+
+**slide is described in seismic data as blocky.**
+
+> Recognition of mass-transport deposits in outcrop is based on identification of bedding deformed by synsedimentary processes, with deformation ranging from minimal redistribution of large slide blocks to complete disaggregation typical of debris-flow deposits.
+
+*Source: 9781565762879_ch02*
+
+Verdict (Y / P / N): ______   Comment: _________________________________
+
+---
+
+### S031
+
+**slope failure triggers incision of lateral ramps.**
+
+> Slope failures with increasing erosive power incised lateral ramps into the basal shear surface which truncated and remobilised older mass transport deposits (Bull et al., 2009).
+
+Verdict (Y / P / N): ______   Comment: _________________________________
+
+---
+
+### S032
+
+**erosion affects ramps and promontories.**
+
+> A key observation in this work is that ramps and promontories have their long axes oriented parallel to the direction of transport of the interpreted MTDs (Fig. 5). Complete erosion of the paleoseaﬂoor may cause the section of the ramp that is normal to the mass ﬂow direction to be indiscernible on seismic proﬁles.
+
+*Source: 1-s2.0-S0025322713000571-main*
+
+Verdict (Y / P / N): ______   Comment: _________________________________
+
+---
+
+### S033
+
+**turbidite is described in seismic data as continuous.**
+
+> Turbidites in unit Ib are revealed as continuous moderate- to high-amplitude reflections (Figures 10, 11A).
+
+*Source: Alves_AAPG_MTDs_14*
+
+Verdict (Y / P / N): ______   Comment: _________________________________
+
+---
+
+### S034
+
+**steepening up-dip causes unstable condition.**
+
+> The area where no scarp exists was inherently unstable before r 2011The Authors Basin Research r 2011 Blackwell Publishing Ltd, European Association of Geoscientists & Engineers and International Association of Sedimentologists 708 S. E. J. Richardson et al. failure; located along the steepest portion of the slope, subject to higher shear stresses and unsupported by cohesive material upslope (due
+
+*Source: RichardsonetalBasinResearch2011-online (1)*
+
+Verdict (Y / P / N): ______   Comment: _________________________________
+
+---
+
+### S035
+
+**slide is described in seismic data as undeformed.**
+
+> Note in Part A the imbricate thrusts and the lack of disruption or internal deformation within the mass transported material.
+
+*Source: 9781565762879_ch02*
+
+Verdict (Y / P / N): ______   Comment: _________________________________
+
+---
+
+### S036
+
+**mass transport deposit is part of basal shear surface.**
+
+> translated downslope over the basal shear surface, which also acts as a detachment surface.
+
+*Source: RichardsonetalBasinResearch2011-online (1)*
+
+Verdict (Y / P / N): ______   Comment: _________________________________
+
+---
+

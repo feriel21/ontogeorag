@@ -56,23 +56,6 @@
         "flags": [
           "partial_support"
         ]
-      },
-      "evidence_chunk_id": "Elverhoi, A., Breien::chunk45",
-      "evidence_paper": "Elverhoi, A., Breien",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [
-        "Elverhoi, A., Breien::chunk45"
-      ],
-      "support_chunks": 1,
-      "support_papers": 1,
-      "paper_ids": [
-        "Elverhoi, A., Breien"
-      ],
-      "confidence": 0.4307,
-      "conf_components": {
-        "w_tier": 1.0,
-        "w_m4": 1.0,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -113,21 +96,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "PARTIALLY_SUPPORTED|SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "Submarine_Mass_Movements_on_Continental::chunk39",
-      "evidence_paper": "Submarine_Mass_Movements_on_Continental",
-      "evidence_match": "fuzzy(0.81)",
-      "cooc_chunk_ids": [],
-      "support_chunks": 0,
-      "support_papers": 1,
-      "paper_ids": [
-        "Submarine_Mass_Movements_on_Continental"
-      ],
-      "confidence": 0.4307,
-      "conf_components": {
-        "w_tier": 1.0,
-        "w_m4": 1.0,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -168,21 +136,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "SUPPORTED|SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "1-s2.0-S0264817216304585-main::chunk26",
-      "evidence_paper": "1-s2.0-S0264817216304585-main",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [],
-      "support_chunks": 0,
-      "support_papers": 1,
-      "paper_ids": [
-        "1-s2.0-S0264817216304585-main"
-      ],
-      "confidence": 0.4307,
-      "conf_components": {
-        "w_tier": 1.0,
-        "w_m4": 1.0,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -223,21 +176,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "SUPPORTED|SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "Elverhoi, A., Breien::chunk44",
-      "evidence_paper": "Elverhoi, A., Breien",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [],
-      "support_chunks": 0,
-      "support_papers": 1,
-      "paper_ids": [
-        "Elverhoi, A., Breien"
-      ],
-      "confidence": 0.4307,
-      "conf_components": {
-        "w_tier": 1.0,
-        "w_m4": 1.0,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -278,21 +216,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "SUPPORTED|SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "Elverhoi, A., Breien::chunk44",
-      "evidence_paper": "Elverhoi, A., Breien",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [],
-      "support_chunks": 0,
-      "support_papers": 1,
-      "paper_ids": [
-        "Elverhoi, A., Breien"
-      ],
-      "confidence": 0.4307,
-      "conf_components": {
-        "w_tier": 1.0,
-        "w_m4": 1.0,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -334,21 +257,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "SUPPORTED|SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "1-s2.0-S0040195109002819-main::chunk14",
-      "evidence_paper": "1-s2.0-S0040195109002819-main",
-      "evidence_match": "fuzzy(0.62)",
-      "cooc_chunk_ids": [],
-      "support_chunks": 0,
-      "support_papers": 1,
-      "paper_ids": [
-        "1-s2.0-S0040195109002819-main"
-      ],
-      "confidence": 0.4307,
-      "conf_components": {
-        "w_tier": 1.0,
-        "w_m4": 1.0,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -390,24 +298,6 @@
         "blind_verdict": "PLAUSIBLE|UNCERTAIN",
         "evidence_verdict": "SUPPORTED|SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "9781565762879_ch02::chunk42",
-      "evidence_paper": "9781565762879_ch02",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [
-        "9781565762879_ch02::chunk42",
-        "9781565762879_ch02::chunk43"
-      ],
-      "support_chunks": 2,
-      "support_papers": 1,
-      "paper_ids": [
-        "9781565762879_ch02"
-      ],
-      "confidence": 0.4307,
-      "conf_components": {
-        "w_tier": 1.0,
-        "w_m4": 1.0,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -448,21 +338,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "SUPPORTED|PARTIALLY_SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "Submarine_Mass_Movements_on_Continental::chunk48",
-      "evidence_paper": "Submarine_Mass_Movements_on_Continental",
-      "evidence_match": "fuzzy(0.80)",
-      "cooc_chunk_ids": [],
-      "support_chunks": 0,
-      "support_papers": 1,
-      "paper_ids": [
-        "Submarine_Mass_Movements_on_Continental"
-      ],
-      "confidence": 0.4307,
-      "conf_components": {
-        "w_tier": 1.0,
-        "w_m4": 1.0,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -505,23 +380,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "PARTIALLY_SUPPORTED|SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "Two-scale_gravitational_collapse_in_the_Amazon_Fan::chunk9",
-      "evidence_paper": "Two-scale_gravitational_collapse_in_the_Amazon_Fan",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [
-        "Two-scale_gravitational_collapse_in_the_Amazon_Fan::chunk9"
-      ],
-      "support_chunks": 1,
-      "support_papers": 1,
-      "paper_ids": [
-        "Two-scale_gravitational_collapse_in_the_Amazon_Fan"
-      ],
-      "confidence": 0.4307,
-      "conf_components": {
-        "w_tier": 1.0,
-        "w_m4": 1.0,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -563,23 +421,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "SUPPORTED|SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_::chunk5",
-      "evidence_paper": "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_::chunk5"
-      ],
-      "support_chunks": 1,
-      "support_papers": 1,
-      "paper_ids": [
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_"
-      ],
-      "confidence": 0.4307,
-      "conf_components": {
-        "w_tier": 1.0,
-        "w_m4": 1.0,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -622,24 +463,6 @@
         "flags": [
           "partial_support"
         ]
-      },
-      "evidence_chunk_id": "Submarine_Mass_Movements_on_Continental::chunk48",
-      "evidence_paper": "Submarine_Mass_Movements_on_Continental",
-      "evidence_match": "fuzzy(0.80)",
-      "cooc_chunk_ids": [
-        "Submarine_Mass_Movements_on_Continental::chunk22",
-        "Submarine_Mass_Movements_on_Continental::chunk23"
-      ],
-      "support_chunks": 2,
-      "support_papers": 1,
-      "paper_ids": [
-        "Submarine_Mass_Movements_on_Continental"
-      ],
-      "confidence": 0.4307,
-      "conf_components": {
-        "w_tier": 1.0,
-        "w_m4": 1.0,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -681,21 +504,6 @@
         "blind_verdict": "PLAUSIBLE|UNCERTAIN",
         "evidence_verdict": "SUPPORTED|SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "Chinese J of Geophysics - 2013 - WU - Analysis on Seismic Characteristics and Triggering Mechanisms of Mass Transport::chunk17",
-      "evidence_paper": "Chinese J of Geophysics - 2013 - WU - Analysis on Seismic Characteristics and Triggering Mechanisms of Mass Transport",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [],
-      "support_chunks": 0,
-      "support_papers": 1,
-      "paper_ids": [
-        "Chinese J of Geophysics - 2013 - WU - Analysis on Seismic Characteristics and Triggering Mechanisms of Mass Transport"
-      ],
-      "confidence": 0.4307,
-      "conf_components": {
-        "w_tier": 1.0,
-        "w_m4": 1.0,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -737,21 +545,6 @@
         "blind_verdict": "PLAUSIBLE|IMPLAUSIBLE",
         "evidence_verdict": "SUPPORTED|SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "Chinese J of Geophysics - 2013 - WU - Analysis on Seismic Characteristics and Triggering Mechanisms of Mass Transport::chunk17",
-      "evidence_paper": "Chinese J of Geophysics - 2013 - WU - Analysis on Seismic Characteristics and Triggering Mechanisms of Mass Transport",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [],
-      "support_chunks": 0,
-      "support_papers": 1,
-      "paper_ids": [
-        "Chinese J of Geophysics - 2013 - WU - Analysis on Seismic Characteristics and Triggering Mechanisms of Mass Transport"
-      ],
-      "confidence": 0.4307,
-      "conf_components": {
-        "w_tier": 1.0,
-        "w_m4": 1.0,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -793,23 +586,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "SUPPORTED|SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "Chinese J of Geophysics - 2013 - WU - Analysis on Seismic Characteristics and Triggering Mechanisms of Mass Transport::chunk17",
-      "evidence_paper": "Chinese J of Geophysics - 2013 - WU - Analysis on Seismic Characteristics and Triggering Mechanisms of Mass Transport",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [
-        "Chinese J of Geophysics - 2013 - WU - Analysis on Seismic Characteristics and Triggering Mechanisms of Mass Transport::chunk17"
-      ],
-      "support_chunks": 1,
-      "support_papers": 1,
-      "paper_ids": [
-        "Chinese J of Geophysics - 2013 - WU - Analysis on Seismic Characteristics and Triggering Mechanisms of Mass Transport"
-      ],
-      "confidence": 0.4307,
-      "conf_components": {
-        "w_tier": 1.0,
-        "w_m4": 1.0,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -851,25 +627,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "SUPPORTED|SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_::chunk5",
-      "evidence_paper": "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [
-        "Dos-Reis-et-al-2016-MPG::chunk9",
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_::chunk5"
-      ],
-      "support_chunks": 2,
-      "support_papers": 2,
-      "paper_ids": [
-        "Dos-Reis-et-al-2016-MPG",
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_"
-      ],
-      "confidence": 0.6826,
-      "conf_components": {
-        "w_tier": 1.0,
-        "w_m4": 1.0,
-        "w_consensus": 0.6826
       }
     },
     {
@@ -909,24 +666,6 @@
         "blind_verdict": "PLAUSIBLE|IMPLAUSIBLE",
         "evidence_verdict": "SUPPORTED|SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "Basin Research - 2016 - Ortiz‐Karpf - Mass‐transport complexes as markers of deep‐water fold‐and‐thrust belt evolution ::chunk38",
-      "evidence_paper": "Basin Research - 2016 - Ortiz‐Karpf - Mass‐transport complexes as markers of deep‐water fold‐and‐thrust belt evolution",
-      "evidence_match": "fuzzy(0.87)",
-      "cooc_chunk_ids": [
-        "Basin Research - 2016 - Ortiz‐Karpf - Mass‐transport complexes as markers of deep‐water fold‐and‐thrust belt evolution ::chunk37",
-        "Basin Research - 2016 - Ortiz‐Karpf - Mass‐transport complexes as markers of deep‐water fold‐and‐thrust belt evolution ::chunk38"
-      ],
-      "support_chunks": 2,
-      "support_papers": 1,
-      "paper_ids": [
-        "Basin Research - 2016 - Ortiz‐Karpf - Mass‐transport complexes as markers of deep‐water fold‐and‐thrust belt evolution"
-      ],
-      "confidence": 0.4307,
-      "conf_components": {
-        "w_tier": 1.0,
-        "w_m4": 1.0,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -966,23 +705,6 @@
         "blind_verdict": "PLAUSIBLE|IMPLAUSIBLE",
         "evidence_verdict": "PARTIALLY_SUPPORTED|SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "Basin Research - 2016 - Ortiz‐Karpf - Mass‐transport complexes as markers of deep‐water fold‐and‐thrust belt evolution ::chunk37",
-      "evidence_paper": "Basin Research - 2016 - Ortiz‐Karpf - Mass‐transport complexes as markers of deep‐water fold‐and‐thrust belt evolution",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [
-        "Basin Research - 2016 - Ortiz‐Karpf - Mass‐transport complexes as markers of deep‐water fold‐and‐thrust belt evolution ::chunk38"
-      ],
-      "support_chunks": 1,
-      "support_papers": 1,
-      "paper_ids": [
-        "Basin Research - 2016 - Ortiz‐Karpf - Mass‐transport complexes as markers of deep‐water fold‐and‐thrust belt evolution"
-      ],
-      "confidence": 0.4307,
-      "conf_components": {
-        "w_tier": 1.0,
-        "w_m4": 1.0,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -1024,25 +746,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "SUPPORTED|SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_::chunk5",
-      "evidence_paper": "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [
-        "Dos-Reis-et-al-2016-MPG::chunk9",
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_::chunk5"
-      ],
-      "support_chunks": 2,
-      "support_papers": 2,
-      "paper_ids": [
-        "Dos-Reis-et-al-2016-MPG",
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_"
-      ],
-      "confidence": 0.6826,
-      "conf_components": {
-        "w_tier": 1.0,
-        "w_m4": 1.0,
-        "w_consensus": 0.6826
       }
     },
     {
@@ -1083,21 +786,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "PARTIALLY_SUPPORTED|SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "Elverhoi, A., Breien::chunk44",
-      "evidence_paper": "Elverhoi, A., Breien",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [],
-      "support_chunks": 0,
-      "support_papers": 1,
-      "paper_ids": [
-        "Elverhoi, A., Breien"
-      ],
-      "confidence": 0.4307,
-      "conf_components": {
-        "w_tier": 1.0,
-        "w_m4": 1.0,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -1138,21 +826,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "SUPPORTED|SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "3-s2.0-B9780128130810007047-main::chunk21",
-      "evidence_paper": "3-s2.0-B9780128130810007047-main",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [],
-      "support_chunks": 0,
-      "support_papers": 1,
-      "paper_ids": [
-        "3-s2.0-B9780128130810007047-main"
-      ],
-      "confidence": 0.4307,
-      "conf_components": {
-        "w_tier": 1.0,
-        "w_m4": 1.0,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -1194,23 +867,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "PARTIALLY_SUPPORTED|SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_::chunk5",
-      "evidence_paper": "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_::chunk5"
-      ],
-      "support_chunks": 1,
-      "support_papers": 1,
-      "paper_ids": [
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_"
-      ],
-      "confidence": 0.4307,
-      "conf_components": {
-        "w_tier": 1.0,
-        "w_m4": 1.0,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -1253,21 +909,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "SUPPORTED|SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "Two-scale_gravitational_collapse_in_the_Amazon_Fan::chunk9",
-      "evidence_paper": "Two-scale_gravitational_collapse_in_the_Amazon_Fan",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [],
-      "support_chunks": 0,
-      "support_papers": 1,
-      "paper_ids": [
-        "Two-scale_gravitational_collapse_in_the_Amazon_Fan"
-      ],
-      "confidence": 0.4307,
-      "conf_components": {
-        "w_tier": 1.0,
-        "w_m4": 1.0,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -1308,21 +949,6 @@
         "blind_verdict": "PLAUSIBLE|UNCERTAIN",
         "evidence_verdict": "SUPPORTED|SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "1-s2.0-S0264817216304585-main::chunk26",
-      "evidence_paper": "1-s2.0-S0264817216304585-main",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [],
-      "support_chunks": 0,
-      "support_papers": 1,
-      "paper_ids": [
-        "1-s2.0-S0264817216304585-main"
-      ],
-      "confidence": 0.4307,
-      "conf_components": {
-        "w_tier": 1.0,
-        "w_m4": 1.0,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -1363,25 +989,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "SUPPORTED|SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "Elverhoi, A., Breien::chunk44",
-      "evidence_paper": "Elverhoi, A., Breien",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [
-        "Elverhoi, A., Breien::chunk23",
-        "Elverhoi, A., Breien::chunk44",
-        "Elverhoi, A., Breien::chunk45"
-      ],
-      "support_chunks": 3,
-      "support_papers": 1,
-      "paper_ids": [
-        "Elverhoi, A., Breien"
-      ],
-      "confidence": 0.4307,
-      "conf_components": {
-        "w_tier": 1.0,
-        "w_m4": 1.0,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -1423,26 +1030,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "PARTIALLY_SUPPORTED|SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_::chunk5",
-      "evidence_paper": "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [
-        "Dos-Reis-et-al-2016-MPG::chunk9",
-        "Two-scale_gravitational_collapse_in_the_Amazon_Fan::chunk9"
-      ],
-      "support_chunks": 2,
-      "support_papers": 3,
-      "paper_ids": [
-        "Dos-Reis-et-al-2016-MPG",
-        "Two-scale_gravitational_collapse_in_the_Amazon_Fan",
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_"
-      ],
-      "confidence": 0.8614,
-      "conf_components": {
-        "w_tier": 1.0,
-        "w_m4": 1.0,
-        "w_consensus": 0.8614
       }
     },
     {
@@ -1485,23 +1072,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "SUPPORTED|SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "Two-scale_gravitational_collapse_in_the_Amazon_Fan::chunk9",
-      "evidence_paper": "Two-scale_gravitational_collapse_in_the_Amazon_Fan",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [
-        "Two-scale_gravitational_collapse_in_the_Amazon_Fan::chunk9"
-      ],
-      "support_chunks": 1,
-      "support_papers": 1,
-      "paper_ids": [
-        "Two-scale_gravitational_collapse_in_the_Amazon_Fan"
-      ],
-      "confidence": 0.4307,
-      "conf_components": {
-        "w_tier": 1.0,
-        "w_m4": 1.0,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -1542,21 +1112,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "SUPPORTED|SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "Elverhoi, A., Breien::chunk44",
-      "evidence_paper": "Elverhoi, A., Breien",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [],
-      "support_chunks": 0,
-      "support_papers": 1,
-      "paper_ids": [
-        "Elverhoi, A., Breien"
-      ],
-      "confidence": 0.4307,
-      "conf_components": {
-        "w_tier": 1.0,
-        "w_m4": 1.0,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -1597,57 +1152,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "SUPPORTED|SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "RichardsonetalBasinResearch2011-online (1)::chunk3",
-      "evidence_paper": "RichardsonetalBasinResearch2011-online (1)",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [
-        "1-s2.0-S0025322712000412-main::chunk47",
-        "1-s2.0-S0264817216304585-main::chunk37",
-        "Alves_AAPG_MTDs_14::chunk52",
-        "Alves_AAPG_MTDs_14::chunk53",
-        "Alves_AAPG_MTDs_14::chunk64",
-        "Basin Research - 2016 - Ortiz‐Karpf - Mass‐transport complexes as markers of deep‐water fold‐and‐thrust belt evolution ::chunk62",
-        "Basin Research - 2016 - Ortiz‐Karpf - Mass‐transport complexes as markers of deep‐water fold‐and‐thrust belt evolution ::chunk63",
-        "Basin Research - 2016 - Ortiz‐Karpf - Mass‐transport complexes as markers of deep‐water fold‐and‐thrust belt evolution ::chunk64",
-        "Giacomo Dalla Valle::chunk39",
-        "Giacomo Dalla Valle::chunk42",
-        "RichardsonetalBasinResearch2011-online (1)::chunk0",
-        "RichardsonetalBasinResearch2011-online (1)::chunk1",
-        "RichardsonetalBasinResearch2011-online (1)::chunk2",
-        "RichardsonetalBasinResearch2011-online (1)::chunk3",
-        "RichardsonetalBasinResearch2011-online (1)::chunk9",
-        "RichardsonetalBasinResearch2011-online (1)::chunk12",
-        "RichardsonetalBasinResearch2011-online (1)::chunk15",
-        "RichardsonetalBasinResearch2011-online (1)::chunk19",
-        "RichardsonetalBasinResearch2011-online (1)::chunk20",
-        "RichardsonetalBasinResearch2011-online (1)::chunk21",
-        "RichardsonetalBasinResearch2011-online (1)::chunk22",
-        "RichardsonetalBasinResearch2011-online (1)::chunk23",
-        "RichardsonetalBasinResearch2011-online (1)::chunk25",
-        "RichardsonetalBasinResearch2011-online (1)::chunk26",
-        "RichardsonetalBasinResearch2011-online (1)::chunk27",
-        "RichardsonetalBasinResearch2011-online (1)::chunk28",
-        "RichardsonetalBasinResearch2011-online (1)::chunk29",
-        "RichardsonetalBasinResearch2011-online (1)::chunk31",
-        "RichardsonetalBasinResearch2011-online (1)::chunk34",
-        "RichardsonetalBasinResearch2011-online (1)::chunk35"
-      ],
-      "support_chunks": 34,
-      "support_papers": 6,
-      "paper_ids": [
-        "1-s2.0-S0025322712000412-main",
-        "1-s2.0-S0264817216304585-main",
-        "Alves_AAPG_MTDs_14",
-        "Basin Research - 2016 - Ortiz‐Karpf - Mass‐transport complexes as markers of deep‐water fold‐and‐thrust belt evolution",
-        "Giacomo Dalla Valle",
-        "RichardsonetalBasinResearch2011-online (1)"
-      ],
-      "confidence": 1.0,
-      "conf_components": {
-        "w_tier": 1.0,
-        "w_m4": 1.0,
-        "w_consensus": 1.0
       }
     },
     {
@@ -1688,23 +1192,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "PARTIALLY_SUPPORTED|SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "Elverhoi, A., Breien::chunk45",
-      "evidence_paper": "Elverhoi, A., Breien",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [
-        "Elverhoi, A., Breien::chunk45"
-      ],
-      "support_chunks": 1,
-      "support_papers": 1,
-      "paper_ids": [
-        "Elverhoi, A., Breien"
-      ],
-      "confidence": 0.4307,
-      "conf_components": {
-        "w_tier": 1.0,
-        "w_m4": 1.0,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -1745,21 +1232,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "PARTIALLY_SUPPORTED|SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "Submarine_Mass_Movements_on_Continental::chunk48",
-      "evidence_paper": "Submarine_Mass_Movements_on_Continental",
-      "evidence_match": "fuzzy(0.80)",
-      "cooc_chunk_ids": [],
-      "support_chunks": 0,
-      "support_papers": 1,
-      "paper_ids": [
-        "Submarine_Mass_Movements_on_Continental"
-      ],
-      "confidence": 0.4307,
-      "conf_components": {
-        "w_tier": 1.0,
-        "w_m4": 1.0,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -1800,21 +1272,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "SUPPORTED|SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "Submarine_Mass_Movements_on_Continental::chunk48",
-      "evidence_paper": "Submarine_Mass_Movements_on_Continental",
-      "evidence_match": "fuzzy(0.80)",
-      "cooc_chunk_ids": [],
-      "support_chunks": 0,
-      "support_papers": 1,
-      "paper_ids": [
-        "Submarine_Mass_Movements_on_Continental"
-      ],
-      "confidence": 0.4307,
-      "conf_components": {
-        "w_tier": 1.0,
-        "w_m4": 1.0,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -1855,44 +1312,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "PARTIALLY_SUPPORTED|SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "",
-      "evidence_paper": "",
-      "evidence_match": "none",
-      "cooc_chunk_ids": [
-        "1-s2.0-S0264817216304585-main::chunk10",
-        "9781565762879_ch02::chunk23",
-        "Basin Research - 2016 - Ortiz‐Karpf - Mass‐transport complexes as markers of deep‐water fold‐and‐thrust belt evolution ::chunk21",
-        "Bourget,j::chunk1",
-        "Bourget,j::chunk27",
-        "Bourget,j::chunk30",
-        "Bourget,j::chunk46",
-        "Bourget,j::chunk58",
-        "Giacomo Dalla Valle::chunk12",
-        "Giacomo Dalla Valle::chunk14",
-        "Giacomo Dalla Valle::chunk20",
-        "Giacomo Dalla Valle::chunk21",
-        "Giacomo Dalla Valle::chunk24",
-        "Giacomo Dalla Valle::chunk25",
-        "Giacomo Dalla Valle::chunk31",
-        "Moscardelli_and_Wood_2008::chunk25",
-        "Moscardelli_and_Wood_2008::chunk26"
-      ],
-      "support_chunks": 17,
-      "support_papers": 6,
-      "paper_ids": [
-        "1-s2.0-S0264817216304585-main",
-        "9781565762879_ch02",
-        "Basin Research - 2016 - Ortiz‐Karpf - Mass‐transport complexes as markers of deep‐water fold‐and‐thrust belt evolution",
-        "Bourget,j",
-        "Giacomo Dalla Valle",
-        "Moscardelli_and_Wood_2008"
-      ],
-      "confidence": 1.0,
-      "conf_components": {
-        "w_tier": 1.0,
-        "w_m4": 1.0,
-        "w_consensus": 1.0
       }
     },
     {
@@ -1935,37 +1354,6 @@
         "flags": [
           "partial_support"
         ]
-      },
-      "evidence_chunk_id": "",
-      "evidence_paper": "",
-      "evidence_match": "none",
-      "cooc_chunk_ids": [
-        "Basin Research - 2016 - Ortiz‐Karpf - Mass‐transport complexes as markers of deep‐water fold‐and‐thrust belt evolution ::chunk37",
-        "Basin Research - 2016 - Ortiz‐Karpf - Mass‐transport complexes as markers of deep‐water fold‐and‐thrust belt evolution ::chunk38",
-        "Bourget,j::chunk26",
-        "Bourget,j::chunk27",
-        "Bourget,j::chunk28",
-        "Giacomo Dalla Valle::chunk14",
-        "Ian R. Clark, Joseph A. Cartwright::chunk11",
-        "Ian R. Clark, Joseph A. Cartwright::chunk12",
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_::chunk10",
-        "Moscardelli_and_Wood_2008::chunk46"
-      ],
-      "support_chunks": 10,
-      "support_papers": 6,
-      "paper_ids": [
-        "Basin Research - 2016 - Ortiz‐Karpf - Mass‐transport complexes as markers of deep‐water fold‐and‐thrust belt evolution",
-        "Bourget,j",
-        "Giacomo Dalla Valle",
-        "Ian R. Clark, Joseph A. Cartwright",
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_",
-        "Moscardelli_and_Wood_2008"
-      ],
-      "confidence": 1.0,
-      "conf_components": {
-        "w_tier": 1.0,
-        "w_m4": 1.0,
-        "w_consensus": 1.0
       }
     },
     {
@@ -2008,33 +1396,6 @@
         "flags": [
           "partial_support"
         ]
-      },
-      "evidence_chunk_id": "9781565762879_ch02::chunk37",
-      "evidence_paper": "9781565762879_ch02",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [
-        "9781565762879_ch02::chunk1",
-        "9781565762879_ch03::chunk14",
-        "9781565762879_ch03::chunk35",
-        "9781565762879_ch03::chunk43",
-        "9781565762879_ch03::chunk44",
-        "9781565762879_ch03::chunk55",
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_::chunk7",
-        "RichardsonetalBasinResearch2011-online (1)::chunk49"
-      ],
-      "support_chunks": 8,
-      "support_papers": 4,
-      "paper_ids": [
-        "9781565762879_ch02",
-        "9781565762879_ch03",
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_",
-        "RichardsonetalBasinResearch2011-online (1)"
-      ],
-      "confidence": 1.0,
-      "conf_components": {
-        "w_tier": 1.0,
-        "w_m4": 1.0,
-        "w_consensus": 1.0
       }
     },
     {
@@ -2083,27 +1444,6 @@
         "flags": [
           "partial_support"
         ]
-      },
-      "evidence_chunk_id": "Two-scale_gravitational_collapse_in_the_Amazon_Fan::chunk19",
-      "evidence_paper": "Two-scale_gravitational_collapse_in_the_Amazon_Fan",
-      "evidence_match": "fuzzy(0.76)",
-      "cooc_chunk_ids": [
-        "9781565762879_ch02::chunk1",
-        "9781565762879_ch02::chunk39",
-        "9781565762879_ch03::chunk50"
-      ],
-      "support_chunks": 3,
-      "support_papers": 3,
-      "paper_ids": [
-        "9781565762879_ch02",
-        "9781565762879_ch03",
-        "Two-scale_gravitational_collapse_in_the_Amazon_Fan"
-      ],
-      "confidence": 0.8614,
-      "conf_components": {
-        "w_tier": 1.0,
-        "w_m4": 1.0,
-        "w_consensus": 0.8614
       }
     },
     {
@@ -2143,27 +1483,6 @@
         "blind_verdict": "PLAUSIBLE|UNCERTAIN",
         "evidence_verdict": "SUPPORTED|SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "RichardsonetalBasinResearch2011-online (1)::chunk7",
-      "evidence_paper": "RichardsonetalBasinResearch2011-online (1)",
-      "evidence_match": "fuzzy(0.64)",
-      "cooc_chunk_ids": [
-        "1-s2.0-S0025322713000571-main::chunk26",
-        "Alves_AAPG_MTDs_14::chunk15",
-        "Alves_AAPG_MTDs_14::chunk16"
-      ],
-      "support_chunks": 3,
-      "support_papers": 3,
-      "paper_ids": [
-        "1-s2.0-S0025322713000571-main",
-        "Alves_AAPG_MTDs_14",
-        "RichardsonetalBasinResearch2011-online (1)"
-      ],
-      "confidence": 0.8614,
-      "conf_components": {
-        "w_tier": 1.0,
-        "w_m4": 1.0,
-        "w_consensus": 0.8614
       }
     },
     {
@@ -2204,25 +1523,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "SUPPORTED|SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "RichardsonetalBasinResearch2011-online (1)::chunk8",
-      "evidence_paper": "RichardsonetalBasinResearch2011-online (1)",
-      "evidence_match": "fuzzy(0.92)",
-      "cooc_chunk_ids": [
-        "Bourget,j::chunk27",
-        "Bourget,j::chunk30"
-      ],
-      "support_chunks": 2,
-      "support_papers": 2,
-      "paper_ids": [
-        "Bourget,j",
-        "RichardsonetalBasinResearch2011-online (1)"
-      ],
-      "confidence": 0.6826,
-      "conf_components": {
-        "w_tier": 1.0,
-        "w_m4": 1.0,
-        "w_consensus": 0.6826
       }
     },
     {
@@ -2263,24 +1563,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "SUPPORTED|PARTIALLY_SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "9781565762879_ch03::chunk50",
-      "evidence_paper": "9781565762879_ch03",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [
-        "JGR Solid Earth - 2013 - Mourgues - The Coulomb critical taper theory applied to gravitational instabilities::chunk23"
-      ],
-      "support_chunks": 1,
-      "support_papers": 2,
-      "paper_ids": [
-        "JGR Solid Earth - 2013 - Mourgues - The Coulomb critical taper theory applied to gravitational instabilities",
-        "9781565762879_ch03"
-      ],
-      "confidence": 0.6826,
-      "conf_components": {
-        "w_tier": 1.0,
-        "w_m4": 1.0,
-        "w_consensus": 0.6826
       }
     },
     {
@@ -2324,33 +1606,6 @@
         "blind_verdict": "PLAUSIBLE|UNCERTAIN",
         "evidence_verdict": "PARTIALLY_SUPPORTED|SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "Alves_AAPG_MTDs_14::chunk12",
-      "evidence_paper": "Alves_AAPG_MTDs_14",
-      "evidence_match": "fuzzy(0.70)",
-      "cooc_chunk_ids": [
-        "Alves_AAPG_MTDs_14::chunk12",
-        "Alves_AAPG_MTDs_14::chunk15",
-        "RichardsonetalBasinResearch2011-online (1)::chunk13",
-        "RichardsonetalBasinResearch2011-online (1)::chunk14",
-        "RichardsonetalBasinResearch2011-online (1)::chunk18",
-        "RichardsonetalBasinResearch2011-online (1)::chunk19",
-        "RichardsonetalBasinResearch2011-online (1)::chunk20",
-        "RichardsonetalBasinResearch2011-online (1)::chunk26",
-        "RichardsonetalBasinResearch2011-online (1)::chunk39",
-        "RichardsonetalBasinResearch2011-online (1)::chunk40"
-      ],
-      "support_chunks": 10,
-      "support_papers": 2,
-      "paper_ids": [
-        "Alves_AAPG_MTDs_14",
-        "RichardsonetalBasinResearch2011-online (1)"
-      ],
-      "confidence": 0.6826,
-      "conf_components": {
-        "w_tier": 1.0,
-        "w_m4": 1.0,
-        "w_consensus": 0.6826
       }
     },
     {
@@ -2395,27 +1650,6 @@
         "flags": [
           "partial_support"
         ]
-      },
-      "evidence_chunk_id": "Two-scale_gravitational_collapse_in_the_Amazon_Fan::chunk18",
-      "evidence_paper": "Two-scale_gravitational_collapse_in_the_Amazon_Fan",
-      "evidence_match": "fuzzy(0.90)",
-      "cooc_chunk_ids": [
-        "Alves_AAPG_MTDs_14::chunk12",
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_::chunk6",
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_::chunk7"
-      ],
-      "support_chunks": 3,
-      "support_papers": 3,
-      "paper_ids": [
-        "Alves_AAPG_MTDs_14",
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_",
-        "Two-scale_gravitational_collapse_in_the_Amazon_Fan"
-      ],
-      "confidence": 0.8614,
-      "conf_components": {
-        "w_tier": 1.0,
-        "w_m4": 1.0,
-        "w_consensus": 0.8614
       }
     },
     {
@@ -2457,30 +1691,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "SUPPORTED|SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "9781565762879_ch02::chunk1",
-      "evidence_paper": "9781565762879_ch02",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [
-        "1-s2.0-S0025322712000412-main::chunk0",
-        "1-s2.0-S0025322713000571-main::chunk25",
-        "1-s2.0-S0025322713000571-main::chunk26",
-        "RichardsonetalBasinResearch2011-online (1)::chunk13",
-        "RichardsonetalBasinResearch2011-online (1)::chunk14"
-      ],
-      "support_chunks": 5,
-      "support_papers": 4,
-      "paper_ids": [
-        "1-s2.0-S0025322712000412-main",
-        "1-s2.0-S0025322713000571-main",
-        "RichardsonetalBasinResearch2011-online (1)",
-        "9781565762879_ch02"
-      ],
-      "confidence": 1.0,
-      "conf_components": {
-        "w_tier": 1.0,
-        "w_m4": 1.0,
-        "w_consensus": 1.0
       }
     },
     {
@@ -2523,42 +1733,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "SUPPORTED|SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "Dos-Reis-et-al-2016-MPG::chunk23",
-      "evidence_paper": "Dos-Reis-et-al-2016-MPG",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [
-        "Dos-Reis-et-al-2016-MPG::chunk14",
-        "Dos-Reis-et-al-2016-MPG::chunk20",
-        "Dos-Reis-et-al-2016-MPG::chunk21",
-        "Dos-Reis-et-al-2016-MPG::chunk22",
-        "Dos-Reis-et-al-2016-MPG::chunk23",
-        "Dos-Reis-et-al-2016-MPG::chunk24",
-        "Dos-Reis-et-al-2016-MPG::chunk25",
-        "Dos-Reis-et-al-2016-MPG::chunk29",
-        "Dos-Reis-et-al-2016-MPG::chunk30",
-        "Dos-Reis-et-al-2016-MPG::chunk31",
-        "Dos-Reis-et-al-2016-MPG::chunk35",
-        "Dos-Reis-et-al-2016-MPG::chunk38",
-        "Dos-Reis-et-al-2016-MPG::chunk40",
-        "Dos-Reis-et-al-2016-MPG::chunk42",
-        "Dos-Reis-et-al-2016-MPG::chunk43",
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_::chunk7",
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_::chunk9",
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_::chunk12",
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_::chunk13"
-      ],
-      "support_chunks": 19,
-      "support_papers": 2,
-      "paper_ids": [
-        "Dos-Reis-et-al-2016-MPG",
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_"
-      ],
-      "confidence": 0.6826,
-      "conf_components": {
-        "w_tier": 1.0,
-        "w_m4": 1.0,
-        "w_consensus": 0.6826
       }
     },
     {
@@ -2599,26 +1773,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "SUPPORTED|PARTIALLY_SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "Ian R. Clark, Joseph A. Cartwright::chunk10",
-      "evidence_paper": "Ian R. Clark, Joseph A. Cartwright",
-      "evidence_match": "fuzzy(0.74)",
-      "cooc_chunk_ids": [
-        "Alves_AAPG_MTDs_14::chunk33",
-        "Alves_AAPG_MTDs_14::chunk34",
-        "Alves_AAPG_MTDs_14::chunk37"
-      ],
-      "support_chunks": 3,
-      "support_papers": 2,
-      "paper_ids": [
-        "Alves_AAPG_MTDs_14",
-        "Ian R. Clark, Joseph A. Cartwright"
-      ],
-      "confidence": 0.6826,
-      "conf_components": {
-        "w_tier": 1.0,
-        "w_m4": 1.0,
-        "w_consensus": 0.6826
       }
     },
     {
@@ -2660,23 +1814,6 @@
         "blind_verdict": "PLAUSIBLE|IMPLAUSIBLE",
         "evidence_verdict": "PARTIALLY_SUPPORTED|SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "Dos-Reis-et-al-2016-MPG::chunk23",
-      "evidence_paper": "Dos-Reis-et-al-2016-MPG",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [
-        "Dos-Reis-et-al-2016-MPG::chunk23"
-      ],
-      "support_chunks": 1,
-      "support_papers": 1,
-      "paper_ids": [
-        "Dos-Reis-et-al-2016-MPG"
-      ],
-      "confidence": 0.4307,
-      "conf_components": {
-        "w_tier": 1.0,
-        "w_m4": 1.0,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -2718,23 +1855,6 @@
         "blind_verdict": "PLAUSIBLE|IMPLAUSIBLE",
         "evidence_verdict": "SUPPORTED|SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "Dos-Reis-et-al-2016-MPG::chunk23",
-      "evidence_paper": "Dos-Reis-et-al-2016-MPG",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [
-        "Dos-Reis-et-al-2016-MPG::chunk23"
-      ],
-      "support_chunks": 1,
-      "support_papers": 1,
-      "paper_ids": [
-        "Dos-Reis-et-al-2016-MPG"
-      ],
-      "confidence": 0.4307,
-      "conf_components": {
-        "w_tier": 1.0,
-        "w_m4": 1.0,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -2775,42 +1895,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "SUPPORTED|SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "Wei Li a,⁎, Tiago M. Alves::chunk13",
-      "evidence_paper": "Wei Li a,⁎, Tiago M. Alves",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [
-        "1-s2.0-S0025322712000412-main::chunk0",
-        "9781565762879_ch02::chunk1",
-        "9781565762879_ch03::chunk14",
-        "9781565762879_ch03::chunk31",
-        "9781565762879_ch03::chunk32",
-        "Submarine_Mass_Movements_on_Continental::chunk46",
-        "Submarine_Mass_Movements_on_Continental::chunk57",
-        "Submarine_Mass_Movements_on_Continental::chunk61",
-        "Submarine_Mass_Movements_on_Continental::chunk62",
-        "Submarine_Mass_Movements_on_Continental::chunk63",
-        "Submarine_Mass_Movements_on_Continental::chunk64",
-        "Submarine_Mass_Movements_on_Continental::chunk115",
-        "Submarine_Mass_Movements_on_Continental::chunk116",
-        "Wei Li a,⁎, Tiago M. Alves::chunk13",
-        "Wei Li a,⁎, Tiago M. Alves::chunk14",
-        "Wei Li a,⁎, Tiago M. Alves::chunk17"
-      ],
-      "support_chunks": 16,
-      "support_papers": 5,
-      "paper_ids": [
-        "1-s2.0-S0025322712000412-main",
-        "9781565762879_ch02",
-        "9781565762879_ch03",
-        "Submarine_Mass_Movements_on_Continental",
-        "Wei Li a,⁎, Tiago M. Alves"
-      ],
-      "confidence": 1.0,
-      "conf_components": {
-        "w_tier": 1.0,
-        "w_m4": 1.0,
-        "w_consensus": 1.0
       }
     },
     {
@@ -2853,23 +1937,6 @@
         "blind_verdict": "PLAUSIBLE|IMPLAUSIBLE",
         "evidence_verdict": "SUPPORTED|SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "Two-scale_gravitational_collapse_in_the_Amazon_Fan::chunk19",
-      "evidence_paper": "Two-scale_gravitational_collapse_in_the_Amazon_Fan",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [
-        "Two-scale_gravitational_collapse_in_the_Amazon_Fan::chunk19"
-      ],
-      "support_chunks": 1,
-      "support_papers": 1,
-      "paper_ids": [
-        "Two-scale_gravitational_collapse_in_the_Amazon_Fan"
-      ],
-      "confidence": 0.4307,
-      "conf_components": {
-        "w_tier": 1.0,
-        "w_m4": 1.0,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -2910,43 +1977,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "PARTIALLY_SUPPORTED|SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "Alves_AAPG_MTDs_14::chunk30",
-      "evidence_paper": "Alves_AAPG_MTDs_14",
-      "evidence_match": "fuzzy(0.64)",
-      "cooc_chunk_ids": [
-        "1-s2.0-S0264817216304585-main::chunk10",
-        "1-s2.0-S0264817216304585-main::chunk14",
-        "1-s2.0-S0264817216304585-main::chunk23",
-        "1-s2.0-S0264817216304585-main::chunk24",
-        "9781565762879_ch02::chunk23",
-        "Alves_AAPG_MTDs_14::chunk30",
-        "Alves_AAPG_MTDs_14::chunk31",
-        "Alves_AAPG_MTDs_14::chunk32",
-        "Alves_AAPG_MTDs_14::chunk33",
-        "Bourget,j::chunk1",
-        "Bourget,j::chunk30",
-        "Bourget,j::chunk46",
-        "Bourget,j::chunk58",
-        "Giacomo Dalla Valle::chunk31",
-        "Giacomo Dalla Valle::chunk32",
-        "Moscardelli_and_Wood_2008::chunk9"
-      ],
-      "support_chunks": 16,
-      "support_papers": 6,
-      "paper_ids": [
-        "1-s2.0-S0264817216304585-main",
-        "9781565762879_ch02",
-        "Alves_AAPG_MTDs_14",
-        "Bourget,j",
-        "Giacomo Dalla Valle",
-        "Moscardelli_and_Wood_2008"
-      ],
-      "confidence": 1.0,
-      "conf_components": {
-        "w_tier": 1.0,
-        "w_m4": 1.0,
-        "w_consensus": 1.0
       }
     },
     {
@@ -2988,49 +2018,6 @@
         "blind_verdict": "PLAUSIBLE|UNCERTAIN",
         "evidence_verdict": "PARTIALLY_SUPPORTED|SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "Alves_AAPG_MTDs_14::chunk30",
-      "evidence_paper": "Alves_AAPG_MTDs_14",
-      "evidence_match": "fuzzy(0.64)",
-      "cooc_chunk_ids": [
-        "1-s2.0-S0264817216304585-main::chunk23",
-        "1-s2.0-S0264817216304585-main::chunk24",
-        "845::chunk36",
-        "Alves_AAPG_MTDs_14::chunk30",
-        "Alves_AAPG_MTDs_14::chunk31",
-        "Alves_AAPG_MTDs_14::chunk32",
-        "Alves_AAPG_MTDs_14::chunk43",
-        "Alves_AAPG_MTDs_14::chunk44",
-        "Bourget,j::chunk5",
-        "Bourget,j::chunk28",
-        "Bourget,j::chunk36",
-        "Bourget,j::chunk49",
-        "Bourget,j::chunk52",
-        "D. Leynaud::chunk41",
-        "Elverhoi, A., Breien::chunk40",
-        "Moscardelli_and_Wood_2008::chunk9",
-        "Submarine_Mass_Movements_on_Continental::chunk42",
-        "Submarine_Mass_Movements_on_Continental::chunk67",
-        "Submarine_Mass_Movements_on_Continental::chunk68",
-        "Submarine_Mass_Movements_on_Continental::chunk71"
-      ],
-      "support_chunks": 20,
-      "support_papers": 8,
-      "paper_ids": [
-        "1-s2.0-S0264817216304585-main",
-        "845",
-        "Alves_AAPG_MTDs_14",
-        "Bourget,j",
-        "D. Leynaud",
-        "Elverhoi, A., Breien",
-        "Moscardelli_and_Wood_2008",
-        "Submarine_Mass_Movements_on_Continental"
-      ],
-      "confidence": 1.0,
-      "conf_components": {
-        "w_tier": 1.0,
-        "w_m4": 1.0,
-        "w_consensus": 1.0
       }
     },
     {
@@ -3070,21 +2057,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "SUPPORTED|SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "9781565762879_ch02::chunk41",
-      "evidence_paper": "9781565762879_ch02",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [],
-      "support_chunks": 0,
-      "support_papers": 1,
-      "paper_ids": [
-        "9781565762879_ch02"
-      ],
-      "confidence": 0.4307,
-      "conf_components": {
-        "w_tier": 1.0,
-        "w_m4": 1.0,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -3115,21 +2087,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "PARTIALLY_SUPPORTED|SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "9781565762879_ch03::chunk53",
-      "evidence_paper": "9781565762879_ch03",
-      "evidence_match": "fuzzy(0.83)",
-      "cooc_chunk_ids": [],
-      "support_chunks": 0,
-      "support_papers": 1,
-      "paper_ids": [
-        "9781565762879_ch03"
-      ],
-      "confidence": 0.4307,
-      "conf_components": {
-        "w_tier": 1.0,
-        "w_m4": 1.0,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -3170,65 +2127,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "SUPPORTED|SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "Submarine_Mass_Movements_on_Continental::chunk103",
-      "evidence_paper": "Submarine_Mass_Movements_on_Continental",
-      "evidence_match": "fuzzy(0.74)",
-      "cooc_chunk_ids": [
-        "1-s2.0-S0025322712000412-main::chunk41",
-        "1-s2.0-S0025322712000412-main::chunk42",
-        "1-s2.0-S0025322712000412-main::chunk44",
-        "1-s2.0-S0025322712000412-main::chunk45",
-        "1-s2.0-S0025322713000571-main::chunk39",
-        "1-s2.0-S0025322713000571-main::chunk40",
-        "1-s2.0-S0025322713000571-main::chunk41",
-        "1-s2.0-S0264817216304585-main::chunk28",
-        "3-s2.0-B9780128130810007047-main::chunk7",
-        "3-s2.0-B9780128130810007047-main::chunk21",
-        "3-s2.0-B9780128130810007047-main::chunk22",
-        "Basin Research - 2016 - Ortiz‐Karpf - Mass‐transport complexes as markers of deep‐water fold‐and‐thrust belt evolution ::chunk60",
-        "Chinese J of Geophysics - 2013 - WU - Analysis on Seismic Characteristics and Triggering Mechanisms of Mass Transport::chunk27",
-        "Chinese J of Geophysics - 2013 - WU - Analysis on Seismic Characteristics and Triggering Mechanisms of Mass Transport::chunk28",
-        "Chinese J of Geophysics - 2013 - WU - Analysis on Seismic Characteristics and Triggering Mechanisms of Mass Transport::chunk29",
-        "D. Leynaud::chunk27",
-        "D. Leynaud::chunk35",
-        "D. Leynaud::chunk58",
-        "Giacomo Dalla Valle::chunk41",
-        "Giacomo Dalla Valle::chunk42",
-        "Giacomo Dalla Valle::chunk46",
-        "J. S. Laberg::chunk29",
-        "J. S. Laberg::chunk31",
-        "J. S. Laberg::chunk33",
-        "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and::chunk24",
-        "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and::chunk29",
-        "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and::chunk72",
-        "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and::chunk74",
-        "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and::chunk77",
-        "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and::chunk78"
-      ],
-      "support_chunks": 57,
-      "support_papers": 14,
-      "paper_ids": [
-        "1-s2.0-S0025322712000412-main",
-        "1-s2.0-S0025322713000571-main",
-        "1-s2.0-S0264817216304585-main",
-        "3-s2.0-B9780128130810007047-main",
-        "Basin Research - 2016 - Ortiz‐Karpf - Mass‐transport complexes as markers of deep‐water fold‐and‐thrust belt evolution",
-        "Chinese J of Geophysics - 2013 - WU - Analysis on Seismic Characteristics and Triggering Mechanisms of Mass Transport",
-        "D. Leynaud",
-        "Giacomo Dalla Valle",
-        "J. S. Laberg",
-        "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and",
-        "Moscardelli_and_Wood_2008",
-        "RichardsonetalBasinResearch2011-online (1)",
-        "Submarine_Mass_Movements_on_Continental",
-        "Wei Li a,⁎, Tiago M. Alves"
-      ],
-      "confidence": 1.0,
-      "conf_components": {
-        "w_tier": 1.0,
-        "w_m4": 1.0,
-        "w_consensus": 1.0
       }
     },
     {
@@ -3269,25 +2167,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "PARTIALLY_SUPPORTED|SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and::chunk0",
-      "evidence_paper": "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [
-        "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and::chunk0",
-        "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and::chunk12",
-        "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and::chunk15"
-      ],
-      "support_chunks": 3,
-      "support_papers": 1,
-      "paper_ids": [
-        "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and"
-      ],
-      "confidence": 0.4307,
-      "conf_components": {
-        "w_tier": 1.0,
-        "w_m4": 1.0,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -3328,77 +2207,12 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "PARTIALLY_SUPPORTED|SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and::chunk0",
-      "evidence_paper": "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [
-        "1-s2.0-S0025322712000412-main::chunk41",
-        "1-s2.0-S0025322712000412-main::chunk48",
-        "1-s2.0-S0025322713000571-main::chunk22",
-        "1-s2.0-S0025322713000571-main::chunk37",
-        "1-s2.0-S0025322713000571-main::chunk41",
-        "1-s2.0-S0025322713000571-main::chunk42",
-        "1-s2.0-S0025322713000571-main::chunk43",
-        "1-s2.0-S0264817216304585-main::chunk28",
-        "1-s2.0-S0264817216304585-main::chunk32",
-        "1-s2.0-S0264817216304585-main::chunk33",
-        "1-s2.0-S0264817216304585-main::chunk34",
-        "1-s2.0-S0264817216304585-main::chunk37",
-        "1-s2.0-S0264817216304585-main::chunk38",
-        "3-s2.0-B9780128130810007047-main::chunk7",
-        "3-s2.0-B9780128130810007047-main::chunk17",
-        "9781565762879_ch02::chunk55",
-        "9781565762879_ch03::chunk67",
-        "9781565762879_ch03::chunk68",
-        "Alves_AAPG_MTDs_14::chunk3",
-        "Alves_AAPG_MTDs_14::chunk55",
-        "Basin Research - 2016 - Ortiz‐Karpf - Mass‐transport complexes as markers of deep‐water fold‐and‐thrust belt evolution ::chunk62",
-        "Basin Research - 2016 - Ortiz‐Karpf - Mass‐transport complexes as markers of deep‐water fold‐and‐thrust belt evolution ::chunk63",
-        "Bull & Cartwright (2009)::chunk69",
-        "Bull & Cartwright (2009)::chunk70",
-        "Bull & Cartwright (2009)::chunk74",
-        "Chinese J of Geophysics - 2013 - WU - Analysis on Seismic Characteristics and Triggering Mechanisms of Mass Transport::chunk27",
-        "D. Leynaud::chunk27",
-        "D. Leynaud::chunk52",
-        "D. Leynaud::chunk53",
-        "D. Leynaud::chunk58"
-      ],
-      "support_chunks": 77,
-      "support_papers": 20,
-      "paper_ids": [
-        "1-s2.0-S0025322712000412-main",
-        "1-s2.0-S0025322713000571-main",
-        "1-s2.0-S0264817216304585-main",
-        "3-s2.0-B9780128130810007047-main",
-        "9781565762879_ch02",
-        "9781565762879_ch03",
-        "Alves_AAPG_MTDs_14",
-        "Basin Research - 2016 - Ortiz‐Karpf - Mass‐transport complexes as markers of deep‐water fold‐and‐thrust belt evolution",
-        "Bull & Cartwright (2009)",
-        "Chinese J of Geophysics - 2013 - WU - Analysis on Seismic Characteristics and Triggering Mechanisms of Mass Transport",
-        "D. Leynaud",
-        "Dos-Reis-et-al-2016-MPG",
-        "Elverhoi, A., Breien",
-        "Giacomo Dalla Valle",
-        "J. S. Laberg",
-        "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and",
-        "Moscardelli_and_Wood_2008",
-        "Submarine_Mass_Movements_on_Continental",
-        "Two-scale_gravitational_collapse_in_the_Amazon_Fan",
-        "Wei Li a,⁎, Tiago M. Alves"
-      ],
-      "confidence": 1.0,
-      "conf_components": {
-        "w_tier": 1.0,
-        "w_m4": 1.0,
-        "w_consensus": 1.0
       }
     },
     {
       "subject": "submarine landslide",
       "relation": "occursIn",
-      "object": "mediterranean continental margin",
+      "object": "mediterranean continental margins",
       "subject_type": "Geological_Object",
       "object_type": "Environmental_Control",
       "tier": 1,
@@ -3433,25 +2247,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "PARTIALLY_SUPPORTED|SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and::chunk0",
-      "evidence_paper": "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [
-        "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and::chunk0",
-        "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and::chunk12",
-        "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and::chunk15"
-      ],
-      "support_chunks": 3,
-      "support_papers": 1,
-      "paper_ids": [
-        "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and"
-      ],
-      "confidence": 0.4307,
-      "conf_components": {
-        "w_tier": 1.0,
-        "w_m4": 1.0,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -3490,21 +2285,6 @@
         "blind_verdict": "PLAUSIBLE|UNCERTAIN",
         "evidence_verdict": "PARTIALLY_SUPPORTED|SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "RichardsonetalBasinResearch2011-online (1)::chunk13",
-      "evidence_paper": "RichardsonetalBasinResearch2011-online (1)",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [],
-      "support_chunks": 0,
-      "support_papers": 1,
-      "paper_ids": [
-        "RichardsonetalBasinResearch2011-online (1)"
-      ],
-      "confidence": 0.4307,
-      "conf_components": {
-        "w_tier": 1.0,
-        "w_m4": 1.0,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -3543,53 +2323,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "PARTIALLY_SUPPORTED|SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "RichardsonetalBasinResearch2011-online (1)::chunk8",
-      "evidence_paper": "RichardsonetalBasinResearch2011-online (1)",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [
-        "1-s2.0-S0025322713000571-main::chunk25",
-        "1-s2.0-S0025322713000571-main::chunk26",
-        "RichardsonetalBasinResearch2011-online (1)::chunk2",
-        "RichardsonetalBasinResearch2011-online (1)::chunk7",
-        "RichardsonetalBasinResearch2011-online (1)::chunk8",
-        "RichardsonetalBasinResearch2011-online (1)::chunk9",
-        "RichardsonetalBasinResearch2011-online (1)::chunk12",
-        "RichardsonetalBasinResearch2011-online (1)::chunk14",
-        "RichardsonetalBasinResearch2011-online (1)::chunk15",
-        "RichardsonetalBasinResearch2011-online (1)::chunk16",
-        "RichardsonetalBasinResearch2011-online (1)::chunk17",
-        "RichardsonetalBasinResearch2011-online (1)::chunk18",
-        "RichardsonetalBasinResearch2011-online (1)::chunk19",
-        "RichardsonetalBasinResearch2011-online (1)::chunk21",
-        "RichardsonetalBasinResearch2011-online (1)::chunk22",
-        "RichardsonetalBasinResearch2011-online (1)::chunk23",
-        "RichardsonetalBasinResearch2011-online (1)::chunk24",
-        "RichardsonetalBasinResearch2011-online (1)::chunk25",
-        "RichardsonetalBasinResearch2011-online (1)::chunk26",
-        "RichardsonetalBasinResearch2011-online (1)::chunk27",
-        "RichardsonetalBasinResearch2011-online (1)::chunk29",
-        "RichardsonetalBasinResearch2011-online (1)::chunk30",
-        "RichardsonetalBasinResearch2011-online (1)::chunk31",
-        "RichardsonetalBasinResearch2011-online (1)::chunk33",
-        "RichardsonetalBasinResearch2011-online (1)::chunk34",
-        "RichardsonetalBasinResearch2011-online (1)::chunk35",
-        "RichardsonetalBasinResearch2011-online (1)::chunk36",
-        "RichardsonetalBasinResearch2011-online (1)::chunk40",
-        "RichardsonetalBasinResearch2011-online (1)::chunk41",
-        "RichardsonetalBasinResearch2011-online (1)::chunk42"
-      ],
-      "support_chunks": 32,
-      "support_papers": 2,
-      "paper_ids": [
-        "1-s2.0-S0025322713000571-main",
-        "RichardsonetalBasinResearch2011-online (1)"
-      ],
-      "confidence": 0.6826,
-      "conf_components": {
-        "w_tier": 1.0,
-        "w_m4": 1.0,
-        "w_consensus": 0.6826
       }
     },
     {
@@ -3631,57 +2364,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "PARTIALLY_SUPPORTED|SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "3-s2.0-B9780128130810007047-main::chunk8",
-      "evidence_paper": "3-s2.0-B9780128130810007047-main",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [
-        "1-s2.0-S0025322712000412-main::chunk48",
-        "3-s2.0-B9780128130810007047-main::chunk7",
-        "3-s2.0-B9780128130810007047-main::chunk8",
-        "3-s2.0-B9780128130810007047-main::chunk9",
-        "D. Leynaud::chunk12",
-        "D. Leynaud::chunk13",
-        "D. Leynaud::chunk14",
-        "D. Leynaud::chunk15",
-        "D. Leynaud::chunk16",
-        "D. Leynaud::chunk19",
-        "D. Leynaud::chunk20",
-        "D. Leynaud::chunk31",
-        "D. Leynaud::chunk32",
-        "D. Leynaud::chunk41",
-        "D. Leynaud::chunk42",
-        "D. Leynaud::chunk44",
-        "D. Leynaud::chunk45",
-        "D. Leynaud::chunk57",
-        "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and::chunk5",
-        "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and::chunk6",
-        "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and::chunk38",
-        "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and::chunk39",
-        "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and::chunk46",
-        "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and::chunk47",
-        "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and::chunk48",
-        "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and::chunk49",
-        "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and::chunk50",
-        "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and::chunk53",
-        "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and::chunk58",
-        "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and::chunk65"
-      ],
-      "support_chunks": 65,
-      "support_papers": 6,
-      "paper_ids": [
-        "1-s2.0-S0025322712000412-main",
-        "3-s2.0-B9780128130810007047-main",
-        "D. Leynaud",
-        "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and",
-        "Submarine_Mass_Movements_on_Continental",
-        "Wei Li a,⁎, Tiago M. Alves"
-      ],
-      "confidence": 1.0,
-      "conf_components": {
-        "w_tier": 1.0,
-        "w_m4": 1.0,
-        "w_consensus": 1.0
       }
     },
     {
@@ -3722,23 +2404,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "SUPPORTED|SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "Giacomo Dalla Valle::chunk26",
-      "evidence_paper": "Giacomo Dalla Valle",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [
-        "Giacomo Dalla Valle::chunk26"
-      ],
-      "support_chunks": 1,
-      "support_papers": 1,
-      "paper_ids": [
-        "Giacomo Dalla Valle"
-      ],
-      "confidence": 0.4307,
-      "conf_components": {
-        "w_tier": 1.0,
-        "w_m4": 1.0,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -3779,30 +2444,6 @@
         "blind_verdict": "PLAUSIBLE|IMPLAUSIBLE",
         "evidence_verdict": "PARTIALLY_SUPPORTED|SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "Submarine_Mass_Movements_on_Continental::chunk39",
-      "evidence_paper": "Submarine_Mass_Movements_on_Continental",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [
-        "Dos-Reis-et-al-2016-MPG::chunk44",
-        "Dos-Reis-et-al-2016-MPG::chunk45",
-        "Submarine_Mass_Movements_on_Continental::chunk4",
-        "Submarine_Mass_Movements_on_Continental::chunk5",
-        "Submarine_Mass_Movements_on_Continental::chunk39",
-        "Submarine_Mass_Movements_on_Continental::chunk49",
-        "Submarine_Mass_Movements_on_Continental::chunk50"
-      ],
-      "support_chunks": 7,
-      "support_papers": 2,
-      "paper_ids": [
-        "Dos-Reis-et-al-2016-MPG",
-        "Submarine_Mass_Movements_on_Continental"
-      ],
-      "confidence": 0.6826,
-      "conf_components": {
-        "w_tier": 1.0,
-        "w_m4": 1.0,
-        "w_consensus": 0.6826
       }
     },
     {
@@ -3843,27 +2484,10 @@
         "blind_verdict": "PLAUSIBLE|UNCERTAIN",
         "evidence_verdict": "PARTIALLY_SUPPORTED|SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "D. Leynaud::chunk12",
-      "evidence_paper": "D. Leynaud",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [
-        "D. Leynaud::chunk12"
-      ],
-      "support_chunks": 1,
-      "support_papers": 1,
-      "paper_ids": [
-        "D. Leynaud"
-      ],
-      "confidence": 0.4307,
-      "conf_components": {
-        "w_tier": 1.0,
-        "w_m4": 1.0,
-        "w_consensus": 0.4307
       }
     },
     {
-      "subject": "slope failure",
+      "subject": "slopes failures",
       "relation": "triggers",
       "object": "incision of lateral ramps",
       "subject_type": "Process",
@@ -3899,19 +2523,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "SUPPORTED|SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "",
-      "evidence_paper": "",
-      "evidence_match": "none",
-      "cooc_chunk_ids": [],
-      "support_chunks": 0,
-      "support_papers": 0,
-      "paper_ids": [],
-      "confidence": 0.0,
-      "conf_components": {
-        "w_tier": 1.0,
-        "w_m4": 0.5,
-        "w_consensus": 0.0
       }
     },
     {
@@ -3952,26 +2563,6 @@
         "blind_verdict": "PLAUSIBLE|UNCERTAIN",
         "evidence_verdict": "PARTIALLY_SUPPORTED|SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "Wei Li a,⁎, Tiago M. Alves::chunk27",
-      "evidence_paper": "Wei Li a,⁎, Tiago M. Alves",
-      "evidence_match": "fuzzy(0.67)",
-      "cooc_chunk_ids": [
-        "Wei Li a,⁎, Tiago M. Alves::chunk24",
-        "Wei Li a,⁎, Tiago M. Alves::chunk25",
-        "Wei Li a,⁎, Tiago M. Alves::chunk27",
-        "Wei Li a,⁎, Tiago M. Alves::chunk28"
-      ],
-      "support_chunks": 4,
-      "support_papers": 1,
-      "paper_ids": [
-        "Wei Li a,⁎, Tiago M. Alves"
-      ],
-      "confidence": 0.4307,
-      "conf_components": {
-        "w_tier": 1.0,
-        "w_m4": 1.0,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -4012,23 +2603,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "PARTIALLY_SUPPORTED|SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "Elverhoi, A., Breien::chunk45",
-      "evidence_paper": "Elverhoi, A., Breien",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [
-        "Elverhoi, A., Breien::chunk45"
-      ],
-      "support_chunks": 1,
-      "support_papers": 1,
-      "paper_ids": [
-        "Elverhoi, A., Breien"
-      ],
-      "confidence": 0.4307,
-      "conf_components": {
-        "w_tier": 1.0,
-        "w_m4": 1.0,
-        "w_consensus": 0.4307
       }
     }
   ],
@@ -4071,61 +2645,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "NOT_SUPPORTED|PARTIALLY_SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "1-s2.0-S0025322713000571-main::chunk26",
-      "evidence_paper": "1-s2.0-S0025322713000571-main",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [
-        "1-s2.0-S0025322712000412-main::chunk2",
-        "1-s2.0-S0025322713000571-main::chunk15",
-        "1-s2.0-S0025322713000571-main::chunk26",
-        "1-s2.0-S0025322713000571-main::chunk27",
-        "1-s2.0-S0025322713000571-main::chunk31",
-        "1-s2.0-S0025322713000571-main::chunk32",
-        "1-s2.0-S0264817216304585-main::chunk28",
-        "1-s2.0-S0264817216304585-main::chunk29",
-        "Bull & Cartwright (2009)::chunk64",
-        "Bull & Cartwright (2009)::chunk67",
-        "Dos-Reis-et-al-2016-MPG::chunk42",
-        "Dos-Reis-et-al-2016-MPG::chunk54",
-        "Giacomo Dalla Valle::chunk16",
-        "Giacomo Dalla Valle::chunk17",
-        "Giacomo Dalla Valle::chunk18",
-        "Giacomo Dalla Valle::chunk19",
-        "Giacomo Dalla Valle::chunk34",
-        "Ian R. Clark, Joseph A. Cartwright::chunk5",
-        "Ian R. Clark, Joseph A. Cartwright::chunk7",
-        "Ian R. Clark, Joseph A. Cartwright::chunk21",
-        "Ian R. Clark, Joseph A. Cartwright::chunk25",
-        "Ian R. Clark, Joseph A. Cartwright::chunk28",
-        "Ian R. Clark, Joseph A. Cartwright::chunk44",
-        "Ian R. Clark, Joseph A. Cartwright::chunk45",
-        "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and::chunk1",
-        "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and::chunk2",
-        "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and::chunk41",
-        "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and::chunk74",
-        "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and::chunk75",
-        "Submarine_Mass_Movements_on_Continental::chunk6"
-      ],
-      "support_chunks": 37,
-      "support_papers": 10,
-      "paper_ids": [
-        "1-s2.0-S0025322712000412-main",
-        "1-s2.0-S0025322713000571-main",
-        "1-s2.0-S0264817216304585-main",
-        "Bull & Cartwright (2009)",
-        "Dos-Reis-et-al-2016-MPG",
-        "Giacomo Dalla Valle",
-        "Ian R. Clark, Joseph A. Cartwright",
-        "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and",
-        "Submarine_Mass_Movements_on_Continental",
-        "Wei Li a,⁎, Tiago M. Alves"
-      ],
-      "confidence": 0.42,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 0.7,
-        "w_consensus": 1.0
       }
     },
     {
@@ -4166,24 +2685,6 @@
         "blind_verdict": "PLAUSIBLE|UNCERTAIN",
         "evidence_verdict": "PARTIALLY_SUPPORTED|PARTIALLY_SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "1-s2.0-S0264817216304585-main::chunk26",
-      "evidence_paper": "1-s2.0-S0264817216304585-main",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [
-        "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and::chunk77"
-      ],
-      "support_chunks": 1,
-      "support_papers": 2,
-      "paper_ids": [
-        "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and",
-        "1-s2.0-S0264817216304585-main"
-      ],
-      "confidence": 0.2867,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 0.7,
-        "w_consensus": 0.6826
       }
     },
     {
@@ -4224,24 +2725,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "NOT_SUPPORTED|PARTIALLY_SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "Chinese J of Geophysics - 2013 - WU - Analysis on Seismic Characteristics and Triggering Mechanisms of Mass Transport::chunk10",
-      "evidence_paper": "Chinese J of Geophysics - 2013 - WU - Analysis on Seismic Characteristics and Triggering Mechanisms of Mass Transport",
-      "evidence_match": "fuzzy(0.60)",
-      "cooc_chunk_ids": [
-        "Chinese J of Geophysics - 2013 - WU - Analysis on Seismic Characteristics and Triggering Mechanisms of Mass Transport::chunk10",
-        "Chinese J of Geophysics - 2013 - WU - Analysis on Seismic Characteristics and Triggering Mechanisms of Mass Transport::chunk11"
-      ],
-      "support_chunks": 2,
-      "support_papers": 1,
-      "paper_ids": [
-        "Chinese J of Geophysics - 2013 - WU - Analysis on Seismic Characteristics and Triggering Mechanisms of Mass Transport"
-      ],
-      "confidence": 0.1809,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 0.7,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -4282,21 +2765,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "NOT_SUPPORTED|SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "Submarine_Mass_Movements_on_Continental::chunk39",
-      "evidence_paper": "Submarine_Mass_Movements_on_Continental",
-      "evidence_match": "fuzzy(0.81)",
-      "cooc_chunk_ids": [],
-      "support_chunks": 0,
-      "support_papers": 1,
-      "paper_ids": [
-        "Submarine_Mass_Movements_on_Continental"
-      ],
-      "confidence": 0.1809,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 0.7,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -4335,24 +2803,6 @@
         "blind_verdict": "PLAUSIBLE|UNCERTAIN",
         "evidence_verdict": "PARTIALLY_SUPPORTED|PARTIALLY_SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "RichardsonetalBasinResearch2011-online (1)::chunk26",
-      "evidence_paper": "RichardsonetalBasinResearch2011-online (1)",
-      "evidence_match": "fuzzy(0.90)",
-      "cooc_chunk_ids": [
-        "RichardsonetalBasinResearch2011-online (1)::chunk26",
-        "RichardsonetalBasinResearch2011-online (1)::chunk27"
-      ],
-      "support_chunks": 2,
-      "support_papers": 1,
-      "paper_ids": [
-        "RichardsonetalBasinResearch2011-online (1)"
-      ],
-      "confidence": 0.1809,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 0.7,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -4391,24 +2841,6 @@
         "blind_verdict": "PLAUSIBLE|UNCERTAIN",
         "evidence_verdict": "NOT_SUPPORTED|SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "RichardsonetalBasinResearch2011-online (1)::chunk21",
-      "evidence_paper": "RichardsonetalBasinResearch2011-online (1)",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [
-        "RichardsonetalBasinResearch2011-online (1)::chunk21",
-        "RichardsonetalBasinResearch2011-online (1)::chunk33"
-      ],
-      "support_chunks": 2,
-      "support_papers": 1,
-      "paper_ids": [
-        "RichardsonetalBasinResearch2011-online (1)"
-      ],
-      "confidence": 0.1809,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 0.7,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -4447,23 +2879,6 @@
         "blind_verdict": "PLAUSIBLE|IMPLAUSIBLE",
         "evidence_verdict": "PARTIALLY_SUPPORTED|PARTIALLY_SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "RichardsonetalBasinResearch2011-online (1)::chunk21",
-      "evidence_paper": "RichardsonetalBasinResearch2011-online (1)",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [
-        "RichardsonetalBasinResearch2011-online (1)::chunk21"
-      ],
-      "support_chunks": 1,
-      "support_papers": 1,
-      "paper_ids": [
-        "RichardsonetalBasinResearch2011-online (1)"
-      ],
-      "confidence": 0.1809,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 0.7,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -4505,21 +2920,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "NOT_SUPPORTED|PARTIALLY_SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "1-s2.0-S0191814106000101-main::chunk10",
-      "evidence_paper": "1-s2.0-S0191814106000101-main",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [],
-      "support_chunks": 0,
-      "support_papers": 1,
-      "paper_ids": [
-        "1-s2.0-S0191814106000101-main"
-      ],
-      "confidence": 0.1809,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 0.7,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -4560,21 +2960,6 @@
         "blind_verdict": "PLAUSIBLE|UNCERTAIN",
         "evidence_verdict": "SUPPORTED|PARTIALLY_SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "S. Lafuerza, N. Sultan::chunk20",
-      "evidence_paper": "S. Lafuerza, N. Sultan",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [],
-      "support_chunks": 0,
-      "support_papers": 1,
-      "paper_ids": [
-        "S. Lafuerza, N. Sultan"
-      ],
-      "confidence": 0.1809,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 0.7,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -4616,21 +3001,6 @@
         "blind_verdict": "PLAUSIBLE|UNCERTAIN",
         "evidence_verdict": "PARTIALLY_SUPPORTED|PARTIALLY_SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "1-s2.0-S0191814106000101-main::chunk10",
-      "evidence_paper": "1-s2.0-S0191814106000101-main",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [],
-      "support_chunks": 0,
-      "support_papers": 1,
-      "paper_ids": [
-        "1-s2.0-S0191814106000101-main"
-      ],
-      "confidence": 0.1809,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 0.7,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -4669,23 +3039,6 @@
         "blind_verdict": "IMPLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "PARTIALLY_SUPPORTED|PARTIALLY_SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "RichardsonetalBasinResearch2011-online (1)::chunk22",
-      "evidence_paper": "RichardsonetalBasinResearch2011-online (1)",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [
-        "RichardsonetalBasinResearch2011-online (1)::chunk22"
-      ],
-      "support_chunks": 1,
-      "support_papers": 1,
-      "paper_ids": [
-        "RichardsonetalBasinResearch2011-online (1)"
-      ],
-      "confidence": 0.1809,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 0.7,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -4728,21 +3081,6 @@
         "blind_verdict": "UNCERTAIN|IMPLAUSIBLE",
         "evidence_verdict": "PARTIALLY_SUPPORTED|PARTIALLY_SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "Dos-Reis-et-al-2016-MPG::chunk37",
-      "evidence_paper": "Dos-Reis-et-al-2016-MPG",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [],
-      "support_chunks": 0,
-      "support_papers": 1,
-      "paper_ids": [
-        "Dos-Reis-et-al-2016-MPG"
-      ],
-      "confidence": 0.1809,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 0.7,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -4789,24 +3127,6 @@
         "blind_verdict": "IMPLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "PARTIALLY_SUPPORTED|PARTIALLY_SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "Ian R. Clark, Joseph A. Cartwright::chunk12",
-      "evidence_paper": "Ian R. Clark, Joseph A. Cartwright",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [
-        "Ian R. Clark, Joseph A. Cartwright::chunk12",
-        "Ian R. Clark, Joseph A. Cartwright::chunk13"
-      ],
-      "support_chunks": 2,
-      "support_papers": 1,
-      "paper_ids": [
-        "Ian R. Clark, Joseph A. Cartwright"
-      ],
-      "confidence": 0.1809,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 0.7,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -4848,36 +3168,6 @@
         "blind_verdict": "UNCERTAIN|UNCERTAIN",
         "evidence_verdict": "PARTIALLY_SUPPORTED|PARTIALLY_SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "Chinese J of Geophysics - 2013 - WU - Analysis on Seismic Characteristics and Triggering Mechanisms of Mass Transport::chunk12",
-      "evidence_paper": "Chinese J of Geophysics - 2013 - WU - Analysis on Seismic Characteristics and Triggering Mechanisms of Mass Transport",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [
-        "845::chunk15",
-        "Basin Research - 2016 - Ortiz‐Karpf - Mass‐transport complexes as markers of deep‐water fold‐and‐thrust belt evolution ::chunk37",
-        "Basin Research - 2016 - Ortiz‐Karpf - Mass‐transport complexes as markers of deep‐water fold‐and‐thrust belt evolution ::chunk38",
-        "Bull & Cartwright (2009)::chunk42",
-        "Chinese J of Geophysics - 2013 - WU - Analysis on Seismic Characteristics and Triggering Mechanisms of Mass Transport::chunk12",
-        "Chinese J of Geophysics - 2013 - WU - Analysis on Seismic Characteristics and Triggering Mechanisms of Mass Transport::chunk25",
-        "Ian R. Clark, Joseph A. Cartwright::chunk12",
-        "Two-scale_gravitational_collapse_in_the_Amazon_Fan::chunk19",
-        "Two-scale_gravitational_collapse_in_the_Amazon_Fan::chunk20"
-      ],
-      "support_chunks": 9,
-      "support_papers": 6,
-      "paper_ids": [
-        "845",
-        "Basin Research - 2016 - Ortiz‐Karpf - Mass‐transport complexes as markers of deep‐water fold‐and‐thrust belt evolution",
-        "Bull & Cartwright (2009)",
-        "Chinese J of Geophysics - 2013 - WU - Analysis on Seismic Characteristics and Triggering Mechanisms of Mass Transport",
-        "Ian R. Clark, Joseph A. Cartwright",
-        "Two-scale_gravitational_collapse_in_the_Amazon_Fan"
-      ],
-      "confidence": 0.42,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 0.7,
-        "w_consensus": 1.0
       }
     },
     {
@@ -4920,44 +3210,6 @@
         "blind_verdict": "IMPLAUSIBLE|UNCERTAIN",
         "evidence_verdict": "PARTIALLY_SUPPORTED|PARTIALLY_SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "Moscardelli_and_Wood_2008::chunk41",
-      "evidence_paper": "Moscardelli_and_Wood_2008",
-      "evidence_match": "fuzzy(0.75)",
-      "cooc_chunk_ids": [
-        "1-s2.0-S0025322713000571-main::chunk25",
-        "1-s2.0-S0025322713000571-main::chunk26",
-        "Alves_AAPG_MTDs_14::chunk16",
-        "Bourget,j::chunk26",
-        "Bourget,j::chunk27",
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_::chunk6",
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_::chunk7",
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_::chunk8",
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_::chunk9",
-        "RichardsonetalBasinResearch2011-online (1)::chunk7",
-        "RichardsonetalBasinResearch2011-online (1)::chunk8",
-        "RichardsonetalBasinResearch2011-online (1)::chunk12",
-        "RichardsonetalBasinResearch2011-online (1)::chunk13",
-        "RichardsonetalBasinResearch2011-online (1)::chunk18",
-        "RichardsonetalBasinResearch2011-online (1)::chunk19",
-        "RichardsonetalBasinResearch2011-online (1)::chunk27",
-        "RichardsonetalBasinResearch2011-online (1)::chunk28"
-      ],
-      "support_chunks": 17,
-      "support_papers": 6,
-      "paper_ids": [
-        "1-s2.0-S0025322713000571-main",
-        "Alves_AAPG_MTDs_14",
-        "Bourget,j",
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_",
-        "RichardsonetalBasinResearch2011-online (1)",
-        "Moscardelli_and_Wood_2008"
-      ],
-      "confidence": 0.42,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 0.7,
-        "w_consensus": 1.0
       }
     },
     {
@@ -4996,26 +3248,6 @@
         "blind_verdict": "IMPLAUSIBLE|IMPLAUSIBLE",
         "evidence_verdict": "PARTIALLY_SUPPORTED|PARTIALLY_SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "",
-      "evidence_paper": "",
-      "evidence_match": "none",
-      "cooc_chunk_ids": [
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_::chunk7",
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_::chunk9",
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_::chunk12",
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_::chunk13"
-      ],
-      "support_chunks": 4,
-      "support_papers": 1,
-      "paper_ids": [
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_"
-      ],
-      "confidence": 0.1809,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 0.7,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -5058,25 +3290,6 @@
         "blind_verdict": "UNCERTAIN|IMPLAUSIBLE",
         "evidence_verdict": "PARTIALLY_SUPPORTED|PARTIALLY_SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "Two-scale_gravitational_collapse_in_the_Amazon_Fan::chunk19",
-      "evidence_paper": "Two-scale_gravitational_collapse_in_the_Amazon_Fan",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [
-        "RichardsonetalBasinResearch2011-online (1)::chunk11",
-        "RichardsonetalBasinResearch2011-online (1)::chunk20"
-      ],
-      "support_chunks": 2,
-      "support_papers": 2,
-      "paper_ids": [
-        "RichardsonetalBasinResearch2011-online (1)",
-        "Two-scale_gravitational_collapse_in_the_Amazon_Fan"
-      ],
-      "confidence": 0.2867,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 0.7,
-        "w_consensus": 0.6826
       }
     },
     {
@@ -5118,41 +3331,6 @@
         "blind_verdict": "IMPLAUSIBLE|IMPLAUSIBLE",
         "evidence_verdict": "PARTIALLY_SUPPORTED|SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "Dos-Reis-et-al-2016-MPG::chunk23",
-      "evidence_paper": "Dos-Reis-et-al-2016-MPG",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [
-        "Dos-Reis-et-al-2016-MPG::chunk20",
-        "Dos-Reis-et-al-2016-MPG::chunk21",
-        "Dos-Reis-et-al-2016-MPG::chunk22",
-        "Dos-Reis-et-al-2016-MPG::chunk23",
-        "Dos-Reis-et-al-2016-MPG::chunk24",
-        "Dos-Reis-et-al-2016-MPG::chunk25",
-        "Dos-Reis-et-al-2016-MPG::chunk29",
-        "Dos-Reis-et-al-2016-MPG::chunk30",
-        "Dos-Reis-et-al-2016-MPG::chunk31",
-        "Dos-Reis-et-al-2016-MPG::chunk38",
-        "Dos-Reis-et-al-2016-MPG::chunk39",
-        "Dos-Reis-et-al-2016-MPG::chunk40",
-        "Dos-Reis-et-al-2016-MPG::chunk42",
-        "Dos-Reis-et-al-2016-MPG::chunk43",
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_::chunk7",
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_::chunk9",
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_::chunk12",
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_::chunk13"
-      ],
-      "support_chunks": 18,
-      "support_papers": 2,
-      "paper_ids": [
-        "Dos-Reis-et-al-2016-MPG",
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_"
-      ],
-      "confidence": 0.2867,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 0.7,
-        "w_consensus": 0.6826
       }
     },
     {
@@ -5194,23 +3372,6 @@
         "blind_verdict": "PLAUSIBLE|UNCERTAIN",
         "evidence_verdict": "PARTIALLY_SUPPORTED|PARTIALLY_SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "Dos-Reis-et-al-2016-MPG::chunk23",
-      "evidence_paper": "Dos-Reis-et-al-2016-MPG",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [
-        "Dos-Reis-et-al-2016-MPG::chunk23"
-      ],
-      "support_chunks": 1,
-      "support_papers": 1,
-      "paper_ids": [
-        "Dos-Reis-et-al-2016-MPG"
-      ],
-      "confidence": 0.1809,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 0.7,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -5252,63 +3413,6 @@
         "blind_verdict": "IMPLAUSIBLE|IMPLAUSIBLE",
         "evidence_verdict": "PARTIALLY_SUPPORTED|PARTIALLY_SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "Submarine_Mass_Movements_on_Continental::chunk65",
-      "evidence_paper": "Submarine_Mass_Movements_on_Continental",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [
-        "386816a0::chunk0",
-        "9781565762879_ch02::chunk1",
-        "9781565762879_ch03::chunk14",
-        "D. Leynaud::chunk52",
-        "Dos-Reis-et-al-2016-MPG::chunk20",
-        "Dos-Reis-et-al-2016-MPG::chunk21",
-        "Dos-Reis-et-al-2016-MPG::chunk22",
-        "Dos-Reis-et-al-2016-MPG::chunk23",
-        "Dos-Reis-et-al-2016-MPG::chunk24",
-        "Dos-Reis-et-al-2016-MPG::chunk25",
-        "Dos-Reis-et-al-2016-MPG::chunk29",
-        "Dos-Reis-et-al-2016-MPG::chunk30",
-        "Dos-Reis-et-al-2016-MPG::chunk31",
-        "Dos-Reis-et-al-2016-MPG::chunk38",
-        "Dos-Reis-et-al-2016-MPG::chunk39",
-        "Dos-Reis-et-al-2016-MPG::chunk40",
-        "Dos-Reis-et-al-2016-MPG::chunk42",
-        "Dos-Reis-et-al-2016-MPG::chunk43",
-        "Elverhoi, A., Breien::chunk8",
-        "J. S. Laberg::chunk12",
-        "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and::chunk9",
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_::chunk7",
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_::chunk9",
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_::chunk12",
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_::chunk13",
-        "Moscardelli_and_Wood_2008::chunk10",
-        "Submarine_Mass_Movements_on_Continental::chunk61",
-        "Submarine_Mass_Movements_on_Continental::chunk65",
-        "Submarine_Mass_Movements_on_Continental::chunk66",
-        "Two-scale_gravitational_collapse_in_the_Amazon_Fan::chunk17"
-      ],
-      "support_chunks": 34,
-      "support_papers": 12,
-      "paper_ids": [
-        "386816a0",
-        "9781565762879_ch02",
-        "9781565762879_ch03",
-        "D. Leynaud",
-        "Dos-Reis-et-al-2016-MPG",
-        "Elverhoi, A., Breien",
-        "J. S. Laberg",
-        "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and",
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_",
-        "Moscardelli_and_Wood_2008",
-        "Submarine_Mass_Movements_on_Continental",
-        "Two-scale_gravitational_collapse_in_the_Amazon_Fan"
-      ],
-      "confidence": 0.42,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 0.7,
-        "w_consensus": 1.0
       }
     },
     {
@@ -5351,50 +3455,6 @@
         "blind_verdict": "PLAUSIBLE|IMPLAUSIBLE",
         "evidence_verdict": "PARTIALLY_SUPPORTED|PARTIALLY_SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "Dos-Reis-et-al-2016-MPG::chunk21",
-      "evidence_paper": "Dos-Reis-et-al-2016-MPG",
-      "evidence_match": "fuzzy(0.96)",
-      "cooc_chunk_ids": [
-        "1-s2.0-S0264817216304585-main::chunk5",
-        "1-s2.0-S0264817216304585-main::chunk10",
-        "1-s2.0-S0264817216304585-main::chunk14",
-        "9781565762879_ch03::chunk8",
-        "9781565762879_ch03::chunk12",
-        "9781565762879_ch03::chunk13",
-        "9781565762879_ch03::chunk19",
-        "9781565762879_ch03::chunk20",
-        "9781565762879_ch03::chunk43",
-        "9781565762879_ch03::chunk53",
-        "Bourget,j::chunk10",
-        "Bourget,j::chunk11",
-        "Bourget,j::chunk28",
-        "Bourget,j::chunk34",
-        "Bourget,j::chunk56",
-        "Bourget,j::chunk64",
-        "J. S. Laberg::chunk7",
-        "J. S. Laberg::chunk8",
-        "J. S. Laberg::chunk14",
-        "Submarine_Mass_Movements_on_Continental::chunk67",
-        "Submarine_Mass_Movements_on_Continental::chunk68",
-        "Submarine_Mass_Movements_on_Continental::chunk71",
-        "Submarine_Mass_Movements_on_Continental::chunk72"
-      ],
-      "support_chunks": 23,
-      "support_papers": 6,
-      "paper_ids": [
-        "1-s2.0-S0264817216304585-main",
-        "9781565762879_ch03",
-        "Bourget,j",
-        "J. S. Laberg",
-        "Submarine_Mass_Movements_on_Continental",
-        "Dos-Reis-et-al-2016-MPG"
-      ],
-      "confidence": 0.42,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 0.7,
-        "w_consensus": 1.0
       }
     },
     {
@@ -5435,23 +3495,6 @@
         "blind_verdict": "PLAUSIBLE|UNCERTAIN",
         "evidence_verdict": "NOT_SUPPORTED|SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and::chunk0",
-      "evidence_paper": "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and",
-      "evidence_match": "fuzzy(0.94)",
-      "cooc_chunk_ids": [
-        "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and::chunk0"
-      ],
-      "support_chunks": 1,
-      "support_papers": 1,
-      "paper_ids": [
-        "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and"
-      ],
-      "confidence": 0.1809,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 0.7,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -5490,37 +3533,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "NOT_SUPPORTED|PARTIALLY_SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "RichardsonetalBasinResearch2011-online (1)::chunk13",
-      "evidence_paper": "RichardsonetalBasinResearch2011-online (1)",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [
-        "RichardsonetalBasinResearch2011-online (1)::chunk4",
-        "RichardsonetalBasinResearch2011-online (1)::chunk13",
-        "RichardsonetalBasinResearch2011-online (1)::chunk26",
-        "RichardsonetalBasinResearch2011-online (1)::chunk27",
-        "RichardsonetalBasinResearch2011-online (1)::chunk28",
-        "RichardsonetalBasinResearch2011-online (1)::chunk29",
-        "RichardsonetalBasinResearch2011-online (1)::chunk31",
-        "RichardsonetalBasinResearch2011-online (1)::chunk33",
-        "RichardsonetalBasinResearch2011-online (1)::chunk34",
-        "RichardsonetalBasinResearch2011-online (1)::chunk36",
-        "RichardsonetalBasinResearch2011-online (1)::chunk37",
-        "RichardsonetalBasinResearch2011-online (1)::chunk39",
-        "RichardsonetalBasinResearch2011-online (1)::chunk40",
-        "RichardsonetalBasinResearch2011-online (1)::chunk42",
-        "RichardsonetalBasinResearch2011-online (1)::chunk43"
-      ],
-      "support_chunks": 15,
-      "support_papers": 1,
-      "paper_ids": [
-        "RichardsonetalBasinResearch2011-online (1)"
-      ],
-      "confidence": 0.1809,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 0.7,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -5559,41 +3571,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "NOT_SUPPORTED|SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "RichardsonetalBasinResearch2011-online (1)::chunk12",
-      "evidence_paper": "RichardsonetalBasinResearch2011-online (1)",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [
-        "Dos-Reis-et-al-2016-MPG::chunk9",
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_::chunk4",
-        "RichardsonetalBasinResearch2011-online (1)::chunk4",
-        "RichardsonetalBasinResearch2011-online (1)::chunk12",
-        "RichardsonetalBasinResearch2011-online (1)::chunk13",
-        "RichardsonetalBasinResearch2011-online (1)::chunk15",
-        "RichardsonetalBasinResearch2011-online (1)::chunk16",
-        "RichardsonetalBasinResearch2011-online (1)::chunk17",
-        "RichardsonetalBasinResearch2011-online (1)::chunk18",
-        "RichardsonetalBasinResearch2011-online (1)::chunk19",
-        "RichardsonetalBasinResearch2011-online (1)::chunk21",
-        "RichardsonetalBasinResearch2011-online (1)::chunk34",
-        "RichardsonetalBasinResearch2011-online (1)::chunk36",
-        "RichardsonetalBasinResearch2011-online (1)::chunk37",
-        "RichardsonetalBasinResearch2011-online (1)::chunk39",
-        "RichardsonetalBasinResearch2011-online (1)::chunk40",
-        "RichardsonetalBasinResearch2011-online (1)::chunk41"
-      ],
-      "support_chunks": 17,
-      "support_papers": 3,
-      "paper_ids": [
-        "Dos-Reis-et-al-2016-MPG",
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_",
-        "RichardsonetalBasinResearch2011-online (1)"
-      ],
-      "confidence": 0.3618,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 0.7,
-        "w_consensus": 0.8614
       }
     },
     {
@@ -5632,41 +3609,6 @@
         "blind_verdict": "IMPLAUSIBLE|UNCERTAIN",
         "evidence_verdict": "PARTIALLY_SUPPORTED|SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "RichardsonetalBasinResearch2011-online (1)::chunk14",
-      "evidence_paper": "RichardsonetalBasinResearch2011-online (1)",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [
-        "1-s2.0-S0025322713000571-main::chunk25",
-        "1-s2.0-S0025322713000571-main::chunk26",
-        "RichardsonetalBasinResearch2011-online (1)::chunk7",
-        "RichardsonetalBasinResearch2011-online (1)::chunk8",
-        "RichardsonetalBasinResearch2011-online (1)::chunk9",
-        "RichardsonetalBasinResearch2011-online (1)::chunk12",
-        "RichardsonetalBasinResearch2011-online (1)::chunk13",
-        "RichardsonetalBasinResearch2011-online (1)::chunk14",
-        "RichardsonetalBasinResearch2011-online (1)::chunk15",
-        "RichardsonetalBasinResearch2011-online (1)::chunk16",
-        "RichardsonetalBasinResearch2011-online (1)::chunk17",
-        "RichardsonetalBasinResearch2011-online (1)::chunk21",
-        "RichardsonetalBasinResearch2011-online (1)::chunk22",
-        "RichardsonetalBasinResearch2011-online (1)::chunk23",
-        "RichardsonetalBasinResearch2011-online (1)::chunk24",
-        "RichardsonetalBasinResearch2011-online (1)::chunk26",
-        "RichardsonetalBasinResearch2011-online (1)::chunk27",
-        "RichardsonetalBasinResearch2011-online (1)::chunk31"
-      ],
-      "support_chunks": 18,
-      "support_papers": 2,
-      "paper_ids": [
-        "1-s2.0-S0025322713000571-main",
-        "RichardsonetalBasinResearch2011-online (1)"
-      ],
-      "confidence": 0.2867,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 0.7,
-        "w_consensus": 0.6826
       }
     },
     {
@@ -5705,24 +3647,6 @@
         "blind_verdict": "PLAUSIBLE|UNCERTAIN",
         "evidence_verdict": "NOT_SUPPORTED|SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "RichardsonetalBasinResearch2011-online (1)::chunk12",
-      "evidence_paper": "RichardsonetalBasinResearch2011-online (1)",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [
-        "RichardsonetalBasinResearch2011-online (1)::chunk12",
-        "RichardsonetalBasinResearch2011-online (1)::chunk13"
-      ],
-      "support_chunks": 2,
-      "support_papers": 1,
-      "paper_ids": [
-        "RichardsonetalBasinResearch2011-online (1)"
-      ],
-      "confidence": 0.1809,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 0.7,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -5763,27 +3687,6 @@
         "blind_verdict": "PLAUSIBLE|UNCERTAIN",
         "evidence_verdict": "NOT_SUPPORTED|PARTIALLY_SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "1-s2.0-S0025322713000571-main::chunk26",
-      "evidence_paper": "1-s2.0-S0025322713000571-main",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [
-        "1-s2.0-S0025322713000571-main::chunk10",
-        "1-s2.0-S0025322713000571-main::chunk12",
-        "1-s2.0-S0025322713000571-main::chunk26",
-        "1-s2.0-S0025322713000571-main::chunk27",
-        "1-s2.0-S0025322713000571-main::chunk31"
-      ],
-      "support_chunks": 5,
-      "support_papers": 1,
-      "paper_ids": [
-        "1-s2.0-S0025322713000571-main"
-      ],
-      "confidence": 0.1809,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 0.7,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -5824,55 +3727,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "NOT_SUPPORTED|PARTIALLY_SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "Chinese J of Geophysics - 2013 - WU - Analysis on Seismic Characteristics and Triggering Mechanisms of Mass Transport::chunk10",
-      "evidence_paper": "Chinese J of Geophysics - 2013 - WU - Analysis on Seismic Characteristics and Triggering Mechanisms of Mass Transport",
-      "evidence_match": "fuzzy(0.83)",
-      "cooc_chunk_ids": [
-        "1-s2.0-S0025322713000571-main::chunk10",
-        "1-s2.0-S0025322713000571-main::chunk12",
-        "1-s2.0-S0025322713000571-main::chunk15",
-        "1-s2.0-S0025322713000571-main::chunk26",
-        "1-s2.0-S0025322713000571-main::chunk27",
-        "1-s2.0-S0025322713000571-main::chunk31",
-        "1-s2.0-S0025322713000571-main::chunk32",
-        "Basin Research - 2016 - Ortiz‐Karpf - Mass‐transport complexes as markers of deep‐water fold‐and‐thrust belt evolution ::chunk55",
-        "Bull & Cartwright (2009)::chunk13",
-        "Bull & Cartwright (2009)::chunk31",
-        "Bull & Cartwright (2009)::chunk32",
-        "Bull & Cartwright (2009)::chunk35",
-        "Bull & Cartwright (2009)::chunk61",
-        "Bull & Cartwright (2009)::chunk62",
-        "Bull & Cartwright (2009)::chunk64",
-        "Bull & Cartwright (2009)::chunk65",
-        "Bull & Cartwright (2009)::chunk66",
-        "Chinese J of Geophysics - 2013 - WU - Analysis on Seismic Characteristics and Triggering Mechanisms of Mass Transport::chunk10",
-        "Chinese J of Geophysics - 2013 - WU - Analysis on Seismic Characteristics and Triggering Mechanisms of Mass Transport::chunk11",
-        "Giacomo Dalla Valle::chunk13",
-        "Giacomo Dalla Valle::chunk14",
-        "Giacomo Dalla Valle::chunk18",
-        "Giacomo Dalla Valle::chunk22",
-        "Giacomo Dalla Valle::chunk23",
-        "RichardsonetalBasinResearch2011-online (1)::chunk8",
-        "RichardsonetalBasinResearch2011-online (1)::chunk25",
-        "RichardsonetalBasinResearch2011-online (1)::chunk40",
-        "RichardsonetalBasinResearch2011-online (1)::chunk56"
-      ],
-      "support_chunks": 28,
-      "support_papers": 6,
-      "paper_ids": [
-        "1-s2.0-S0025322713000571-main",
-        "Basin Research - 2016 - Ortiz‐Karpf - Mass‐transport complexes as markers of deep‐water fold‐and‐thrust belt evolution",
-        "Bull & Cartwright (2009)",
-        "Chinese J of Geophysics - 2013 - WU - Analysis on Seismic Characteristics and Triggering Mechanisms of Mass Transport",
-        "Giacomo Dalla Valle",
-        "RichardsonetalBasinResearch2011-online (1)"
-      ],
-      "confidence": 0.42,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 0.7,
-        "w_consensus": 1.0
       }
     },
     {
@@ -5913,24 +3767,6 @@
         "blind_verdict": "PLAUSIBLE|IMPLAUSIBLE",
         "evidence_verdict": "PARTIALLY_SUPPORTED|SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "Chinese J of Geophysics - 2013 - WU - Analysis on Seismic Characteristics and Triggering Mechanisms of Mass Transport::chunk11",
-      "evidence_paper": "Chinese J of Geophysics - 2013 - WU - Analysis on Seismic Characteristics and Triggering Mechanisms of Mass Transport",
-      "evidence_match": "fuzzy(0.53)",
-      "cooc_chunk_ids": [
-        "Chinese J of Geophysics - 2013 - WU - Analysis on Seismic Characteristics and Triggering Mechanisms of Mass Transport::chunk10",
-        "Chinese J of Geophysics - 2013 - WU - Analysis on Seismic Characteristics and Triggering Mechanisms of Mass Transport::chunk11"
-      ],
-      "support_chunks": 2,
-      "support_papers": 1,
-      "paper_ids": [
-        "Chinese J of Geophysics - 2013 - WU - Analysis on Seismic Characteristics and Triggering Mechanisms of Mass Transport"
-      ],
-      "confidence": 0.2584,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 1.0,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -5971,21 +3807,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "NOT_SUPPORTED|PARTIALLY_SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "3-s2.0-B9780128130810007047-main::chunk20",
-      "evidence_paper": "3-s2.0-B9780128130810007047-main",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [],
-      "support_chunks": 0,
-      "support_papers": 1,
-      "paper_ids": [
-        "3-s2.0-B9780128130810007047-main"
-      ],
-      "confidence": 0.1809,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 0.7,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -6026,21 +3847,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "PARTIALLY_SUPPORTED|SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "Wei Li a,⁎, Tiago M. Alves::chunk28",
-      "evidence_paper": "Wei Li a,⁎, Tiago M. Alves",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [],
-      "support_chunks": 0,
-      "support_papers": 1,
-      "paper_ids": [
-        "Wei Li a,⁎, Tiago M. Alves"
-      ],
-      "confidence": 0.2584,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 1.0,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -6084,23 +3890,6 @@
         "flags": [
           "partial_support"
         ]
-      },
-      "evidence_chunk_id": "9781565762879_ch02::chunk43",
-      "evidence_paper": "9781565762879_ch02",
-      "evidence_match": "fuzzy(0.92)",
-      "cooc_chunk_ids": [
-        "9781565762879_ch02::chunk43"
-      ],
-      "support_chunks": 1,
-      "support_papers": 1,
-      "paper_ids": [
-        "9781565762879_ch02"
-      ],
-      "confidence": 0.2584,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 1.0,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -6142,23 +3931,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "NOT_SUPPORTED|PARTIALLY_SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_::chunk5",
-      "evidence_paper": "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_::chunk5"
-      ],
-      "support_chunks": 1,
-      "support_papers": 1,
-      "paper_ids": [
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_"
-      ],
-      "confidence": 0.1809,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 0.7,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -6200,56 +3972,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "PARTIALLY_SUPPORTED|SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "D. Leynaud::chunk44",
-      "evidence_paper": "D. Leynaud",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [
-        "3-s2.0-B9780128130810007047-main::chunk7",
-        "3-s2.0-B9780128130810007047-main::chunk8",
-        "3-s2.0-B9780128130810007047-main::chunk9",
-        "3-s2.0-B9780128130810007047-main::chunk13",
-        "D. Leynaud::chunk12",
-        "D. Leynaud::chunk16",
-        "D. Leynaud::chunk19",
-        "D. Leynaud::chunk20",
-        "D. Leynaud::chunk26",
-        "D. Leynaud::chunk33",
-        "D. Leynaud::chunk34",
-        "D. Leynaud::chunk40",
-        "D. Leynaud::chunk41",
-        "D. Leynaud::chunk42",
-        "D. Leynaud::chunk44",
-        "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and::chunk29",
-        "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and::chunk52",
-        "Submarine_Mass_Movements_on_Continental::chunk4",
-        "Submarine_Mass_Movements_on_Continental::chunk5",
-        "Submarine_Mass_Movements_on_Continental::chunk18",
-        "Submarine_Mass_Movements_on_Continental::chunk25",
-        "Submarine_Mass_Movements_on_Continental::chunk33",
-        "Submarine_Mass_Movements_on_Continental::chunk48",
-        "Submarine_Mass_Movements_on_Continental::chunk49",
-        "Submarine_Mass_Movements_on_Continental::chunk50",
-        "Submarine_Mass_Movements_on_Continental::chunk51",
-        "Submarine_Mass_Movements_on_Continental::chunk56",
-        "Submarine_Mass_Movements_on_Continental::chunk84",
-        "Submarine_Mass_Movements_on_Continental::chunk85",
-        "Submarine_Mass_Movements_on_Continental::chunk117"
-      ],
-      "support_chunks": 31,
-      "support_papers": 5,
-      "paper_ids": [
-        "3-s2.0-B9780128130810007047-main",
-        "D. Leynaud",
-        "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and",
-        "Submarine_Mass_Movements_on_Continental",
-        "Wei Li a,⁎, Tiago M. Alves"
-      ],
-      "confidence": 0.6,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 1.0,
-        "w_consensus": 1.0
       }
     },
     {
@@ -6293,21 +4015,6 @@
         "flags": [
           "partial_support"
         ]
-      },
-      "evidence_chunk_id": "D. Leynaud::chunk44",
-      "evidence_paper": "D. Leynaud",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [],
-      "support_chunks": 0,
-      "support_papers": 1,
-      "paper_ids": [
-        "D. Leynaud"
-      ],
-      "confidence": 0.2584,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 1.0,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -6350,21 +4057,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "NOT_SUPPORTED|PARTIALLY_SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "RichardsonetalBasinResearch2011-online (1)::chunk44",
-      "evidence_paper": "RichardsonetalBasinResearch2011-online (1)",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [],
-      "support_chunks": 0,
-      "support_papers": 1,
-      "paper_ids": [
-        "RichardsonetalBasinResearch2011-online (1)"
-      ],
-      "confidence": 0.1809,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 0.7,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -6406,21 +4098,6 @@
         "blind_verdict": "PLAUSIBLE|UNCERTAIN",
         "evidence_verdict": "NOT_SUPPORTED|PARTIALLY_SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "Chinese J of Geophysics - 2013 - WU - Analysis on Seismic Characteristics and Triggering Mechanisms of Mass Transport::chunk16",
-      "evidence_paper": "Chinese J of Geophysics - 2013 - WU - Analysis on Seismic Characteristics and Triggering Mechanisms of Mass Transport",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [],
-      "support_chunks": 0,
-      "support_papers": 1,
-      "paper_ids": [
-        "Chinese J of Geophysics - 2013 - WU - Analysis on Seismic Characteristics and Triggering Mechanisms of Mass Transport"
-      ],
-      "confidence": 0.1809,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 0.7,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -6462,25 +4139,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "NOT_SUPPORTED|PARTIALLY_SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_::chunk5",
-      "evidence_paper": "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [
-        "Dos-Reis-et-al-2016-MPG::chunk9",
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_::chunk5"
-      ],
-      "support_chunks": 2,
-      "support_papers": 2,
-      "paper_ids": [
-        "Dos-Reis-et-al-2016-MPG",
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_"
-      ],
-      "confidence": 0.2867,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 0.7,
-        "w_consensus": 0.6826
       }
     },
     {
@@ -6523,23 +4181,6 @@
         "blind_verdict": "PLAUSIBLE|UNCERTAIN",
         "evidence_verdict": "SUPPORTED|PARTIALLY_SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "Two-scale_gravitational_collapse_in_the_Amazon_Fan::chunk9",
-      "evidence_paper": "Two-scale_gravitational_collapse_in_the_Amazon_Fan",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [
-        "Two-scale_gravitational_collapse_in_the_Amazon_Fan::chunk9"
-      ],
-      "support_chunks": 1,
-      "support_papers": 1,
-      "paper_ids": [
-        "Two-scale_gravitational_collapse_in_the_Amazon_Fan"
-      ],
-      "confidence": 0.1809,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 0.7,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -6581,28 +4222,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "NOT_SUPPORTED|PARTIALLY_SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_::chunk5",
-      "evidence_paper": "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [
-        "Dos-Reis-et-al-2016-MPG::chunk9",
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_::chunk5",
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_::chunk11",
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_::chunk12",
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_::chunk13"
-      ],
-      "support_chunks": 5,
-      "support_papers": 2,
-      "paper_ids": [
-        "Dos-Reis-et-al-2016-MPG",
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_"
-      ],
-      "confidence": 0.2867,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 0.7,
-        "w_consensus": 0.6826
       }
     },
     {
@@ -6641,21 +4260,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "NOT_SUPPORTED|PARTIALLY_SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "RichardsonetalBasinResearch2011-online (1)::chunk22",
-      "evidence_paper": "RichardsonetalBasinResearch2011-online (1)",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [],
-      "support_chunks": 0,
-      "support_papers": 1,
-      "paper_ids": [
-        "RichardsonetalBasinResearch2011-online (1)"
-      ],
-      "confidence": 0.1809,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 0.7,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -6697,23 +4301,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "NOT_SUPPORTED|PARTIALLY_SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_::chunk5",
-      "evidence_paper": "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_::chunk5"
-      ],
-      "support_chunks": 1,
-      "support_papers": 1,
-      "paper_ids": [
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_"
-      ],
-      "confidence": 0.1809,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 0.7,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -6755,24 +4342,6 @@
         "blind_verdict": "PLAUSIBLE|IMPLAUSIBLE",
         "evidence_verdict": "NOT_SUPPORTED|PARTIALLY_SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_::chunk5",
-      "evidence_paper": "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [
-        "Dos-Reis-et-al-2016-MPG::chunk9"
-      ],
-      "support_chunks": 1,
-      "support_papers": 2,
-      "paper_ids": [
-        "Dos-Reis-et-al-2016-MPG",
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_"
-      ],
-      "confidence": 0.2867,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 0.7,
-        "w_consensus": 0.6826
       }
     },
     {
@@ -6813,27 +4382,10 @@
         "blind_verdict": "PLAUSIBLE|UNCERTAIN",
         "evidence_verdict": "PARTIALLY_SUPPORTED|PARTIALLY_SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "3-s2.0-B9780128130810007047-main::chunk21",
-      "evidence_paper": "3-s2.0-B9780128130810007047-main",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [
-        "3-s2.0-B9780128130810007047-main::chunk21"
-      ],
-      "support_chunks": 1,
-      "support_papers": 1,
-      "paper_ids": [
-        "3-s2.0-B9780128130810007047-main"
-      ],
-      "confidence": 0.1809,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 0.7,
-        "w_consensus": 0.4307
       }
     },
     {
-      "subject": "slope failure",
+      "subject": "slopes failures",
       "relation": "causes",
       "object": "erosional scour",
       "subject_type": "Process",
@@ -6871,19 +4423,6 @@
         "flags": [
           "partial_support"
         ]
-      },
-      "evidence_chunk_id": "",
-      "evidence_paper": "",
-      "evidence_match": "none",
-      "cooc_chunk_ids": [],
-      "support_chunks": 0,
-      "support_papers": 0,
-      "paper_ids": [],
-      "confidence": 0.0,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 0.5,
-        "w_consensus": 0.0
       }
     },
     {
@@ -6922,21 +4461,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "NOT_SUPPORTED|PARTIALLY_SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "RichardsonetalBasinResearch2011-online (1)::chunk22",
-      "evidence_paper": "RichardsonetalBasinResearch2011-online (1)",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [],
-      "support_chunks": 0,
-      "support_papers": 1,
-      "paper_ids": [
-        "RichardsonetalBasinResearch2011-online (1)"
-      ],
-      "confidence": 0.1809,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 0.7,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -6977,26 +4501,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "SUPPORTED|SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "RichardsonetalBasinResearch2011-online (1)::chunk3",
-      "evidence_paper": "RichardsonetalBasinResearch2011-online (1)",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [
-        "1-s2.0-S0025322712000412-main::chunk47",
-        "RichardsonetalBasinResearch2011-online (1)::chunk2",
-        "RichardsonetalBasinResearch2011-online (1)::chunk3"
-      ],
-      "support_chunks": 3,
-      "support_papers": 2,
-      "paper_ids": [
-        "1-s2.0-S0025322712000412-main",
-        "RichardsonetalBasinResearch2011-online (1)"
-      ],
-      "confidence": 0.4096,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 1.0,
-        "w_consensus": 0.6826
       }
     },
     {
@@ -7035,21 +4539,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "NOT_SUPPORTED|PARTIALLY_SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "RichardsonetalBasinResearch2011-online (1)::chunk22",
-      "evidence_paper": "RichardsonetalBasinResearch2011-online (1)",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [],
-      "support_chunks": 0,
-      "support_papers": 1,
-      "paper_ids": [
-        "RichardsonetalBasinResearch2011-online (1)"
-      ],
-      "confidence": 0.1809,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 0.7,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -7090,21 +4579,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "NOT_SUPPORTED|PARTIALLY_SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "3-s2.0-B9780128130810007047-main::chunk9",
-      "evidence_paper": "3-s2.0-B9780128130810007047-main",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [],
-      "support_chunks": 0,
-      "support_papers": 1,
-      "paper_ids": [
-        "3-s2.0-B9780128130810007047-main"
-      ],
-      "confidence": 0.1809,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 0.7,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -7146,21 +4620,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "NOT_SUPPORTED|PARTIALLY_SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "1-s2.0-S0040195109002819-main::chunk14",
-      "evidence_paper": "1-s2.0-S0040195109002819-main",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [],
-      "support_chunks": 0,
-      "support_papers": 1,
-      "paper_ids": [
-        "1-s2.0-S0040195109002819-main"
-      ],
-      "confidence": 0.1809,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 0.7,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -7202,23 +4661,6 @@
         "blind_verdict": "PLAUSIBLE|UNCERTAIN",
         "evidence_verdict": "PARTIALLY_SUPPORTED|PARTIALLY_SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "1-s2.0-S0040195109002819-main::chunk14",
-      "evidence_paper": "1-s2.0-S0040195109002819-main",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [
-        "1-s2.0-S0040195109002819-main::chunk14"
-      ],
-      "support_chunks": 1,
-      "support_papers": 1,
-      "paper_ids": [
-        "1-s2.0-S0040195109002819-main"
-      ],
-      "confidence": 0.1809,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 0.7,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -7259,19 +4701,6 @@
         "blind_verdict": "IMPLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "PARTIALLY_SUPPORTED|PARTIALLY_SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "",
-      "evidence_paper": "",
-      "evidence_match": "none",
-      "cooc_chunk_ids": [],
-      "support_chunks": 0,
-      "support_papers": 0,
-      "paper_ids": [],
-      "confidence": 0.0,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 0.7,
-        "w_consensus": 0.0
       }
     },
     {
@@ -7312,25 +4741,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "NOT_SUPPORTED|PARTIALLY_SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "9781565762879_ch02::chunk38",
-      "evidence_paper": "9781565762879_ch02",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [
-        "9781565762879_ch02::chunk1",
-        "9781565762879_ch03::chunk14"
-      ],
-      "support_chunks": 2,
-      "support_papers": 2,
-      "paper_ids": [
-        "9781565762879_ch02",
-        "9781565762879_ch03"
-      ],
-      "confidence": 0.2867,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 0.7,
-        "w_consensus": 0.6826
       }
     },
     {
@@ -7370,23 +4780,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "NOT_SUPPORTED|PARTIALLY_SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "9781565762879_ch02::chunk38",
-      "evidence_paper": "9781565762879_ch02",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [
-        "9781565762879_ch02::chunk1"
-      ],
-      "support_chunks": 1,
-      "support_papers": 1,
-      "paper_ids": [
-        "9781565762879_ch02"
-      ],
-      "confidence": 0.1809,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 0.7,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -7436,30 +4829,6 @@
         "blind_verdict": "PLAUSIBLE|IMPLAUSIBLE",
         "evidence_verdict": "PARTIALLY_SUPPORTED|PARTIALLY_SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "Dos-Reis-et-al-2016-MPG::chunk21",
-      "evidence_paper": "Dos-Reis-et-al-2016-MPG",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [
-        "Alves_AAPG_MTDs_14::chunk27",
-        "Alves_AAPG_MTDs_14::chunk28",
-        "Alves_AAPG_MTDs_14::chunk43",
-        "Alves_AAPG_MTDs_14::chunk44",
-        "Bull & Cartwright (2009)::chunk8",
-        "Bull & Cartwright (2009)::chunk9"
-      ],
-      "support_chunks": 6,
-      "support_papers": 3,
-      "paper_ids": [
-        "Alves_AAPG_MTDs_14",
-        "Bull & Cartwright (2009)",
-        "Dos-Reis-et-al-2016-MPG"
-      ],
-      "confidence": 0.3618,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 0.7,
-        "w_consensus": 0.8614
       }
     },
     {
@@ -7501,35 +4870,6 @@
         "flags": [
           "partial_support"
         ]
-      },
-      "evidence_chunk_id": "",
-      "evidence_paper": "",
-      "evidence_match": "none",
-      "cooc_chunk_ids": [
-        "1-s2.0-S0025322713000571-main::chunk25",
-        "Bourget,j::chunk26",
-        "Bourget,j::chunk27",
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_::chunk7",
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_::chunk9",
-        "RichardsonetalBasinResearch2011-online (1)::chunk7",
-        "RichardsonetalBasinResearch2011-online (1)::chunk8",
-        "RichardsonetalBasinResearch2011-online (1)::chunk13",
-        "RichardsonetalBasinResearch2011-online (1)::chunk27",
-        "RichardsonetalBasinResearch2011-online (1)::chunk28"
-      ],
-      "support_chunks": 10,
-      "support_papers": 4,
-      "paper_ids": [
-        "1-s2.0-S0025322713000571-main",
-        "Bourget,j",
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_",
-        "RichardsonetalBasinResearch2011-online (1)"
-      ],
-      "confidence": 0.6,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 1.0,
-        "w_consensus": 1.0
       }
     },
     {
@@ -7572,42 +4912,6 @@
         "flags": [
           "partial_support"
         ]
-      },
-      "evidence_chunk_id": "Basin Research - 2016 - Ortiz‐Karpf - Mass‐transport complexes as markers of deep‐water fold‐and‐thrust belt evolution ::chunk9",
-      "evidence_paper": "Basin Research - 2016 - Ortiz‐Karpf - Mass‐transport complexes as markers of deep‐water fold‐and‐thrust belt evolution",
-      "evidence_match": "fuzzy(0.67)",
-      "cooc_chunk_ids": [
-        "1-s2.0-S0025322713000571-main::chunk25",
-        "1-s2.0-S0025322713000571-main::chunk26",
-        "Alves_AAPG_MTDs_14::chunk16",
-        "Bourget,j::chunk26",
-        "Bourget,j::chunk27",
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_::chunk7",
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_::chunk9",
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_::chunk12",
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_::chunk13",
-        "RichardsonetalBasinResearch2011-online (1)::chunk8",
-        "RichardsonetalBasinResearch2011-online (1)::chunk13",
-        "RichardsonetalBasinResearch2011-online (1)::chunk22",
-        "RichardsonetalBasinResearch2011-online (1)::chunk23",
-        "RichardsonetalBasinResearch2011-online (1)::chunk30",
-        "RichardsonetalBasinResearch2011-online (1)::chunk41"
-      ],
-      "support_chunks": 15,
-      "support_papers": 6,
-      "paper_ids": [
-        "1-s2.0-S0025322713000571-main",
-        "Alves_AAPG_MTDs_14",
-        "Bourget,j",
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_",
-        "RichardsonetalBasinResearch2011-online (1)",
-        "Basin Research - 2016 - Ortiz‐Karpf - Mass‐transport complexes as markers of deep‐water fold‐and‐thrust belt evolution"
-      ],
-      "confidence": 0.6,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 1.0,
-        "w_consensus": 1.0
       }
     },
     {
@@ -7648,21 +4952,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "PARTIALLY_SUPPORTED|SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "Basin Research - 2016 - Ortiz‐Karpf - Mass‐transport complexes as markers of deep‐water fold‐and‐thrust belt evolution ::chunk9",
-      "evidence_paper": "Basin Research - 2016 - Ortiz‐Karpf - Mass‐transport complexes as markers of deep‐water fold‐and‐thrust belt evolution",
-      "evidence_match": "fuzzy(0.67)",
-      "cooc_chunk_ids": [],
-      "support_chunks": 0,
-      "support_papers": 1,
-      "paper_ids": [
-        "Basin Research - 2016 - Ortiz‐Karpf - Mass‐transport complexes as markers of deep‐water fold‐and‐thrust belt evolution"
-      ],
-      "confidence": 0.2584,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 1.0,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -7712,25 +5001,6 @@
         "blind_verdict": "PLAUSIBLE|UNCERTAIN",
         "evidence_verdict": "PARTIALLY_SUPPORTED|PARTIALLY_SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "Dos-Reis-et-al-2016-MPG::chunk37",
-      "evidence_paper": "Dos-Reis-et-al-2016-MPG",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_::chunk9",
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_::chunk11"
-      ],
-      "support_chunks": 2,
-      "support_papers": 2,
-      "paper_ids": [
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_",
-        "Dos-Reis-et-al-2016-MPG"
-      ],
-      "confidence": 0.2867,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 0.7,
-        "w_consensus": 0.6826
       }
     },
     {
@@ -7771,28 +5041,6 @@
         "blind_verdict": "UNCERTAIN|IMPLAUSIBLE",
         "evidence_verdict": "PARTIALLY_SUPPORTED|PARTIALLY_SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "Alves_AAPG_MTDs_14::chunk17",
-      "evidence_paper": "Alves_AAPG_MTDs_14",
-      "evidence_match": "fuzzy(0.90)",
-      "cooc_chunk_ids": [
-        "1-s2.0-S0025322713000571-main::chunk26",
-        "RichardsonetalBasinResearch2011-online (1)::chunk4",
-        "RichardsonetalBasinResearch2011-online (1)::chunk13",
-        "RichardsonetalBasinResearch2011-online (1)::chunk28"
-      ],
-      "support_chunks": 4,
-      "support_papers": 3,
-      "paper_ids": [
-        "1-s2.0-S0025322713000571-main",
-        "RichardsonetalBasinResearch2011-online (1)",
-        "Alves_AAPG_MTDs_14"
-      ],
-      "confidence": 0.3618,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 0.7,
-        "w_consensus": 0.8614
       }
     },
     {
@@ -7834,21 +5082,6 @@
         "blind_verdict": "IMPLAUSIBLE|UNCERTAIN",
         "evidence_verdict": "SUPPORTED|PARTIALLY_SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "9781565762879_ch03::chunk51",
-      "evidence_paper": "9781565762879_ch03",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [],
-      "support_chunks": 0,
-      "support_papers": 1,
-      "paper_ids": [
-        "9781565762879_ch03"
-      ],
-      "confidence": 0.1809,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 0.7,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -7891,38 +5124,6 @@
         "blind_verdict": "UNCERTAIN|UNCERTAIN",
         "evidence_verdict": "PARTIALLY_SUPPORTED|PARTIALLY_SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "Dos-Reis-et-al-2016-MPG::chunk24",
-      "evidence_paper": "Dos-Reis-et-al-2016-MPG",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [
-        "Dos-Reis-et-al-2016-MPG::chunk20",
-        "Dos-Reis-et-al-2016-MPG::chunk21",
-        "Dos-Reis-et-al-2016-MPG::chunk24",
-        "Dos-Reis-et-al-2016-MPG::chunk27",
-        "Dos-Reis-et-al-2016-MPG::chunk29",
-        "Dos-Reis-et-al-2016-MPG::chunk30",
-        "Dos-Reis-et-al-2016-MPG::chunk31",
-        "Dos-Reis-et-al-2016-MPG::chunk41",
-        "Dos-Reis-et-al-2016-MPG::chunk48",
-        "Dos-Reis-et-al-2016-MPG::chunk49",
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_::chunk6",
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_::chunk7",
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_::chunk8",
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_::chunk9",
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_::chunk10"
-      ],
-      "support_chunks": 15,
-      "support_papers": 2,
-      "paper_ids": [
-        "Dos-Reis-et-al-2016-MPG",
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_"
-      ],
-      "confidence": 0.2867,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 0.7,
-        "w_consensus": 0.6826
       }
     },
     {
@@ -7965,23 +5166,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "PARTIALLY_SUPPORTED|NOT_SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "Dos-Reis-et-al-2016-MPG::chunk23",
-      "evidence_paper": "Dos-Reis-et-al-2016-MPG",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [
-        "Dos-Reis-et-al-2016-MPG::chunk14"
-      ],
-      "support_chunks": 1,
-      "support_papers": 1,
-      "paper_ids": [
-        "Dos-Reis-et-al-2016-MPG"
-      ],
-      "confidence": 0.1809,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 0.7,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -8024,25 +5208,6 @@
         "blind_verdict": "PLAUSIBLE|UNCERTAIN",
         "evidence_verdict": "PARTIALLY_SUPPORTED|PARTIALLY_SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_::chunk7",
-      "evidence_paper": "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_",
-      "evidence_match": "fuzzy(0.84)",
-      "cooc_chunk_ids": [
-        "Dos-Reis-et-al-2016-MPG::chunk25",
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_::chunk9"
-      ],
-      "support_chunks": 2,
-      "support_papers": 2,
-      "paper_ids": [
-        "Dos-Reis-et-al-2016-MPG",
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_"
-      ],
-      "confidence": 0.2867,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 0.7,
-        "w_consensus": 0.6826
       }
     },
     {
@@ -8082,26 +5247,6 @@
         "blind_verdict": "UNCERTAIN|IMPLAUSIBLE",
         "evidence_verdict": "PARTIALLY_SUPPORTED|PARTIALLY_SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "Bull & Cartwright (2009)::chunk40",
-      "evidence_paper": "Bull & Cartwright (2009)",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [
-        "Alves_AAPG_MTDs_14::chunk36",
-        "Bull & Cartwright (2009)::chunk39",
-        "Bull & Cartwright (2009)::chunk40"
-      ],
-      "support_chunks": 3,
-      "support_papers": 2,
-      "paper_ids": [
-        "Alves_AAPG_MTDs_14",
-        "Bull & Cartwright (2009)"
-      ],
-      "confidence": 0.2867,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 0.7,
-        "w_consensus": 0.6826
       }
     },
     {
@@ -8148,32 +5293,6 @@
         "flags": [
           "partial_support"
         ]
-      },
-      "evidence_chunk_id": "9781565762879_ch02::chunk1",
-      "evidence_paper": "9781565762879_ch02",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [
-        "Bull & Cartwright (2009)::chunk36",
-        "Bull & Cartwright (2009)::chunk37",
-        "RichardsonetalBasinResearch2011-online (1)::chunk26",
-        "Submarine_Mass_Movements_on_Continental::chunk43",
-        "Submarine_Mass_Movements_on_Continental::chunk44",
-        "Wei Li a,⁎, Tiago M. Alves::chunk27"
-      ],
-      "support_chunks": 6,
-      "support_papers": 5,
-      "paper_ids": [
-        "Bull & Cartwright (2009)",
-        "RichardsonetalBasinResearch2011-online (1)",
-        "Submarine_Mass_Movements_on_Continental",
-        "Wei Li a,⁎, Tiago M. Alves",
-        "9781565762879_ch02"
-      ],
-      "confidence": 0.6,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 1.0,
-        "w_consensus": 1.0
       }
     },
     {
@@ -8213,60 +5332,6 @@
         "blind_verdict": "IMPLAUSIBLE|IMPLAUSIBLE",
         "evidence_verdict": "PARTIALLY_SUPPORTED|SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "9781565762879_ch02::chunk18",
-      "evidence_paper": "9781565762879_ch02",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [
-        "1-s2.0-S0040195109002819-main::chunk15",
-        "1-s2.0-S0264817216304585-main::chunk26",
-        "1-s2.0-S0264817216304585-main::chunk28",
-        "845::chunk38",
-        "9781565762879_ch02::chunk14",
-        "Bourget,j::chunk8",
-        "Bull & Cartwright (2009)::chunk15",
-        "Bull & Cartwright (2009)::chunk22",
-        "Bull & Cartwright (2009)::chunk23",
-        "Bull & Cartwright (2009)::chunk28",
-        "Bull & Cartwright (2009)::chunk39",
-        "Bull & Cartwright (2009)::chunk40",
-        "Bull & Cartwright (2009)::chunk42",
-        "Bull & Cartwright (2009)::chunk52",
-        "Bull & Cartwright (2009)::chunk53",
-        "Dos-Reis-et-al-2016-MPG::chunk24",
-        "Dos-Reis-et-al-2016-MPG::chunk31",
-        "Dos-Reis-et-al-2016-MPG::chunk32",
-        "Dos-Reis-et-al-2016-MPG::chunk43",
-        "Dos-Reis-et-al-2016-MPG::chunk44",
-        "J. S. Laberg::chunk17",
-        "Moscardelli_and_Wood_2008::chunk9",
-        "Submarine_Mass_Movements_on_Continental::chunk64",
-        "Submarine_Mass_Movements_on_Continental::chunk65",
-        "Submarine_Mass_Movements_on_Continental::chunk67",
-        "Submarine_Mass_Movements_on_Continental::chunk68",
-        "Submarine_Mass_Movements_on_Continental::chunk77",
-        "Wei Li a,⁎, Tiago M. Alves::chunk36"
-      ],
-      "support_chunks": 28,
-      "support_papers": 11,
-      "paper_ids": [
-        "1-s2.0-S0040195109002819-main",
-        "1-s2.0-S0264817216304585-main",
-        "845",
-        "9781565762879_ch02",
-        "Bourget,j",
-        "Bull & Cartwright (2009)",
-        "Dos-Reis-et-al-2016-MPG",
-        "J. S. Laberg",
-        "Moscardelli_and_Wood_2008",
-        "Submarine_Mass_Movements_on_Continental",
-        "Wei Li a,⁎, Tiago M. Alves"
-      ],
-      "confidence": 0.42,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 0.7,
-        "w_consensus": 1.0
       }
     },
     {
@@ -8308,23 +5373,6 @@
         "blind_verdict": "PLAUSIBLE|UNCERTAIN",
         "evidence_verdict": "NOT_SUPPORTED|PARTIALLY_SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "Moscardelli_and_Wood_2008::chunk9",
-      "evidence_paper": "Moscardelli_and_Wood_2008",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [
-        "Moscardelli_and_Wood_2008::chunk10"
-      ],
-      "support_chunks": 1,
-      "support_papers": 1,
-      "paper_ids": [
-        "Moscardelli_and_Wood_2008"
-      ],
-      "confidence": 0.1809,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 0.7,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -8366,21 +5414,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "SUPPORTED|PARTIALLY_SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "Bourget,j::chunk34",
-      "evidence_paper": "Bourget,j",
-      "evidence_match": "fuzzy(0.70)",
-      "cooc_chunk_ids": [],
-      "support_chunks": 0,
-      "support_papers": 1,
-      "paper_ids": [
-        "Bourget,j"
-      ],
-      "confidence": 0.2584,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 1.0,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -8421,21 +5454,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "PARTIALLY_SUPPORTED|SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "1-s2.0-S0264817216304585-main::chunk23",
-      "evidence_paper": "1-s2.0-S0264817216304585-main",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [],
-      "support_chunks": 0,
-      "support_papers": 1,
-      "paper_ids": [
-        "1-s2.0-S0264817216304585-main"
-      ],
-      "confidence": 0.2584,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 1.0,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -8476,26 +5494,6 @@
         "blind_verdict": "PLAUSIBLE|UNCERTAIN",
         "evidence_verdict": "PARTIALLY_SUPPORTED|PARTIALLY_SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "9781565762879_ch03::chunk56",
-      "evidence_paper": "9781565762879_ch03",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [
-        "9781565762879_ch03::chunk14",
-        "9781565762879_ch03::chunk22",
-        "9781565762879_ch03::chunk55",
-        "9781565762879_ch03::chunk56"
-      ],
-      "support_chunks": 4,
-      "support_papers": 1,
-      "paper_ids": [
-        "9781565762879_ch03"
-      ],
-      "confidence": 0.1809,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 0.7,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -8535,49 +5533,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "NOT_SUPPORTED|PARTIALLY_SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "RichardsonetalBasinResearch2011-online (1)::chunk55",
-      "evidence_paper": "RichardsonetalBasinResearch2011-online (1)",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [
-        "9781565762879_ch02::chunk59",
-        "9781565762879_ch03::chunk66",
-        "Alves_AAPG_MTDs_14::chunk15",
-        "Alves_AAPG_MTDs_14::chunk16",
-        "Alves_AAPG_MTDs_14::chunk64",
-        "Basin Research - 2016 - Ortiz‐Karpf - Mass‐transport complexes as markers of deep‐water fold‐and‐thrust belt evolution ::chunk66",
-        "Chinese J of Geophysics - 2013 - WU - Analysis on Seismic Characteristics and Triggering Mechanisms of Mass Transport::chunk1",
-        "Chinese J of Geophysics - 2013 - WU - Analysis on Seismic Characteristics and Triggering Mechanisms of Mass Transport::chunk27",
-        "Giacomo Dalla Valle::chunk28",
-        "Giacomo Dalla Valle::chunk42",
-        "Giacomo Dalla Valle::chunk43",
-        "J. S. Laberg::chunk31",
-        "J. S. Laberg::chunk33",
-        "J. S. Laberg::chunk34",
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_::chunk5",
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_::chunk6",
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_::chunk8",
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_::chunk9",
-        "RichardsonetalBasinResearch2011-online (1)::chunk56"
-      ],
-      "support_chunks": 19,
-      "support_papers": 9,
-      "paper_ids": [
-        "9781565762879_ch02",
-        "9781565762879_ch03",
-        "Alves_AAPG_MTDs_14",
-        "Basin Research - 2016 - Ortiz‐Karpf - Mass‐transport complexes as markers of deep‐water fold‐and‐thrust belt evolution",
-        "Chinese J of Geophysics - 2013 - WU - Analysis on Seismic Characteristics and Triggering Mechanisms of Mass Transport",
-        "Giacomo Dalla Valle",
-        "J. S. Laberg",
-        "Megaslides_in_the_Foz_do_Amazonas_Basin_Brazilian_",
-        "RichardsonetalBasinResearch2011-online (1)"
-      ],
-      "confidence": 0.42,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 0.7,
-        "w_consensus": 1.0
       }
     },
     {
@@ -8618,34 +5573,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "NOT_SUPPORTED|PARTIALLY_SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and::chunk0",
-      "evidence_paper": "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [
-        "D. Leynaud::chunk57",
-        "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and::chunk0",
-        "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and::chunk23",
-        "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and::chunk49",
-        "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and::chunk56",
-        "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and::chunk57",
-        "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and::chunk58",
-        "RichardsonetalBasinResearch2011-online (1)::chunk49",
-        "Wei Li a,⁎, Tiago M. Alves::chunk1"
-      ],
-      "support_chunks": 9,
-      "support_papers": 4,
-      "paper_ids": [
-        "D. Leynaud",
-        "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and",
-        "RichardsonetalBasinResearch2011-online (1)",
-        "Wei Li a,⁎, Tiago M. Alves"
-      ],
-      "confidence": 0.42,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 0.7,
-        "w_consensus": 1.0
       }
     },
     {
@@ -8684,38 +5611,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "NOT_SUPPORTED|PARTIALLY_SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and::chunk49",
-      "evidence_paper": "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and",
-      "evidence_match": "fuzzy(0.67)",
-      "cooc_chunk_ids": [
-        "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and::chunk3",
-        "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and::chunk7",
-        "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and::chunk8",
-        "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and::chunk15",
-        "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and::chunk18",
-        "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and::chunk22",
-        "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and::chunk23",
-        "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and::chunk43",
-        "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and::chunk47",
-        "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and::chunk48",
-        "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and::chunk49",
-        "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and::chunk53",
-        "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and::chunk54",
-        "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and::chunk57",
-        "Submarine_Mass_Movements_on_Continental::chunk19"
-      ],
-      "support_chunks": 15,
-      "support_papers": 2,
-      "paper_ids": [
-        "JGR Earth Surface - 2013 - Urgeles - Submarine landslides of the Mediterranean Sea  Trigger mechanisms  dynamics  and",
-        "Submarine_Mass_Movements_on_Continental"
-      ],
-      "confidence": 0.2867,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 0.7,
-        "w_consensus": 0.6826
       }
     },
     {
@@ -8757,46 +5652,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "PARTIALLY_SUPPORTED|SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "9781565762879_ch03::chunk0",
-      "evidence_paper": "9781565762879_ch03",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [
-        "9781565762879_ch02::chunk38",
-        "9781565762879_ch02::chunk57",
-        "9781565762879_ch02::chunk58",
-        "9781565762879_ch02::chunk59",
-        "9781565762879_ch02::chunk60",
-        "9781565762879_ch03::chunk1",
-        "9781565762879_ch03::chunk4",
-        "9781565762879_ch03::chunk5",
-        "9781565762879_ch03::chunk7",
-        "9781565762879_ch03::chunk8",
-        "9781565762879_ch03::chunk9",
-        "9781565762879_ch03::chunk12",
-        "9781565762879_ch03::chunk13",
-        "9781565762879_ch03::chunk22",
-        "9781565762879_ch03::chunk25",
-        "9781565762879_ch03::chunk26",
-        "9781565762879_ch03::chunk27",
-        "9781565762879_ch03::chunk28",
-        "9781565762879_ch03::chunk33",
-        "9781565762879_ch03::chunk34",
-        "9781565762879_ch03::chunk56",
-        "9781565762879_ch03::chunk57",
-        "9781565762879_ch03::chunk58"
-      ],
-      "support_chunks": 23,
-      "support_papers": 2,
-      "paper_ids": [
-        "9781565762879_ch02",
-        "9781565762879_ch03"
-      ],
-      "confidence": 0.4096,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 1.0,
-        "w_consensus": 0.6826
       }
     },
     {
@@ -8836,50 +5691,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "NOT_SUPPORTED|PARTIALLY_SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "",
-      "evidence_paper": "",
-      "evidence_match": "none",
-      "cooc_chunk_ids": [
-        "9781565762879_ch02::chunk36",
-        "9781565762879_ch03::chunk12",
-        "9781565762879_ch03::chunk13",
-        "Bourget,j::chunk7",
-        "Bourget,j::chunk13",
-        "Bourget,j::chunk14",
-        "Bourget,j::chunk28",
-        "Bourget,j::chunk29",
-        "Bourget,j::chunk31",
-        "Bourget,j::chunk37",
-        "Bourget,j::chunk40",
-        "Bourget,j::chunk42",
-        "Bourget,j::chunk43",
-        "Bourget,j::chunk57",
-        "D. Leynaud::chunk3",
-        "D. Leynaud::chunk10",
-        "D. Leynaud::chunk11",
-        "D. Leynaud::chunk34",
-        "D. Leynaud::chunk40",
-        "D. Leynaud::chunk41",
-        "D. Leynaud::chunk42",
-        "D. Leynaud::chunk43",
-        "D. Leynaud::chunk44",
-        "Giacomo Dalla Valle::chunk32"
-      ],
-      "support_chunks": 24,
-      "support_papers": 5,
-      "paper_ids": [
-        "9781565762879_ch02",
-        "9781565762879_ch03",
-        "Bourget,j",
-        "D. Leynaud",
-        "Giacomo Dalla Valle"
-      ],
-      "confidence": 0.42,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 0.7,
-        "w_consensus": 1.0
       }
     },
     {
@@ -8919,34 +5730,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "NOT_SUPPORTED|PARTIALLY_SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "9781565762879_ch03::chunk53",
-      "evidence_paper": "9781565762879_ch03",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [
-        "9781565762879_ch02::chunk58",
-        "9781565762879_ch03::chunk53",
-        "9781565762879_ch03::chunk54",
-        "9781565762879_ch03::chunk58",
-        "9781565762879_ch03::chunk85",
-        "Bourget,j::chunk68",
-        "Dos-Reis-et-al-2016-MPG::chunk56",
-        "Two-scale_gravitational_collapse_in_the_Amazon_Fan::chunk8"
-      ],
-      "support_chunks": 8,
-      "support_papers": 5,
-      "paper_ids": [
-        "9781565762879_ch02",
-        "9781565762879_ch03",
-        "Bourget,j",
-        "Dos-Reis-et-al-2016-MPG",
-        "Two-scale_gravitational_collapse_in_the_Amazon_Fan"
-      ],
-      "confidence": 0.42,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 0.7,
-        "w_consensus": 1.0
       }
     },
     {
@@ -8985,24 +5768,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "PARTIALLY_SUPPORTED|SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "RichardsonetalBasinResearch2011-online (1)::chunk18",
-      "evidence_paper": "RichardsonetalBasinResearch2011-online (1)",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [
-        "RichardsonetalBasinResearch2011-online (1)::chunk18",
-        "RichardsonetalBasinResearch2011-online (1)::chunk19"
-      ],
-      "support_chunks": 2,
-      "support_papers": 1,
-      "paper_ids": [
-        "RichardsonetalBasinResearch2011-online (1)"
-      ],
-      "confidence": 0.2584,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 1.0,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -9035,21 +5800,6 @@
         "flags": [
           "parametric_risk"
         ]
-      },
-      "evidence_chunk_id": "1-s2.0-S0264817216304585-main::chunk23",
-      "evidence_paper": "1-s2.0-S0264817216304585-main",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [],
-      "support_chunks": 0,
-      "support_papers": 1,
-      "paper_ids": [
-        "1-s2.0-S0264817216304585-main"
-      ],
-      "confidence": 0.1809,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 0.7,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -9088,35 +5838,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "NOT_SUPPORTED|PARTIALLY_SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "RichardsonetalBasinResearch2011-online (1)::chunk12",
-      "evidence_paper": "RichardsonetalBasinResearch2011-online (1)",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [
-        "RichardsonetalBasinResearch2011-online (1)::chunk4",
-        "RichardsonetalBasinResearch2011-online (1)::chunk12",
-        "RichardsonetalBasinResearch2011-online (1)::chunk13",
-        "RichardsonetalBasinResearch2011-online (1)::chunk22",
-        "RichardsonetalBasinResearch2011-online (1)::chunk23",
-        "RichardsonetalBasinResearch2011-online (1)::chunk24",
-        "RichardsonetalBasinResearch2011-online (1)::chunk27",
-        "RichardsonetalBasinResearch2011-online (1)::chunk28",
-        "RichardsonetalBasinResearch2011-online (1)::chunk29",
-        "RichardsonetalBasinResearch2011-online (1)::chunk36",
-        "RichardsonetalBasinResearch2011-online (1)::chunk39",
-        "RichardsonetalBasinResearch2011-online (1)::chunk40",
-        "RichardsonetalBasinResearch2011-online (1)::chunk41"
-      ],
-      "support_chunks": 13,
-      "support_papers": 1,
-      "paper_ids": [
-        "RichardsonetalBasinResearch2011-online (1)"
-      ],
-      "confidence": 0.1809,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 0.7,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -9159,21 +5880,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "PARTIALLY_SUPPORTED|SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "RichardsonetalBasinResearch2011-online (1)::chunk44",
-      "evidence_paper": "RichardsonetalBasinResearch2011-online (1)",
-      "evidence_match": "fuzzy(0.69)",
-      "cooc_chunk_ids": [],
-      "support_chunks": 0,
-      "support_papers": 1,
-      "paper_ids": [
-        "RichardsonetalBasinResearch2011-online (1)"
-      ],
-      "confidence": 0.2584,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 1.0,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -9215,21 +5921,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "SUPPORTED|PARTIALLY_SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "1-s2.0-S0040195109002819-main::chunk13",
-      "evidence_paper": "1-s2.0-S0040195109002819-main",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [],
-      "support_chunks": 0,
-      "support_papers": 1,
-      "paper_ids": [
-        "1-s2.0-S0040195109002819-main"
-      ],
-      "confidence": 0.2584,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 1.0,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -9271,24 +5962,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "SUPPORTED|SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "1-s2.0-S0040195109002819-main::chunk13",
-      "evidence_paper": "1-s2.0-S0040195109002819-main",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [
-        "1-s2.0-S0191814106000101-main::chunk1"
-      ],
-      "support_chunks": 1,
-      "support_papers": 2,
-      "paper_ids": [
-        "1-s2.0-S0191814106000101-main",
-        "1-s2.0-S0040195109002819-main"
-      ],
-      "confidence": 0.4096,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 1.0,
-        "w_consensus": 0.6826
       }
     },
     {
@@ -9329,23 +6002,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "NOT_SUPPORTED|PARTIALLY_SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "3-s2.0-B9780128130810007047-main::chunk21",
-      "evidence_paper": "3-s2.0-B9780128130810007047-main",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [
-        "3-s2.0-B9780128130810007047-main::chunk21"
-      ],
-      "support_chunks": 1,
-      "support_papers": 1,
-      "paper_ids": [
-        "3-s2.0-B9780128130810007047-main"
-      ],
-      "confidence": 0.1809,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 0.7,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -9388,30 +6044,6 @@
         "flags": [
           "partial_support"
         ]
-      },
-      "evidence_chunk_id": "3-s2.0-B9780128130810007047-main::chunk8",
-      "evidence_paper": "3-s2.0-B9780128130810007047-main",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [
-        "D. Leynaud::chunk12",
-        "D. Leynaud::chunk15",
-        "D. Leynaud::chunk31",
-        "Submarine_Mass_Movements_on_Continental::chunk48",
-        "Submarine_Mass_Movements_on_Continental::chunk107",
-        "Submarine_Mass_Movements_on_Continental::chunk114"
-      ],
-      "support_chunks": 6,
-      "support_papers": 3,
-      "paper_ids": [
-        "D. Leynaud",
-        "Submarine_Mass_Movements_on_Continental",
-        "3-s2.0-B9780128130810007047-main"
-      ],
-      "confidence": 0.5168,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 1.0,
-        "w_consensus": 0.8614
       }
     },
     {
@@ -9454,21 +6086,6 @@
         "blind_verdict": "PLAUSIBLE|PLAUSIBLE",
         "evidence_verdict": "NOT_SUPPORTED|PARTIALLY_SUPPORTED",
         "flags": []
-      },
-      "evidence_chunk_id": "RichardsonetalBasinResearch2011-online (1)::chunk43",
-      "evidence_paper": "RichardsonetalBasinResearch2011-online (1)",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [],
-      "support_chunks": 0,
-      "support_papers": 1,
-      "paper_ids": [
-        "RichardsonetalBasinResearch2011-online (1)"
-      ],
-      "confidence": 0.1809,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 0.7,
-        "w_consensus": 0.4307
       }
     },
     {
@@ -9511,21 +6128,6 @@
         "flags": [
           "partial_support"
         ]
-      },
-      "evidence_chunk_id": "Submarine_Mass_Movements_on_Continental::chunk47",
-      "evidence_paper": "Submarine_Mass_Movements_on_Continental",
-      "evidence_match": "exact",
-      "cooc_chunk_ids": [],
-      "support_chunks": 0,
-      "support_papers": 1,
-      "paper_ids": [
-        "Submarine_Mass_Movements_on_Continental"
-      ],
-      "confidence": 0.2584,
-      "conf_components": {
-        "w_tier": 0.6,
-        "w_m4": 1.0,
-        "w_consensus": 0.4307
       }
     }
   ],

@@ -1,0 +1,231 @@
+{
+  "n_expert_records": 29,
+  "n_annotator_records": 29,
+  "n_joined_any": 29,
+  "n_offscale_verdicts": 0,
+  "offscale_vocabulary": {},
+  "n_matched": 29,
+  "n_unmatched": 0,
+  "exploratory": true,
+  "min_n": 15,
+  "confidence_vs_expert": {
+    "confidence": {
+      "n": 29,
+      "kendall_tau_b": -0.0313,
+      "perm_p": 0.8626,
+      "auc_Y_vs_PN": 0.4789,
+      "by_verdict": {
+        "Y": {
+          "n": 19,
+          "mean": 0.5533,
+          "ci95": [
+            0.4259,
+            0.6842
+          ]
+        },
+        "P": {
+          "n": 10,
+          "mean": 0.5382,
+          "ci95": [
+            0.4061,
+            0.6771
+          ]
+        }
+      }
+    },
+    "support_papers": {
+      "n": 29,
+      "kendall_tau_b": 0.2559,
+      "perm_p": 0.1364,
+      "auc_Y_vs_PN": 0.6605,
+      "by_verdict": {
+        "Y": {
+          "n": 19,
+          "mean": 3.6316,
+          "ci95": [
+            2.4211,
+            4.9474
+          ]
+        },
+        "P": {
+          "n": 10,
+          "mean": 1.8,
+          "ci95": [
+            1.1,
+            2.8
+          ]
+        }
+      }
+    },
+    "support_chunks": {
+      "n": 29,
+      "kendall_tau_b": 0.0539,
+      "perm_p": 0.7516,
+      "auc_Y_vs_PN": 0.5368,
+      "by_verdict": {
+        "Y": {
+          "n": 19,
+          "mean": 9.5789,
+          "ci95": [
+            5.2632,
+            14.2105
+          ]
+        },
+        "P": {
+          "n": 10,
+          "mean": 8.4,
+          "ci95": [
+            1.8,
+            16.9
+          ]
+        }
+      }
+    },
+    "tier_inverted": {
+      "n": 29,
+      "kendall_tau_b": -0.2855,
+      "perm_p": 0.2068,
+      "auc_Y_vs_PN": 0.3658,
+      "by_verdict": {
+        "Y": {
+          "n": 19,
+          "mean": -1.3684,
+          "ci95": [
+            -1.5789,
+            -1.1579
+          ]
+        },
+        "P": {
+          "n": 10,
+          "mean": -1.1,
+          "ci95": [
+            -1.3,
+            -1.0
+          ]
+        }
+      }
+    }
+  },
+  "independent_units": {
+    "per_annotator": {
+      "P": {
+        "n": 10,
+        "confidence": {
+          "n": 10,
+          "note": "no variance — statistic undefined (e.g. all statements are Tier-1)"
+        },
+        "support_papers": {
+          "n": 10,
+          "note": "no variance — statistic undefined (e.g. all statements are Tier-1)"
+        },
+        "support_chunks": {
+          "n": 10,
+          "note": "no variance — statistic undefined (e.g. all statements are Tier-1)"
+        },
+        "tier_inverted": {
+          "n": 10,
+          "note": "no variance — statistic undefined (e.g. all statements are Tier-1)"
+        }
+      },
+      "Y": {
+        "n": 19,
+        "confidence": {
+          "n": 19,
+          "note": "no variance — statistic undefined (e.g. all statements are Tier-1)"
+        },
+        "support_papers": {
+          "n": 19,
+          "note": "no variance — statistic undefined (e.g. all statements are Tier-1)"
+        },
+        "support_chunks": {
+          "n": 19,
+          "note": "no variance — statistic undefined (e.g. all statements are Tier-1)"
+        },
+        "tier_inverted": {
+          "n": 19,
+          "note": "no variance — statistic undefined (e.g. all statements are Tier-1)"
+        }
+      }
+    },
+    "consensus_per_triple": {
+      "n_triples": 18,
+      "n_full_agreement": 17,
+      "confidence__min": {
+        "n": 18,
+        "kendall_tau_b": 0.1096,
+        "perm_p": 0.6325
+      },
+      "confidence__mean": {
+        "n": 18,
+        "kendall_tau_b": 0.0382,
+        "perm_p": 0.8778
+      },
+      "support_papers__min": {
+        "n": 18,
+        "kendall_tau_b": 0.3572,
+        "perm_p": 0.1102
+      },
+      "support_papers__mean": {
+        "n": 18,
+        "kendall_tau_b": 0.3132,
+        "perm_p": 0.1456
+      },
+      "support_chunks__min": {
+        "n": 18,
+        "kendall_tau_b": 0.2675,
+        "perm_p": 0.2282
+      },
+      "support_chunks__mean": {
+        "n": 18,
+        "kendall_tau_b": 0.2015,
+        "perm_p": 0.3509
+      },
+      "tier_inverted__min": {
+        "n": 18,
+        "kendall_tau_b": -0.1,
+        "perm_p": 1.0
+      },
+      "tier_inverted__mean": {
+        "n": 18,
+        "kendall_tau_b": -0.2078,
+        "perm_p": 0.5451
+      }
+    }
+  },
+  "range_restriction": {
+    "confidence_min": 0.1809,
+    "confidence_max": 1.0,
+    "confidence_sd": 0.2612,
+    "distinct_tiers_present": [
+      1,
+      2
+    ],
+    "note": "The Section 4.4 sample was drawn from Tier-1 only, so w_tier is constant and the confidence range is truncated. Any attenuation of the correlation must be read in that light: this tests the score WITHIN the top stratum, not across the full reliability range."
+  },
+  "m4_vs_expert": {
+    "n": 29,
+    "contingency_m4_x_expert": {
+      "P|P": 3,
+      "P|Y": 11,
+      "Y|P": 7,
+      "Y|Y": 8
+    },
+    "kappa_unweighted": -0.2548,
+    "kappa_linear": -0.2548,
+    "exact_agreement": 0.3793,
+    "human_reference_kappa": [
+      0.3,
+      0.37
+    ]
+  },
+  "per_annotator": {
+    "P": {
+      "n": 10,
+      "kappa_linear": 0.0
+    },
+    "Y": {
+      "n": 19,
+      "kappa_linear": 0.0
+    }
+  }
+}

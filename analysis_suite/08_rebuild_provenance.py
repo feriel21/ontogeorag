@@ -26,8 +26,16 @@ METHOD — two complementary provenance channels, both text-grounded:
 CONFIDENCE (unchanged structure, consensus now from co-occurrence papers):
     confidence = w_tier * w_m4 * w_consensus, components always exported.
     w_tier: T1=1.0, T2=0.6, quarantine=0.2
-    w_m4  : STRONG=1.0, WEAK=0.7, other=0.5  (uses `verdict` field if no
-            M4 field present — run11 stores the Qwen verdict there)
+    w_m4  : PREFERRED source is the cross-family panel decision, passed
+            with --decisions (ACCEPT=1.0, UNCERTAIN=0.7, REJECT=0.3). This
+            is the channel the score is supposed to encode: the panel is
+            the independent check, whereas the in-KG `verdict` field holds
+            the same-model self-verification that M4 was built to replace.
+            Fallback when --decisions is absent: STRONG=1.0 / WEAK=0.7 /
+            missing=0.5 from the `verdict` field. A constant w_m4 (e.g. all
+            verdicts missing) collapses the score onto w_consensus and is
+            reported as a warning, because it silently makes the composite
+            untestable.
     w_consensus: log2(1+n_papers)/log2(1+4), capped at 1.
 
 OUTPUTS
@@ -48,19 +56,13 @@ USAGE
 
 import argparse
 import csv
+import json
 import math
 import re
 from pathlib import Path
 
-from kg_io import (
-    dump_kg,
-    get_m4_verdict,
-    get_object,
-    get_relation,
-    get_subject,
-    load_chunk_records,
-    load_kg,
-)
+from kg_io import (load_kg, dump_kg, load_chunk_records, get_subject,
+                   get_object, get_relation, get_m4_verdict)
 
 P_REF = 4
 W_TIER = {1: 1.00, 2: 0.60, 0: 0.20}
@@ -74,9 +76,10 @@ def norm_text(s: str) -> str:
 
 def shingles(s: str, k: int = 5) -> set:
     toks = norm_text(s).split()
-    return {
-        " ".join(toks[i : i + k]) for i in range(max(len(toks) - k + 1, 1))
-    }
+    return {" ".join(toks[i:i + k]) for i in range(max(len(toks) - k + 1, 1))}
+
+
+PANEL_W = {"ACCEPT": 1.00, "UNCERTAIN": 0.70, "REJECT": 0.30}
 
 
 def m4_weight(verdict: str) -> float:
@@ -85,6 +88,21 @@ def m4_weight(verdict: str) -> float:
     if "WEAK" in verdict:
         return 0.70
     return 0.50
+
+
+def load_panel(path):
+    """Return {(subject, relation, object) -> decision} from a panel or M4
+    decisions jsonl."""
+    idx = {}
+    for line in open(path, encoding="utf-8"):
+        if not line.strip():
+            continue
+        d = json.loads(line)
+        k = (norm_text(d.get("subject", "")), str(d.get("relation", "")).strip(),
+             norm_text(d.get("object", "")))
+        idx[k] = str(d.get("m4_decision") or d.get("decision") or "").upper()
+    print(f"[panel] {len(idx)} decisions loaded from {path}")
+    return idx
 
 
 def consensus_weight(n_papers: int) -> float:
@@ -98,18 +116,18 @@ def main():
     ap.add_argument("--kg", required=True)
     ap.add_argument("--chunks", required=True)
     ap.add_argument("--outdir", default="output/analysis")
-    ap.add_argument(
-        "--fuzzy-thr",
-        type=float,
-        default=0.5,
-        help="min shingle containment for fuzzy anchor",
-    )
+    ap.add_argument("--decisions", default=None,
+                    help="m4_panel_decisions.jsonl — cross-family panel "
+                         "decisions used as the w_m4 channel (recommended)")
+    ap.add_argument("--fuzzy-thr", type=float, default=0.5,
+                    help="min shingle containment for fuzzy anchor")
     args = ap.parse_args()
     outdir = Path(args.outdir)
     outdir.mkdir(parents=True, exist_ok=True)
 
     kg = load_kg(args.kg)
     chunks = load_chunk_records(args.chunks)
+    panel = load_panel(args.decisions) if args.decisions else {}
     chunk_norm = [norm_text(c["text"]) for c in chunks]
     chunk_shingles = None  # lazy — only built if fuzzy matching is needed
 
@@ -118,6 +136,7 @@ def main():
 
     for t in kg["triples"]:
         s, r, o = get_subject(t), get_relation(t), get_object(t)
+        sn, on = norm_text(s), norm_text(o)
 
         # ── channel 1: evidence anchoring ─────────────────────────────
         ev = norm_text(str(t.get("evidence", "")))
@@ -125,15 +144,12 @@ def main():
         if len(ev) >= 30:
             # exact: mid-slice survives truncated/quoted edges
             probe = ev[8:158] if len(ev) > 60 else ev
-            hit = next(
-                (i for i, ct in enumerate(chunk_norm) if probe in ct), None
-            )
+            hit = next((i for i, ct in enumerate(chunk_norm)
+                        if probe in ct), None)
             if hit is not None:
-                ev_chunk, ev_paper, ev_match = (
-                    chunks[hit]["chunk_id"],
-                    chunks[hit]["paper"],
-                    "exact",
-                )
+                ev_chunk, ev_paper, ev_match = (chunks[hit]["chunk_id"],
+                                                chunks[hit]["paper"],
+                                                "exact")
                 n_exact += 1
             else:
                 if chunk_shingles is None:
@@ -148,35 +164,21 @@ def main():
                     if j > best_j:
                         best_i, best_j = i, j
                 if best_i is not None and best_j >= args.fuzzy_thr:
-                    ev_chunk, ev_paper = (
-                        chunks[best_i]["chunk_id"],
-                        chunks[best_i]["paper"],
-                    )
+                    ev_chunk, ev_paper = (chunks[best_i]["chunk_id"],
+                                          chunks[best_i]["paper"])
                     ev_match = f"fuzzy({best_j:.2f})"
                     n_fuzzy += 1
                 else:
                     n_unmatched += 1
-                    unmatched.append(
-                        {
-                            "subject": s,
-                            "relation": r,
-                            "object": o,
-                            "evidence_head": ev[:120],
-                        }
-                    )
+                    unmatched.append({"subject": s, "relation": r,
+                                      "object": o,
+                                      "evidence_head": ev[:120]})
         else:
             n_unmatched += 1
-            unmatched.append(
-                {
-                    "subject": s,
-                    "relation": r,
-                    "object": o,
-                    "evidence_head": ev[:120],
-                }
-            )
+            unmatched.append({"subject": s, "relation": r, "object": o,
+                              "evidence_head": ev[:120]})
 
         # ── channel 2: co-occurrence support ──────────────────────────
-        sn, on = norm_text(s), norm_text(o)
         cooc_ids, cooc_papers = [], []
         if sn and on:
             for i, ct in enumerate(chunk_norm):
@@ -190,7 +192,12 @@ def main():
 
         verdict = get_m4_verdict(t)
         w_t = W_TIER.get(t["_tier"], 0.20)
-        w_m = m4_weight(verdict)
+        pdec = panel.get((sn, r.strip(), on)) if panel else None
+        if pdec in PANEL_W:
+            w_m = PANEL_W[pdec]
+            verdict = verdict or pdec
+        else:
+            w_m = m4_weight(verdict)
         w_c = consensus_weight(len(cooc_papers))
         conf = round(w_t * w_m * w_c, 4)
 
@@ -202,64 +209,57 @@ def main():
         t["support_papers"] = len(cooc_papers)
         t["paper_ids"] = cooc_papers
         t["confidence"] = conf
-        t["conf_components"] = {
-            "w_tier": w_t,
-            "w_m4": w_m,
-            "w_consensus": round(w_c, 4),
-        }
+        t["conf_components"] = {"w_tier": w_t, "w_m4": w_m,
+                                "w_consensus": round(w_c, 4)}
 
-        rows.append(
-            {
-                "subject": s,
-                "relation": r,
-                "object": o,
-                "tier": t["_tier"],
-                "status": t["_status"],
-                "verdict": verdict or "NA",
-                "evidence_paper": ev_paper,
-                "evidence_match": ev_match,
-                "support_chunks": len(cooc_ids),
-                "support_papers": len(cooc_papers),
-                "confidence": conf,
-                "paper_ids": ";".join(cooc_papers),
-            }
-        )
+        rows.append({"subject": s, "relation": r, "object": o,
+                     "tier": t["_tier"], "status": t["_status"],
+                     "verdict": verdict or "NA",
+                     "evidence_paper": ev_paper,
+                     "evidence_match": ev_match,
+                     "support_chunks": len(cooc_ids),
+                     "support_papers": len(cooc_papers),
+                     "confidence": conf,
+                     "paper_ids": ";".join(cooc_papers)})
 
     dump_kg(kg, outdir / "kg_with_provenance.json")
     rows.sort(key=lambda r: -r["confidence"])
-    with open(
-        outdir / "provenance_report.csv", "w", newline="", encoding="utf-8"
-    ) as f:
+    with open(outdir / "provenance_report.csv", "w", newline="",
+              encoding="utf-8") as f:
         w = csv.DictWriter(f, fieldnames=list(rows[0].keys()))
         w.writeheader()
         w.writerows(rows)
     if unmatched:
-        with open(
-            outdir / "provenance_unmatched.csv",
-            "w",
-            newline="",
-            encoding="utf-8",
-        ) as f:
+        with open(outdir / "provenance_unmatched.csv", "w", newline="",
+                  encoding="utf-8") as f:
             w = csv.DictWriter(f, fieldnames=list(unmatched[0].keys()))
             w.writeheader()
             w.writerows(unmatched)
 
     n = len(rows)
     multi = sum(1 for r in rows if r["support_papers"] >= 2)
+    from collections import Counter as _C
+    wm_vals = _C(t["conf_components"]["w_m4"] for t in kg["triples"])
+    wt_vals = _C(t["conf_components"]["w_tier"] for t in kg["triples"])
     print("=" * 60)
     print("PROVENANCE REBUILD (v2 — evidence re-anchoring) SUMMARY")
     print("=" * 60)
     print(f"triples processed          : {n}")
     print(f"evidence anchored exact    : {n_exact}")
     print(f"evidence anchored fuzzy    : {n_fuzzy}")
-    print(
-        f"evidence unmatched         : {n_unmatched}"
-        + ("  -> see provenance_unmatched.csv" if n_unmatched else "")
-    )
-    print(
-        f"triples with >=2 papers    : {multi} ({100 * multi / max(n, 1):.1f}%)"
-        "  (co-occurrence consensus, upper bound)"
-    )
+    print(f"evidence unmatched         : {n_unmatched}"
+          + ("  -> see provenance_unmatched.csv" if n_unmatched else ""))
+    print(f"triples with >=2 papers    : {multi} ({100*multi/max(n,1):.1f}%)"
+          "  (co-occurrence consensus, upper bound)")
+    for label, vals in (("w_m4", wm_vals), ("w_tier", wt_vals)):
+        if len(vals) == 1:
+            print(f"!! {label} is CONSTANT ({list(vals)[0]}) across all "
+                  f"triples: the composite confidence collapses onto the "
+                  f"remaining channels and cannot be validated as a whole."
+                  + ("  Pass --decisions <m4_panel_decisions.jsonl> to "
+                     "activate this channel." if label == "w_m4" else ""))
+        else:
+            print(f"{label} distribution: {dict(vals)}")
     print(f"outputs in: {outdir}")
 
 

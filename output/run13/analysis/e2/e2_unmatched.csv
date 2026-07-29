@@ -1,0 +1,39 @@
+statement_id,annotator,verdict_raw,statement,reason
+3,expert1,Y,Mass transport deposits can develop within progradational margin clinothemes.,triple not in KG outputs
+3,expert2,Y,Mass transport deposits can develop within progradational margin clinothemes.,triple not in KG outputs
+4,expert1,Y,Seismic interpretation of MTDs often uses reflector continuity as a descriptor.,triple not in KG outputs
+4,expert2,P,Seismic interpretation of MTDs often uses reflector continuity as a descriptor.,triple not in KG outputs
+8,expert1,Y,Rapid sedimentation can trigger the development of fluid overpressure.,triple not in KG outputs
+8,expert2,Y,Rapid sedimentation can trigger the development of fluid overpressure.,triple not in KG outputs
+10,expert1,P,High-amplitude blocks can occur within mass transport deposits.,triple not in KG outputs
+10,expert2,VERIFY,High-amplitude blocks can occur within mass transport deposits.,triple not in KG outputs
+11,expert1,Y,Mass transport deposits commonly contain internally deformed strata.,triple not in KG outputs
+11,expert2,Y,Mass transport deposits commonly contain internally deformed strata.,triple not in KG outputs
+12,expert1,Y,Gas hydrate dissociation may contribute to retrogressive slope failure.,triple not in KG outputs
+12,expert2,Y,Gas hydrate dissociation may contribute to retrogressive slope failure.,triple not in KG outputs
+13,expert1,Y,Internal reflections within an MTD may be inclined relative to surrounding strata.,triple not in KG outputs
+13,expert2,Y,Internal reflections within an MTD may be inclined relative to surrounding strata.,triple not in KG outputs
+14,expert1,Y,Mass transport deposits frequently occur on continental slopes.,triple not in KG outputs
+14,expert2,Y,Mass transport deposits frequently occur on continental slopes.,triple not in KG outputs
+15,expert1,Y,Mass transport deposits may occur along passive continental margins.,triple not in KG outputs
+15,expert2,Y,Mass transport deposits may occur along passive continental margins.,triple not in KG outputs
+16,expert1,Y,Internal reflectors within MTDs can appear discontinuous in seismic data.,triple not in KG outputs
+16,expert2,Y,Internal reflectors within MTDs can appear discontinuous in seismic data.,triple not in KG outputs
+17,expert1,Y,Retrogressive failure may propagate upslope from the initial failure surface.,triple not in KG outputs
+17,expert2,Y,Retrogressive failure may propagate upslope from the initial failure surface.,triple not in KG outputs
+19,expert1,Y,Sediment failure can occur along passive continental margins.,triple not in KG outputs
+19,expert2,Y,Sediment failure can occur along passive continental margins.,triple not in KG outputs
+20,expert1,Y,Internally generated seepage forces may fracture the seabed and contribute to slope instability.,triple not in KG outputs
+20,expert2,VERIFY,Internally generated seepage forces may fracture the seabed and contribute to slope instability.,triple not in KG outputs
+21,expert1,Y,Steep slopes may promote seabed fracturing and slope failure.,triple not in KG outputs
+21,expert2,Y,Steep slopes may promote seabed fracturing and slope failure.,triple not in KG outputs
+22,expert1,P,Debris flows may occur on continental slopes.,triple not in KG outputs
+22,expert2,Y,Debris flows may occur on continental slopes.,triple not in KG outputs
+23,expert1,Y,Debris flows may display chaotic seismic facies.,triple not in KG outputs
+23,expert2,Y,Debris flows may display chaotic seismic facies.,triple not in KG outputs
+24,expert1,P,Turbidity currents can be generated from debris flows.,triple not in KG outputs
+24,expert2,Y,Turbidity currents can be generated from debris flows.,triple not in KG outputs
+27,expert1,Y,Fluid overpressure may contribute to slope failure in submarine environments.,triple not in KG outputs
+27,expert2,Y,Fluid overpressure may contribute to slope failure in submarine environments.,triple not in KG outputs
+29,expert1,Y,MTDs can exhibit discontinuous internal reflectors in seismic profiles.,no triple in protocol
+29,expert2,Y,MTDs can exhibit discontinuous internal reflectors in seismic profiles.,no triple in protocol

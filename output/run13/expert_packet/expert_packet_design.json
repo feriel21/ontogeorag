@@ -1,0 +1,43 @@
+{
+  "seed": 42,
+  "n_per_stratum": 5,
+  "confidence_bin_edges": [
+    0.2584,
+    0.4307
+  ],
+  "n_items": 36,
+  "estimated_minutes": 54,
+  "strata": {
+    "tier1_conf1": {
+      "population": 1,
+      "sampled": 1
+    },
+    "tier1_conf2": {
+      "population": 39,
+      "sampled": 5
+    },
+    "tier1_conf3": {
+      "population": 24,
+      "sampled": 5
+    },
+    "tier2_conf1": {
+      "population": 27,
+      "sampled": 5
+    },
+    "tier2_conf2": {
+      "population": 18,
+      "sampled": 5
+    },
+    "tier2_conf3": {
+      "population": 5,
+      "sampled": 5
+    },
+    "priority": {
+      "population": 10,
+      "sampled": 10,
+      "note": "reviewed regardless of sampling; excluded from score-validation analyses"
+    }
+  },
+  "blinding": "The expert sheet shows statement, passage and source only. Tier, confidence, support counts and M4 verdicts are withheld to keep the later score-validation non-circular; the mapping is in expert_packet_key.csv.",
+  "verbalization": "Literal templates, no hedging added."
+}

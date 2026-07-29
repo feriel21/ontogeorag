@@ -1,0 +1,57 @@
+statement_id,annotator,verdict_raw,statement,reason
+1,expert1,P,Folds and thrust structures may display an imbricate reflector pattern in seismic data.,no triple in protocol
+1,expert2,Y,Folds and thrust structures may display an imbricate reflector pattern in seismic data.,no triple in protocol
+2,expert1,P,Burial compaction increases the shear strength of sediments.,no triple in protocol
+2,expert2,P,Burial compaction increases the shear strength of sediments.,no triple in protocol
+3,expert1,Y,Mass transport deposits can develop within progradational margin clinothemes.,no triple in protocol
+3,expert2,Y,Mass transport deposits can develop within progradational margin clinothemes.,no triple in protocol
+4,expert1,Y,Seismic interpretation of MTDs often uses reflector continuity as a descriptor.,no triple in protocol
+4,expert2,P,Seismic interpretation of MTDs often uses reflector continuity as a descriptor.,no triple in protocol
+5,expert1,Y,Layered sediments may produce acoustically laminated seismic reflections.,no triple in protocol
+5,expert2,P,Layered sediments may produce acoustically laminated seismic reflections.,no triple in protocol
+6,expert1,P,The basal shear surface of an MTD lies beneath the upper surface of the deposit.,no triple in protocol
+6,expert2,N,The basal shear surface of an MTD lies beneath the upper surface of the deposit.,no triple in protocol
+7,expert1,P,Sea-level lowstands can contribute to slope failure.,no triple in protocol
+7,expert2,VERIFY,Sea-level lowstands can contribute to slope failure.,no triple in protocol
+8,expert1,Y,Rapid sedimentation can trigger the development of fluid overpressure.,no triple in protocol
+8,expert2,Y,Rapid sedimentation can trigger the development of fluid overpressure.,no triple in protocol
+9,expert1,P,Wave action may destabilize slopes by altering equilibrium conditions.,no triple in protocol
+9,expert2,P,Wave action may destabilize slopes by altering equilibrium conditions.,no triple in protocol
+10,expert1,P,High-amplitude blocks can occur within mass transport deposits.,no triple in protocol
+10,expert2,VERIFY,High-amplitude blocks can occur within mass transport deposits.,no triple in protocol
+11,expert1,Y,Mass transport deposits commonly contain internally deformed strata.,no triple in protocol
+11,expert2,Y,Mass transport deposits commonly contain internally deformed strata.,no triple in protocol
+12,expert1,Y,Gas hydrate dissociation may contribute to retrogressive slope failure.,no triple in protocol
+12,expert2,Y,Gas hydrate dissociation may contribute to retrogressive slope failure.,no triple in protocol
+13,expert1,Y,Internal reflections within an MTD may be inclined relative to surrounding strata.,no triple in protocol
+13,expert2,Y,Internal reflections within an MTD may be inclined relative to surrounding strata.,no triple in protocol
+14,expert1,Y,Mass transport deposits frequently occur on continental slopes.,no triple in protocol
+14,expert2,Y,Mass transport deposits frequently occur on continental slopes.,no triple in protocol
+16,expert1,Y,Internal reflectors within MTDs can appear discontinuous in seismic data.,no triple in protocol
+16,expert2,Y,Internal reflectors within MTDs can appear discontinuous in seismic data.,no triple in protocol
+17,expert1,Y,Retrogressive failure may propagate upslope from the initial failure surface.,no triple in protocol
+17,expert2,Y,Retrogressive failure may propagate upslope from the initial failure surface.,no triple in protocol
+18,expert1,P,Large submarine landslides commonly occur on passive continental margins.,no triple in protocol
+18,expert2,N,Large submarine landslides commonly occur on passive continental margins.,no triple in protocol
+19,expert1,Y,Sediment failure can occur along passive continental margins.,no triple in protocol
+19,expert2,Y,Sediment failure can occur along passive continental margins.,no triple in protocol
+20,expert1,Y,Internally generated seepage forces may fracture the seabed and contribute to slope instability.,no triple in protocol
+20,expert2,VERIFY,Internally generated seepage forces may fracture the seabed and contribute to slope instability.,no triple in protocol
+21,expert1,Y,Steep slopes may promote seabed fracturing and slope failure.,no triple in protocol
+21,expert2,Y,Steep slopes may promote seabed fracturing and slope failure.,no triple in protocol
+22,expert1,P,Debris flows may occur on continental slopes.,no triple in protocol
+22,expert2,Y,Debris flows may occur on continental slopes.,no triple in protocol
+23,expert1,Y,Debris flows may display chaotic seismic facies.,no triple in protocol
+23,expert2,Y,Debris flows may display chaotic seismic facies.,no triple in protocol
+24,expert1,P,Turbidity currents can be generated from debris flows.,no triple in protocol
+24,expert2,Y,Turbidity currents can be generated from debris flows.,no triple in protocol
+25,expert1,Y,Elevated pore pressure can reduce slope stability and promote slope failure.,no triple in protocol
+25,expert2,Y,Elevated pore pressure can reduce slope stability and promote slope failure.,no triple in protocol
+26,expert1,Y,Preserved sediment blocks within MTDs may display sub-horizontal internal reflectors.,no triple in protocol
+26,expert2,Y,Preserved sediment blocks within MTDs may display sub-horizontal internal reflectors.,no triple in protocol
+27,expert1,Y,Fluid overpressure may contribute to slope failure in submarine environments.,no triple in protocol
+27,expert2,Y,Fluid overpressure may contribute to slope failure in submarine environments.,no triple in protocol
+28,expert1,P,Basal surfaces of MTDs can display disrupted reflectors.,no triple in protocol
+28,expert2,Y,Basal surfaces of MTDs can display disrupted reflectors.,no triple in protocol
+29,expert1,Y,MTDs can exhibit discontinuous internal reflectors in seismic profiles.,no triple in protocol
+29,expert2,Y,MTDs can exhibit discontinuous internal reflectors in seismic profiles.,no triple in protocol

@@ -1,0 +1,170 @@
+{
+  "n_expert_records": 29,
+  "n_annotator_records": 58,
+  "n_joined_any": 20,
+  "n_offscale_verdicts": 3,
+  "offscale_vocabulary": {
+    "VERIFY": 3
+  },
+  "n_matched": 19,
+  "n_unmatched": 38,
+  "exploratory": true,
+  "min_n": 15,
+  "confidence_vs_expert": {
+    "confidence": {
+      "n": 19,
+      "kendall_tau_b": -0.2435,
+      "perm_p": 0.235,
+      "auc_Y_vs_PN": 0.3631,
+      "by_verdict": {
+        "Y": {
+          "n": 7,
+          "mean": 0.2767,
+          "ci95": [
+            0.197,
+            0.3703
+          ]
+        },
+        "P": {
+          "n": 10,
+          "mean": 0.3334,
+          "ci95": [
+            0.2335,
+            0.4291
+          ]
+        },
+        "N": {
+          "n": 2,
+          "mean": 0.4654,
+          "ci95": [
+            0.4307,
+            0.5
+          ]
+        }
+      }
+    },
+    "support_papers": {
+      "n": 19,
+      "kendall_tau_b": -0.26,
+      "perm_p": 0.222,
+      "auc_Y_vs_PN": 0.3452,
+      "by_verdict": {
+        "Y": {
+          "n": 7,
+          "mean": 2.2857,
+          "ci95": [
+            1.4286,
+            3.5714
+          ]
+        },
+        "P": {
+          "n": 10,
+          "mean": 3.7,
+          "ci95": [
+            2.2,
+            5.2
+          ]
+        },
+        "N": {
+          "n": 2,
+          "mean": 4.5,
+          "ci95": [
+            3.0,
+            6.0
+          ]
+        }
+      }
+    },
+    "support_chunks": {
+      "n": 19,
+      "kendall_tau_b": 0.1014,
+      "perm_p": 0.6293,
+      "auc_Y_vs_PN": 0.625,
+      "by_verdict": {
+        "Y": {
+          "n": 7,
+          "mean": 17.0,
+          "ci95": [
+            8.0,
+            25.7143
+          ]
+        },
+        "P": {
+          "n": 10,
+          "mean": 12.0,
+          "ci95": [
+            3.7,
+            24.8
+          ]
+        },
+        "N": {
+          "n": 2,
+          "mean": 34.0,
+          "ci95": [
+            3.0,
+            65.0
+          ]
+        }
+      }
+    },
+    "tier_inverted": {
+      "n": 19,
+      "kendall_tau_b": -0.1712,
+      "perm_p": 0.5121,
+      "auc_Y_vs_PN": 0.4524,
+      "by_verdict": {
+        "Y": {
+          "n": 7,
+          "mean": -1.4286,
+          "ci95": [
+            -1.8571,
+            -1.1429
+          ]
+        },
+        "P": {
+          "n": 10,
+          "mean": -1.4,
+          "ci95": [
+            -1.7,
+            -1.1
+          ]
+        },
+        "N": {
+          "n": 2,
+          "mean": -1.0,
+          "ci95": [
+            -1.0,
+            -1.0
+          ]
+        }
+      }
+    }
+  },
+  "m4_vs_expert": {
+    "n": 19,
+    "contingency_m4_x_expert": {
+      "P|P": 4,
+      "P|Y": 3,
+      "Y|N": 2,
+      "Y|P": 6,
+      "Y|Y": 4
+    },
+    "kappa_unweighted": -0.0097,
+    "kappa_linear": -0.0693,
+    "exact_agreement": 0.4211,
+    "human_reference_kappa": [
+      0.3,
+      0.37
+    ]
+  },
+  "per_annotator": {
+    "expert1": {
+      "n": 10,
+      "kappa_linear": -0.2963
+    },
+    "expert2": {
+      "n": 9,
+      "kappa_linear": 0.1
+    }
+  }
+}
