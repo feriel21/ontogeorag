@@ -5,9 +5,7 @@ literature using ontology-constrained LLM extraction with BM25 retrieval, CrossE
 reranking, dual-pass tiering and independent cross-family verification. Developed for mass
 transport deposit (MTD) interpretation in seismic data.
 
-> **Paper:** Talbi et al. *OntoGeoRAG: Ontology-Constrained Knowledge Graph Construction
-> from Geological Literature via Retrieval-Augmented Generation.*
-> Submitted to *Computers & Geosciences*.
+
 
 ---
 
@@ -21,28 +19,33 @@ Corpus: **37 peer-reviewed papers**, 1,955 deduplicated chunks.
 | Triples (post cross-family panel) | 64 | **151** (+6 quarantined) |
 | LB2019 recall — **test split** (17 edges) | — | **82.4 % (14/17)** |
 | LB2019 recall — dev split (17 edges) | — | 64.7 % (11/17) |
-| LB2019 recall — 34-edge combined | 44.1 % (15/34) | 73.5 % (25/34) raw · 76.5 % (26/34) matching-artefact corrected |
-| LB2019 recall — 26-edge original | 34.6 % (9/26) | 73.1 % (19/26) |
-| Descriptor coverage (13-term LB2019 set) | 10/13 (76.9 %) | **11/13 (84.6 %)** |
+| LB2019 recall — 26-edge original | 34.6 % (9/26) | **73.1 % (19/26)** |
+| LB2019 recall — 34-edge combined | 44.1 % (15/34) | 73.5 % (25/34) raw · 76.5 % (26/34) artefact-corrected |
+| Descriptor coverage (13-term LB2019 set) | 10/13 | **11/13** — 11/12 of the *reachable* set, see note 3 |
 | NOT_SUPPORTED rate H_T1 (self-verification) | **0.0 %** (Wilson CI [0.0, 3.6] %) | — |
-| Evidence anchoring (triple → source sentence) | — | **94.9 %** (143/151) |
+| Evidence anchoring (triple → source sentence) | — | **94.7 %** (143/151) |
 | Inter-article consensus (≥ 2 papers) | — | 39.1 % |
 | Expert validation of KG triples | *pending* | *pending* |
 
 **Evaluation protocol (frozen before the run).** The 34-edge benchmark was split 17/17 into
 dev and test, declared and committed in `configs/run13_protocol_declaration.json` **before**
 run13 executed. Headline recall is reported on **test**; the dev–test gap measures residual
-query-design adaptation. Observed gap is negative (test > dev), i.e. no evidence of
-benchmark overfitting — with the caveat that n = 17 per split gives ±5.9 pp per edge.
+query-design adaptation. The observed gap is negative (test > dev): no evidence of benchmark
+overfitting — with the caveat that n = 17 per split gives ±5.9 pp per edge.
 
 **Recall is measured on the fused pre-panel KG**, keeping it comparable with earlier
 configurations. The cross-family panel is a precision mechanism applied afterwards; it may
 quarantine benchmark edges (one in run13) and is not part of the recall protocol.
 
-**Matching-artefact note.** Recall matching is normalized-substring based and therefore
-plural-sensitive: run13's canonicalization (`submarine landslides → submarine landslide`)
-broke one otherwise-correct benchmark match. Both raw (25/34) and corrected (26/34) figures
-are reported.
+**Three known matching-protocol artefacts, reported rather than silently corrected:**
+1. *Plural sensitivity* — matching is normalized-substring based, so canonicalization
+   (`submarine landslides → submarine landslide`) breaks an otherwise-correct match. The
+   edge is in the KG but counted as missed. Both raw (25/34) and corrected (26/34) are given.
+2. *Asymmetric synonyms* — `DESCRIPTOR_SYNONYMS` is applied in `coverage()` but not in
+   `recall()`. Documented rather than fixed, to preserve comparability with earlier runs.
+3. *Reachable descriptor ceiling is 12, not 13* — `stratified` is mapped onto `layered`
+   before counting and can never be reported as found. Coverage is therefore 11/12 (91.7 %)
+   of the reachable set.
 
 ### Retrieval is the bottleneck, not model size
 
@@ -59,19 +62,26 @@ within this sentence-level extraction framework.
 
 run11's index contained Jupyter `.ipynb_checkpoints` duplicates of every paper. run13
 rebuilt the index from the same chunks with duplicates removed; chunking is bit-identical,
-so the only variable is deduplication.
+so the only variable is deduplication. **Both runs are measured with the same, corrected
+code.**
 
 | | run11 (contaminated) | run13 (clean) |
 |---|---|---|
 | Index | 3,386 chunks (42.3 % duplicated) | 1,955 chunks |
 | Top-5 slots occupied by duplicates | 39.8 % | 0 % |
-| Effective context diversity | 3.43 / 5 unique passages | 5 / 5 |
+| Effective context diversity | 3.42 / 5 unique passages | 5 / 5 |
 | Raw triples per pass | 380 | **446 (+17 %)** |
 | Per-pass recall (26-edge, pass A) | 17/26 | **19/26** |
+| **Recall, LB2019 original (26)** | 18/26 | **19/26** |
+| Recall, 34-edge | 26/34 | 25/34 raw (26/34 corrected) |
+| — of which the 8 in-house extensions | 8/8 | 6/8 |
+| Descriptor coverage, Tier-1 | 11/13 | 10/13 |
 | Fused Tier-1 / Tier-2 | 101 / 52 | 90 / 67 |
 
-Cleaner contexts increase both coverage and cross-pass divergence: more raw triples, a
-slightly smaller doubly-verified Tier-1 core.
+Deduplication improves recovery of the **independent** expert benchmark (18 → 19/26) and
+raises extraction yield by 17 %, at the cost of a narrower doubly-verified core: cleaner
+contexts increase coverage and cross-pass divergence simultaneously. Both edges lost on the
+34-edge benchmark belong to our own extensions, one of them through the plural artefact.
 
 ### Cross-family verification findings
 
@@ -79,9 +89,25 @@ slightly smaller doubly-verified Tier-1 core.
   NOT_SUPPORTED from the text, 41 were judged PLAUSIBLE without the text. Empirical
   justification for the blind/evidence dual-pass design and for treating the LLM as a
   transducer rather than a knowledge source.
-- **Machine inter-judge κ ≈ human inter-expert κ** — Llama × Mistral linear-weighted
-  κ = 0.30 (evidence verdicts), against 0.30–0.37 between human experts: the agreement
-  ceiling is a property of the task, not a defect of the judges.
+- **Machine inter-judge agreement sits at or below the human inter-expert level** —
+  Llama × Mistral κ ranges 0.14–0.30 depending on the variant (only the linear-weighted
+  evidence κ, 0.30, reaches the human band of 0.30–0.37). The agreement ceiling is a
+  property of the task, not a defect of the judges.
+- **The tier predicts an independent verifier's judgement** — 39 % of Tier-1 triples are
+  SUPPORTED by the cross-family verifier against 9 % of Tier-2 (49 % of Tier-2 are
+  NOT_SUPPORTED). A purely sampling-based criterion — does the triple survive both passes? —
+  anticipates the verdict of a different model family.
+
+### Causal-chain coherence
+
+Physical mechanisms are recoverable as **paths**, not only as isolated arcs: the causal
+subgraph (80 arcs over 104 nodes) contains **29 multi-arc chains, 6 of them entirely
+Tier-1** (after merging one nominalization duplicate). The canonical sequence
+`earthquake —triggers→ slope failure —causes→ mass transport deposit` has maximal
+confidence on every arc; the longest chain spans four arcs
+(`gas hydrate dissolution → excess pressure → formation stress gathering → developing MTDs`).
+Composition emerges from independently extracted sentence-level assertions — no query asks
+for a chain. Reproduce with `analysis_suite/19_causal_chains.py`.
 
 ---
 
@@ -124,12 +150,12 @@ PDF corpus (37 papers)
       │                     (cosine < 0.06, LB-vocabulary merge protection), dedup
       │                     → canonical_triples_v5.jsonl
       ▼
-05a_rule_canonicalize.py →  deterministic variant merge (plural/hyphen/abbreviation)   [additive]
+05a_rule_canonicalize.py →  deterministic variant merge (plural/hyphen/abbrev)  [additive]
 04c_lexicon_enforce.py   →  closed-world descriptor guard, imports the canonical
-      │                     40-term lexicon from constants.py                          [additive]
+      │                     40-term lexicon from constants.py                   [additive]
       ▼
 06_tiered_fusion.py      →  Tier-1 (both passes) + Tier-2 (one pass)
-06b_attach_provenance.py →  re-attaches retrieval provenance dropped by fusion          [additive]
+06b_attach_provenance.py →  re-attaches retrieval provenance dropped by fusion  [additive]
       ▼
 07_final_metrics.py      →  recall (dev / test / 34 / original-26), coverage,
       │                     hallucination
@@ -138,10 +164,10 @@ m4/ battery              →  Llama-3.1-8B verify (blind + evidence) → Mistral
       │                     → two-judge conservative panel → tier reassignment
       ▼
 04b_schema_enforce.py    →  entity types mapped onto the 5-type schema, self-loops,
-      │                     dedup, relation-signature check                            [additive]
+      │                     dedup, relation-signature check                     [additive]
       ▼
-analysis_suite/08–17     →  provenance, vocabulary, descriptors, relations, graph,
-                            robustness, reports, expert packet
+analysis_suite/08–19     →  provenance, vocabulary, descriptors, relations, graph,
+                            robustness, reports, expert packet, figures, causal chains
 ```
 
 `pipeline/05_canonicalize.py` exists but is **not** in the canonical chain: SciBERT
@@ -161,6 +187,9 @@ bash analysis_suite/run13_pipeline.sh
 # resume at a given stage: 2=index 3=extract 4=verify 5=clean 6=fusion+metrics 8=analysis
 FROM_STAGE=5 N_PAPERS_EXPECTED=37 bash analysis_suite/run13_pipeline.sh
 ```
+
+Outputs land under `output/run13/`: `kg/tiered_kg_run13.json`, `kg/metrics_{dev,test,full34}.json`,
+`m4_panel/tiered_kg_m4.json`, `kg/tiered_kg_run13_enforced.json`, `analysis/`, `expert_packet/`.
 
 **Index note.** `01_build_index.py` currently leaks memory in this environment
 (~1.7 GB / 3 s, any PDF), so run13's index was rebuilt from run11's chunks with duplicates
@@ -182,6 +211,10 @@ MODEL=$(python -c "from huggingface_hub import snapshot_download; \
 python analysis_suite/validate_pipeline.py --quick     # CPU, ~2 min
 python analysis_suite/validate_pipeline.py --gpu       # adds smoke tests
 ```
+
+It verifies artefact integrity, schema conformity and — since a merge once silently
+duplicated the function computing the headline metric — that no top-level definition is
+shadowed anywhere in `pipeline/`, `m4/` or `analysis_suite/`.
 
 ---
 
@@ -237,6 +270,7 @@ ontogeorag/
 │   ├── expB_no_rag.py              # Experiment B: memory-only baseline
 │   ├── plot_*.py                   # manuscript figures
 │   └── rag/
+<<<<<<< HEAD
 │       ├── llm_hf.py
 │       ├── hybrid_retriever.py  # BM25+dense+CrossEncoder (--hybrid, experimental)
 │       ├── chunking.py
@@ -245,10 +279,44 @@ ontogeorag/
 ├── m4/                          # Independent cross-family verifier (Llama-3.1-8B)
 ├── analysis_suite/              # run13 orchestration + post-hoc analysis (see below)
 ├── docs/                        # frozen dependency versions, parser_versions.txt
+=======
+│       ├── constants.py            # RELATION_MAP, KNOWN_DESCRIPTORS (40),
+│       │                           # LB2019_BENCHMARK_DESCRIPTORS (13) — single source
+│       ├── llm_hf.py, chunking.py, schema.py
+│       └── hybrid_retriever.py     # BM25+dense+CrossEncoder (experimental, run12 only)
+├── m4/                             # independent cross-family verifier
+│   ├── m4_verify.py                # dual-pass blind + evidence, any HF model
+│   ├── m4_panel.py                 # multi-judge conservative vote + inter-judge κ
+│   ├── m4_integrate_tiers.py       # tier reassignment from panel decisions
+│   ├── m4_aggregate.py, m4_metrics.py, m4_calibration.py, m4_negatives.py
+│   ├── m4_direction_check.py, m4_quote_verify.py, m4_inspection_list.py
+│   ├── m4_figures.py, m4_figures_v2.py
+│   └── slurm/m4_gpu.sh
+├── analysis_suite/                 # run13 orchestration + post-hoc analysis
+│   ├── run13_pipeline.sh           # orchestrator (FROM_STAGE, N_PAPERS_EXPECTED)
+│   ├── run13_build_index_from_run11.py, run13_01_make_devtest_split.py
+│   ├── 04b_schema_enforce.py       # entity-type schema enforcement
+│   ├── 04c_lexicon_enforce.py      # closed-world descriptor guard
+│   ├── 05a_rule_canonicalize.py    # deterministic variant merge
+│   ├── 06b_attach_provenance.py    # re-attach provenance lost at fusion
+│   ├── 08_rebuild_provenance.py    # evidence anchoring + consensus + confidence
+│   ├── 09_analyze_vocabulary.py    # 3-detector fragmentation audit
+│   ├── 10_descriptor_analysis.py, 11_relation_analysis.py, 12_kg_analysis.py
+│   ├── 13_robustness_analysis.py   # paper bootstrap + Heaps fits
+│   ├── 14_generate_report.py       # knowledge_report.md + discussion.md
+│   ├── 15_confidence_validation.py # confidence × expert × M4
+│   ├── 16_map_statements_to_triples.py
+│   ├── 17_build_expert_packet.py   # stratified blinded expert packet
+│   ├── 18_paper_figures.py         # manuscript figures
+│   ├── 19_causal_chains.py         # mechanisms as paths
+│   ├── kg_io.py                    # format-tolerant KG I/O + figure style
+│   ├── validate_pipeline.py        # stage-by-stage validation harness
+│   └── run_full_analysis.sh
+>>>>>>> origin/main
 ├── configs/
 │   ├── ontology_schema.json, descriptor_queries.jsonl (249)
 │   ├── lb_reference_edges.json (34), lb_reference_edges_original26.json (26)
-│   ├── lb_dev.json, lb_test.json, run13_protocol_declaration.json   # frozen protocol
+│   └── lb_dev.json, lb_test.json, run13_protocol_declaration.json   # frozen protocol
 ├── docs/
 │   ├── PIPELINE.md                 # stage-by-stage process documentation
 │   ├── VALIDATION_METRICS.md       # metrics, thresholds, justification
@@ -256,14 +324,14 @@ ontogeorag/
 │   ├── GEOLOGIST_GUIDE.md          # how to read the KG (no ML background needed)
 │   ├── README_run13.md             # descriptor-coverage fix, run13 decisions
 │   └── parser_versions.txt, requirements_frozen_*.txt
+├── figures/paper/                  # manuscript figures + figure_manifest.md
 ├── output/
 │   ├── step1/                      # run11 chunks (source of the run13 index)
 │   ├── run11_*/                    # ablation baseline
 │   ├── run13/{step1,pass_a,pass_b,kg,m4,m4_mistral,m4_panel,analysis,expert_packet}
 │   ├── m4*, kg_final/, analysis/   # run11-era verification outputs
 │   └── _archive/                   # runs 8–12, exp*, iter1 (development trajectory)
-├── reference/                      # LB2019 material (Table_Supplementary_1_V2.xlsx,
-│                                   # reference_kg.json, build_reference_graph.py)
+├── reference/                      # LB2019 material
 ├── slurm/                          # job scripts; run11_gpu.sh is the canonical invocation
 ├── tools/                          # one-off analysis scripts
 └── CLAUDE.md, pyproject.toml, setup.sh
@@ -345,7 +413,8 @@ Cross-family verification (`m4/`) and the analysis suite are documented in
 Most instructive case: `pore pressure controls slope failure` — present in 84 chunks, all
 five retrieved passages relevant, but the relation is expressed through a multi-step causal
 chain (pore pressure → reduced shear strength → instability). A structural limit of
-sentence-level extraction, not a retrieval problem.
+sentence-level extraction, not a retrieval problem — and one that the causal-chain analysis
+shows is an exception rather than the rule.
 
 ---
 
@@ -353,10 +422,12 @@ sentence-level extraction, not a retrieval problem.
 
 | Layer | Status |
 |---|---|
-| Textual grounding (triple → source sentence) | **validated** — 94.9 % anchored |
+| Textual grounding (triple → source sentence) | **validated** — 94.7 % anchored (143/151) |
 | Cross-family textual support (Llama + Mistral panel) | **validated** — 84 accept / 67 uncertain / 6 quarantined |
 | Recoverability vs expert ontology (LB2019, frozen split) | **validated** — 82.4 % test |
-| Schema conformity (5 entity types, relation signatures) | **validated** — 0 violations |
+| Schema conformity (5 entity types, relation signatures) | **validated** — 0 violations, 4 types populated |
+| Structural coherence (facies associations, counter-classes, preserved ambiguities) | **validated** |
+| Causal-chain coherence (mechanisms as paths) | **validated** — 29 chains, 6 all-Tier-1 |
 | **Geological correctness of individual triples** | **not yet validated** — see below |
 
 Section 4.4's existing expert verdicts were recorded against hand-written statements with no
