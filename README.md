@@ -218,7 +218,44 @@ shadowed anywhere in `pipeline/`, `m4/` or `analysis_suite/`.
 
 ---
 
-## Repository structure
+## Canonical run13 (frozen)
+
+The results the paper reports trace to a single frozen run, tagged **`run13-frozen`** in
+git (`git checkout run13-frozen` to inspect that exact state). The canonical way to
+reproduce it end-to-end is:
+
+```bash
+bash analysis_suite/run13_pipeline.sh            # all stages
+FROM_STAGE=5 bash analysis_suite/run13_pipeline.sh   # resume from stage 5
+```
+
+This chains dual-pass (temperature 0.0 + 0.3) extraction over the same 41-paper corpus as
+run11 → verification → clean/rule-canonicalize/lexicon-enforce per pass → tiered fusion →
+`07_final_metrics.py` against three benchmark splits:
+
+- `configs/lb_dev.json` (17 edges) / `configs/lb_test.json` (17 edges) — the dev/test
+  split frozen in `configs/run13_protocol_declaration.json` *before* run13 was executed,
+  to guard against query-design overfitting (headline recall is reported on test; the
+  dev-test gap measures residual adaptation).
+- `configs/lb_extended_benchmark.json` (34-edge, dev+test combined) → `metrics_full34.json`,
+  the regression baseline this repo's post-freeze cleanup work is diffed against.
+
+Output lands under `output/run13/kg/`: `tiered_kg_run13.json`, `metrics_dev.json`,
+`metrics_test.json`, `metrics_full34.json`.
+
+Before any change to `pipeline/`, run the regression check:
+`python analysis_suite/validate_pipeline.py --quick`.
+
+## Documentation
+
+`docs/` holds environment/reproducibility records: `parser_versions.txt` (PDF/embedding
+library versions used for run13) and `requirements_frozen_YYYYMMDD.txt` (full pinned
+dependency list). See `docs/README_run13.md` for the descriptor-coverage fix applied
+during the post-run13 cleanup pass.
+
+---
+
+## Repository Structure
 
 ```
 ontogeorag/
@@ -233,6 +270,16 @@ ontogeorag/
 │   ├── expB_no_rag.py              # Experiment B: memory-only baseline
 │   ├── plot_*.py                   # manuscript figures
 │   └── rag/
+<<<<<<< HEAD
+│       ├── llm_hf.py
+│       ├── hybrid_retriever.py  # BM25+dense+CrossEncoder (--hybrid, experimental)
+│       ├── chunking.py
+│       ├── constants.py         # RELATION_MAP, ontology schema constants
+│       └── schema.py
+├── m4/                          # Independent cross-family verifier (Llama-3.1-8B)
+├── analysis_suite/              # run13 orchestration + post-hoc analysis (see below)
+├── docs/                        # frozen dependency versions, parser_versions.txt
+=======
 │       ├── constants.py            # RELATION_MAP, KNOWN_DESCRIPTORS (40),
 │       │                           # LB2019_BENCHMARK_DESCRIPTORS (13) — single source
 │       ├── llm_hf.py, chunking.py, schema.py
@@ -265,6 +312,7 @@ ontogeorag/
 │   ├── kg_io.py                    # format-tolerant KG I/O + figure style
 │   ├── validate_pipeline.py        # stage-by-stage validation harness
 │   └── run_full_analysis.sh
+>>>>>>> origin/main
 ├── configs/
 │   ├── ontology_schema.json, descriptor_queries.jsonl (249)
 │   ├── lb_reference_edges.json (34), lb_reference_edges_original26.json (26)
