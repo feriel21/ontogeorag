@@ -5,9 +5,7 @@ literature using ontology-constrained LLM extraction with BM25 retrieval, CrossE
 reranking, dual-pass tiering and independent cross-family verification. Developed for mass
 transport deposit (MTD) interpretation in seismic data.
 
-> **Paper:** Talbi et al. *OntoGeoRAG: Ontology-Constrained Knowledge Graph Construction
-> from Geological Literature via Retrieval-Augmented Generation.*
-> Submitted to *Computers & Geosciences*.
+
 
 ---
 
