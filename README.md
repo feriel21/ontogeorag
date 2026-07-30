@@ -270,16 +270,6 @@ ontogeorag/
 │   ├── expB_no_rag.py              # Experiment B: memory-only baseline
 │   ├── plot_*.py                   # manuscript figures
 │   └── rag/
-<<<<<<< HEAD
-│       ├── llm_hf.py
-│       ├── hybrid_retriever.py  # BM25+dense+CrossEncoder (--hybrid, experimental)
-│       ├── chunking.py
-│       ├── constants.py         # RELATION_MAP, ontology schema constants
-│       └── schema.py
-├── m4/                          # Independent cross-family verifier (Llama-3.1-8B)
-├── analysis_suite/              # run13 orchestration + post-hoc analysis (see below)
-├── docs/                        # frozen dependency versions, parser_versions.txt
-=======
 │       ├── constants.py            # RELATION_MAP, KNOWN_DESCRIPTORS (40),
 │       │                           # LB2019_BENCHMARK_DESCRIPTORS (13) — single source
 │       ├── llm_hf.py, chunking.py, schema.py
@@ -312,7 +302,6 @@ ontogeorag/
 │   ├── kg_io.py                    # format-tolerant KG I/O + figure style
 │   ├── validate_pipeline.py        # stage-by-stage validation harness
 │   └── run_full_analysis.sh
->>>>>>> origin/main
 ├── configs/
 │   ├── ontology_schema.json, descriptor_queries.jsonl (249)
 │   ├── lb_reference_edges.json (34), lb_reference_edges_original26.json (26)
