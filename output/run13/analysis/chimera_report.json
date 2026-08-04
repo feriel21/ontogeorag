@@ -1,0 +1,56 @@
+{
+  "n_triples_evaluated": 149,
+  "n_without_usable_provenance": 2,
+  "status_counts": {
+    "CO_LOCATED": 94,
+    "PARTIAL": 40,
+    "NOT_FOUND": 7,
+    "SPLIT": 8
+  },
+  "status_rates": {
+    "CO_LOCATED": 0.6309,
+    "PARTIAL": 0.2685,
+    "NOT_FOUND": 0.047,
+    "SPLIT": 0.0537
+  },
+  "by_tier": {
+    "1": {
+      "CO_LOCATED": 45,
+      "PARTIAL": 14,
+      "NOT_FOUND": 4
+    },
+    "2": {
+      "CO_LOCATED": 49,
+      "PARTIAL": 26,
+      "NOT_FOUND": 3,
+      "SPLIT": 8
+    }
+  },
+  "by_panel_decision": {
+    "ACCEPT": {
+      "CO_LOCATED": 54,
+      "PARTIAL": 18,
+      "NOT_FOUND": 4,
+      "SPLIT": 5
+    },
+    "UNCERTAIN": {
+      "CO_LOCATED": 40,
+      "PARTIAL": 21,
+      "NOT_FOUND": 3,
+      "SPLIT": 2
+    }
+  },
+  "acceptance_by_colocation": {
+    "CO_LOCATED": {
+      "n_judged": 94,
+      "accept_rate": 0.5745
+    },
+    "SPLIT": {
+      "n_judged": 7,
+      "accept_rate": 0.7143
+    }
+  },
+  "caveat": "Surface matching is conservative: entities renamed by canonicalization are not found in the raw passages, which inflates PARTIAL/NOT_FOUND rather than SPLIT. The SPLIT rate is therefore a LOWER bound on cross-passage composition.",
+  "power_warning": "The acceptance comparison between SPLIT and CO_LOCATED is only interpretable with a few tens of SPLIT triples; below that, report the SPLIT rate alone.",
+  "reading": "SPLIT triples are candidates for cross-passage composition: both entities were in the retrieved context but never in one and the same passage. If their acceptance rate matches that of CO_LOCATED triples, verification does not distinguish them."
+}

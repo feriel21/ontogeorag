@@ -1,0 +1,9 @@
+subject,relation,object,tier,panel_decision,n_passages,confidence,evidence_paper
+excess pressure,causes,slope failure,2,ACCEPT,5,0.2584,D. Leynaud
+slope failure,causes,erosional scour,2,,5,0.0,
+volume and pressure buildup,causes,pore-fluid overpressure,2,UNCERTAIN,5,0.1809,3-s2.0-B9780128130810007047-main
+mass transport deposit,hasDescriptor,chaotic,2,ACCEPT,5,0.6,Basin Research - 2016 - Ortiz‐Karpf - Mass‐transport complexes as markers of deep‐water fold‐and‐thrust belt evolution
+mass transport deposit,hasDescriptor,variable-amplitude,2,ACCEPT,5,0.2584,Basin Research - 2016 - Ortiz‐Karpf - Mass‐transport complexes as markers of deep‐water fold‐and‐thrust belt evolution
+slide,hasDescriptor,blocky,2,ACCEPT,8,0.6,9781565762879_ch02
+slide,hasDescriptor,undeformed,2,UNCERTAIN,5,0.42,9781565762879_ch02
+fluid overpressure,triggers,slope failure,2,ACCEPT,5,0.2584,1-s2.0-S0040195109002819-main

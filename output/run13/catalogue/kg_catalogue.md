@@ -99,6 +99,40 @@ Importance is deliberately shown as **four separate numbers**, because they disa
 
 ---
 
+## 3bis. A warning about direction — please read this one
+
+Some relations mean the opposite thing if you swap the two ends: `A is part of B` is not `B is part of A`. We tested the direction of 48 such statements against their source passage, and separately measured how well the automatic verifier detects a deliberately reversed statement.
+
+**It detects reversals poorly**: when we inverted statements on purpose, the verifier caught only about three in ten (the same test catches roughly nine in ten when we swap in a wrong passage instead). Direction is the axis on which the automatic checks are weakest.
+
+Result of the direction check on the real statements:
+
+| Verdict | Count | Meaning |
+|---|---|---|
+| FORWARD | 9 | the passage states it in the direction we extracted — confirmed |
+| REVERSE | 3 | the passage states the opposite — **direction error** |
+| UNDIRECTED | 7 | the passage links the two but states no direction — residual risk |
+| ABSENT | 28 | the direction is not stated in the passage at all — needs inspection |
+| UNPARSEABLE | 1 | the check itself failed |
+
+**What we are asking of you.** Directional statements are the ones where your judgement adds the most, because it is exactly where our automatic checks add the least. The directional statements in the graph are listed below.
+
+| Statement | Automatic verdict |
+|---|---|
+| `blocky material` **overlies** `basal shear surface` | ACCEPT |
+| `coarse-grained turbidites` **overlies** `mass transport deposit` | UNCERTAIN |
+| `compressive domain` **partOf** `mass transport deposit` | UNCERTAIN |
+| `extensional domain` **partOf** `mass transport deposit` | UNCERTAIN |
+| `mass transport deposit` **partOf** `basal shear surface` | ACCEPT |
+| `mass transport deposit` **partOf** `three structural domains` | UNCERTAIN |
+| `mass transport deposit` **partOf** `upper surface` | UNCERTAIN |
+| `rugged upper surface` **overlies** `stable paleo-lakebed` | ACCEPT |
+| `translational domain` **partOf** `mass transport deposit` | UNCERTAIN |
+
+*(Note: an ACCEPT here means the wording matched the passage, not that the direction was checked. Please read each of these as a geologist would.)*
+
+---
+
 ## 4. Would more papers change this?
 
 Measured by repeatedly rebuilding the graph from random subsets of the corpus and fitting the growth curve.

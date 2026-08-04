@@ -144,6 +144,10 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--kg", required=True)
     ap.add_argument("--decisions", default=None)
+    ap.add_argument("--direction", default=None,
+                    help="m4_direction_summary.json — adds the directional "
+                         "reliability warning, which matters because the "
+                         "verifier is measurably weak at direction errors")
     ap.add_argument("--robustness", default=None,
                     help="robustness_report.md from 13_, for the growth "
                          "section")
@@ -462,6 +466,61 @@ def main():
                  "catch-all and should be either re-specified or dropped.")
     L.append("")
 
+    # ── directional reliability warning ───────────────────────────────
+    DIRECTIONAL = {"partof", "overlies", "underlies", "causes", "triggers",
+                   "controls"}
+    dirsum = {}
+    if args.direction and Path(args.direction).exists():
+        dirsum = json.loads(Path(args.direction).read_text(encoding="utf-8"))
+    if dirsum:
+        v = dirsum.get("verdicts", {})
+        n = dirsum.get("n_checked", sum(v.values()) or 1)
+        L += ["---", "",
+              "## 3bis. A warning about direction — please read this one", "",
+              "Some relations mean the opposite thing if you swap the two "
+              "ends: `A is part of B` is not `B is part of A`. We tested "
+              f"the direction of {n} such statements against their source "
+              "passage, and separately measured how well the automatic "
+              "verifier detects a deliberately reversed statement.", "",
+              "**It detects reversals poorly**: when we inverted statements "
+              "on purpose, the verifier caught only about three in ten "
+              "(the same test catches roughly nine in ten when we swap in a "
+              "wrong passage instead). Direction is the axis on which the "
+              "automatic checks are weakest.", "",
+              "Result of the direction check on the real statements:", "",
+              "| Verdict | Count | Meaning |", "|---|---|---|"]
+        gloss = {"FORWARD": "the passage states it in the direction we "
+                            "extracted — confirmed",
+                 "REVERSE": "the passage states the opposite — **direction "
+                            "error**",
+                 "UNDIRECTED": "the passage links the two but states no "
+                               "direction — residual risk",
+                 "ABSENT": "the direction is not stated in the passage at "
+                           "all — needs inspection",
+                 "UNPARSEABLE": "the check itself failed"}
+        for k in ("FORWARD", "REVERSE", "UNDIRECTED", "ABSENT",
+                  "UNPARSEABLE"):
+            if k in v:
+                L.append(f"| {k} | {v[k]} | {gloss.get(k, '')} |")
+        L += ["", "**What we are asking of you.** Directional statements are "
+              "the ones where your judgement adds the most, because it is "
+              "exactly where our automatic checks add the least. The "
+              "directional statements in the graph are listed below.", ""]
+        rows = []
+        for t in active:
+            r = get_relation(t)
+            if rel_key(r) in ("partof", "overlies", "underlies"):
+                dec = panel.get((norm(get_subject(t)), rel_key(r),
+                                 norm(get_object(t))), "")
+                rows.append((get_subject(t), r, get_object(t), dec))
+        if rows:
+            L += ["| Statement | Automatic verdict |", "|---|---|"]
+            for s, r, o, dec in sorted(rows):
+                L.append(f"| `{s}` **{r}** `{o}` | {dec or '—'} |")
+            L += ["", "*(Note: an ACCEPT here means the wording matched the "
+                  "passage, not that the direction was checked. Please read "
+                  "each of these as a geologist would.)*", ""]
+
     L += ["---", "", "## 4. Would more papers change this?", "",
           "Measured by repeatedly rebuilding the graph from random subsets "
           "of the corpus and fitting the growth curve.", ""]
@@ -527,6 +586,9 @@ def main():
     print(f"relations used        : {len(rel)}")
     print(f"synonym candidates    : {len(pairs)}")
     print(f"antonym pairs (NOT to merge): {len(antonyms)}")
+    if dirsum:
+        print(f"direction check included : {dirsum.get('n_checked')} "
+              "statements")
     print(f"concept types         : {dict(type_counts)}")
     print(f"\nhand to the geologist : {outdir}/kg_catalogue.md")
     print(f"to be filled in       : {outdir}/synonym_candidates.csv")
