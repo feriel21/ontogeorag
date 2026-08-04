@@ -1,0 +1,9 @@
+relation,plain_english,meaning,n_triples,share_pct,n_papers,n_distinct_subjects,n_distinct_objects,informativeness_entropy,pct_tier1,pct_accepted_by_panel
+causes,produces,one thing brings another into existence,49,32.5,19,37,32,0.937,49.0,60.4
+hasDescriptor,is described in seismic data as,links a mappable body to a seismic-facies adjective,46,30.5,27,16,19,0.957,39.1,50.0
+affects,influences,"weaker, unspecified causal influence",15,9.9,17,12,12,0.964,46.7,53.3
+occursIn,is found in,depositional or physiographic setting,15,9.9,23,6,12,0.978,40.0,53.3
+triggers,initiates,external forcing that starts a process,14,9.3,12,13,10,0.958,50.0,84.6
+partOf,is a component of,meronymy: part–whole,6,4.0,4,4,4,0.896,16.7,16.7
+overlies,lies above,stratigraphic position,3,2.0,2,3,3,1.0,33.3,66.7
+controls,modulates,a condition that governs whether/how much,3,2.0,2,3,3,1.0,0.0,0.0

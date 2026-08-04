@@ -31,9 +31,9 @@
   },
   "types_after": {
     "Process": 105,
-    "Descriptor": 53,
-    "Environmental_Control": 40,
-    "Geological_Object": 104
+    "Environmental_Control": 47,
+    "Geological_Object": 104,
+    "Descriptor": 46
   },
   "n_self_loops": 0,
   "n_duplicates": 0,
@@ -42,6 +42,15 @@
   "removed_long": false,
   "removed_bad_signature": false,
   "unknown_types": {},
+  "descriptor_rule_retyped": [
+    "cohesion of the basal detachment",
+    "critical length",
+    "erosive capability of the flow",
+    "length of the sliding sheet",
+    "sea floor slope",
+    "up to 500m in thickness"
+  ],
+  "descriptor_fallback_type": "Environmental_Control",
   "default_type": "Geological_Object",
   "max_words": 6,
   "policy": "Types are mapped; self-loops and duplicates are removed. Over-long entities and invalid relation signatures are flagged in place unless explicitly rejected, so that schema enforcement never silently drops content."
