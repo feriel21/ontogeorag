@@ -1,9 +1,10 @@
 # Pipeline Validation Report
-*Generated 2026-07-29T15:57:38 on node07*
+*Generated 2026-08-04T10:21:46 on node10*
 
 | Stage | Status | Detail |
 |---|---|---|
 | frozen eval protocol | **OK** | dev/test/declaration committed |
+| duplicate definitions | **OK** | no shadowed top-level definitions |
 | 01 index artifact | **OK** | papers=37, chunks=1955, dup=0 |
 | 01 PDF parser | **KNOWN_ISSUE** | memory leak (~1.7GB/3s) in current env; run13 bypassed via chunk-level dedup of run11 index |
 | 06 fused KG | **OK** | loads via kg_io, 157 triples |

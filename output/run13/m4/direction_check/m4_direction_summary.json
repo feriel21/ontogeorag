@@ -1,0 +1,24 @@
+{
+  "model": "meta-llama/Llama-3.1-8B-Instruct",
+  "n_checked": 48,
+  "verdicts": {
+    "ABSENT": 28,
+    "UNDIRECTED": 7,
+    "FORWARD": 9,
+    "UNPARSEABLE": 1,
+    "REVERSE": 3
+  },
+  "rates": {
+    "ABSENT": 0.5833,
+    "UNDIRECTED": 0.1458,
+    "FORWARD": 0.1875,
+    "UNPARSEABLE": 0.0208,
+    "REVERSE": 0.0625
+  },
+  "interpretation": {
+    "FORWARD": "direction confirmed as extracted",
+    "REVERSE": "direction error \u2014 candidate demotion",
+    "UNDIRECTED": "association without stated direction \u2014 residual risk, documented",
+    "ABSENT": "inconsistent with prior ACCEPT \u2014 inspect"
+  }
+}

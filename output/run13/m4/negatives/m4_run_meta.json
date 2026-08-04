@@ -1,0 +1,9 @@
+{
+  "model": "meta-llama/Llama-3.1-8B-Instruct",
+  "input": "output/run13/m4/negatives/controls.jsonl",
+  "n_triples": 302,
+  "n_no_passage": 0,
+  "decoding": "greedy (do_sample=False)",
+  "max_evidence_chars": 1500,
+  "runtime_seconds": 1644.6
+}

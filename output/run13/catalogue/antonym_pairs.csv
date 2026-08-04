@@ -1,0 +1,5 @@
+name_A,name_B,note,DECISION_truly_opposite_YN,COMMENT
+bore-hole instability,bore-hole stability,OPPOSITES — differ by a negation prefix (spelling ratio 0.95),,
+continuous,discontinuous,OPPOSITES — differ by a negation prefix (spelling ratio 0.87),,
+disequilibrium conditions,equilibrium conditions,OPPOSITES — differ by a negation prefix (spelling ratio 0.94),,
+slope instability,slope stability,OPPOSITES — differ by a negation prefix (spelling ratio 0.94),,

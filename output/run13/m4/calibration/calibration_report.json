@@ -1,0 +1,47 @@
+{
+  "n_items": 302,
+  "n_original": 151,
+  "n_corrupted": 151,
+  "binning": "unique score values",
+  "ECE": 0.0674,
+  "MCE": 0.2222,
+  "brier_score": 0.1977,
+  "bins": [
+    {
+      "conf": 0.0,
+      "n": 9,
+      "accuracy": 0.2222
+    },
+    {
+      "conf": 0.15,
+      "n": 7,
+      "accuracy": 0.0
+    },
+    {
+      "conf": 0.3,
+      "n": 117,
+      "accuracy": 0.265
+    },
+    {
+      "conf": 0.35,
+      "n": 9,
+      "accuracy": 0.5556
+    },
+    {
+      "conf": 0.5,
+      "n": 6,
+      "accuracy": 0.6667
+    },
+    {
+      "conf": 0.65,
+      "n": 99,
+      "accuracy": 0.6162
+    },
+    {
+      "conf": 1.0,
+      "n": 55,
+      "accuracy": 0.8727
+    }
+  ],
+  "caveat": "Labels are known by construction for corrupted items only; 'original' items are pipeline outputs, not certified correct (the main run finds ~20% of them ungrounded). Accuracy among originals is therefore a lower bound and the reported ECE is a conservative (pessimistic) estimate of calibration."
+}

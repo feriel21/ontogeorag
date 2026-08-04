@@ -53,6 +53,7 @@ from collections import Counter, defaultdict
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
+REPO_ROOT = Path(__file__).resolve().parent.parent
 from kg_io import dump_kg, get_object, get_relation, get_subject, load_kg
 
 SCHEMA_TYPES = ["Geological_Object", "Descriptor", "Process",
@@ -134,6 +135,12 @@ def main():
     ap.add_argument("--type-map", default=None,
                     help="JSON overriding/extending the built-in TYPE_MAP")
     ap.add_argument("--default-type", default="Geological_Object")
+    ap.add_argument("--descriptor-fallback", default="Environmental_Control",
+                    help="type given to entities the LLM called Descriptor "
+                         "but which are not in the canonical descriptor "
+                         "lexicon (physical parameters, measurements)")
+    ap.add_argument("--no-descriptor-rule", action="store_true",
+                    help="disable the lexicon-based Descriptor rule")
     ap.add_argument("--max-words", type=int, default=6)
     ap.add_argument("--reject-long", action="store_true",
                     help="actually remove triples with over-long entities "
@@ -144,6 +151,25 @@ def main():
     ap.add_argument("--dry-run", action="store_true",
                     help="report what would change; write nothing")
     args = ap.parse_args()
+
+    # An entity is typed Descriptor if and only if it belongs to the
+    # canonical seismic-descriptor lexicon. Without this rule, TYPE_MAP
+    # sends Property / Measurement / Attribute to Descriptor, and physical
+    # parameters ("sea floor slope", "cohesion of the basal detachment")
+    # end up typed as seismic facies adjectives — verified on run13, 6 of
+    # 25 Descriptor nodes were of this kind. The rule makes the type
+    # checkable against a list instead of trusting the LLM's guess.
+    lexicon = set()
+    if not args.no_descriptor_rule:
+        try:
+            sys.path.insert(0, str(REPO_ROOT))
+            from pipeline.rag.constants import KNOWN_DESCRIPTORS
+            lexicon = {str(x).strip().lower() for x in KNOWN_DESCRIPTORS}
+            print(f"[descriptor rule] canonical lexicon: {len(lexicon)} "
+                  "terms")
+        except Exception as e:
+            print(f"[WARN] descriptor rule disabled ({e}); run from the "
+                  "repo root to enable it")
 
     tmap = dict(TYPE_MAP)
     if args.type_map:
@@ -160,6 +186,7 @@ def main():
                 before_types[t[f]] += 1
 
     changes = defaultdict(lambda: {"n": 0, "examples": []})
+    retyped = []
     unknown = Counter()
     kept, rejected = [], []
     seen = set()
@@ -188,6 +215,12 @@ def main():
             if mapped is None:
                 unknown[raw] += 1
                 mapped = args.default_type
+            # lexicon-based correction of the Descriptor type
+            if lexicon and mapped == "Descriptor":
+                ent = s if ("subject" in src_f or "source" in src_f) else o
+                if norm_entity(ent) not in lexicon:
+                    mapped = args.descriptor_fallback
+                    retyped.append((ent, raw))
             if mapped != raw:
                 rec = changes[(raw, mapped)]
                 rec["n"] += 1
@@ -255,6 +288,13 @@ def main():
         print(f"UNKNOWN types mapped to {args.default_type}: "
               f"{dict(unknown)}")
         print("  -> review these: add them to TYPE_MAP or pass --type-map")
+    if retyped:
+        uniq = sorted({e for e, _ in retyped})
+        print(f"descriptor rule       : {len(uniq)} entities called "
+              f"Descriptor by the model but absent from the lexicon → "
+              f"retyped {args.descriptor_fallback}")
+        for e in uniq[:10]:
+            print(f"   {e}")
     print(f"triples out           : {len(kept)}")
     if flag_sig:
         print("\nsignature violations (first 5):")
@@ -293,6 +333,8 @@ def main():
         "removed_long": args.reject_long,
         "removed_bad_signature": args.reject_bad_sig,
         "unknown_types": dict(unknown),
+        "descriptor_rule_retyped": sorted({e for e, _ in retyped}),
+        "descriptor_fallback_type": args.descriptor_fallback,
         "default_type": args.default_type, "max_words": args.max_words,
         "policy": "Types are mapped; self-loops and duplicates are removed. "
                   "Over-long entities and invalid relation signatures are "
