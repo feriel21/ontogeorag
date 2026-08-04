@@ -59,3 +59,4 @@ validation_report.md
 
 # Stray Windows bootstrap script, not part of this repo's codebase
 install.cmd
+output/*/expert_packet/*_key.csv
